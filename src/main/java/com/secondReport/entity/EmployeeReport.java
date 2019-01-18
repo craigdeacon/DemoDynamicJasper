@@ -68,7 +68,7 @@ public class EmployeeReport
             //logo
             int logoHeight = 50;
             int logoWidth = 100;
-            String logoPath = "C:/Users/craig.deacon/Documents/NetBeansProjects/jasperreport/src/main/resources/images/logo.jpg";
+            String logoPath = "src/main/resources/images/logo.jpg";
             
             //columns
             int floatWidth = 20;

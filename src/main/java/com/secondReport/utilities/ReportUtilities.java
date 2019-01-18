@@ -158,7 +158,7 @@ public class ReportUtilities
     {
         try
         {
-            filePath = "C:/BBD/Summit/summit-artifacts/.m2/repository/ca/bbd/temp/";
+            filePath = "Reports/";
             pdfOutputFile = new File( filePath + reportName + ".pdf" );
             fileOutputStream = new FileOutputStream( pdfOutputFile );
             JRPdfExporter pdfExporter = new JRPdfExporter();
@@ -194,7 +194,7 @@ public class ReportUtilities
     {
         try
         {
-            filePath = "C:/BBD/Summit/summit-artifacts/.m2/repository/ca/bbd/temp/";
+            filePath = "Reports/";
             excelOutputFile = new File( filePath + reportName + ".xls" );
             fileOutputStream = new FileOutputStream( excelOutputFile );
             JRXlsExporter excelExporter = new JRXlsExporter();
