@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="individual_terminations" pageWidth="3000" pageHeight="792" columnWidth="2960" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36f35eef-c15c-4404-9019-8e610da88959">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/BBD/reports/CustomerService/individual_terminations"/>
+	<property name="ireport.jasperserver.url" value="http://marmot-dev:8081/jasperserver/services/repository"/>
+	<property name="ireport.jasperserver.user" value="superuser"/>
+	<property name="com.jaspersoft.studio.report.description" value="Main jrxml"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Postgres - Development"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="ireport.jasperserver.report.resource" value="/BBD/reports/Postgres/CustomerService/individual_terminations_files/individual_terminations_jrxml"/>
+	<parameter name="start_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="end_date" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="process_user" class="java.lang.String"/>
+
+	<field name="emp_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="emp_name"/>
+	</field>
+	<field name="current_alt_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="current_alt_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="termination" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="termination"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="term_reason" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="term_reason"/>
+	</field>
+	<field name="surviving_dependent" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="surviving_dependent"/>
+	</field>
+	<field name="prov_res" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prov_res"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="employer" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="employer"/>
+	</field>
+	<field name="agent_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="agent_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="agent"/>
+	</field>
+	<field name="emp_address" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="emp_address"/>
+	</field>
+	<field name="phone_num" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="phone_num"/>
+	</field>
+	<field name="employee_cell_phone" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="employee_cell_phone"/>
+	</field>
+	<field name="email" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="employee"/>
+	</field>
+	<field name="email_alt" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="email_alt"/>
+	</field>
+	<field name="benefit_list" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="benefit_list"/>
+	</field>
+	<field name="ehb_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="ehb_status"/>
+	</field>
+	<field name="den_status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="den_status"/>
+	</field>
+	<variable name="current_date" class="java.util.Date">
+		<variableExpression><![CDATA[new Date()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40">
+			<staticText>
+				<reportElement uuid="f58b5555-3c1c-429a-af8d-d2ba8d88bbba" x="0" y="0" width="200" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<text><![CDATA[Individual Terminations]]></text>
+			</staticText>
+			<textField pattern="">
+				<reportElement uuid="1b5d7983-be4b-43bf-a490-4b115954227d" x="0" y="20" width="200" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MMMMM dd, yyyy").format($P{start_date}) + " to " + new SimpleDateFormat("MMMMM dd, yyyy").format($P{end_date})]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+			<staticText>
+				<reportElement uuid="e1a6c285-8090-4e5c-828e-888089f1280f" x="0" y="0" width="200" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8da2f3f7-11a6-450a-bd69-7cfd2b1b7a30" x="200" y="0" width="100" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Current Alt ID#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9fa6e758-0d94-4e66-aaae-74ff540f21ec" x="300" y="0" width="100" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Termination Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df798cad-dfd0-41d0-8498-164ec310f342" x="400" y="0" width="397" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Termination Reason]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="15161a9b-5e8f-4e83-adde-8cdc52029cad" x="797" y="0" width="66" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Province]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b3f6314d-8099-4741-8aa2-f1ec405ba8fa" x="863" y="0" width="302" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0d9a3d32-5d4b-46dd-8f5d-f687c6b2e967" x="1165" y="0" width="201" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advisor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0000bdda-bde4-44b4-8f8c-c80895c3f1a4" x="1366" y="0" width="434" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="09ab91a3-a719-4235-aa8f-cb538d921ed0" x="1800" y="0" width="183" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c4269fd4-aeba-4411-b274-1baefead3876" x="1983" y="0" width="243" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d97375ea-99dd-4e6c-acdd-cc092629c96e" x="2226" y="0" width="451" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Plan Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e47737a4-e72e-4e7a-bacd-5e50a6a79348" x="2677" y="0" width="100" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EHC Single / Couple / Family]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9c54de3f-01b0-433b-9f29-6c7eb7e18c01" x="2777" y="0" width="100" height="30"/>
+				<box>
+					<bottomPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Trebuchet MS" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dental Single / Couple / Family]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+<!--	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e06bad8a-7064-4951-813e-1fccefea92b2" x="0" y="0" width="200" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="de520b34-9b1c-4802-9ba5-5189b860c283" x="200" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{current_alt_id}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy">
+				<reportElement uuid="9f9b716a-4d49-49d1-946f-19a918cf13e6" x="300" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{termination}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="56bc8765-8c60-4606-87d1-9e219b0cd577" x="400" y="0" width="397" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{term_reason}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f185386a-7012-4559-9af8-18901751edf3" x="797" y="0" width="66" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{prov_res}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="51d7a1df-8792-494d-acb7-d1fa6a7eec2a" x="863" y="0" width="302" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0d9924d4-1c46-4841-9ca0-3a3184c2b8b2" x="1165" y="0" width="201" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agent_name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="e83fbbe3-d3b6-4955-a976-cf1d80f9ad57" x="1366" y="0" width="434" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_address}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="8c895e1a-19ec-4b9a-8465-e6e05d26b894" x="1800" y="0" width="183" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phone_num}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="51faaf1c-0e5d-40e8-8def-f667281f9419" x="1983" y="0" width="243" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{email} == null ? "" : $F{email}) +
+($F{email_alt} == null ? "" : ", Alt Email: " + $F{email_alt})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3e436e63-d44a-4b54-ae77-5d7aeac4a854" x="2226" y="0" width="451" height="20">
+					<property name="net.sf.jasperreports.print.keep.full.text" value="true"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{benefit_list}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3fe75911-550c-4d8f-8149-5382d2153fdc" x="2677" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ehb_status}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3c7ab581-a4fe-4f45-8fd1-9319f894df4d" x="2777" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{den_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>-->
+	<summary>
+		<band height="20">
+			<textField pattern="">
+				<reportElement uuid="5f9f90f4-b691-48e6-a835-920adc9f5fd1" x="0" y="0" width="170" height="20"/>
+				<textElement>
+					<font fontName="Trebuchet MS" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("MMMMM dd, yyyy").format($V{current_date})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c03753e2-d145-4b98-8724-6a55c98979f1" x="2677" y="0" width="200" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="Trebuchet MS" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{process_user}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
