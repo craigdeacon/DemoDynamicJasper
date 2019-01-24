@@ -11,27 +11,29 @@ package com.secondReport.container;
  */
 public class Benefit
 {
-    private String benefitName;
+    private String benefit;
     private String supplier;
     private String policyNo;
     private String date;
+    String name;
 
     public Benefit( String benefitName, String supplier, String policyNo, String date )
     {
-        this.benefitName = benefitName;
+        this.benefit = benefitName;
         this.supplier = supplier;
         this.policyNo = policyNo;
         this.date = date;
+        this.name = "Christine";
     }
 
-    public String getBenefitName()
+    public String getBenefit()
     {
-        return benefitName;
+        return benefit;
     }
 
-    public void setBenefitName( String benefitName )
+    public void setBenefit( String benefitName )
     {
-        this.benefitName = benefitName;
+        this.benefit = benefitName;
     }
 
     public String getSupplier()

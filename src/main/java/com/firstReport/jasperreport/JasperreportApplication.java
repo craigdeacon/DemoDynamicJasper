@@ -1,6 +1,6 @@
-package com.operationjasper.jasperreport;
+package com.firstReport.jasperreport;
 
-import com.operationjasper.entity.BookReport;
+import com.firstReport.entity.BookReport;
 
 public class JasperreportApplication {
 

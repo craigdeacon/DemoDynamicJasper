@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.operationjasper.entity;
+package com.firstReport.entity;
 
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilderException;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
-import com.operationjasper.repository.BookReportRepository;
+import com.firstReport.repository.BookReportRepository;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;

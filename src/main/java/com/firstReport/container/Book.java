@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.operationjasper.container;
+package com.firstReport.container;
 
-import com.operationjasper.container.Statistic;
+import com.firstReport.container.Statistic;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

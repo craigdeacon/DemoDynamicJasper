@@ -34,7 +34,7 @@ public class ConcatenatedReportRepository
     public static ArrayList<Benefit> getBenefits()
     {
         ArrayList<Benefit> benefitList = new ArrayList<>();
-        benefitList.add( new Benefit("Dep Life", "Empire Life", "TC008-1417", "May 1, 2003" ));
+        benefitList.add( new Benefit("Derp Life", "Empire Life", "TC008-1417", "May 1, 2003" ));
         benefitList.add( new Benefit("LTD", "Empire Life", "TC008-1417", "May 1, 2003" ));
         benefitList.add( new Benefit("Life", "Empire Life", "TC008-1417", "May 1, 2003" ));
         benefitList.add( new Benefit("CI", "Industrial Alliance", "10000-7170-1417", "May 1, 2003" ));
@@ -51,13 +51,18 @@ public class ConcatenatedReportRepository
         return empInfo;
     }
     
-    public static List<ConcatRow> getRows()
+    public static ArrayList<ConcatRow> getRows()
     {
-        List<ConcatRow> rows = new ArrayList<>();
-        rows.add ( new ConcatRow ("Group", "Active Accounting Inc"));
-        rows.add ( new ConcatRow ("Employee", "Beston, Christine M"));
-        rows.add ( new ConcatRow ("Class", "A - All Employees"));
-        rows.add ( new ConcatRow ("Cert #", "1608463"));
+        ArrayList<ConcatRow> rows = new ArrayList<>();
+        rows.add ( new ConcatRow ("Group", "Active Accounting Inc", "Christine"));
+        rows.add ( new ConcatRow ("Employee", "Beston, Christine M", "Christine"));
+        rows.add ( new ConcatRow ("Class", "A - All Employees", "Christine"));
+        rows.add ( new ConcatRow ("Cert #", "1608463", "Christine"));
+//        rows.add( new ConcatRow("Dep Life", "Empire Life", "TC008-1417", "May 1, 2003" ));
+//        rows.add( new ConcatRow("LTD", "Empire Life", "TC008-1417", "May 1, 2003" ));
+//        rows.add( new ConcatRow("Life", "Empire Life", "TC008-1417", "May 1, 2003" ));
+//        rows.add( new ConcatRow("CI", "Industrial Alliance", "10000-7170-1417", "May 1, 2003" ));
+//        rows.add( new ConcatRow("AD&D", "Industrial Alliance", "10000-8101-1417", "May 1, 2003" ));
         return rows;
     }
 

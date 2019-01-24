@@ -14,12 +14,79 @@ public class ConcatRow
 {
     String column1;
     String column2;
+    String name;
 
-    public ConcatRow( String column1, String column2 )
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName( String name )
+    {
+        this.name = name;
+    }
+    String benefit;
+    String supplier;
+    String policyNo;
+    String date;
+
+    public ConcatRow( String column1, String column2, String name )
     {
         this.column1 = column1;
         this.column2 = column2;
+        this.name = name;
     }
+
+    public ConcatRow( String benefit, String supplier, String policyNo, String date )
+    {
+        this.benefit = benefit;
+        this.supplier = supplier;
+        this.policyNo = policyNo;
+        this.date = date;
+        this.name = "Christine";
+    }
+
+    public String getBenefit()
+    {
+        return benefit;
+    }
+
+    public void setBenefit( String benefitName )
+    {
+        this.benefit = benefitName;
+    }
+
+    public String getSupplier()
+    {
+        return supplier;
+    }
+
+    public void setSupplier( String supplier )
+    {
+        this.supplier = supplier;
+    }
+
+    public String getPolicyNo()
+    {
+        return policyNo;
+    }
+
+    public void setPolicyNo( String policyNo )
+    {
+        this.policyNo = policyNo;
+    }
+
+    public String getDate()
+    {
+        return date;
+    }
+
+    public void setDate( String date )
+    {
+        this.date = date;
+    }
+    
+    
 
     public String getColumn1()
     {

@@ -28,11 +28,11 @@ public class SecondReportApplication
         {
 
                 //		SpringApplication.run(JasperreportApplication.class, args);
-            EmployeeReport empReport = new EmployeeReport();
-            empReport.displayEmployeeReport();
+//            EmployeeReport empReport = new EmployeeReport();
+//            empReport.displayEmployeeReport();
 
-//            ConcatenatedReport concateReport = new ConcatenatedReport();
-//            concateReport.displayConcatReport();
+            ConcatenatedReport concateReport = new ConcatenatedReport();
+            concateReport.displayConcatReport();
             
 //            TemplateReport templateReport = new TemplateReport();
 //            templateReport.displayTemplateReport();

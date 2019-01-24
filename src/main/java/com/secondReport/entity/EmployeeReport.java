@@ -148,6 +148,7 @@ public class EmployeeReport
 
             //builds the report
             DynamicReport dynamicReport = dynamicReportBuilder.build();
+            
 
             //JasperPrint object is given the report object, the data source and parameters HashMap
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport, new ClassicLayoutManager(), dataSource, parameters );

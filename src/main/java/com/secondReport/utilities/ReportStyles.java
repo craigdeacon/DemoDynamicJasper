@@ -25,6 +25,7 @@ public class ReportStyles
     public static Style SUBTITLE_STYLE_PARENT;
     public static Style SUBTITLE_STYLE;
     public static Style BOLD;
+    public static Style BLANK;
 
     public ReportStyles()
     {
@@ -35,6 +36,12 @@ public class ReportStyles
 
         LEFT = new Style();
         LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
+      
+        
+        BLANK = new Style();
+        BLANK.setBorder( Border.THIN());
+        BLANK.setBlankWhenNull( true);
+        
         
         BOLD = new Style();
         BOLD.setFont( Font.ARIAL_MEDIUM_BOLD );
