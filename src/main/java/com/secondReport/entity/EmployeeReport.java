@@ -110,7 +110,7 @@ public class EmployeeReport
             String pattern = "MMMMM DD, yyyy ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
-
+            
             dynamicReportBuilder
                     .setPageSizeAndOrientation( page )
                     .setDefaultStyles( LEFT, SUBTITLE_STYLE, AMOUNT_STYLE, AMOUNT_STYLE )

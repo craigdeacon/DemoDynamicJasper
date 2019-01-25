@@ -20,7 +20,6 @@ import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import ar.com.fdvs.dj.domain.entities.columns.PropertyColumn;
 import com.secondReport.repository.ConcatenatedReportRepository;
 import static com.secondReport.utilities.ReportStyles.*;
-import static com.secondReport.utilities.ReportStyles.BOLD;
 import static com.secondReport.utilities.ReportStyles.HEADER_STYLE;
 import static com.secondReport.utilities.ReportStyles.LEFT;
 import static com.secondReport.utilities.ReportStyles.initStyles;
@@ -39,6 +38,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JRDesignTextField;
 import net.sf.jasperreports.view.JasperViewer;
+import static com.secondReport.utilities.ReportStyles.BOLD_RIGHT;
 
 /**
  * Attempting to combine two reports side by side, work in progress
@@ -114,7 +114,7 @@ public class ConcatenatedReport
      */
     private JasperReport createSubReportA() throws JRException
     {
-        AbstractColumn column1 = CreateColumnString( "column1", "", 60, BOLD );
+        AbstractColumn column1 = CreateColumnString("column1", "", 60, BOLD_RIGHT );
         AbstractColumn column2 = CreateColumnString( "column2", "Group Insurance Certificate Plan Administered by BBD", 120, LEFT );
 
         FastReportBuilder fastReport = new FastReportBuilder();

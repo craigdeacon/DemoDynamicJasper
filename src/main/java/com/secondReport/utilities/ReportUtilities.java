@@ -109,6 +109,18 @@ public class ReportUtilities
                 .build();
         return column;
     }
+    
+    
+    public static AbstractColumn CreateColumnInt( String property, String title, int width, Style style )
+    {
+        AbstractColumn column = ColumnBuilder.getNew()
+                .setColumnProperty( property, Integer.class.getName() )
+                .setTitle( title )
+                .setWidth( width )
+                .setStyle( style )
+                .build();
+        return column;
+    }
 
     /**
      * Opens a generated report file

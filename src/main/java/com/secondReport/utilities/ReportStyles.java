@@ -20,12 +20,17 @@ public class ReportStyles
 {
 
     public static Style LEFT;
+    public static Style RIGHT;
     public static Style HEADER_STYLE;
     public static Style AMOUNT_STYLE;
     public static Style SUBTITLE_STYLE_PARENT;
     public static Style SUBTITLE_STYLE;
-    public static Style BOLD;
+    public static Style BOLD_RIGHT;
+    public static Style BOLD_RIGHT_BLUE;
     public static Style BLANK;
+    public static Style BOLD_LEFT;
+    public static Style BOLD_LEFT_BLUE;
+    public static Style LARGE;
 
     public ReportStyles()
     {
@@ -37,14 +42,35 @@ public class ReportStyles
         LEFT = new Style();
         LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
       
+        RIGHT = new Style();
+        RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
         
         BLANK = new Style();
         BLANK.setBorder( Border.THIN());
         BLANK.setBlankWhenNull( true);
         
         
-        BOLD = new Style();
-        BOLD.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_RIGHT = new Style();
+        BOLD_RIGHT.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
+        BOLD_RIGHT.setPattern( "$0.00" );
+        
+        BOLD_RIGHT_BLUE = new Style();
+        BOLD_RIGHT_BLUE.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_RIGHT_BLUE.setHorizontalAlign( HorizontalAlign.RIGHT );
+        BOLD_RIGHT_BLUE.setPattern( "$0.00" );
+        BOLD_RIGHT_BLUE.setTextColor( Color.BLUE );
+        
+        BOLD_LEFT = new Style();
+        BOLD_LEFT.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
+        BOLD_LEFT.setPattern( "$0.00" );
+        
+        BOLD_LEFT_BLUE = new Style();
+        BOLD_LEFT_BLUE.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_LEFT_BLUE.setHorizontalAlign( HorizontalAlign.LEFT );
+        BOLD_LEFT_BLUE.setPattern( "$0.00" );
+        BOLD_LEFT_BLUE.setTextColor( Color.BLUE );
         
 
         HEADER_STYLE = new Style();
@@ -63,5 +89,8 @@ public class ReportStyles
 
         SUBTITLE_STYLE = Style.createBlankStyle( "subtitleStyle", "subtitleParent" );
         SUBTITLE_STYLE.setFont( Font.GEORGIA_SMALL_BOLD );
+        
+        LARGE = new Style();
+        LARGE.setFont( Font.ARIAL_BIG_BOLD );
     }
 }

@@ -3,6 +3,7 @@ package com.secondReport.secondReport;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import com.secondReport.entity.ConcatenatedReport;
 import com.secondReport.entity.EmployeeReport;
+import com.secondReport.entity.RevenueByProduct;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,9 +32,12 @@ public class SecondReportApplication
 //            EmployeeReport empReport = new EmployeeReport();
 //            empReport.displayEmployeeReport();
 
-            ConcatenatedReport concateReport = new ConcatenatedReport();
-            concateReport.displayConcatReport();
+//            ConcatenatedReport concateReport = new ConcatenatedReport();
+//            concateReport.displayConcatReport();
             
+            RevenueByProduct revenueReport = new RevenueByProduct();
+            revenueReport.displayRevenueByProductReport();
+                
 //            TemplateReport templateReport = new TemplateReport();
 //            templateReport.displayTemplateReport();
         }
