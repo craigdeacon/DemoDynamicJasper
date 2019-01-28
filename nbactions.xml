@@ -11,7 +11,7 @@
             </goals>
             <properties>
                 <exec.args>-classpath %classpath
-                    com.Component.TestReportComponent.secondReport.secondReport.SecondReportApplication</exec.args>
+                    com.Component.CS.EmployeeCostBreakdown.secondReport.SecondReportApplication</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>

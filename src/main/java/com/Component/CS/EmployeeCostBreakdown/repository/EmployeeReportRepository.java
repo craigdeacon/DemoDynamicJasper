@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Component.TestReportComponent.secondReport.repository;
+package com.Component.CS.EmployeeCostBreakdown.repository;
 
 import com.BO.EmployeeBO;
-import com.Component.TestReportComponent.secondReport.container.*;
+import com.Component.CS.EmployeeCostBreakdown.container.*;
 import java.util.ArrayList;
 import java.util.List;
 

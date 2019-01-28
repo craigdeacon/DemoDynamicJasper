@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Component.TestReportComponent.secondReport.entity;
+package com.Component.CS.EmployeeCostBreakdown.entity;
 
 
 
@@ -22,8 +22,7 @@ import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
-import ar.com.fdvs.dj.util.SortUtils;
-import com.Component.TestReportComponent.secondReport.repository.EmployeeReportRepository;
+import com.Component.CS.EmployeeCostBreakdown.repository.EmployeeReportRepository;
 import static com.utilities.ReportStyles.*;
 import static com.utilities.ReportStyles.initStyles;
 import com.utilities.ReportUtilities;
@@ -45,16 +44,16 @@ import net.sf.jasperreports.view.JasperViewer;
  * 
  * @author craig.deacon
  */
-public class EmployeeReport
+public class EmployeeCostBreakdownReport
 {
 
-    public EmployeeReport()
+    public EmployeeCostBreakdownReport()
     {
     }
 
     
     
-    private static final Logger LOGGER = Logger.getLogger( EmployeeReport.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger( EmployeeCostBreakdownReport.class.getName() );
 
     public void displayEmployeeReport()
     {
@@ -116,8 +115,8 @@ public class EmployeeReport
                     .setDefaultStyles( LEFT, SUBTITLE_STYLE, AMOUNT_STYLE, AMOUNT_STYLE )
                     .addStyle( SUBTITLE_STYLE_PARENT )
                     .setDetailHeight( 15 )
-                    .setReportName( "Employee Report" )
-                    .setTitle( "Employee report" )
+                    .setReportName( "Employee Cost Breakdown" )
+                    .setTitle( "Employee Cost Breakdown" )
                     .setSubtitle( groupName )
                     .setUseFullPageWidth( Boolean.TRUE )
                     .setTitleStyle( LEFT )
@@ -156,22 +155,22 @@ public class EmployeeReport
             JasperViewer.viewReport( jasperPrint );
            
             //Export to pdf
-            ReportUtilities.exportPdf(jasperPrint, "EmployeeReport");
+            ReportUtilities.exportPdf(jasperPrint, "EmployeeCostBreakdownReport");
 
             //for exporting to Xls
-            ReportUtilities.exportExcel(jasperPrint, "EmployeeReport");
+            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
             
         }
         catch (ColumnBuilderException | JRException ex)
         {
-            LOGGER.log( Level.SEVERE, null, ex );
+            LOGGER.log( Level.SEVERE, "Employee Cost Breakdown Report Failed", ex );
         }
 
     }
 
     
     /**
-     * Creates a crosstab for use in EmployeeReport
+     * Creates a crosstab for use in EmployeeCostBreakdownReport
      * The data and organization is meaningless, just using as proof of concept
      * 
      * @return the crosstab object
