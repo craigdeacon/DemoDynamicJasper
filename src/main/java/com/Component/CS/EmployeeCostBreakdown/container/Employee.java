@@ -53,7 +53,7 @@ public class Employee
         this.psa = psa;
         this.eap = eap;
         this.dsai = dsai;
-        this.total = Float.MIN_VALUE;
+        this.total = (float)0;
 
         if (life!=null)
             total+=life;
@@ -221,6 +221,7 @@ public class Employee
 
     public Float getTotal()
     {
+        total = (float)0;
         if (life!=null)      
             total+=life;
         if (add!=null)

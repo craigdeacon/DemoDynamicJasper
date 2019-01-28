@@ -21,79 +21,79 @@ public class EmployeeDAOImpl implements EmployeeDAO
             " vw_Employee_CostBreakdown_CS.prov_res, " +
             " vw_Employee_CostBreakdown_CS.sin, " +
             " vw_Employee_CostBreakdown_CS.bill_division, " +
-            " vw_Employee_CostBreakdown_CS.hsa_adjudication::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.eap_prem::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.hsa_adjudication, " +
+            " vw_Employee_CostBreakdown_CS.eap_prem, " +
             " vw_Employee_CostBreakdown_CS.eap_vol, " +
-            " vw_Employee_CostBreakdown_CS.am_prem::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.am_prem, " +
             " vw_Employee_CostBreakdown_CS.am_vol, " +
-            " vw_Employee_CostBreakdown_CS.dsai_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.travel_prem::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.dsai_prem, " +
+            " vw_Employee_CostBreakdown_CS.travel_prem, " +
             " vw_Employee_CostBreakdown_CS.eapUW, " +
             " vw_Employee_CostBreakdown_CS.amUW, " +
             " vw_Employee_CostBreakdown_CS.dsaiUW, " +
             " vw_Employee_CostBreakdown_CS.travelUW, " +
-            " vw_Employee_CostBreakdown_CS.AdminFee::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.hsaAdminFee::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.premiumTax::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.gst::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.AdminFee, " +
+            " vw_Employee_CostBreakdown_CS.hsaAdminFee, " +
+            " vw_Employee_CostBreakdown_CS.premiumTax, " +
+            " vw_Employee_CostBreakdown_CS.gst, " +
             " vw_Employee_CostBreakdown_CS.employer, " +
             " vw_Employee_CostBreakdown_CS.emp_name, " +
-            " vw_Employee_CostBreakdown_CS.life_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.add_volume::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.life_volume, " +
+            " vw_Employee_CostBreakdown_CS.add_volume, " +
             " vw_Employee_CostBreakdown_CS.dlife_volume, " +
-            " vw_Employee_CostBreakdown_CS.std_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ltd_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ci_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ci_dep_volume::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.std_volume, " +
+            " vw_Employee_CostBreakdown_CS.ltd_volume, " +
+            " vw_Employee_CostBreakdown_CS.ci_volume, " +
+            " vw_Employee_CostBreakdown_CS.ci_dep_volume, " +
             " vw_Employee_CostBreakdown_CS.ci_dep_lives, " +
-            " vw_Employee_CostBreakdown_CS.ehb_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.dental_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.hsa_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.life_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.add_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.dlife_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.std_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ltd_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.gsi_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ci_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ci_dep_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ehb_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.dental_prem::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.hsa_prem::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.ehb_volume, " +
+            " vw_Employee_CostBreakdown_CS.dental_volume, " +
+            " vw_Employee_CostBreakdown_CS.hsa_volume, " +
+            " vw_Employee_CostBreakdown_CS.life_prem, " +
+            " vw_Employee_CostBreakdown_CS.add_prem, " +
+            " vw_Employee_CostBreakdown_CS.dlife_prem, " +
+            " vw_Employee_CostBreakdown_CS.std_prem, " +
+            " vw_Employee_CostBreakdown_CS.ltd_prem, " +
+            " vw_Employee_CostBreakdown_CS.gsi_prem, " +
+            " vw_Employee_CostBreakdown_CS.ci_prem, " +
+            " vw_Employee_CostBreakdown_CS.ci_dep_prem, " +
+            " vw_Employee_CostBreakdown_CS.ehb_prem, " +
+            " vw_Employee_CostBreakdown_CS.dental_prem, " +
+            " vw_Employee_CostBreakdown_CS.hsa_prem, " +
             " vw_Employee_CostBreakdown_CS.employee_id, " +
-            " vw_Employee_CostBreakdown_CS.ole_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ole_premium::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ols_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.ols_premium::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.oad_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.oad_premium::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.ole_volume, " +
+            " vw_Employee_CostBreakdown_CS.ole_premium, " +
+            " vw_Employee_CostBreakdown_CS.ols_volume, " +
+            " vw_Employee_CostBreakdown_CS.ols_premium, " +
+            " vw_Employee_CostBreakdown_CS.oad_volume, " +
+            " vw_Employee_CostBreakdown_CS.oad_premium, " +
             " vw_Employee_CostBreakdown_CS.status, " +
             " vw_Employee_CostBreakdown_CS.termination, " +
             " vw_Employee_CostBreakdown_CS.reinstate, " +
             " vw_Employee_CostBreakdown_CS.admin_pct, " +
-            " vw_Employee_CostBreakdown_CS.admin_per_emp::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.admin_min::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.admin_per_emp, " +
+            " vw_Employee_CostBreakdown_CS.admin_min, " +
             " vw_Employee_CostBreakdown_CS.eh_special_plan_type, " +
             " vw_Employee_CostBreakdown_CS.den_special_plan_type, " +
-            " vw_Employee_CostBreakdown_CS.hsa_admin::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.hsa_comm::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.adjudication_fee::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.hsa_admin, " +
+            " vw_Employee_CostBreakdown_CS.hsa_comm, " +
+            " vw_Employee_CostBreakdown_CS.adjudication_fee, " +
             " vw_Employee_CostBreakdown_CS.hsa_admin_pct, " +
             " vw_Employee_CostBreakdown_CS.hsa_comm_pct, " +
             " vw_Employee_CostBreakdown_CS.adjudication_pct, " +
             " vw_Employee_CostBreakdown_CS.emp_prov_hst_rate, " +
-            " vw_Employee_CostBreakdown_CS.gst_rate::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.gst_rate, " +
             " vw_Employee_CostBreakdown_CS.prem_tax, " +
-            " vw_Employee_CostBreakdown_CS.psa_volume::DOUBLE PRECISION, " +
-            " vw_Employee_CostBreakdown_CS.psa_prem::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.psa_volume, " +
+            " vw_Employee_CostBreakdown_CS.psa_prem, " +
             " vw_Employee_CostBreakdown_CS.dsai_vol, " +
             " vw_Employee_CostBreakdown_CS.travel_vol, " +
-            " vw_Employee_CostBreakdown_CS.empTotal::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.empTotal, " +
             " vw_Employee_CostBreakdown_CS.dlife_volume_rpt, " +
             " vw_Employee_CostBreakdown_CS.ehb_volume_rpt, " +
             " vw_Employee_CostBreakdown_CS.dental_volume_rpt, " +
             " vw_Employee_CostBreakdown_CS.eap_vol_rpt, " +
-            " vw_Employee_CostBreakdown_CS.hst::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.hst, " +
             " vw_Employee_CostBreakdown_CS.ci_dep_volume_rpt, " +
             " vw_Employee_CostBreakdown_CS.dsai_volume_rpt, " +
             " vw_Employee_CostBreakdown_CS.am_volume_rpt, " +
@@ -102,13 +102,13 @@ public class EmployeeDAOImpl implements EmployeeDAO
             "   WHEN msp_prem = 0 THEN NULL " +
             "   ELSE msp_prem " +
             "  END " +
-            " )::DOUBLE PRECISION AS msp_prem, " +
+            " ) AS msp_prem, " +
             " msp_vol, " +
             " msp_volume_rpt, " +
-            " admin_fee_prem::DOUBLE PRECISION, " +
+            " admin_fee_prem, " +
             " admin_fee_vol, " +
             " admin_fee_volume_rpt, " +
-            " vw_Employee_CostBreakdown_CS.drug_insurance_pooling_premium::DOUBLE PRECISION, " +
+            " vw_Employee_CostBreakdown_CS.drug_insurance_pooling_premium, " +
             " ( " +
             "  SELECT " +
             "   description " +
@@ -213,7 +213,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
             "    BankersRound(fn_tax_amount_generator(province,prov_res,3,8,getDate(),0,COALESCE(hsa_prem,0)),2,NULL) + " +
             "    BankersRound(fn_tax_amount_generator(province,prov_res,4,8,getDate(),0,(COALESCE(hsa_prem,0)* adjudication_pct)::NUMERIC),2,NULL) + " +
             "    BankersRound(fn_tax_amount_generator(province,prov_res,5,8,getDate(),0,(COALESCE(hsa_prem,0)* hsa_admin_pct)::NUMERIC),2,NULL) " +
-            "   )::DOUBLE PRECISION AS premiumTax, " +
+            "   ) AS premiumTax, " +
             "   ( " +
             "    BankersRound(fn_tax_amount_generator(province,prov_res,4,6,getDate(),0,(COALESCE(hsa_prem,0)* adjudication_pct)::NUMERIC),2,NULL) + " +
             "    BankersRound(fn_tax_amount_generator(province,prov_res,5,6,getDate(),0,(COALESCE(hsa_prem,0)* hsa_admin_pct)::NUMERIC),2,NULL) + " +
@@ -521,8 +521,8 @@ public class EmployeeDAOImpl implements EmployeeDAO
                                employee.setDepCi(resultSet.getFloat("ci_dep_prem"));
                                employee.setHcsa(resultSet.getFloat("hsa_prem"));
                                employee.setPsa(resultSet.getFloat("psa_prem"));
-//                               employee.setDsai(resultSet.getFloat("dsai_prem"));
-//                               employee.setEap(resultSet.getFloat("eap_prem"));
+                               employee.setDsai(resultSet.getFloat("dsai_prem"));
+                               employee.setEap(resultSet.getFloat("eap_prem"));
 
                                listEmployee.add(employee);
                            });
