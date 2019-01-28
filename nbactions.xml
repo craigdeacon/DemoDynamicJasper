@@ -10,7 +10,8 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
-                <exec.args>-classpath %classpath com.secondReport.secondReport.SecondReportApplication</exec.args>
+                <exec.args>-classpath %classpath
+                    com.Component.TestReportComponent.secondReport.secondReport.SecondReportApplication</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
