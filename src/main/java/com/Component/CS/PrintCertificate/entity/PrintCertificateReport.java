@@ -63,12 +63,12 @@ public class PrintCertificateReport
                     .setColumnProperty( "name", String.class.getName() )
                     .build();
 
-            GroupBuilder groupBuilder = new GroupBuilder();
-
-            DJGroup group1 = groupBuilder
-                    .setCriteriaColumn( (PropertyColumn) columnName )
-                    .setGroupLayout( GroupLayout.EMPTY )
-                    .build();
+//            GroupBuilder groupBuilder = new GroupBuilder();
+//
+//            DJGroup group1 = groupBuilder
+//                    .setCriteriaColumn( (PropertyColumn) columnName )
+//                    .setGroupLayout( GroupLayout.EMPTY )
+//                    .build();
 
             DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
 
@@ -91,7 +91,7 @@ public class PrintCertificateReport
 
             JasperViewer.viewReport( jasperPrint );
 
-            ReportUtilities.exportPdf( jasperPrint, "SubReports" );
+//            ReportUtilities.exportPdf( jasperPrint, "SubReports" );
         }
         catch (JRException ex)
         {
