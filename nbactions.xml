@@ -10,6 +10,7 @@
                 <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
             </goals>
             <properties>
+<<<<<<< HEAD
                 <exec.args>-classpath %classpath com.DemoDynamicJasper.DemoDynamicJasperApplication</exec.args>
                 <exec.executable>java</exec.executable>
             </properties>
@@ -40,6 +41,10 @@
             </goals>
             <properties>
                 <exec.args>-classpath %classpath com.DemoDynamicJasper.DemoDynamicJasperApplication</exec.args>
+=======
+                <exec.args>-classpath %classpath
+                    com.Component.TestReportComponent.secondReport.secondReport.SecondReportApplication</exec.args>
+>>>>>>> RevenueReport
                 <exec.executable>java</exec.executable>
             </properties>
         </action>

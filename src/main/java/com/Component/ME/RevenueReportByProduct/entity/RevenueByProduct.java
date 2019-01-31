@@ -60,18 +60,18 @@ public class RevenueByProduct
 //            DJCrosstab djcross = createCrossTab();
 //            parameters.put( "source", SortUtils.sortCollection( ( RevenueByProductRepository.getGroupList() ), djcross ) );
             AbstractColumn groupAcct = CreateColumnString( "accountNo", "Group Acct #", 40, RIGHT );
-            AbstractColumn groupName = CreateColumnString( "groupName", "Group Name", 50, LEFT );
-            AbstractColumn groupDivision = CreateColumnString( "division", "Group Division Name", 60, LEFT );
-            AbstractColumn productType = CreateColumnString( "productType", "Product Type", 40, LEFT );
+            AbstractColumn groupName = CreateColumnString( "groupName", "Group Name", 50, RIGHT );
+            AbstractColumn groupDivision = CreateColumnString( "division", "Group Division Name", 60, RIGHT );
+            AbstractColumn productType = CreateColumnString( "productType", "Product Type", 40, RIGHT );
             AbstractColumn grossPremiums = CreateColumnFloat( "grossPremiums", "Gross Premiums", 40, AMOUNT_STYLE );
             AbstractColumn bbdAdminFee = CreateColumnFloat( "bbdAdminFee", "BBD Admin Fee", 40, AMOUNT_STYLE );
             AbstractColumn advisorCommission = CreateColumnFloat( "advisorCommission", "BBD Admin Fee", 40, AMOUNT_STYLE );
             AbstractColumn netPremiums = CreateColumnFloat( "netPremiums", "Net Premiums", 40, AMOUNT_STYLE );
             
             groupAcct.setHeaderStyle( BOLD_RIGHT_BLUE );
-            groupName.setHeaderStyle( BOLD_LEFT_BLUE );
-            groupDivision.setHeaderStyle( BOLD_LEFT_BLUE );
-            productType.setHeaderStyle( BOLD_LEFT_BLUE );
+            groupName.setHeaderStyle( BOLD_RIGHT_BLUE );
+            groupDivision.setHeaderStyle( BOLD_RIGHT_BLUE );
+            productType.setHeaderStyle( BOLD_RIGHT_BLUE);
             grossPremiums.setHeaderStyle( BOLD_RIGHT_BLUE);
             bbdAdminFee.setHeaderStyle( BOLD_RIGHT_BLUE);
             advisorCommission.setHeaderStyle( BOLD_RIGHT_BLUE);
@@ -119,7 +119,7 @@ public class RevenueByProduct
 
             JasperViewer.viewReport( jasperPrint );
 
-            ReportUtilities.exportExcel(jasperPrint, "RevByProduct");
+//            ReportUtilities.exportExcel(jasperPrint, "RevByProduct");
         }
         catch (JRException ex)
         {
