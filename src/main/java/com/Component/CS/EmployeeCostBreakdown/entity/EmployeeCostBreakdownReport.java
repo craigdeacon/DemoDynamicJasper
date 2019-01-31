@@ -155,10 +155,10 @@ public class EmployeeCostBreakdownReport
             JasperViewer.viewReport( jasperPrint );
            
             //Export to pdf
-            ReportUtilities.exportPdf(jasperPrint, "EmployeeCostBreakdownReport");
+//            ReportUtilities.exportPdf(jasperPrint, "EmployeeCostBreakdownReport");
 
             //for exporting to Xls
-            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
+//            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
             
         }
         catch (ColumnBuilderException | JRException ex)
