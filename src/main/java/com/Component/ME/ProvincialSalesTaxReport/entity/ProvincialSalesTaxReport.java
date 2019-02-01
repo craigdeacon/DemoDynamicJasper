@@ -8,6 +8,7 @@ package com.Component.ME.ProvincialSalesTaxReport.entity;
 import ar.com.fdvs.dj.core.DJConstants;
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
+import ar.com.fdvs.dj.domain.AutoText;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
@@ -52,13 +53,15 @@ public class ProvincialSalesTaxReport
             DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
             
             dynamicReportBuilder
-                    .setTitle( "Main Title")
-                    .setSubtitle( "BBD Main Subtitle\\nProvincial Sales Tax Report for January 2019\\nPrepared for BGM Financial Services Limited")
+                    .setTitle( "Provincial Sales Tax Report")
+                    .setTitleStyle( LARGE )
+//                    .setSubtitle( "BBD Main Subtitle\\nProvincial Sales Tax Report for January 2019\\nPrepared for BGM Financial Services Limited")
                     .setUseFullPageWidth( true )
-                    .addConcatenatedReport( createProvincialSubreport("BGM"), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
+//                    .addAutoText( AutoText.AUTOTEXT_CREATED_ON, 0, 0 )
+                    .addConcatenatedReport( createProvincialSubreport("BGM Financial Services Limited"), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
                     .addConcatenatedReport( createProvincialSubreport("CHUBB"), "provincialChubb", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true)
                     ;
-            
+            ProvincialSalesTaxReportRepository.getProvincialGroupListBGM();
             parameters.put( "provincialBgm", ProvincialSalesTaxReportRepository.getProvincialGroupListBGM());
             parameters.put( "provincialChubb", ProvincialSalesTaxReportRepository.getProvincialGroupListChubb());
              
@@ -84,18 +87,32 @@ public class ProvincialSalesTaxReport
      {
            FastReportBuilder fastReport = new FastReportBuilder();
            
-           AbstractColumn groupName = CreateColumnString("groupName", "Group Name \\n ", 85 );
-           AbstractColumn policyNum = CreateColumnString("policyNum", "Policy Number \\n ", 60 );
-           AbstractColumn taxPremiumOn = CreateColumnFloat("taxPremiumOn", "Taxable Premium", 40);
-           AbstractColumn salesTaxOn = CreateColumnFloat("salesTaxOn", "Sales Tax", 40);
-           AbstractColumn taxPremiumMa = CreateColumnFloat("taxPremiumMa", "Taxable Premium", 40);
-           AbstractColumn salesTaxMa = CreateColumnFloat("salesTaxMa", "Sales Tax", 40);
-           AbstractColumn taxPremiumQc = CreateColumnFloat("taxPremiumQc", "Taxable Premium", 40);
-           AbstractColumn salesTaxQc = CreateColumnFloat("salesTaxQc", "Sales Tax", 40);
-           AbstractColumn taxPremiumSa = CreateColumnFloat("taxPremiumSa", "Taxable Premium", 40);
-           AbstractColumn salesTaxSa = CreateColumnFloat("salesTaxSa", "Sales Tax", 40);
+           AbstractColumn groupName = CreateColumnString("groupName", "", 85, SMALL );
+           groupName.setHeaderStyle( BLUE_LEFT_GREY_BG);
+           AbstractColumn policyNum = CreateColumnString("policyNum", "", 60, SMALL );
+           policyNum.setHeaderStyle( BLUE_LEFT_GREY_BG);
+           AbstractColumn taxPremiumOn = CreateColumnFloat("taxPremiumOn", "Taxable Premium", 40, SMALL);
+           taxPremiumOn.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn salesTaxOn = CreateColumnFloat("salesTaxOn", "Sales Tax", 40, SMALL);
+           salesTaxOn.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn taxPremiumMa = CreateColumnFloat("taxPremiumMa", "Taxable Premium", 40, SMALL);
+           taxPremiumMa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn salesTaxMa = CreateColumnFloat("salesTaxMa", "Sales Tax", 40, SMALL);
+           salesTaxMa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn taxPremiumQc = CreateColumnFloat("taxPremiumQc", "Taxable Premium", 40, SMALL);
+           taxPremiumQc.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn salesTaxQc = CreateColumnFloat("salesTaxQc", "Sales Tax", 40, SMALL);
+           salesTaxQc.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn taxPremiumSa = CreateColumnFloat("taxPremiumSa", "Taxable Premium", 40, SMALL);
+           taxPremiumSa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
+           AbstractColumn salesTaxSa = CreateColumnFloat("salesTaxSa", "Sales Tax", 40, SMALL);
+           salesTaxSa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER);
            
            DynamicReport dynamicReport = fastReport
+                   .setTitle( "")
+                   .setSubtitle("BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title)
+                   .setSubtitleStyle(BLUE_LEFT_GREY_BG )
+               
                    .addColumn( groupName )
                    .addColumn( policyNum )
                    .addColumn( taxPremiumOn )
@@ -106,12 +123,13 @@ public class ProvincialSalesTaxReport
                    .addColumn( salesTaxQc )
                    .addColumn( taxPremiumSa )
                    .addColumn( salesTaxSa)
-                   .setColspan( 2, 2, "Ontario" )
-                   .setColspan( 4, 2, "Manitoba")
-                   .setColspan( 6, 2, "Quebec" )
-                   .setColspan( 8, 2, "Saskatchewan")
-                   .setTitle( title )
-                   .setTitleStyle( LEFT )
+                   .setColspan (0, 2, "Group Name           Policy Number", BLUE_LEFT_GREY_BG_BT_BORDER)
+                   .setColspan( 2, 2, "Ontario", BLUE_LEFT_GREY_BG_BT_BORDER )
+                   .setColspan( 4, 2, "Manitoba", BLUE_LEFT_GREY_BG_BT_BORDER)
+                   .setColspan( 6, 2, "Quebec", BLUE_LEFT_GREY_BG_BT_BORDER )
+                   .setColspan( 8, 2, "Saskatchewan", BLUE_LEFT_GREY_BG_BT_BORDER)
+                   
+//                   .setTitleStyle( LEFT )
                    .setUseFullPageWidth( true )
                    .build();
            return DynamicJasperHelper.generateJasperReport( dynamicReport, new ClassicLayoutManager(), null );

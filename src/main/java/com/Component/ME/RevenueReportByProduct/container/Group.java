@@ -33,7 +33,10 @@ public class Group
         this.netPremiums = netPremiums;
     }
 
-    
+    public Group()
+    {
+        
+    }
     
     
     public String getAccountNo()

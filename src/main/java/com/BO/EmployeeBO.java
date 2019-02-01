@@ -14,6 +14,6 @@ public class EmployeeBO
     EmployeeDAO employeeDAO = context.getBean(EmployeeDAO.class);
     public ArrayList<Employee> getAllEmployees(Integer groupId)
     {
-        return employeeDAO.getAllEmployees(groupId);
+        return employeeDAO.getEmployeeCostBreakdownList(groupId);
     }
 }

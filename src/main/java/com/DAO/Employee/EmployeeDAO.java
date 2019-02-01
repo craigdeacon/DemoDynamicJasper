@@ -6,5 +6,5 @@ import java.util.ArrayList;
 
 public interface EmployeeDAO
 {
-    ArrayList<Employee> getAllEmployees(Integer groupId);
+    ArrayList<Employee> getEmployeeCostBreakdownList(Integer groupId);
 }

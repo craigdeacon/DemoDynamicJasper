@@ -497,7 +497,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public ArrayList<Employee> getAllEmployees(Integer groupId)
+    public ArrayList<Employee> getEmployeeCostBreakdownList(Integer groupId)
     {
         ArrayList<Employee> listEmployee = new ArrayList<>();
         jdbcTemplate.query(SQL_GET_ALL,

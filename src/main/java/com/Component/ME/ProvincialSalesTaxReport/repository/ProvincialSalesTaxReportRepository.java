@@ -5,6 +5,7 @@
  */
 package com.Component.ME.ProvincialSalesTaxReport.repository;
 
+import com.BO.ProvincialSalesTaxBO;
 import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,13 @@ public class ProvincialSalesTaxReportRepository
     
     public static List<ProvincialGroup> getProvincialGroupListBGM()
     {
-        List<ProvincialGroup> provincialGroupList = new ArrayList<>();
-        provincialGroupList.add (new ProvincialGroup("1033387 Ontario Limited", "C001-0009", new Float ("25.00"), new Float ("2.00"), null, null, null, null, null, null));
+        ProvincialSalesTaxBO provincialSalesTaxBO = new ProvincialSalesTaxBO();
+        return provincialSalesTaxBO.getPSTGroups();
+//        
+//        List<ProvincialGroup> provincialGroupList = new ArrayList<>();
+//        provincialGroupList.add (new ProvincialGroup("1033387 Ontario Limited", "C001-0009", new Float ("25.00"), new Float ("2.00"), null, null, null, null, null, null));
         
-        return provincialGroupList;
+        
     }
     
      public static List<ProvincialGroup> getProvincialGroupListChubb()

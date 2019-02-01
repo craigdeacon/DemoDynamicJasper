@@ -106,7 +106,7 @@ public class EmployeeCostBreakdownReport
 //            parameters.put("source", SortUtils.sortCollection(EmployeeReportRepository.getEmployeeList(),djcross));
 //
             String groupName = EmployeeReportRepository.getGroupName();
-            String pattern = "MMMMM DD, yyyy ";
+            String pattern = "MMMMM dd, yyyy ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
 //
@@ -158,7 +158,7 @@ public class EmployeeCostBreakdownReport
 //            ReportUtilities.exportPdf(jasperPrint, "EmployeeCostBreakdownReport");
 
             //for exporting to Xls
-//            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
+            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
             
         }
         catch (ColumnBuilderException | JRException ex)

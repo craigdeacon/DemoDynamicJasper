@@ -22,6 +22,11 @@ public class ProvincialGroup
     Float taxPremiumSa;
     Float salesTaxSa;
 
+    public ProvincialGroup()
+    {
+        
+    }
+    
     public ProvincialGroup( String groupName, String policyNum, Float taxPremiumOn, Float salesTaxOn, Float taxPremiumMa, Float salesTaxMa, Float taxPremiumQc, Float salesTaxQc, Float taxPremiumSa, Float salesTaxSa )
     {
         this.groupName = groupName;

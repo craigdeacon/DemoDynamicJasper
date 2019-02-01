@@ -17,7 +17,7 @@ public class EmployeeBOTest
         LOGGER.info("getAllEmployeesTest");
         EmployeeCostBreakdownTestRepo testRepo = new EmployeeCostBreakdownTestRepo();
         /*Group Id doesn't matter since the data is controlled.*/
-        ArrayList<Employee> employeeList = testRepo.getAllEmployees(1234);
+        ArrayList<Employee> employeeList = testRepo.getEmployeeCostBreakdownList(1234);
 
         /*Getting Money versions of the data.*/
         BigDecimal employee1TotalResult = new BigDecimal(employeeList.get(0).getTotal().doubleValue()).setScale(2, BigDecimal.ROUND_HALF_UP);

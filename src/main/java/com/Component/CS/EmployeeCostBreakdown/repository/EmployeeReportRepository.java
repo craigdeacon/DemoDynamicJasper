@@ -20,7 +20,7 @@ public class EmployeeReportRepository
     public static List<Employee> getEmployeeList()
     {
         EmployeeBO employeeBO = new EmployeeBO();
-        return employeeBO.getAllEmployees(7);
+        return employeeBO.getAllEmployees(3423081);
     }
     
     public static String getGroupName()

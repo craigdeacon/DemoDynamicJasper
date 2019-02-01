@@ -30,7 +30,10 @@ public class ReportStyles
     public static Style BLANK;
     public static Style BOLD_LEFT;
     public static Style BOLD_LEFT_BLUE;
+    public static Style BLUE_LEFT_GREY_BG;
+    public static Style BLUE_LEFT_GREY_BG_BT_BORDER;
     public static Style LARGE;
+    public static Style SMALL;
 
     public ReportStyles()
     {
@@ -72,7 +75,20 @@ public class ReportStyles
         BOLD_LEFT_BLUE.setPattern( "$0.00" );
         BOLD_LEFT_BLUE.setTextColor( Color.BLUE );
         
-
+        BLUE_LEFT_GREY_BG = new Style();
+        BLUE_LEFT_GREY_BG.setHorizontalAlign( HorizontalAlign.LEFT );
+        BLUE_LEFT_GREY_BG.setTextColor( Color.BLUE );
+        BLUE_LEFT_GREY_BG.setBackgroundColor( new Color( 230, 230, 230 ) );
+        BLUE_LEFT_GREY_BG.setTransparency( Transparency.OPAQUE );
+        
+        BLUE_LEFT_GREY_BG_BT_BORDER = new Style();
+        BLUE_LEFT_GREY_BG_BT_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
+        BLUE_LEFT_GREY_BG_BT_BORDER.setTextColor( Color.BLUE );
+        BLUE_LEFT_GREY_BG_BT_BORDER.setBackgroundColor( new Color( 230, 230, 230 ) );
+        BLUE_LEFT_GREY_BG_BT_BORDER.setTransparency( Transparency.OPAQUE );
+        BLUE_LEFT_GREY_BG_BT_BORDER.setBorderBottom( Border.THIN() );
+        
+        
         HEADER_STYLE = new Style();
         HEADER_STYLE.setBackgroundColor( new Color( 230, 230, 230 ) );
         HEADER_STYLE.setBorderBottom( Border.THIN() );
@@ -89,8 +105,12 @@ public class ReportStyles
 
         SUBTITLE_STYLE = Style.createBlankStyle( "subtitleStyle", "subtitleParent" );
         SUBTITLE_STYLE.setFont( Font.GEORGIA_SMALL_BOLD );
+        SUBTITLE_STYLE.setTextColor( Color.BLUE );
         
         LARGE = new Style();
         LARGE.setFont( Font.ARIAL_BIG_BOLD );
+        
+        SMALL = new Style();
+        SMALL.setFont( Font.ARIAL_SMALL );
     }
 }
