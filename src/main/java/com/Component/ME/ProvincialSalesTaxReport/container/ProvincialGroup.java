@@ -21,13 +21,14 @@ public class ProvincialGroup
     Float salesTaxQc;
     Float taxPremiumSa;
     Float salesTaxSa;
+    Integer underwriterId;
 
     public ProvincialGroup()
     {
         
     }
     
-    public ProvincialGroup( String groupName, String policyNum, Float taxPremiumOn, Float salesTaxOn, Float taxPremiumMa, Float salesTaxMa, Float taxPremiumQc, Float salesTaxQc, Float taxPremiumSa, Float salesTaxSa )
+    public ProvincialGroup( String groupName, String policyNum, Float taxPremiumOn, Float salesTaxOn, Float taxPremiumMa, Float salesTaxMa, Float taxPremiumQc, Float salesTaxQc, Float taxPremiumSa, Float salesTaxSa, Integer underwriterId )
     {
         this.groupName = groupName;
         this.policyNum = policyNum;
@@ -39,6 +40,17 @@ public class ProvincialGroup
         this.salesTaxQc = salesTaxQc;
         this.taxPremiumSa = taxPremiumSa;
         this.salesTaxSa = salesTaxSa;
+        this.underwriterId = underwriterId;
+    }
+
+    public Integer getUnderwriterId()
+    {
+        return underwriterId;
+    }
+
+    public void setUnderwriterId( Integer underwriterId )
+    {
+        this.underwriterId = underwriterId;
     }
 
     public String getGroupName()

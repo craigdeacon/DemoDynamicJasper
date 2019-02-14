@@ -3,6 +3,7 @@ package com.utilities;
 import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
+import com.lowagie.text.pdf.PdfContentByte;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -161,7 +162,7 @@ public class ReportUtilities
     }
 
     /**
-     * Creates and opens a PDF of a dynamic report with a custome file name
+     * Creates and opens a PDF of a dynamic report with a custom file name
      *
      * @param jasperPrint The report to be exported
      * @param reportName file name of the report

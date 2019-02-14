@@ -37,6 +37,7 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRColorUtil;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -93,7 +94,7 @@ public class EmployeeCostBreakdownReport
             
             //Dynamic Report Builder, sets parameters, margins, page sdize, etc.
             DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
-//            dynamicReportBuilder.setTemplateFile("C:/Users/craig.deacon/Documents/NetBeansProjects/jasperreport/Templates/online_template.jrxml", true, true, true, false);
+            dynamicReportBuilder.setTemplateFile("Templates/online_template.jrxml", true, true, true, false);
             dynamicReportBuilder.addFirstPageImageBanner( logoPath, logoWidth, logoHeight, ImageBanner.Alignment.Right );
           
             Page page = Page.Page_Letter_Landscape();
@@ -106,7 +107,7 @@ public class EmployeeCostBreakdownReport
 //            parameters.put("source", SortUtils.sortCollection(EmployeeReportRepository.getEmployeeList(),djcross));
 //
             String groupName = EmployeeReportRepository.getGroupName();
-            String pattern = "MMMMM dd, yyyy ";
+            String pattern = "MMMMM dd, yyyy HH:mm:ss ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
 //
@@ -141,11 +142,14 @@ public class EmployeeCostBreakdownReport
                     .addColumn( columnDSAI )
                     .addColumn( columnTotal )
                     .setGrandTotalLegend( "Group Total" )
-                    .addGlobalFooterVariable( columnTotal, DJCalculation.SUM );
+                    .addGlobalFooterVariable( columnTotal, DJCalculation.SUM )
+                    ;
+            
                   
 
             //builds the report
             DynamicReport dynamicReport = dynamicReportBuilder.build();
+//            dynamicReport.setProperty( "net.sf.jasperreports.style.forecolor", "#8B0000" );
             
 
             //JasperPrint object is given the report object, the data source and parameters HashMap
@@ -158,7 +162,7 @@ public class EmployeeCostBreakdownReport
 //            ReportUtilities.exportPdf(jasperPrint, "EmployeeCostBreakdownReport");
 
             //for exporting to Xls
-            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
+//            ReportUtilities.exportExcel(jasperPrint, "EmployeeCostBreakdownReport");
             
         }
         catch (ColumnBuilderException | JRException ex)

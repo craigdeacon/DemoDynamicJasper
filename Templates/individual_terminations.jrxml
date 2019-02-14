@@ -9,6 +9,7 @@
 	<property name="com.jaspersoft.studio.report.description" value="Main jrxml"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Postgres - Development"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+        <property name="net.sf.jasperreports.style.forecolor" value="#8B0000"/> 
 	<property name="ireport.jasperserver.report.resource" value="/BBD/reports/Postgres/CustomerService/individual_terminations_files/individual_terminations_jrxml"/>
 	<parameter name="start_date" class="java.util.Date">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -95,7 +96,7 @@
 			</textField>
 		</band>
 	</title>
-	<columnHeader>
+<!--	<columnHeader>
 		<band height="30" splitType="Stretch">
 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
 			<staticText>
@@ -229,7 +230,7 @@
 				<text><![CDATA[Dental Single / Couple / Family]]></text>
 			</staticText>
 		</band>
-	</columnHeader>
+	</columnHeader>-->
 <!--	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
@@ -340,7 +341,7 @@
 			</textField>
 		</band>
 	</detail>-->
-	<summary>
+<!--	<summary>
 		<band height="20">
 			<textField pattern="">
 				<reportElement uuid="5f9f90f4-b691-48e6-a835-920adc9f5fd1" x="0" y="0" width="170" height="20"/>
@@ -357,5 +358,5 @@
 				<textFieldExpression><![CDATA[$P{process_user}]]></textFieldExpression>
 			</textField>
 		</band>
-	</summary>
+	</summary>-->
 </jasperReport>

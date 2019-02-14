@@ -32,8 +32,10 @@ public class ReportStyles
     public static Style BOLD_LEFT_BLUE;
     public static Style BLUE_LEFT_GREY_BG;
     public static Style BLUE_LEFT_GREY_BG_BT_BORDER;
+    public static Style BLUE_LEFT_GREY_BG_T_BORDER;
     public static Style LARGE;
     public static Style SMALL;
+    public static Style SMALL_RIGHT;
 
     public ReportStyles()
     {
@@ -81,12 +83,22 @@ public class ReportStyles
         BLUE_LEFT_GREY_BG.setBackgroundColor( new Color( 230, 230, 230 ) );
         BLUE_LEFT_GREY_BG.setTransparency( Transparency.OPAQUE );
         
+        
+        BLUE_LEFT_GREY_BG_T_BORDER = new Style();
+        BLUE_LEFT_GREY_BG_T_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
+        BLUE_LEFT_GREY_BG_T_BORDER.setTextColor( Color.BLUE );
+        BLUE_LEFT_GREY_BG_T_BORDER.setBackgroundColor( new Color( 230, 230, 230 ) );
+        BLUE_LEFT_GREY_BG_T_BORDER.setTransparency( Transparency.OPAQUE );
+        BLUE_LEFT_GREY_BG_T_BORDER.setBorderTop( Border.THIN() );
+        
+        
         BLUE_LEFT_GREY_BG_BT_BORDER = new Style();
         BLUE_LEFT_GREY_BG_BT_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
         BLUE_LEFT_GREY_BG_BT_BORDER.setTextColor( Color.BLUE );
         BLUE_LEFT_GREY_BG_BT_BORDER.setBackgroundColor( new Color( 230, 230, 230 ) );
         BLUE_LEFT_GREY_BG_BT_BORDER.setTransparency( Transparency.OPAQUE );
         BLUE_LEFT_GREY_BG_BT_BORDER.setBorderBottom( Border.THIN() );
+        BLUE_LEFT_GREY_BG_BT_BORDER.setBorderTop(Border.THIN() );
         
         
         HEADER_STYLE = new Style();
@@ -98,6 +110,7 @@ public class ReportStyles
         AMOUNT_STYLE = new Style();
         AMOUNT_STYLE.setHorizontalAlign( HorizontalAlign.RIGHT );
         AMOUNT_STYLE.setPattern( "$0.00" );
+        
 
         SUBTITLE_STYLE_PARENT = new Style( "subtitleParent" );
         SUBTITLE_STYLE_PARENT.setBackgroundColor( Color.GRAY );
@@ -112,5 +125,13 @@ public class ReportStyles
         
         SMALL = new Style();
         SMALL.setFont( Font.ARIAL_SMALL );
+        SMALL.setPattern( "$0.00" );
+        SMALL.setStretchWithOverflow( false);
+         
+        SMALL_RIGHT = new Style();
+        SMALL_RIGHT.setFont( Font.ARIAL_SMALL );
+        SMALL_RIGHT.setPattern( "$0.00" );
+        SMALL_RIGHT.setStretchWithOverflow( false);
+        SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
     }
 }

@@ -64,42 +64,42 @@ public class ProvincialSalesTaxDAOImpl implements ProvincialSalesTaxDAO
             + "            invoice_detail5.month_id,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'ON'::bpchar THEN invoice_detail5.sub2pst::integer\n"
+            + "                    WHEN 'ON'::bpchar THEN invoice_detail5.sub2pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS ontario_tax_premium,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'QC'::bpchar THEN invoice_detail5.sub2pst::integer\n"
+            + "                    WHEN 'QC'::bpchar THEN invoice_detail5.sub2pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS quebec_tax_premium,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'MB'::bpchar THEN invoice_detail5.sub2pst::integer\n"
+            + "                    WHEN 'MB'::bpchar THEN invoice_detail5.sub2pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS mb_tax_premium,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'SK'::bpchar THEN invoice_detail5.sub2pst::integer\n"
+            + "                    WHEN 'SK'::bpchar THEN invoice_detail5.sub2pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS sk_tax_premium,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'ON'::bpchar THEN invoice_detail5.pst::integer\n"
+            + "                    WHEN 'ON'::bpchar THEN invoice_detail5.pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS ontario_pst,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'QC'::bpchar THEN invoice_detail5.pst::integer\n"
+            + "                    WHEN 'QC'::bpchar THEN invoice_detail5.pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS quebec_pst,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'MB'::bpchar THEN invoice_detail5.pst::integer\n"
+            + "                    WHEN 'MB'::bpchar THEN invoice_detail5.pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS mb_pst,\n"
             + "            sum(\n"
             + "                CASE invoice_detail5.province\n"
-            + "                    WHEN 'SK'::bpchar THEN invoice_detail5.pst::integer\n"
+            + "                    WHEN 'SK'::bpchar THEN invoice_detail5.pst::float\n"
             + "                    ELSE 0\n"
             + "                END) AS sk_pst\n"
             + "           FROM invoice_detail5\n"
@@ -148,7 +148,7 @@ public class ProvincialSalesTaxDAOImpl implements ProvincialSalesTaxDAO
                 resultSet ->
         {
             ProvincialGroup group = new ProvincialGroup();
-            group.setGroupName( resultSet.getString( "underwriter_id" ) );
+            group.setGroupName( resultSet.getString( "employer" ) );
             group.setPolicyNum( resultSet.getString( "policy_number" ) );
             group.setTaxPremiumOn(resultSet.getFloat( "ontario_tax_premium"));
             group.setSalesTaxOn( resultSet.getFloat( "ontario_pst"));
@@ -157,7 +157,8 @@ public class ProvincialSalesTaxDAOImpl implements ProvincialSalesTaxDAO
             group.setTaxPremiumMa(resultSet.getFloat( "mb_tax_premium"));
             group.setSalesTaxMa( resultSet.getFloat( "mb_pst") );
             group.setTaxPremiumSa(resultSet.getFloat( "sk_tax_premium"));
-            group.setSalesTaxQc( resultSet.getFloat( "sk_pst") );
+            group.setSalesTaxSa(resultSet.getFloat( "sk_pst") );
+            group.setUnderwriterId( resultSet.getInt( "underwriter_id"));
 
             provincialGroupList.add( group );
 
