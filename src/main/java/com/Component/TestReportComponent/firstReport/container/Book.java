@@ -28,10 +28,16 @@ public class Book
     
     private Boolean showAsPrices;
     
+    /**
+     *
+     */
     public static List<Statistic> statistics_ = new ArrayList<Statistic>();
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     private Code code = new Code();
     
+    /**
+     *
+     */
     public static String[] images = {"confused.gif", "cool.gif", "happy.gif", "puaj.gif", "ungry.gif", "what.gif"};
     static int counter = 0;
     static 
@@ -47,12 +53,33 @@ public class Book
         }
     }
 
+    /**
+     *
+     * @param id
+     * @param productLine
+     * @param item
+     * @param state
+     * @param branch
+     * @param quantity
+     * @param amount
+     * @param showAsPrices
+     */
     public Book( Long id, String productLine, String item, String state, String branch, Long quantity, Float amount, Boolean showAsPrices)
     {
         this(id, productLine, item, state, branch, quantity, amount);
         this.showAsPrices = showAsPrices;
     }
 
+    /**
+     *
+     * @param id
+     * @param productLine
+     * @param item
+     * @param state
+     * @param branch
+     * @param quantity
+     * @param amount
+     */
     public Book( Long id, String productLine, String item, String state, String branch, Long quantity, Float amount )
     {
         this.id = id;
@@ -64,142 +91,253 @@ public class Book
         this.amount = amount;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public Long getId()
     {
         return id;
     }
 
+    /**
+     *
+     * @param id
+     */
     public void setId( Long id )
     {
         this.id = id;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProductLine()
     {
         return productLine;
     }
 
+    /**
+     *
+     * @param productLine
+     */
     public void setProductLine( String productLine )
     {
         this.productLine = productLine;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getItem()
     {
         return item;
     }
 
+    /**
+     *
+     * @param item
+     */
     public void setItem( String item )
     {
         this.item = item;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getState()
     {
         return state;
     }
 
+    /**
+     *
+     * @param state
+     */
     public void setState( String state )
     {
         this.state = state;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBranch()
     {
         return branch;
     }
 
+    /**
+     *
+     * @param branch
+     */
     public void setBranch( String branch )
     {
         this.branch = branch;
     }
 
+    /**
+     *
+     * @return
+     */
     public Long getQuantity()
     {
         return quantity;
     }
 
+    /**
+     *
+     * @param quantity
+     */
     public void setQuantity( Long quantity )
     {
         this.quantity = quantity;
     }
 
+    /**
+     *
+     * @return
+     */
     public Float getAmount()
     {
         return amount;
     }
 
+    /**
+     *
+     * @param amount
+     */
     public void setAmount( Float amount )
     {
         this.amount = amount;
     }
 
+    /**
+     *
+     * @return
+     */
     public Boolean getShowAsPrices()
     {
         return showAsPrices;
     }
 
+    /**
+     *
+     * @param showAsPrices
+     */
     public void setShowAsPrices( Boolean showAsPrices )
     {
         this.showAsPrices = showAsPrices;
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<Statistic> getStatistics_()
     {
         return statistics_;
     }
 
+    /**
+     *
+     * @param statistics_
+     */
     public static void setStatistics_( List<Statistic> statistics_ )
     {
         Book.statistics_ = statistics_;
     }
 
+    /**
+     *
+     * @return
+     */
     public static SimpleDateFormat getFormatter()
     {
         return formatter;
     }
 
+    /**
+     *
+     * @param formatter
+     */
     public static void setFormatter( SimpleDateFormat formatter )
     {
         Book.formatter = formatter;
     }
 
+    /**
+     *
+     * @return
+     */
     public static String[] getImages()
     {
         return images;
     }
 
+    /**
+     *
+     * @param images
+     */
     public static void setImages( String[] images )
     {
         Book.images = images;
     }
 
+    /**
+     *
+     * @return
+     */
     public static int getCounter()
     {
         return counter;
     }
 
+    /**
+     *
+     * @param counter
+     */
     public static void setCounter( int counter )
     {
         Book.counter = counter;
     }
     
     static Random random = new Random();
+
+    /**
+     *
+     * @return
+     */
     public InputStream getImage()
     {
         InputStream image = this.getClass().getClassLoader().getResourceAsStream( "");
         return image;
     }
     
+    /**
+     *
+     * @return
+     */
     public Code getCode()
     {
         return code;
     }
     
+    /**
+     *
+     */
     public class Code 
     {
+
+        /**
+         *
+         * @return
+         */
         public String getCode()
         {
             return "001-123ABC-HRC";

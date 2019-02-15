@@ -28,10 +28,16 @@ public class BookReport
 {
     private static final Logger LOGGER = Logger.getLogger( BookReport.class.getName() );
 
+    /**
+     *
+     */
     public BookReport()
     {
     }
     
+    /**
+     *
+     */
     public void displayBookReport()
     {
         FastReportBuilder dynamicReportBuilder = new FastReportBuilder();

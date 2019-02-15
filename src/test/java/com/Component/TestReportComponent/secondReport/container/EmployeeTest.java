@@ -14,6 +14,10 @@ import org.junit.*;
 
 public class EmployeeTest
 {
+
+    /**
+     *
+     */
     @Test
     public void employeeTotalTest()
     {

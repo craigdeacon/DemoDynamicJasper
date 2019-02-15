@@ -18,6 +18,10 @@ public class ProductTypes
     private Float totalAdvisorCommissions;
     private Float totalNetPremiums;
 
+    /**
+     *
+     * @param productName
+     */
     public ProductTypes( String productName )
     {
         this.productName = productName;
@@ -28,8 +32,9 @@ public class ProductTypes
         totalNetPremiums = new Float("0");        
     }
     
-    
-
+    /**
+     *
+     */
     public ProductTypes()
     {
         groupCount = 0;
@@ -39,61 +44,109 @@ public class ProductTypes
         totalNetPremiums = new Float("0");
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProductName()
     {
         return productName;
     }
 
+    /**
+     *
+     * @param productName
+     */
     public void setProductName( String productName )
     {
         this.productName = productName;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getGroupCount()
     {
         return groupCount;
     }
 
+    /**
+     *
+     * @param groupCount
+     */
     public void setGroupCount( int groupCount )
     {
         this.groupCount = groupCount;
     }
 
+    /**
+     *
+     * @return
+     */
     public Float getTotalGrossPremiums()
     {
         return totalGrossPremiums;
     }
 
+    /**
+     *
+     * @param totalGrossPremiums
+     */
     public void setTotalGrossPremiums( Float totalGrossPremiums )
     {
         this.totalGrossPremiums = totalGrossPremiums;
     }
 
+    /**
+     *
+     * @return
+     */
     public Float getTotalBbdAdminFee()
     {
         return totalBbdAdminFee;
     }
 
+    /**
+     *
+     * @param totalBbdAdminFee
+     */
     public void setTotalBbdAdminFee( Float totalBbdAdminFee )
     {
         this.totalBbdAdminFee = totalBbdAdminFee;
     }
 
+    /**
+     *
+     * @return
+     */
     public Float getTotalAdvisorCommissions()
     {
         return totalAdvisorCommissions;
     }
 
+    /**
+     *
+     * @param totalAdvisorCommissions
+     */
     public void setTotalAdvisorCommissions( Float totalAdvisorCommissions )
     {
         this.totalAdvisorCommissions = totalAdvisorCommissions;
     }
 
+    /**
+     *
+     * @return
+     */
     public Float getTotalNetPremiums()
     {
         return totalNetPremiums;
     }
 
+    /**
+     *
+     * @param totalNetPremiums
+     */
     public void setTotalNetPremiums( Float totalNetPremiums )
     {
         this.totalNetPremiums = totalNetPremiums;

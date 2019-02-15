@@ -18,10 +18,17 @@ import java.util.List;
 public class ProvincialSalesTaxReportRepository
 {
 
+    /**
+     *
+     */
     public ProvincialSalesTaxReportRepository()
     {
     }
     
+    /**
+     *
+     * @return
+     */
     public static HashMap<String, List<ProvincialGroup>> getProvincialGroupList()
     {
         ProvincialSalesTaxBO provincialSalesTaxBO = new ProvincialSalesTaxBO();

@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author craig.deacon
+ */
 @Component
 public class EmployeeDAOImpl implements EmployeeDAO
 {
@@ -491,12 +495,21 @@ public class EmployeeDAOImpl implements EmployeeDAO
             "  group_id = ?" +
             " )";
 
+    /**
+     *
+     * @param dataSource
+     */
     @Autowired
     public EmployeeDAOImpl(DataSource dataSource)
     {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
+    /**
+     *
+     * @param groupId
+     * @return
+     */
     public ArrayList<Employee> getEmployeeCostBreakdownList(Integer groupId)
     {
         ArrayList<Employee> listEmployee = new ArrayList<>();

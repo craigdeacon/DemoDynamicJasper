@@ -10,6 +10,10 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
 
+/**
+ *
+ * @author craig.deacon
+ */
 @Configuration
 @ComponentScan("com")
 @PropertySource("classpath:application.properties")

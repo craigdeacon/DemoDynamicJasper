@@ -36,17 +36,31 @@ public class ProvincialSalesTaxBO
     
     */
     
+    /**
+     *
+     * @return
+     */
+    public HashMap<String, Integer> getUnderWriters()
+    {
+        return provincialSalesTaxDAO.getUnderWriters();
+    }
+    
+    /**
+     *
+     * @return
+     */
     public HashMap<String, List<ProvincialGroup>> getAllUnderwritingLists()
     {
        HashMap<String, List<ProvincialGroup>> groupMap = new HashMap<>();
        List <ProvincialGroup> groupList = getPSTGroups();
-
-        //TODO CHUBB Method for list
+       HashMap<String, Integer> groupKey = getUnderWriters();
+      
         if ( !groupList.isEmpty() )
         {
-            groupMap.put( "BGM", getProvincialGroupList( groupList, 601067 ) );
-            groupMap.put( "CHUBB", getProvincialGroupList( groupList, 93063 ) );
-            groupMap.put( "Empire Life", getProvincialGroupList( groupList, 601075 ) );
+            groupKey.forEach( (k, v) ->
+            {
+                groupMap.put( k, getProvincialGroupList( groupList, v ) );
+            } );
         }
         else
         {

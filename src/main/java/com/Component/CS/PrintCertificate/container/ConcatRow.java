@@ -16,11 +16,19 @@ public class ConcatRow
     String column2;
     String name;
 
+    /**
+     *
+     * @return
+     */
     public String getName()
     {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName( String name )
     {
         this.name = name;
@@ -30,6 +38,12 @@ public class ConcatRow
     String policyNo;
     String date;
 
+    /**
+     *
+     * @param column1
+     * @param column2
+     * @param name
+     */
     public ConcatRow( String column1, String column2, String name )
     {
         this.column1 = column1;
@@ -37,6 +51,13 @@ public class ConcatRow
         this.name = name;
     }
 
+    /**
+     *
+     * @param benefit
+     * @param supplier
+     * @param policyNo
+     * @param date
+     */
     public ConcatRow( String benefit, String supplier, String policyNo, String date )
     {
         this.benefit = benefit;
@@ -46,63 +67,109 @@ public class ConcatRow
         this.name = "Christine";
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBenefit()
     {
         return benefit;
     }
 
+    /**
+     *
+     * @param benefitName
+     */
     public void setBenefit( String benefitName )
     {
         this.benefit = benefitName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSupplier()
     {
         return supplier;
     }
 
+    /**
+     *
+     * @param supplier
+     */
     public void setSupplier( String supplier )
     {
         this.supplier = supplier;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPolicyNo()
     {
         return policyNo;
     }
 
+    /**
+     *
+     * @param policyNo
+     */
     public void setPolicyNo( String policyNo )
     {
         this.policyNo = policyNo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate()
     {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate( String date )
     {
         this.date = date;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public String getColumn1()
     {
         return column1;
     }
 
+    /**
+     *
+     * @param column1
+     */
     public void setColumn1( String column1 )
     {
         this.column1 = column1;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getColumn2()
     {
         return column2;
     }
 
+    /**
+     *
+     * @param column2
+     */
     public void setColumn2( String column2 )
     {
         this.column2 = column2;

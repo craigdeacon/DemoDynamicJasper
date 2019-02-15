@@ -40,6 +40,9 @@ import static com.utilities.ReportUtilities.CreateColumnString;
 public class PrintCertificateReport
 {
 
+    /**
+     *
+     */
     public PrintCertificateReport()
     {
     }

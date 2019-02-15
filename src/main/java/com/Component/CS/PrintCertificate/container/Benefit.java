@@ -17,6 +17,13 @@ public class Benefit
     private String date;
     String name;
 
+    /**
+     *
+     * @param benefitName
+     * @param supplier
+     * @param policyNo
+     * @param date
+     */
     public Benefit( String benefitName, String supplier, String policyNo, String date )
     {
         this.benefit = benefitName;
@@ -26,41 +33,73 @@ public class Benefit
         this.name = "Christine";
     }
 
+    /**
+     *
+     * @return
+     */
     public String getBenefit()
     {
         return benefit;
     }
 
+    /**
+     *
+     * @param benefitName
+     */
     public void setBenefit( String benefitName )
     {
         this.benefit = benefitName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getSupplier()
     {
         return supplier;
     }
 
+    /**
+     *
+     * @param supplier
+     */
     public void setSupplier( String supplier )
     {
         this.supplier = supplier;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPolicyNo()
     {
         return policyNo;
     }
 
+    /**
+     *
+     * @param policyNo
+     */
     public void setPolicyNo( String policyNo )
     {
         this.policyNo = policyNo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDate()
     {
         return date;
     }
 
+    /**
+     *
+     * @param date
+     */
     public void setDate( String date )
     {
         this.date = date;

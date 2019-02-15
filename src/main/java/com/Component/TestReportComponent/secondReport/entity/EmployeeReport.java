@@ -48,6 +48,9 @@ import net.sf.jasperreports.view.JasperViewer;
 public class EmployeeReport
 {
 
+    /**
+     *
+     */
     public EmployeeReport()
     {
     }
@@ -56,6 +59,9 @@ public class EmployeeReport
     
     private static final Logger LOGGER = Logger.getLogger( EmployeeReport.class.getName() );
 
+    /**
+     *
+     */
     public void displayEmployeeReport()
     {
 

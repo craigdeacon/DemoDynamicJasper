@@ -7,9 +7,17 @@ import com.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
 import com.Component.TestReportComponent.firstReport.entity.BookReport;
 import com.Component.TestReportComponent.secondReport.entity.EmployeeReport;
 
+/**
+ *
+ * @author craig.deacon
+ */
 public class DemoDynamicJasperApplication
 {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args)
     {
 //        EmployeeReport empReport = new EmployeeReport();

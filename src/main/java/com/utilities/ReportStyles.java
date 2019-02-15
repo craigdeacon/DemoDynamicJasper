@@ -19,28 +19,101 @@ import java.awt.Color;
 public class ReportStyles
 {
 
+    /**
+     *
+     */
     public static Style LEFT;
+
+    /**
+     *
+     */
     public static Style RIGHT;
+
+    /**
+     *
+     */
     public static Style HEADER_STYLE;
+
+    /**
+     *
+     */
     public static Style AMOUNT_STYLE;
+
+    /**
+     *
+     */
     public static Style SUBTITLE_STYLE_PARENT;
+
+    /**
+     *
+     */
     public static Style SUBTITLE_STYLE;
+
+    /**
+     *
+     */
     public static Style BOLD_RIGHT;
+
+    /**
+     *
+     */
     public static Style BOLD_RIGHT_BLUE;
+
+    /**
+     *
+     */
     public static Style BLANK;
+
+    /**
+     *
+     */
     public static Style BOLD_LEFT;
+
+    /**
+     *
+     */
     public static Style BOLD_LEFT_BLUE;
+
+    /**
+     *
+     */
     public static Style BLUE_LEFT_GREY_BG;
+
+    /**
+     *
+     */
     public static Style BLUE_LEFT_GREY_BG_BT_BORDER;
+
+    /**
+     *
+     */
     public static Style BLUE_LEFT_GREY_BG_T_BORDER;
+
+    /**
+     *
+     */
     public static Style LARGE;
+
+    /**
+     *
+     */
     public static Style SMALL;
+
+    /**
+     *
+     */
     public static Style SMALL_RIGHT;
 
+    /**
+     *
+     */
     public ReportStyles()
     {
     }
 
+    /**
+     *
+     */
     public static void initStyles()
     {
 
@@ -132,6 +205,6 @@ public class ReportStyles
         SMALL_RIGHT.setFont( Font.ARIAL_SMALL );
         SMALL_RIGHT.setPattern( "$0.00" );
         SMALL_RIGHT.setStretchWithOverflow( false);
-        SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
+        SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.CENTER );
     }
 }

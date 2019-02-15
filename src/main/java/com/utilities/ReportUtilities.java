@@ -111,7 +111,14 @@ public class ReportUtilities
         return column;
     }
     
-    
+    /**
+     *
+     * @param property
+     * @param title
+     * @param width
+     * @param style
+     * @return
+     */
     public static AbstractColumn CreateColumnInt( String property, String title, int width, Style style )
     {
         AbstractColumn column = ColumnBuilder.getNew()

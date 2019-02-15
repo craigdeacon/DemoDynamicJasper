@@ -16,6 +16,11 @@ import java.util.List;
  */
 public class EmployeeReportRepository
 {
+
+    /**
+     *
+     * @return
+     */
     public static List<Employee> getEmployeeList()
     {
         List<Employee> employeeList = new ArrayList<>();
@@ -28,6 +33,10 @@ public class EmployeeReportRepository
         return employeeList;
     }
     
+    /**
+     *
+     * @return
+     */
     public static String getGroupName()
     {
         Group group = new Group ("Benefits by Design");

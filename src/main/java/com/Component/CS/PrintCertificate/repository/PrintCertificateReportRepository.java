@@ -19,6 +19,10 @@ import java.util.ArrayList;
 public class PrintCertificateReportRepository
 {
 
+    /**
+     *
+     * @return
+     */
     public static ConcatEmployee getEmployee()
     {
         ConcatEmployee concatEmp = new ConcatEmployee("Beston, Christine", "Active Accounting Inc", "A - All Employees", "1608463" );
@@ -31,6 +35,10 @@ public class PrintCertificateReportRepository
 
     }
     
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Benefit> getBenefits()
     {
         ArrayList<Benefit> benefitList = new ArrayList<>();
@@ -42,6 +50,10 @@ public class PrintCertificateReportRepository
         return benefitList;
     }
     
+    /**
+     *
+     * @return
+     */
     public static ArrayList<String> getEmployeeArray()
     {
         ArrayList<String> empInfo = new ArrayList<>();
@@ -51,6 +63,10 @@ public class PrintCertificateReportRepository
         return empInfo;
     }
     
+    /**
+     *
+     * @return
+     */
     public static ArrayList<ConcatRow> getRows()
     {
         ArrayList<ConcatRow> rows = new ArrayList<>();

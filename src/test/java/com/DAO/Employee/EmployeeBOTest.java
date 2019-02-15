@@ -8,9 +8,17 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author craig.deacon
+ */
 public class EmployeeBOTest
 {
     Logger LOGGER = Logger.getLogger(EmployeeBOTest.class.getName());
+
+    /**
+     *
+     */
     @Test
     public void getAllEmployeesTest()
     {

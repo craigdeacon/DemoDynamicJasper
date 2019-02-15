@@ -164,7 +164,7 @@
                 </textElement>
                 <textFieldExpression   class="java.lang.String"><![CDATA["" + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
             </textField>-->
-            <textField isStretchWithOverflow="false" pattern="dd/MM/yyyy HH:mm" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
+<!--            <textField isStretchWithOverflow="false" pattern="dd/MM/yyyy HH:mm" isBlankWhenNull="false" evaluationTime="Report" hyperlinkType="None"  hyperlinkTarget="Self" >
                 <reportElement
                     x="629"
                     y="3"
@@ -176,8 +176,8 @@
                     <font/>
                 </textElement>
                 <textFieldExpression   class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
-            </textField>
-            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+            </textField>-->
+<!--            <textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
                 <reportElement
                     x="529"
                     y="3"
@@ -189,7 +189,7 @@
                     <font/>
                 </textElement>
                 <textFieldExpression   class="java.lang.String"><![CDATA["Generated at "]]></textFieldExpression>
-            </textField>
+            </textField>-->
         </band>
     </pageFooter>
     <lastPageFooter>

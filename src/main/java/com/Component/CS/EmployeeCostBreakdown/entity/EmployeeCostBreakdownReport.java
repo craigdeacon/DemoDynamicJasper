@@ -48,6 +48,9 @@ import net.sf.jasperreports.view.JasperViewer;
 public class EmployeeCostBreakdownReport
 {
 
+    /**
+     *
+     */
     public EmployeeCostBreakdownReport()
     {
     }
@@ -56,6 +59,9 @@ public class EmployeeCostBreakdownReport
     
     private static final Logger LOGGER = Logger.getLogger( EmployeeCostBreakdownReport.class.getName() );
 
+    /**
+     *
+     */
     public void displayEmployeeReport()
     {
 

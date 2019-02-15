@@ -21,6 +21,17 @@ public class Group
     Float advisorCommission;
     Float netPremiums;
 
+    /**
+     *
+     * @param groupName
+     * @param accountNo
+     * @param division
+     * @param productType
+     * @param grossPremiums
+     * @param bbdAdminFee
+     * @param advisorCommission
+     * @param netPremiums
+     */
     public Group( String groupName, String accountNo, String division, String productType, float grossPremiums, float bbdAdminFee, float advisorCommission, float netPremiums )
     {
         this.groupName = groupName;
@@ -33,94 +44,162 @@ public class Group
         this.netPremiums = netPremiums;
     }
 
+    /**
+     *
+     */
     public Group()
     {
         
     }
     
-    
+    /**
+     *
+     * @return
+     */
     public String getAccountNo()
     {
         return accountNo;
     }
 
+    /**
+     *
+     * @param accountNo
+     */
     public void setAccountNo( String accountNo )
     {
         this.accountNo = accountNo;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDivision()
     {
         return division;
     }
 
+    /**
+     *
+     * @param division
+     */
     public void setDivision( String division )
     {
         this.division = division;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getProductType()
     {
         return productType;
     }
 
+    /**
+     *
+     * @param productType
+     */
     public void setProductType( String productType )
     {
         this.productType = productType;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getGrossPremiums()
     {
         return grossPremiums;
     }
 
+    /**
+     *
+     * @param grossPremiums
+     */
     public void setGrossPremiums( float grossPremiums )
     {
         this.grossPremiums = grossPremiums;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getBbdAdminFee()
     {
         return bbdAdminFee;
     }
 
+    /**
+     *
+     * @param bbdAdminFee
+     */
     public void setBbdAdminFee( float bbdAdminFee )
     {
         this.bbdAdminFee = bbdAdminFee;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getAdvisorCommission()
     {
         return advisorCommission;
     }
 
+    /**
+     *
+     * @param advisorCommission
+     */
     public void setAdvisorCommission( float advisorCommission )
     {
         this.advisorCommission = advisorCommission;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getNetPremiums()
     {
         return netPremiums;
     }
 
+    /**
+     *
+     * @param netPremiums
+     */
     public void setNetPremiums( float netPremiums )
     {
         this.netPremiums = netPremiums;
     }
     
-    
-
+    /**
+     *
+     * @return
+     */
     public String getGroupName()
     {
         return groupName;
     }
 
+    /**
+     *
+     * @param groupName
+     */
     public void setGroupName( String groupName )
     {
         this.groupName = groupName;
     }
 
+    /**
+     *
+     * @param groupName
+     */
     public Group( String groupName )
     {
         this.groupName = groupName;

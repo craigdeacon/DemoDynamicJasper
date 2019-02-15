@@ -19,6 +19,10 @@ import java.util.List;
 public class RevenueByProductRepository
 {
 
+    /**
+     *
+     * @return
+     */
     public static List<Group> getGroupList()
     {
         List<Group> groupList = new ArrayList<>();
@@ -30,6 +34,10 @@ public class RevenueByProductRepository
 
     }
 
+    /**
+     *
+     * @return
+     */
     public static List<ProductTypes> getProductTypesList()
     {
         ProductTypes[] productTypesArray = new ProductTypes[]

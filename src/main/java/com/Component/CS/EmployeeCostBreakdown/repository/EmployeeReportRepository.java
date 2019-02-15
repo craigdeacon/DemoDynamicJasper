@@ -17,12 +17,21 @@ import java.util.List;
  */
 public class EmployeeReportRepository
 {
+
+    /**
+     *
+     * @return
+     */
     public static List<Employee> getEmployeeList()
     {
         EmployeeBO employeeBO = new EmployeeBO();
         return employeeBO.getAllEmployees(3423081);
     }
     
+    /**
+     *
+     * @return
+     */
     public static String getGroupName()
     {
         Group group = new Group ("Benefits by Design");

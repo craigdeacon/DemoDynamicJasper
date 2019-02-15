@@ -7,6 +7,7 @@ package com.DAO.ProvincialSalesTax;
 
 import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -14,5 +15,16 @@ import java.util.ArrayList;
  */
 public interface ProvincialSalesTaxDAO
 {
+
+    /**
+     *
+     * @return
+     */
     ArrayList<ProvincialGroup> getGroupsProvincialSalesTax();
+
+    /**
+     *
+     * @return
+     */
+    HashMap<String, Integer> getUnderWriters();
 }

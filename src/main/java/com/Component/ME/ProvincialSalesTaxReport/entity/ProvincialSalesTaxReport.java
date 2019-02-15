@@ -14,6 +14,7 @@ import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
+import com.BO.ProvincialSalesTaxBO;
 import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
 import com.Component.ME.ProvincialSalesTaxReport.repository.ProvincialSalesTaxReportRepository;
 import static com.utilities.ReportStyles.*;
@@ -43,25 +44,31 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ProvincialSalesTaxReport
 {
 
+    /**
+     *
+     */
     public ProvincialSalesTaxReport()
     {
 
     }
 
+    /**
+     *
+     */
     public void displayProvincialSalesTaxReport()
     {
         try
         {
             initStyles();
             Map parameters = new HashMap();
+            ProvincialSalesTaxBO pstBO = new ProvincialSalesTaxBO();
             HashMap<String, List<ProvincialGroup>> groupMap = ProvincialSalesTaxReportRepository.getProvincialGroupList();
             String pattern = "MMMMM dd, yyyy HH:mm:ss ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
+            
+            HashMap<String, Integer> groupKey = pstBO.getUnderWriters();
            
-//            JRDesignBand band = new JRDesignBand();
-//            band.setHeight( 20 ); // Set band height
-//            band.addElement((JRDesignStaticText) createProvincialSubreport( "BGM Financial Services Limited" ), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION );
 
             DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
             dynamicReportBuilder
@@ -70,27 +77,49 @@ public class ProvincialSalesTaxReport
                     .setPageSizeAndOrientation( Page.Page_Letter_Landscape() )
                     .setUseFullPageWidth( true )
                     
-//                    .addAutoText( date, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_LEFT, 350, SMALL )
-//                    .addAutoText( AutoText.AUTOTEXT_PAGE_X_OF_Y, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_RIGHT, 200, 20, SMALL )
-//                    .addAutoText ( "User: Craig Deacon", AutoText.POSITION_FOOTER, AutoText.ALIGNMENT_CENTER, 300, SMALL )
+                    .addAutoText( date, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_LEFT, 350, SMALL )
+                    .addAutoText( AutoText.AUTOTEXT_PAGE_X_OF_Y, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_RIGHT, 200, 20, SMALL )
+                    .addAutoText ( "User: Craig Deacon", AutoText.POSITION_FOOTER, AutoText.ALIGNMENT_CENTER, 300, SMALL )
                     .setTemplateFile("Templates/pst_template.jrxml", true, true, true, false)
-                    .addConcatenatedReport( createProvincialSubreport( "BGM Financial Services Limited" ), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
-                    .addConcatenatedReport( createProvincialSubreport( "CHUBB" ), "provincialChubb", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
-                    .addConcatenatedReport( createProvincialSubreport( "Empire Life" ), "empireLife", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
+//                    .addConcatenatedReport( createProvincialSubreport( "BGM Financial Services Limited" ), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
+//                    .addConcatenatedReport( createProvincialSubreport( "CHUBB" ), "provincialChubb", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
+//                    .addConcatenatedReport( createProvincialSubreport( "Empire Life" ), "empireLife", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
                     ;
+           
             
+            boolean notFirstPass = false;
+            for ( Map.Entry<String, Integer> entry : groupKey.entrySet() )
+            {
+                dynamicReportBuilder.addConcatenatedReport( createProvincialSubreport( entry.getKey() ), entry.getKey(), DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, notFirstPass );
+                parameters.put( entry.getKey(), ( groupMap.get( entry.getKey() ) ) );
+                if ( !notFirstPass )
+                    notFirstPass = true;
+                
+            }
+//            groupKey.forEach( (key, value) ->
+//            {
+//                try
+//                {
+//                    dynamicReportBuilder.addConcatenatedReport( createProvincialSubreport( key ), key, DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true );
+//                    parameters.put( key, ( groupMap.get( key ) ) );
+//                   }
+//                catch (JRException ex)
+//                {
+//                    Logger.getLogger( ProvincialSalesTaxReport.class.getName() ).log( Level.SEVERE, null, ex );
+//                }
+//            } );
 
-            ProvincialSalesTaxReportRepository.getProvincialGroupList();
-            parameters.put( "provincialBgm", ( groupMap.get( "BGM" ) ) );
-            parameters.put( "provincialChubb", ( groupMap.get( "CHUBB" ) ) );
-            parameters.put( "empireLife", (groupMap.get( "Empire Life" ) ) );
+            
+//            parameters.put( "provincialBgm", ( groupMap.get( "BGM" ) ) );
+//            parameters.put( "provincialChubb", ( groupMap.get( "CHUBB" ) ) );
+//            parameters.put( "empireLife", (groupMap.get( "Empire Life" ) ) );
 
             DynamicReport dynamicReport = dynamicReportBuilder.build();
 
             
             JasperReport jasperReport = DynamicJasperHelper.generateJasperReport( dynamicReport, new ClassicLayoutManager(), parameters );
 
-            JRDataSource dataSource = new JRBeanCollectionDataSource( groupMap.get( "BGM" ) );
+            JRDataSource dataSource = new JRBeanCollectionDataSource( groupMap.get( "CHUBB" ) );
 
             JasperPrint jasperPrint = JasperFillManager.fillReport( jasperReport, parameters, dataSource );
 
@@ -113,31 +142,42 @@ public class ProvincialSalesTaxReport
 
         AbstractColumn groupName = CreateColumnString( "groupName", "", 100, SMALL );
         groupName.setHeaderStyle( BLUE_LEFT_GREY_BG_T_BORDER );
-
+        groupName.setBlankWhenNull( true );
+        
         AbstractColumn policyNum = CreateColumnString( "policyNum", "", 60, SMALL );
         policyNum.setHeaderStyle( BLUE_LEFT_GREY_BG_T_BORDER );
+        policyNum.setBlankWhenNull( true );
         AbstractColumn taxPremiumOn = CreateColumnFloat( "taxPremiumOn", "Taxable Premium", 40, SMALL_RIGHT );
         taxPremiumOn.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        taxPremiumOn.setBlankWhenNull( true );
         AbstractColumn salesTaxOn = CreateColumnFloat( "salesTaxOn", "Sales Tax", 40, SMALL_RIGHT );
         salesTaxOn.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        salesTaxOn.setBlankWhenNull( true );
         AbstractColumn taxPremiumMa = CreateColumnFloat( "taxPremiumMa", "Taxable Premium", 40, SMALL_RIGHT );
         taxPremiumMa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        taxPremiumMa.setBlankWhenNull( true );
         AbstractColumn salesTaxMa = CreateColumnFloat( "salesTaxMa", "Sales Tax", 40, SMALL_RIGHT );
         salesTaxMa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        salesTaxMa.setBlankWhenNull( true );
         AbstractColumn taxPremiumQc = CreateColumnFloat( "taxPremiumQc", "Taxable Premium", 40, SMALL_RIGHT );
         taxPremiumQc.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        taxPremiumQc.setBlankWhenNull( true );
         AbstractColumn salesTaxQc = CreateColumnFloat( "salesTaxQc", "Sales Tax", 40, SMALL_RIGHT );
         salesTaxQc.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        salesTaxQc.setBlankWhenNull( true );
         AbstractColumn taxPremiumSa = CreateColumnFloat( "taxPremiumSa", "Taxable Premium", 40, SMALL_RIGHT );
         taxPremiumSa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        taxPremiumSa.setBlankWhenNull( true );
         AbstractColumn salesTaxSa = CreateColumnFloat( "salesTaxSa", "Sales Tax", 40, SMALL_RIGHT );
         salesTaxSa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
+        salesTaxSa.setBlankWhenNull( true );
         Map parameters = new HashMap<>();
         parameters.put("header", "BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title );
 
-        DynamicReport dynamicReport = fastReport
+        DynamicReport dynamicReport = new DynamicReport();
+        dynamicReport = fastReport
                 .setTitle( "")
-//                .setSubtitle("BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title)
+                .setSubtitle("BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title)
                 .setPageSizeAndOrientation( Page.Page_Letter_Landscape())
                 .setSubtitleStyle(BLUE_LEFT_GREY_BG )
                 .addColumn( groupName )

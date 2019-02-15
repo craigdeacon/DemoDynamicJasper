@@ -44,12 +44,18 @@ import static com.utilities.ReportUtilities.*;
 public class RevenueByProduct
 {
 
+    /**
+     *
+     */
     public RevenueByProduct()
     {
     }
 
     private static final Logger LOGGER = Logger.getLogger( RevenueByProduct.class.getName() );
 
+    /**
+     *
+     */
     public void displayRevenueByProductReport()
     {
         try

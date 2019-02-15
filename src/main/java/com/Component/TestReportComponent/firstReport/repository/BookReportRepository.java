@@ -15,6 +15,11 @@ import java.util.List;
  */
 public class BookReportRepository
 {
+
+    /**
+     *
+     * @return
+     */
     public static List<Book> getBookCollection()
     {
         List<Book> bookList = new ArrayList<Book>();
