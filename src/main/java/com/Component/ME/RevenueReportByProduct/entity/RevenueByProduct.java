@@ -65,14 +65,14 @@ public class RevenueByProduct
             String date = getFirstDayOfCurrentMonth();
 //            DJCrosstab djcross = createCrossTab();
 //            parameters.put( "source", SortUtils.sortCollection( ( RevenueByProductRepository.getGroupList() ), djcross ) );
-            AbstractColumn groupAcct = CreateColumnString( "accountNo", "Group Acct #", 40, RIGHT );
-            AbstractColumn groupName = CreateColumnString( "groupName", "Group Name", 50, RIGHT );
-            AbstractColumn groupDivision = CreateColumnString( "division", "Group Division Name", 60, RIGHT );
-            AbstractColumn productType = CreateColumnString( "productType", "Product Type", 40, RIGHT );
-            AbstractColumn grossPremiums = CreateColumnFloat( "grossPremiums", "Gross Premiums", 40, AMOUNT_STYLE );
-            AbstractColumn bbdAdminFee = CreateColumnFloat( "bbdAdminFee", "BBD Admin Fee", 40, AMOUNT_STYLE );
-            AbstractColumn advisorCommission = CreateColumnFloat( "advisorCommission", "BBD Admin Fee", 40, AMOUNT_STYLE );
-            AbstractColumn netPremiums = CreateColumnFloat( "netPremiums", "Net Premiums", 40, AMOUNT_STYLE );
+            AbstractColumn groupAcct = createColumnString( "accountNo", "Group Acct #", 40, RIGHT );
+            AbstractColumn groupName = createColumnString( "groupName", "Group Name", 50, RIGHT );
+            AbstractColumn groupDivision = createColumnString( "division", "Group Division Name", 60, RIGHT );
+            AbstractColumn productType = createColumnString( "productType", "Product Type", 40, RIGHT );
+            AbstractColumn grossPremiums = createColumnFloat( "grossPremiums", "Gross Premiums", 40, AMOUNT_STYLE );
+            AbstractColumn bbdAdminFee = createColumnFloat( "bbdAdminFee", "BBD Admin Fee", 40, AMOUNT_STYLE );
+            AbstractColumn advisorCommission = createColumnFloat( "advisorCommission", "BBD Admin Fee", 40, AMOUNT_STYLE );
+            AbstractColumn netPremiums = createColumnFloat( "netPremiums", "Net Premiums", 40, AMOUNT_STYLE );
             
             groupAcct.setHeaderStyle( BOLD_RIGHT_BLUE );
             groupName.setHeaderStyle( BOLD_RIGHT_BLUE );
@@ -135,12 +135,12 @@ public class RevenueByProduct
 
     private JasperReport createSubReportProductTypes() throws JRException
     {
-        AbstractColumn productName = CreateColumnString("productName", "", 60, BOLD_LEFT_BLUE );
-        AbstractColumn groupCount = CreateColumnInt( "groupCount", "Group Count", 40, LEFT );
-        AbstractColumn totalGrossPremiums = CreateColumnFloat( "totalGrossPremiums", "Gross Premiums", 50, AMOUNT_STYLE );
-        AbstractColumn totalBbdAdminFee = CreateColumnFloat( "totalBbdAdminFee", "BBD Admin Fee", 50, AMOUNT_STYLE );
-        AbstractColumn totalAdvisorCommissions = CreateColumnFloat( "totalAdvisorCommissions", "Advisor Commission", 60, AMOUNT_STYLE );
-        AbstractColumn totalNetPremiums = CreateColumnFloat( "totalNetPremiums", "Net Premiums", 40, AMOUNT_STYLE );
+        AbstractColumn productName = createColumnString("productName", "", 60, BOLD_LEFT_BLUE );
+        AbstractColumn groupCount = createColumnInt( "groupCount", "Group Count", 40, LEFT );
+        AbstractColumn totalGrossPremiums = createColumnFloat( "totalGrossPremiums", "Gross Premiums", 50, AMOUNT_STYLE );
+        AbstractColumn totalBbdAdminFee = createColumnFloat( "totalBbdAdminFee", "BBD Admin Fee", 50, AMOUNT_STYLE );
+        AbstractColumn totalAdvisorCommissions = createColumnFloat( "totalAdvisorCommissions", "Advisor Commission", 60, AMOUNT_STYLE );
+        AbstractColumn totalNetPremiums = createColumnFloat( "totalNetPremiums", "Net Premiums", 40, AMOUNT_STYLE );
         
         productName.setHeaderStyle( BOLD_LEFT_BLUE);
         groupCount.setHeaderStyle( BOLD_LEFT_BLUE );

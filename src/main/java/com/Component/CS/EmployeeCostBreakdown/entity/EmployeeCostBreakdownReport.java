@@ -79,22 +79,22 @@ public class EmployeeCostBreakdownReport
             //columns
             int floatWidth = 20;
            
-            AbstractColumn columnName = CreateColumnString("name", "Employee Name", 40, LEFT);
+            AbstractColumn columnName = createColumnString("name", "Employee Name", 40, LEFT);
             columnName.setHeaderStyle( LEFT );
-            AbstractColumn columnLife = CreateColumnFloat( "life", "Life", floatWidth, AMOUNT_STYLE);
-            AbstractColumn columnADD = CreateColumnFloat( "add", "AD&D", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDLife = CreateColumnFloat( "dLife", "DLife", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnSTD = CreateColumnFloat( "std", "STD", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnLTD = CreateColumnFloat( "ltd", "LTD", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnCI = CreateColumnFloat( "ci", "CI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDepCI = CreateColumnFloat( "depCi", "Dep CI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnEHB = CreateColumnFloat( "ehb", "EHB", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDental = CreateColumnFloat( "dental", "Dental", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnHCSA = CreateColumnFloat( "hcsa", "HCSA", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnPSA = CreateColumnFloat( "psa", "PSA", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnEAP = CreateColumnFloat( "eap", "EAP", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDSAI = CreateColumnFloat( "dsai", "DSAI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnTotal = CreateColumnFloat( "total", "Total", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnLife = createColumnFloat( "life", "Life", floatWidth, AMOUNT_STYLE);
+            AbstractColumn columnADD = createColumnFloat( "add", "AD&D", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnDLife = createColumnFloat( "dLife", "DLife", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnSTD = createColumnFloat( "std", "STD", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnLTD = createColumnFloat( "ltd", "LTD", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnCI = createColumnFloat( "ci", "CI", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnDepCI = createColumnFloat( "depCi", "Dep CI", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnEHB = createColumnFloat( "ehb", "EHB", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnDental = createColumnFloat( "dental", "Dental", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnHCSA = createColumnFloat( "hcsa", "HCSA", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnPSA = createColumnFloat( "psa", "PSA", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnEAP = createColumnFloat( "eap", "EAP", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnDSAI = createColumnFloat( "dsai", "DSAI", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnTotal = createColumnFloat( "total", "Total", floatWidth, AMOUNT_STYLE );
             
             
             

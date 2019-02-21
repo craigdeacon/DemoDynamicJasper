@@ -1,5 +1,6 @@
 package com.DemoDynamicJasper;
 
+import com.Component.CS.EP3.entity.EP3;
 import com.Component.CS.EmployeeCostBreakdown.entity.EmployeeCostBreakdownReport;
 import com.Component.CS.PrintCertificate.entity.PrintCertificateReport;
 import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
@@ -38,8 +39,11 @@ public class DemoDynamicJasperApplication
 //        TemplateReport templateReport = new TemplateReport();
 //        templateReport.displayTemplateReport();
             
-        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
-        provincialSalesTaxReport.displayProvincialSalesTaxReport();
+//        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
+//        provincialSalesTaxReport.displayProvincialSalesTaxReport();
+        
+        EP3 ep3 = new EP3();
+        ep3.displayEP3Report();
 
     }
 }

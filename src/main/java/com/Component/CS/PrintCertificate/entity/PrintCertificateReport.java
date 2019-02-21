@@ -30,7 +30,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.utilities.ReportStyles.*;
-import static com.utilities.ReportUtilities.CreateColumnString;
+import static com.utilities.ReportUtilities.createColumnString;
+import static com.utilities.ReportUtilities.createColumnString;
 
 /**
  * Attempting to combine two reports side by side, work in progress
@@ -109,8 +110,8 @@ public class PrintCertificateReport
      */
     private JasperReport createSubReportA() throws JRException
     {
-        AbstractColumn column1 = CreateColumnString("column1", "", 60, BOLD_RIGHT );
-        AbstractColumn column2 = CreateColumnString( "column2", "Group Insurance Certificate Plan Administered by BBD", 120, LEFT );
+        AbstractColumn column1 = createColumnString("column1", "", 60, BOLD_RIGHT );
+        AbstractColumn column2 = createColumnString( "column2", "Group Insurance Certificate Plan Administered by BBD", 120, LEFT );
 
         FastReportBuilder fastReport = new FastReportBuilder();
         DynamicReport dynamicReport = fastReport
@@ -136,10 +137,10 @@ public class PrintCertificateReport
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
 
-        AbstractColumn columnBenefit = CreateColumnString( "benefit", "Benefit", 70 );
-        AbstractColumn columnSupplier = CreateColumnString( "supplier", "Supplier", 100 );
-        AbstractColumn columnPolicyNo = CreateColumnString( "policyNo", "Policy #", 100 );
-        AbstractColumn columnEffective = CreateColumnString( "date", "Effective", 70 );
+        AbstractColumn columnBenefit = createColumnString( "benefit", "Benefit", 70 );
+        AbstractColumn columnSupplier = createColumnString( "supplier", "Supplier", 100 );
+        AbstractColumn columnPolicyNo = createColumnString( "policyNo", "Policy #", 100 );
+        AbstractColumn columnEffective = createColumnString( "date", "Effective", 70 );
 
         dynamicReportBuilder
                 .setDetailHeight( 15 )
