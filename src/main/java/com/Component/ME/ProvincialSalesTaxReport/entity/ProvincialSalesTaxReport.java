@@ -76,14 +76,11 @@ public class ProvincialSalesTaxReport
                     .setTitleStyle( LARGE )
                     .setPageSizeAndOrientation( Page.Page_Letter_Landscape() )
                     .setUseFullPageWidth( true )
-                    
+//                    .setLeftMargin( 85 )
                     .addAutoText( date, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_LEFT, 350, SMALL )
                     .addAutoText( AutoText.AUTOTEXT_PAGE_X_OF_Y, AutoText.POSITION_FOOTER, AutoText.ALIGMENT_RIGHT, 200, 20, SMALL )
                     .addAutoText ( "User: Craig Deacon", AutoText.POSITION_FOOTER, AutoText.ALIGNMENT_CENTER, 300, SMALL )
-                    .setTemplateFile("Templates/pst_template.jrxml", true, true, true, false)
-//                    .addConcatenatedReport( createProvincialSubreport( "BGM Financial Services Limited" ), "provincialBgm", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
-//                    .addConcatenatedReport( createProvincialSubreport( "CHUBB" ), "provincialChubb", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
-//                    .addConcatenatedReport( createProvincialSubreport( "Empire Life" ), "empireLife", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true )
+//                    .setTemplateFile("Templates/pst_template.jrxml", true, true, true, false)
                     ;
            
             
@@ -96,23 +93,9 @@ public class ProvincialSalesTaxReport
                     notFirstPass = true;
                 
             }
-//            groupKey.forEach( (key, value) ->
-//            {
-//                try
-//                {
-//                    dynamicReportBuilder.addConcatenatedReport( createProvincialSubreport( key ), key, DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, true );
-//                    parameters.put( key, ( groupMap.get( key ) ) );
-//                   }
-//                catch (JRException ex)
-//                {
-//                    Logger.getLogger( ProvincialSalesTaxReport.class.getName() ).log( Level.SEVERE, null, ex );
-//                }
-//            } );
-
-            
-//            parameters.put( "provincialBgm", ( groupMap.get( "BGM" ) ) );
-//            parameters.put( "provincialChubb", ( groupMap.get( "CHUBB" ) ) );
-//            parameters.put( "empireLife", (groupMap.get( "Empire Life" ) ) );
+         
+//            parameters.put("leftHeader", "Testing Left Header " ); 
+//            Headers work, but line breaks won't.
 
             DynamicReport dynamicReport = dynamicReportBuilder.build();
 
@@ -125,9 +108,9 @@ public class ProvincialSalesTaxReport
 
             JasperViewer.viewReport( jasperPrint );
 
-            ReportUtilities.exportPdf( jasperPrint, "ProvincialSalesTaxReport" );
+//            ReportUtilities.exportPdf( jasperPrint, "ProvincialSalesTaxReport" );
             
-//            ReportUtilities.exportExcel(jasperPrint, "ProvincialSalesTaxReportTemplateLandscape");
+//            ReportUtilities.exportExcel(jasperPrint, "PST");
         }
         catch (JRException ex)
         {
@@ -172,12 +155,13 @@ public class ProvincialSalesTaxReport
         salesTaxSa.setHeaderStyle( BLUE_LEFT_GREY_BG_BT_BORDER );
         salesTaxSa.setBlankWhenNull( true );
         Map parameters = new HashMap<>();
-        parameters.put("header", "BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title );
+        parameters.put("leftHeader", "BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title );
 
         DynamicReport dynamicReport = new DynamicReport();
         dynamicReport = fastReport
                 .setTitle( "")
-                .setSubtitle("BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title)
+//                .setSubtitle("BBD\\nProvincial Sales Tax Report for January 2019 \\nPrepared for " + title)
+//                .setTemplateFile("Templates/pst_template.jrxml", true, true, true, false)
                 .setPageSizeAndOrientation( Page.Page_Letter_Landscape())
                 .setSubtitleStyle(BLUE_LEFT_GREY_BG )
                 .addColumn( groupName )
@@ -190,9 +174,8 @@ public class ProvincialSalesTaxReport
                 .addColumn( salesTaxQc )
                 .addColumn( taxPremiumSa )
                 .addColumn( salesTaxSa )
-                .setLeftMargin( 85 )
-                .setColspan(0, 1, "Group Name", BLUE_LEFT_GREY_BG )
-                .setColspan(1, 1, "Policy Number", BLUE_LEFT_GREY_BG )
+//                .setLeftMargin( 85 )
+                .setColspan(0, 2, "Prepared for " + title , BLUE_LEFT_GREY_BG )
                 .setColspan( 2, 2, "Ontario", BLUE_LEFT_GREY_BG )
                 .setColspan( 4, 2, "Manitoba", BLUE_LEFT_GREY_BG )
                 .setColspan( 6, 2, "Quebec", BLUE_LEFT_GREY_BG )

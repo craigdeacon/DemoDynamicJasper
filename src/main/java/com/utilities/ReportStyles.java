@@ -130,6 +130,7 @@ public class ReportStyles
         
         BOLD_RIGHT = new Style();
         BOLD_RIGHT.setFont( Font.ARIAL_MEDIUM_BOLD );
+        
         BOLD_RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
         BOLD_RIGHT.setPattern( "$0.00" );
         
@@ -205,6 +206,6 @@ public class ReportStyles
         SMALL_RIGHT.setFont( Font.ARIAL_SMALL );
         SMALL_RIGHT.setPattern( "$0.00" );
         SMALL_RIGHT.setStretchWithOverflow( false);
-        SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.CENTER );
+        SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.LEFT );
     }
 }
