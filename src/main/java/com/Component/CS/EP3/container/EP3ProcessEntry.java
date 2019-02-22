@@ -31,7 +31,6 @@ public class EP3ProcessEntry
     {
     }
 
-    
     private String greenShieldDivision;
     private String billingDivisionName;
     private Date renewalMonth;
@@ -41,6 +40,17 @@ public class EP3ProcessEntry
     private String exclusion;
     private Date terminationDate;
     private Date dateEntered;
+    private Integer groupId;
+
+    public Integer getGroupId()
+    {
+        return groupId;
+    }
+
+    public void setGroupId( Integer groupId )
+    {
+        this.groupId = groupId;
+    }
 
     public String getGreenShieldDivision()
     {

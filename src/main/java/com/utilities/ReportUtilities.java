@@ -274,11 +274,14 @@ public class ReportUtilities
             JRXlsExporter excelExporter = new JRXlsExporter();
             excelExporter.setExporterInput( new SimpleExporterInput( jasperPrint ) );
             excelExporter.setExporterOutput( new SimpleOutputStreamExporterOutput( fileOutputStream ) );
+            
             SimpleXlsReportConfiguration configuration = new SimpleXlsReportConfiguration();
             configuration.setOnePagePerSheet( Boolean.FALSE );
             configuration.setRemoveEmptySpaceBetweenRows( Boolean.TRUE );
             configuration.setRemoveEmptySpaceBetweenColumns(Boolean.FALSE );
             configuration.setWhitePageBackground( Boolean.FALSE );
+            configuration.setFreezeRow( 3 );
+          
             
             excelExporter.setConfiguration( configuration );
             excelExporter.exportReport();
