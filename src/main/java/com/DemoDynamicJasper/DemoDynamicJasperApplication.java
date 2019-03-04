@@ -1,12 +1,7 @@
 package com.DemoDynamicJasper;
 
 import com.Component.CS.EP3.entity.EP3;
-import com.Component.CS.EmployeeCostBreakdown.entity.EmployeeCostBreakdownReport;
-import com.Component.CS.PrintCertificate.entity.PrintCertificateReport;
-import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
-import com.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
-import com.Component.TestReportComponent.firstReport.entity.BookReport;
-import com.Component.TestReportComponent.secondReport.entity.EmployeeReport;
+import com.Component.ME.EAPReport.entity.EapReport;
 
 /**
  *
@@ -23,7 +18,7 @@ public class DemoDynamicJasperApplication
     {
 //        EmployeeReport empReport = new EmployeeReport();
 //        empReport.displayEmployeeReport();
-//        
+//
 //        EmployeeCostBreakdownReport empReport = new EmployeeCostBreakdownReport();
 //        empReport.displayEmployeeReport();
 
@@ -38,12 +33,18 @@ public class DemoDynamicJasperApplication
 
 //        TemplateReport templateReport = new TemplateReport();
 //        templateReport.displayTemplateReport();
-            
+
 //        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
 //        provincialSalesTaxReport.displayProvincialSalesTaxReport();
-        
-        EP3 ep3 = new EP3();
-        ep3.displayEP3Report();
+
+//        EP3 ep3 = new EP3();
+//        ep3.displayEP3Report();
+
+        EapReport eapReport = new EapReport();
+        /*Arete*/
+        eapReport.displayEAPReport(93064);
+        /*HumanaCare*/
+//        eapReport.displayEAPReport(601076);
 
     }
 }

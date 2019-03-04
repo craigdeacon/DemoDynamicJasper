@@ -1,13 +1,16 @@
 package com.utilities;
 
+import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
+import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.lowagie.text.pdf.PdfContentByte;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,6 +27,9 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
 import net.sf.jasperreports.export.SimpleXlsReportConfiguration;
+
+import static com.utilities.ReportStyles.BOLD_LEFT;
+import static com.utilities.ReportStyles.LEFT;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -53,10 +59,10 @@ public class ReportUtilities
     public static AbstractColumn createColumnString( String property, String title, int width )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, String.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .build();
+                                             .setColumnProperty( property, String.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .build();
         return column;
     }
 
@@ -72,11 +78,11 @@ public class ReportUtilities
     public static AbstractColumn createColumnString( String property, String title, int width, Style style )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, String.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .setStyle( style )
-                .build();
+                                             .setColumnProperty( property, String.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .setStyle( style )
+                                             .build();
         return column;
     }
 
@@ -91,10 +97,10 @@ public class ReportUtilities
     public static AbstractColumn createColumnFloat( String property, String title, int width )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Float.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .build();
+                                             .setColumnProperty( property, Float.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .build();
         return column;
     }
 
@@ -110,14 +116,14 @@ public class ReportUtilities
     public static AbstractColumn createColumnFloat( String property, String title, int width, Style style )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Float.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .setStyle( style )
-                .build();
+                                             .setColumnProperty( property, Float.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .setStyle( style )
+                                             .build();
         return column;
     }
-    
+
     /**
      *
      * @param property
@@ -129,15 +135,15 @@ public class ReportUtilities
     public static AbstractColumn createColumnInt( String property, String title, int width, Style style )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Integer.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .setStyle( style )
-                .build();
+                                             .setColumnProperty( property, Integer.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .setStyle( style )
+                                             .build();
         return column;
     }
-    
-    
+
+
     /**
      *
      * @param property
@@ -149,35 +155,35 @@ public class ReportUtilities
     public static AbstractColumn createColumnInt( String property, String title, int width )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Integer.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .build();
+                                             .setColumnProperty( property, Integer.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .build();
         return column;
     }
-    
+
     public static AbstractColumn createColumnDate( String property, String title, int width )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Date.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .build();
+                                             .setColumnProperty( property, Date.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .build();
         return column;
     }
 
     public static AbstractColumn createColumnDate( String property, String title, int width, Style style )
     {
         AbstractColumn column = ColumnBuilder.getNew()
-                .setColumnProperty( property, Date.class.getName() )
-                .setTitle( title )
-                .setWidth( width )
-                .setStyle( style )
-                .build();
+                                             .setColumnProperty( property, Date.class.getName() )
+                                             .setTitle( title )
+                                             .setWidth( width )
+                                             .setStyle( style )
+                                             .build();
         return column;
     }
-    
-    
+
+
     /**
      * Opens a generated report file
      *
@@ -232,12 +238,12 @@ public class ReportUtilities
             JRPdfExporter pdfExporter = new JRPdfExporter();
             pdfExporter.setExporterInput( new SimpleExporterInput( jasperPrint ) );
             pdfExporter.setExporterOutput( new SimpleOutputStreamExporterOutput( fileOutputStream ) );
-            
+
             //currently does nothing
             SimplePdfExporterConfiguration configuration = new SimplePdfExporterConfiguration();
             pdfExporter.setConfiguration( configuration );
             //
-            
+
             pdfExporter.exportReport();
             fileOutputStream.close();
             OpenFile( pdfOutputFile );
@@ -260,7 +266,7 @@ public class ReportUtilities
 
     /**
      * Creates and opens an Excel file of a report with a custom file name
-     * 
+     *
      * @param jasperPrint the report to be exported
      * @param reportName file name of exported report
      */
@@ -274,15 +280,15 @@ public class ReportUtilities
             JRXlsExporter excelExporter = new JRXlsExporter();
             excelExporter.setExporterInput( new SimpleExporterInput( jasperPrint ) );
             excelExporter.setExporterOutput( new SimpleOutputStreamExporterOutput( fileOutputStream ) );
-            
+
             SimpleXlsReportConfiguration configuration = new SimpleXlsReportConfiguration();
             configuration.setOnePagePerSheet( Boolean.FALSE );
             configuration.setRemoveEmptySpaceBetweenRows( Boolean.TRUE );
             configuration.setRemoveEmptySpaceBetweenColumns(Boolean.FALSE );
             configuration.setWhitePageBackground( Boolean.FALSE );
             configuration.setFreezeRow( 3 );
-          
-            
+
+
             excelExporter.setConfiguration( configuration );
             excelExporter.exportReport();
             fileOutputStream.close();
@@ -292,5 +298,26 @@ public class ReportUtilities
         {
             Logger.getLogger( ReportUtilities.class.getName() ).log( Level.SEVERE, null, ex );
         }
+    }
+
+    public static DynamicReport createBasicReportSkeleton(ArrayList<AbstractColumn> columns, String title)
+    {
+        DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
+        ArrayList<AbstractColumn> columnList = columns;
+        columnList.forEach( (column) ->
+                            {
+                                dynamicReportBuilder.addColumn( column );
+                            } );
+
+        dynamicReportBuilder
+                .setTitle( title )
+                .setTitleHeight( 40 )
+                .setTitleStyle( BOLD_LEFT )
+                .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
+                .setIgnorePagination( true );
+
+        DynamicReport dynamicReport = dynamicReportBuilder.build();
+
+        return dynamicReport;
     }
 }

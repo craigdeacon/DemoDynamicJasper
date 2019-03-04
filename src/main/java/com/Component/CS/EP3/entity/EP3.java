@@ -8,10 +8,8 @@ package com.Component.CS.EP3.entity;
 import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DynamicReport;
-import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.BO.EP3ProcessBO;
-import com.Component.CS.EP3.repository.ep3Repository;
 import com.DAO.EP3.EP3ProcessDAOImpl;
 import static com.utilities.ReportStyles.*;
 import com.utilities.ReportUtilities;
@@ -20,17 +18,12 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -51,30 +44,15 @@ public class EP3
             
             EP3ProcessBO ep3ProcessBO = new EP3ProcessBO();
 
-            DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
-            ArrayList<AbstractColumn> columnList = getEP3Columns();
-            columnList.forEach( (column) ->
-            {
-                dynamicReportBuilder.addColumn( column );
-            } );
-            
-            dynamicReportBuilder
-                    .setTitle( "EP3 Process Report" )
-                    .setTitleHeight( 40 )
-                    .setTitleStyle( BOLD_LEFT )
-                    .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
-                    .setIgnorePagination( true )
-                    ;
+            DynamicReport dynamicReport = ReportUtilities.createBasicReportSkeleton(getEP3Columns(), "EP3 Process Report");
 
-            DynamicReport dynamicReport = dynamicReportBuilder.build();
-        
             Date invoiceDate = getInvoiceDate("2019-02-01");
            
             JRDataSource dataSource = new JRBeanCollectionDataSource( ep3ProcessBO.filterAffiliatedGroupsList( invoiceDate ) );
 
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint( dynamicReport, new ClassicLayoutManager(), dataSource );
 //            JasperViewer.viewReport( jasperPrint );
-            ReportUtilities.exportExcel( jasperPrint, "EP3" );
+            ReportUtilities.exportExcel( jasperPrint, "EP3 Process Report" );
         }
         catch (JRException ex)
         {
