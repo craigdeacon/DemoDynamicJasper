@@ -310,6 +310,7 @@ public class ReportUtilities
                             } );
 
         dynamicReportBuilder
+                .setLeftMargin(0)
                 .setTitle( title )
                 .setTitleHeight( 40 )
                 .setTitleStyle( BOLD_LEFT )
