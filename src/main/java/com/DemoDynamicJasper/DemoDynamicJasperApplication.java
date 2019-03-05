@@ -42,14 +42,14 @@ public class DemoDynamicJasperApplication
 //        EP3 ep3 = new EP3();
 //        ep3.displayEP3Report();
 
-//        EapReport eapReport = new EapReport();
-//        /*Arete*/
-//        eapReport.displayEAPReport(93064);
+        EapReport eapReport = new EapReport();
+        /*Arete*/
+        eapReport.displayEAPReport(93064);
 //        /*HumanaCare*/
 //        eapReport.displayEAPReport(601076);
 
-        CignaUploadReport cignaUploadReport = new CignaUploadReport();
-        cignaUploadReport.displayCignaUploadReport();
+//        CignaUploadReport cignaUploadReport = new CignaUploadReport();
+//        cignaUploadReport.displayCignaUploadReport();
 
     }
 }
