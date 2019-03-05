@@ -46,43 +46,43 @@ public class CignaUploadReport
     {
         ArrayList<AbstractColumn> columnList = new ArrayList<>();
 
-        AbstractColumn month = createColumnInt( "month", "Month", 90 );
+        AbstractColumn month = createColumnInt( "month", "Month", 50 );
         columnList.add( month );
 
-        AbstractColumn year = createColumnInt( "year", "Year", 120 );
+        AbstractColumn year = createColumnInt( "year", "Year", 50 );
         columnList.add( year );
 
-        AbstractColumn type = createColumnString( "type", "Type", 90 );
+        AbstractColumn type = createColumnString( "type", "Type", 50 );
         columnList.add( type );
 
         AbstractColumn policyNumber = createColumnString( "policyNumber", "Policy Number", 90 );
         columnList.add( policyNumber );
 
-        AbstractColumn employees = createColumnInt( "numEmployee", "Employees", 270 );
+        AbstractColumn employees = createColumnInt( "numEmployee", "Employees", 90 );
         columnList.add( employees );
 
-        AbstractColumn sumInsured = createColumnFloat( "sumInsured", "Sum Insured", 120);
+        AbstractColumn sumInsured = createColumnFloat( "sumInsured", "Sum Insured", 100);
         columnList.add( sumInsured );
 
-        AbstractColumn grossPremiums = createColumnFloat( "grossPremiums", "Gross Premiums", 120 );
+        AbstractColumn grossPremiums = createColumnFloat( "grossPremiums", "Gross Premiums", 100 );
         columnList.add( grossPremiums );
 
         AbstractColumn pst = createColumnFloat( "pst", "PST", 60 );
         columnList.add( pst );
 
-        AbstractColumn grossRate = createColumnFloat( "grossRate", "Gross Rate", 60 );
+        AbstractColumn grossRate = createColumnFloat( "grossRate", "Gross Rate", 80 );
         columnList.add( grossRate );
 
-        AbstractColumn companyName = createColumnString( "companyName", "Company Name", 60 );
+        AbstractColumn companyName = createColumnString( "companyName", "Company Name", 80 );
         columnList.add( companyName );
 
-        AbstractColumn commissionsRetained = createColumnFloat( "commissionsRetained", "Commissions Retained", 60 );
+        AbstractColumn commissionsRetained = createColumnFloat( "commissionsRetained", "Commissions Retained", 100 );
         columnList.add( commissionsRetained );
 
         AbstractColumn tpaFee = createColumnFloat( "tpaFee", "TPA Fee", 60 );
         columnList.add( tpaFee );
 
-        AbstractColumn netRemittance = createColumnFloat( "netRemittance", "Net Remittance", 60 );
+        AbstractColumn netRemittance = createColumnFloat( "netRemittance", "Net Remittance", 100 );
         columnList.add( netRemittance );
 
         return columnList;
