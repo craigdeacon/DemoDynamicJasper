@@ -1,7 +1,9 @@
 package com.DemoDynamicJasper;
 
 import com.Component.CS.EP3.entity.EP3;
+import com.Component.ME.CignaUpload.entity.CignaUploadReport;
 import com.Component.ME.EAPReport.entity.EapReport;
+import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
 
 /**
  *
@@ -43,8 +45,11 @@ public class DemoDynamicJasperApplication
         EapReport eapReport = new EapReport();
         /*Arete*/
         eapReport.displayEAPReport(93064);
-        /*HumanaCare*/
+//        /*HumanaCare*/
 //        eapReport.displayEAPReport(601076);
+
+//        CignaUploadReport cignaUploadReport = new CignaUploadReport();
+//        cignaUploadReport.displayCignaUploadReport();
 
     }
 }

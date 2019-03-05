@@ -1,6 +1,7 @@
 package com.BO;
 
 import com.Component.ME.EAPReport.container.EapGroup;
+import com.Component.ME.EAPReport.repository.EAPReportTestRepo;
 import com.DAO.EAPReport.EAPReportDAO;
 import com.DAO.EAPReport.EAPReportDAOImpl;
 import com.DemoDynamicJasper.spring.config.AppConfig;
@@ -13,7 +14,7 @@ public class EAPReportBO
 {
     AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class );
     private static final Logger LOGGER = Logger.getLogger(EAPReportBO.class.getName() );
-    EAPReportDAO eapReportDAO = context.getBean(EAPReportDAOImpl.class );
+    EAPReportDAO eapReportDAO = context.getBean(EAPReportTestRepo.class );
 
     public ArrayList<EapGroup> getEAPGroups(int underwriterId)
     {

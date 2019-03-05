@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.utilities.ReportUtilities;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -105,9 +107,9 @@ public class ProvincialSalesTaxReport
 
             JasperPrint jasperPrint = JasperFillManager.fillReport( jasperReport, parameters, dataSource );
 
-            JasperViewer.viewReport( jasperPrint );
+//            JasperViewer.viewReport( jasperPrint );
 
-//            ReportUtilities.exportPdf( jasperPrint, "ProvincialSalesTaxReport" );
+            ReportUtilities.exportPdf(jasperPrint, "ProvincialSalesTaxReport" );
             
 //            ReportUtilities.exportExcel(jasperPrint, "PST");
         }

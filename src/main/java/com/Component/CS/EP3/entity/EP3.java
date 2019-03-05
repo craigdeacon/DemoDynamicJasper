@@ -52,7 +52,7 @@ public class EP3
 
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint( dynamicReport, new ClassicLayoutManager(), dataSource );
 //            JasperViewer.viewReport( jasperPrint );
-            ReportUtilities.exportExcel( jasperPrint, "EP3 Process Report" );
+            ReportUtilities.exportExcel( jasperPrint, "EP3 Process Report", true);
         }
         catch (JRException ex)
         {

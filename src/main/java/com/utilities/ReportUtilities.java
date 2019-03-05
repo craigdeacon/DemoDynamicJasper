@@ -261,7 +261,22 @@ public class ReportUtilities
      */
     public static void exportExcel( JasperPrint jasperPrint )
     {
-        exportExcel( jasperPrint, "Report" );
+        exportExcel( jasperPrint, "Report", false );
+    }
+
+    /**
+     * Creates and opens an Excel file of the generated report
+     *
+     * @param jasperPrint the report to be exported
+     */
+    public static void exportExcel( JasperPrint jasperPrint, boolean freezeRows )
+    {
+        exportExcel( jasperPrint, "Report", freezeRows );
+    }
+
+    public static void exportExcel( JasperPrint jasperPrint, String reportName )
+    {
+        exportExcel( jasperPrint, reportName, false );
     }
 
     /**
@@ -270,7 +285,7 @@ public class ReportUtilities
      * @param jasperPrint the report to be exported
      * @param reportName file name of exported report
      */
-    public static void exportExcel( JasperPrint jasperPrint, String reportName )
+    public static void exportExcel( JasperPrint jasperPrint, String reportName, boolean freezeRow )
     {
         try
         {
@@ -286,8 +301,11 @@ public class ReportUtilities
             configuration.setRemoveEmptySpaceBetweenRows( Boolean.TRUE );
             configuration.setRemoveEmptySpaceBetweenColumns(Boolean.FALSE );
             configuration.setWhitePageBackground( Boolean.FALSE );
-            configuration.setFreezeRow( 3 );
 
+            if (freezeRow)
+            {
+                configuration.setFreezeRow( 3 );
+            }
 
             excelExporter.setConfiguration( configuration );
             excelExporter.exportReport();
@@ -314,6 +332,25 @@ public class ReportUtilities
                 .setTitle( title )
                 .setTitleHeight( 40 )
                 .setTitleStyle( BOLD_LEFT )
+                .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
+                .setIgnorePagination( true );
+
+        DynamicReport dynamicReport = dynamicReportBuilder.build();
+
+        return dynamicReport;
+    }
+
+    public static DynamicReport createBasicReportSkeletonNoTitle(ArrayList<AbstractColumn> columns)
+    {
+        DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
+        ArrayList<AbstractColumn> columnList = columns;
+        columnList.forEach( (column) ->
+                            {
+                                dynamicReportBuilder.addColumn( column );
+                            } );
+
+        dynamicReportBuilder
+                .setLeftMargin(0)
                 .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
                 .setIgnorePagination( true );
 
