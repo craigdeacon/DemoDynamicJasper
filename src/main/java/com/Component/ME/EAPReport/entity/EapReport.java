@@ -44,7 +44,7 @@ public class EapReport
 
                 JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint( dynamicReport, new ClassicLayoutManager(), dataSource );
 
-                ReportUtilities.exportExcel( jasperPrint, title);
+                ReportUtilities.exportExcel( jasperPrint, title, true);
             }
             catch (JRException ex)
             {
