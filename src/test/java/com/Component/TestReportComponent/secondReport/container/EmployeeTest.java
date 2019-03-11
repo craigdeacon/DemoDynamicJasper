@@ -5,6 +5,7 @@
  */
 package com.Component.TestReportComponent.secondReport.container;
 
+import com.Report.Component.TestReportComponent.secondReport.container.Employee;
 import org.junit.*;
 
 /**
@@ -21,9 +22,9 @@ public class EmployeeTest
     @Test
     public void employeeTotalTest()
     {
-        Employee testEmployee = new Employee("Craig Deacon", new Float ("12.90"), new Float ("4.12"), new Float ("8.19"), new Float ("20.80"), null, 
-                          new Float ("6.25"), new Float ("4.91"), new Float ("225.91"), null, new Float ("7.66"), null, new Float ("4.15"),
-                          new Float ("38.90"));
+        Employee testEmployee = new Employee("Craig Deacon", new Float ("12.90"), new Float ("4.12"), new Float ("8.19"), new Float ("20.80"), null,
+                                             new Float ("6.25"), new Float ("4.91"), new Float ("225.91"), null, new Float ("7.66"), null, new Float ("4.15"),
+                                             new Float ("38.90"));
         float total = (float) 333.79;
         Assert.assertEquals( total, testEmployee.getTotal(), .1f );
     }

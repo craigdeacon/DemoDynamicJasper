@@ -1,16 +1,16 @@
 package com.DemoDynamicJasper;
 
-import com.Component.CS.EP3.entity.EP3;
-import com.Component.CS.EmployeeCostBreakdown.entity.EmployeeCostBreakdownReport;
-import com.Component.CS.PrintCertificate.entity.PrintCertificateReport;
-import com.Component.ME.CignaUpload.entity.CignaUploadReport;
-import com.Component.ME.EAPReport.entity.EapReport;
-import com.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
-import com.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
-import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
-import com.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
-import com.Component.TestReportComponent.firstReport.entity.BookReport;
-import com.Component.TestReportComponent.secondReport.entity.EmployeeReport;
+import com.Report.Component.CS.EP3.entity.EP3;
+import com.Report.Component.CS.EmployeeCostBreakdown.entity.EmployeeCostBreakdownReport;
+import com.Report.Component.CS.PrintCertificate.entity.PrintCertificateReport;
+import com.Report.Component.ME.CignaUpload.entity.CignaUploadReport;
+import com.Report.Component.ME.EAPReport.entity.EapReport;
+import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
+import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
+import com.Report.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
+import com.Report.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
+import com.Report.Component.TestReportComponent.firstReport.entity.BookReport;
+import com.Report.Component.TestReportComponent.secondReport.entity.EmployeeReport;
 import com.DemoDynamicJasper.spring.config.AppConfig;
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 

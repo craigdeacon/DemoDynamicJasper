@@ -1,8 +1,8 @@
 package com.BO;
 
-import com.Component.ME.EAPReport.container.EapGroup;
-import com.DAO.EAPReport.EAPReportDAO;
-import com.Component.ME.EAPReport.repository.EAPReportTestRepo;
+import com.Report.Component.ME.EAPReport.container.EapGroup;
+import com.Database.DAO.EAPReport.EAPReportDAO;
+import com.Report.Component.ME.EAPReport.repository.EAPReportTestRepo;
 import com.DemoDynamicJasper.spring.config.AppConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
