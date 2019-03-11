@@ -8,6 +8,7 @@ import com.Report.Component.ME.EAPReport.entity.EapReport;
 import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
 import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
 import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumOptionalADDReport;
+import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumReport;
 import com.Report.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
 import com.Report.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
 import com.Report.Component.TestReportComponent.firstReport.entity.BookReport;
@@ -38,23 +39,8 @@ class DemoDynamicJasperApplication
 
         /*Current Report Working On*/
         //TODO Work on new Report
-        EapReport eapReport = new EapReport();
-        /*Arete*/
-        eapReport.displayEAPReport(93064);
-        /*HumanaCare*/
-        eapReport.displayEAPReport(601076);
-
-        CignaUploadReport cignaUploadReport = new CignaUploadReport();
-        cignaUploadReport.displayCignaUploadReport();
-
-        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
-        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
-
-        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
-        iapPremiumADDReport.displayIAPPremiumADDReport();
-
-        IAPPremiumOptionalADDReport iapPremiumOptionalADDReport = new IAPPremiumOptionalADDReport();
-        iapPremiumOptionalADDReport.displayIAPPremiumOptionalADDReport();
+        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
+        iapPremiumReport.displayIAPPremiumReport();
 
     }
 
@@ -100,6 +86,9 @@ class DemoDynamicJasperApplication
 
         IAPPremiumOptionalADDReport iapPremiumOptionalADDReport = new IAPPremiumOptionalADDReport();
         iapPremiumOptionalADDReport.displayIAPPremiumOptionalADDReport();
+
+        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
+        iapPremiumReport.displayIAPPremiumReport();
     }
 
     private static void CSReports()

@@ -3,6 +3,7 @@ package com.Report.TestingRepositories;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumADDGroup;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
 import com.Database.DAO.IAPPremiumReport.IAPPremiumReportDAO;
+import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumGroup;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumOptionalADDGroup;
 import org.springframework.stereotype.Component;
 
@@ -144,5 +145,76 @@ public class IAPPremiumReportRepository implements IAPPremiumReportDAO
                                                                            12.00f,
                                                                            "Retroactive Addition"));
         return iapPremiumGroupsOptionalADDList;
+    }
+
+    @Override
+    public ArrayList<IAPPremiumGroup> getIAPPremiumReportGroupList()
+    {
+        ArrayList<IAPPremiumGroup> iapPremiumGroupsList = new ArrayList<>();
+        iapPremiumGroupsList.add(new IAPPremiumGroup("10001111",
+                                                           "1111A",
+                                                           "Test 1 Division Name",
+                                                           53.83f,
+                                                           sqlDate,
+                                                           sqlDate,
+                                                           "A",
+                                                           null,
+                                                           null,
+                                                           50,
+                                                           525000.00f,
+                                                           0.039f,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           20.58f,
+                                                           0.98f,
+                                                           10.12f,
+                                                           1.54f,
+                                                           11.66f,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           9.90f,
+                                                           "Retroactive Addition"));
+        iapPremiumGroupsList.add(new IAPPremiumGroup("10001112",
+                                                           "1111B",
+                                                           "Test 2 Division Name",
+                                                           53.83f,
+                                                           sqlDate,
+                                                           sqlDate,
+                                                           "A",
+                                                           null,
+                                                           null,
+                                                           50,
+                                                           525000.00f,
+                                                           0.039f,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           20.58f,
+                                                           0.98f,
+                                                           10.12f,
+                                                           1.54f,
+                                                           11.66f,
+                                                           null,
+                                                           null,
+                                                           null,
+                                                           9.90f,
+                                                           "Retroactive Addition"));
+        return iapPremiumGroupsList;
     }
 }

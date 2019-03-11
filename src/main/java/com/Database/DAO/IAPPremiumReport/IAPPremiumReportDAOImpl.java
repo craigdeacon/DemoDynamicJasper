@@ -3,6 +3,7 @@ package com.Database.DAO.IAPPremiumReport;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumADDGroup;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
 import com.Database.DAO.EAPReport.EAPReportDAOImpl;
+import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumGroup;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumOptionalADDGroup;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,380 @@ public class IAPPremiumReportDAOImpl implements IAPPremiumReportDAO
 {
     private JdbcTemplate jdbcTemplate;
     private static final Logger LOGGER = Logger.getLogger(EAPReportDAOImpl.class.getName());
+
+    private static final String IAP_PREMIUM_QRY = "SELECT " +
+            " polnumseries( premium.ptunderwriter_id, premium.ptpolicy_number ) AS pol_no, " +
+            " premium.group_id, " +
+            " premium.ptpolicy_number, " +
+            " polnumsequence( premium.ptunderwriter_id, premium.ptpolicy_number )::TEXT ||  " +
+            " polnumextension( premium.ptunderwriter_id, premium.ptpolicy_number )::TEXT AS div_number, " +
+            " premium.employer AS division_name, " +
+            " COALESCE( premium.vol010, 0::NUMERIC ) AS current_volume_of_ins, " +
+            " getlivessplit( premium.group_id, premium.ptpolicy_number, COALESCE( premium.liv010, 0 ) ) AS current_no_of_lives, " +
+            " COALESCE( premium.liv010, 0 ) AS lives, " +
+            " COALESCE( premium.vol010spouse, 0 ) AS spouse_volume, " +
+            " COALESCE( premium.vol010dep, 0 ) AS dependent_unit, " +
+            " CASE " +
+            "  WHEN premium.admin_rate010 IS NOT NULL " +
+            "  OR premium.admin_rate010 <> 0::DOUBLE PRECISION THEN premium.admin_rate010 * 100::DOUBLE PRECISION " +
+            "  ELSE 0::DOUBLE PRECISION " +
+            " END AS adminrate, " +
+            " CASE " +
+            "  WHEN premium.comm_rate010 IS NOT NULL " +
+            "  OR premium.comm_rate010 <> 0::DOUBLE PRECISION THEN premium.comm_rate010 * 100::DOUBLE PRECISION " +
+            "  ELSE 0::DOUBLE PRECISION " +
+            " END AS commrate, " +
+            " COALESCE( " +
+            "  ( " +
+            "   SELECT " +
+            "    MIN( ben010h.month_id ) AS MIN " +
+            "   FROM " +
+            "    ben010h " +
+            "   WHERE " +
+            "    ben010h.group_id = premium.group_id " +
+            "    AND ben010h.policy_number::TEXT = premium.ptpolicy_number::TEXT " +
+            "  ), " +
+            "  geteffdates( premium.group_id, premium.ptpolicy_number ) " +
+            " ) AS effdate, " +
+            " CASE " +
+            "  WHEN premium.liv010 = 0 THEN 'T'::TEXT " +
+            "  ELSE 'A'::TEXT " +
+            " END AS status, " +
+            " COALESCE( " +
+            "  ( " +
+            "   ( " +
+            "    SELECT " +
+            "     MIN( ben010.next_renew ) AS MIN " +
+            "    FROM " +
+            "     ben010 " +
+            "    WHERE " +
+            "     ben010.group_id = premium.group_id " +
+            "     AND ben010.policy_number::TEXT = premium.ptpolicy_number::TEXT " +
+            "   ) " +
+            "  )::TIMESTAMP WITH TIME ZONE, " +
+            "  to_timestamp( " +
+            "   0::DOUBLE PRECISION " +
+            "  ) " +
+            " ) AS nextrenew, " +
+            " getempprovsplit( premium.group_id, premium.ptpolicy_number ) AS empprovsplit, " +
+            " getbenefitsplit( premium.group_id, premium.ptpolicy_number ) AS benefitamount, " +
+            " getspousebenefitsplit( premium.group_id, premium.ptpolicy_number ) AS spousebenefitamount, " +
+            " getdependentbenefitsplit( premium.group_id, premium.ptpolicy_number ) AS dependentbenefitamount, " +
+            " getspouselivessplit( premium.group_id, premium.ptpolicy_number ) AS spouselives, " +
+            " getdependentlivessplit( premium.group_id, premium.ptpolicy_number ) AS dependentlives, " +
+            " getoptionalcoverrate( premium.group_id, premium.ptpolicy_number, 520 ) AS spouserate, " +
+            " getspousetotalpremium( premium.group_id, premium.ptpolicy_number ) AS spousetotalpremium, " +
+            " ( " +
+            "  CASE " +
+            "   WHEN getoptionalcoverrate( " +
+            "    premium.group_id, " +
+            "    premium.ptpolicy_number, " +
+            "    521 " +
+            "   )= '' THEN NULL " +
+            "   ELSE getoptionalcoverrate( " +
+            "    premium.group_id, " +
+            "    premium.ptpolicy_number, " +
+            "    521 " +
+            "   ) " +
+            "  END " +
+            " )::DOUBLE PRECISION AS dependentrate, " +
+            " COALESCE( getdependenttotalpremium( premium.group_id, premium.ptpolicy_number ), 0::NUMERIC ) AS dependenttotalpremium, " +
+            " ( " +
+            "  SELECT " +
+            "   ben010.rate " +
+            "  FROM " +
+            "   ben010 " +
+            "  WHERE " +
+            "   ben010.group_id = premium.group_id " +
+            "   AND ben010.policy_number::TEXT = premium.ptpolicy_number::TEXT LIMIT 1 " +
+            " ) AS grossrate, " +
+            " COALESCE( premium.gross010, 0::NUMERIC ) -  " +
+            " COALESCE( getspousetotalpremium( premium.group_id, premium.ptpolicy_number ), 0::NUMERIC ) -  " +
+            " COALESCE( getdependenttotalpremium( premium.group_id, premium.ptpolicy_number ), 0::NUMERIC ) AS gross_prem, " +
+            " COALESCE( premium.gross010, 0::NUMERIC ) AS total_gross_prem, " +
+            " COALESCE( premium.admin010, 0::NUMERIC ) AS admin_fee, " +
+            " COALESCE( premium.comm010, 0::NUMERIC ) AS commission, " +
+            " COALESCE( premium.raprem010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.rcprem010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.rtprem010, 0::NUMERIC ) AS adjust, " +
+            " COALESCE( premium.admin010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.comm010, 0::NUMERIC ) AS totalcommission, " +
+            " COALESCE( premium.gross010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.raprem010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.rcprem010, 0::NUMERIC ) +  " +
+            " COALESCE( premium.rtprem010, 0::NUMERIC ) -  " +
+            " COALESCE( premium.admin010, 0::NUMERIC ) -  " +
+            " COALESCE( premium.comm010, 0::NUMERIC ) +  " +
+            " COALESCE( pst.prov1_010, 0::NUMERIC ) +  " +
+            " COALESCE( pst.prov2_010, 0::NUMERIC ) +  " +
+            " COALESCE( pst.prov3_010, 0::NUMERIC ) AS net_prem_paid, " +
+            " adjustcomments( " +
+            "  COALESCE( premium.raprem010, 0::NUMERIC ), " +
+            "  COALESCE( premium.rcprem010, 0::NUMERIC ), " +
+            "  COALESCE( premium.rtprem010, 0::NUMERIC ) " +
+            " ) AS adjustcomments, " +
+            " pst.prov1_010 AS on_tax, " +
+            " pst.prov2_010 AS qc_tax, " +
+            " pst.prov3_010 AS mb_tax " +
+            "FROM " +
+            " ( " +
+            "  SELECT " +
+            "   pt.group_id, " +
+            "   pt.policy_number AS ptpolicy_number, " +
+            "   pt.underwriter_id AS ptunderwriter_id, " +
+            "   pt.month_id, " +
+            "   invoice.employer, " +
+            "   premium010.vol010, " +
+            "   premium010.liv010, " +
+            "   premium010.vol010spouse, " +
+            "   premium010.vol010dep, " +
+            "   premium010.admin_rate010, " +
+            "   premium010.comm_rate010, " +
+            "   premium010.gross010, " +
+            "   ra.prem010 AS raprem010, " +
+            "   rc.prem010 AS rcprem010, " +
+            "   rt.prem010 AS rtprem010, " +
+            "   premium010.admin010, " +
+            "   premium010.comm010 " +
+            "  FROM " +
+            "   ( " +
+            "    SELECT " +
+            "     premiums.underwriter_id, " +
+            "     premiums.policy_number, " +
+            "     premiums.month_id, " +
+            "     premiums.group_id, " +
+            "     SUM( premiums.gross_prem ) AS sumofgross_prem, " +
+            "     SUM( premiums.admin_allow ) AS sumofadmin_allow, " +
+            "     SUM( premiums.commission ) AS sumofcommission, " +
+            "     SUM( premiums.net_prem ) AS sumofnet_prem, " +
+            "     SUM( premiums.gross_prem + COALESCE( premiums.adjud_per_lives, 0::NUMERIC )+ COALESCE( premiums.admin_per_lives, 0::NUMERIC )+ COALESCE( premiums.comm_per_lives, 0::NUMERIC )) AS gross, " +
+            "     SUM( premiums.admin_allow + COALESCE( premiums.admin_per_lives, 0::NUMERIC )) AS admin, " +
+            "     SUM( premiums.commission + COALESCE( premiums.comm_per_lives, 0::NUMERIC )) AS comm, " +
+            "     SUM( premiums.net_prem + COALESCE( premiums.adjud_per_lives, 0::NUMERIC )) AS net " +
+            "    FROM " +
+            "     premiums " +
+            "    GROUP BY " +
+            "     premiums.underwriter_id, " +
+            "     premiums.policy_number, " +
+            "     premiums.month_id, " +
+            "     premiums.group_id " +
+            "    HAVING " +
+            "     premiums.month_id = getcurrentbillingdate() " +
+            "   ) pt " +
+            "  JOIN underwriter ON " +
+            "   pt.underwriter_id = underwriter.underwriter_id " +
+            "  JOIN invoice ON " +
+            "   pt.group_id = invoice.group_id " +
+            "   AND pt.month_id = invoice.month_id " +
+            "  LEFT JOIN( " +
+            "    SELECT " +
+            "     pat.group_id, " +
+            "     pat.policy_number, " +
+            "     pat.underwriter_id, " +
+            "     v_premiumadjust010.prem010 " +
+            "    FROM " +
+            "     ( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.month_id = getcurrentbillingdate() " +
+            "      GROUP BY " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.month_id, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "     ) pat " +
+            "    LEFT JOIN( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id, " +
+            "       premiums_adjust.gross_prem AS prem010 " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.ben_num = 10 " +
+            "       AND premiums_adjust.month_id = getcurrentbillingdate() " +
+            "     ) v_premiumadjust010 ON " +
+            "     pat.prem_code = v_premiumadjust010.prem_code " +
+            "     AND pat.policy_number::TEXT = v_premiumadjust010.policy_number::TEXT " +
+            "    WHERE " +
+            "     pat.prem_code = 'RA'::BPCHAR " +
+            "   ) ra ON " +
+            "   pt.group_id = ra.group_id " +
+            "   AND pt.policy_number::TEXT = ra.policy_number::TEXT " +
+            "   AND pt.underwriter_id = ra.underwriter_id " +
+            "  LEFT JOIN( " +
+            "    SELECT " +
+            "     pat.group_id, " +
+            "     pat.policy_number, " +
+            "     pat.underwriter_id, " +
+            "     v_premiumadjust010.prem010 " +
+            "    FROM " +
+            "     ( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.month_id = getcurrentbillingdate() " +
+            "      GROUP BY " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.month_id, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "     ) pat " +
+            "    LEFT JOIN( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id, " +
+            "       premiums_adjust.gross_prem AS prem010 " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.ben_num = 10 " +
+            "       AND premiums_adjust.month_id = getcurrentbillingdate() " +
+            "     ) v_premiumadjust010 ON " +
+            "     pat.prem_code = v_premiumadjust010.prem_code " +
+            "     AND pat.policy_number::TEXT = v_premiumadjust010.policy_number::TEXT " +
+            "    WHERE " +
+            "     pat.prem_code = 'RC'::BPCHAR " +
+            "   ) rc ON " +
+            "   pt.group_id = rc.group_id " +
+            "   AND pt.policy_number::TEXT = rc.policy_number::TEXT " +
+            "   AND pt.underwriter_id = rc.underwriter_id " +
+            "  LEFT JOIN( " +
+            "    SELECT " +
+            "     pat.group_id, " +
+            "     pat.policy_number, " +
+            "     pat.underwriter_id, " +
+            "     v_premiumadjust010.prem010 " +
+            "    FROM " +
+            "     ( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.month_id = getcurrentbillingdate() " +
+            "      GROUP BY " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.month_id, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id " +
+            "     ) pat " +
+            "    LEFT JOIN( " +
+            "      SELECT " +
+            "       premiums_adjust.underwriter_id, " +
+            "       premiums_adjust.policy_number, " +
+            "       premiums_adjust.prem_code, " +
+            "       premiums_adjust.group_id, " +
+            "       premiums_adjust.gross_prem AS prem010 " +
+            "      FROM " +
+            "       premiums_adjust " +
+            "      WHERE " +
+            "       premiums_adjust.ben_num = 10 " +
+            "       AND premiums_adjust.month_id = getcurrentbillingdate() " +
+            "     ) v_premiumadjust010 ON " +
+            "     pat.prem_code = v_premiumadjust010.prem_code " +
+            "     AND pat.policy_number::TEXT = v_premiumadjust010.policy_number::TEXT " +
+            "    WHERE " +
+            "     pat.prem_code = 'RT'::BPCHAR " +
+            "   ) rt ON " +
+            "   pt.group_id = rt.group_id " +
+            "   AND pt.policy_number::TEXT = rt.policy_number::TEXT " +
+            "   AND pt.underwriter_id = rt.underwriter_id " +
+            "  LEFT JOIN( " +
+            "    SELECT " +
+            "     premiums.underwriter_id, " +
+            "     premiums.policy_number, " +
+            "     premiums.group_id, " +
+            "     premiums.vol_doll AS vol010, " +
+            "     premiums.single_rate AS rate010, " +
+            "     premiums.couple_rate AS rate010c, " +
+            "     premiums.family_rate AS rate010f, " +
+            "     premiums.gross_prem AS gross010, " +
+            "     premiums.admin_allow AS admin010, " +
+            "     premiums.commission AS comm010, " +
+            "     premiums.net_prem AS net010, " +
+            "     premiums.vol_single AS liv010, " +
+            "     premiums.comm_rate AS comm_rate010, " +
+            "     premiums.admin_rate AS admin_rate010, " +
+            "     CASE " +
+            "      WHEN premiums.vol_couple = 0 " +
+            "      OR premiums.vol_couple IS NULL THEN NULL::INTEGER " +
+            "      ELSE premiums.vol_couple " +
+            "     END AS vol010spouse, " +
+            "     CASE " +
+            "      WHEN premiums.vol_family = 0 " +
+            "      OR premiums.vol_family IS NULL THEN NULL::INTEGER " +
+            "      ELSE premiums.vol_family " +
+            "     END AS vol010dep " +
+            "    FROM " +
+            "     premiums " +
+            "    WHERE " +
+            "     premiums.ben_num = 10 " +
+            "     AND premiums.month_id = getcurrentbillingdate() " +
+            "   ) premium010 ON " +
+            "   pt.group_id = premium010.group_id " +
+            "   AND pt.policy_number::TEXT = premium010.policy_number::TEXT " +
+            "   AND pt.underwriter_id = premium010.underwriter_id " +
+            " ) premium " +
+            "LEFT JOIN( " +
+            "  SELECT " +
+            "   pstforpremiumreport.underwriter_id, " +
+            "   pstforpremiumreport.policy_number, " +
+            "   pstforpremiumreport.group_id, " +
+            "   SUM( CASE WHEN pstforpremiumreport.ben_num = 10 AND pstforpremiumreport.province = 'ON'::BPCHAR THEN pstforpremiumreport.pst ELSE 0::NUMERIC END ) AS prov1_010, " +
+            "   SUM( CASE WHEN pstforpremiumreport.ben_num = 10 AND pstforpremiumreport.province = 'QC'::BPCHAR THEN pstforpremiumreport.pst ELSE 0::NUMERIC END ) AS prov2_010, " +
+            "   'MB'::TEXT AS prov3, " +
+            "   SUM( CASE WHEN pstforpremiumreport.ben_num = 10 AND pstforpremiumreport.province = 'MB'::BPCHAR THEN pstforpremiumreport.pst ELSE 0::NUMERIC END ) AS prov3_010 " +
+            "  FROM " +
+            "   pstforpremiumreport " +
+            "  WHERE " +
+            "   pstforpremiumreport.month_id = getcurrentbillingdate() " +
+            "  GROUP BY " +
+            "   pstforpremiumreport.underwriter_id, " +
+            "   pstforpremiumreport.policy_number, " +
+            "   pstforpremiumreport.group_id " +
+            " ) pst ON " +
+            " premium.group_id = pst.group_id " +
+            " AND premium.ptpolicy_number::TEXT = pst.policy_number::TEXT " +
+            " AND premium.ptunderwriter_id = pst.underwriter_id " +
+            "WHERE " +
+            " premium.ptunderwriter_id = 93032 " +
+            " AND( " +
+            "  hasiapci( premium.group_id, premium.ptpolicy_number, 10 ) " +
+            "  OR( " +
+            "   premium.ptpolicy_number::TEXT IN( " +
+            "    SELECT " +
+            "     premiums.policy_number " +
+            "    FROM " +
+            "     premiums " +
+            "    WHERE " +
+            "     premiums.policy_number::TEXT = premium.ptpolicy_number::TEXT " +
+            "     AND premiums.ben_num = 10 " +
+            "     AND premiums.month_id = premium.month_id " +
+            "   ) " +
+            "  ) " +
+            " )";
 
     private static final String IAP_OPTIONAL_ADD_PREMIUM_QRY = "SELECT " +
             " polnumseries( premium.ptunderwriter_id, premium.ptpolicy_number ) AS pol_no, " +
@@ -1103,5 +1478,49 @@ public class IAPPremiumReportDAOImpl implements IAPPremiumReportDAO
                            });
 
         return iapOptionalADDGroupList;
+    }
+
+    @Override
+    public ArrayList<IAPPremiumGroup> getIAPPremiumReportGroupList()
+    {
+        ArrayList<IAPPremiumGroup> iapGroupList = new ArrayList<>();
+
+        jdbcTemplate.query(IAP_PREMIUM_QRY,
+                           rs ->
+                           {
+                               iapGroupList.add(new IAPPremiumGroup(rs.getString("pol_no"),
+                                                                    rs.getString("div_number"),
+                                                                    rs.getString("division_name"),
+                                                                    rs.getFloat("commrate"),
+                                                                    rs.getDate("effdate"),
+                                                                    rs.getDate("nextrenew"),
+                                                                    rs.getString("status"),
+                                                                    rs.getString("empprovsplit"),
+                                                                    rs.getString("benefitamount"),
+                                                                    rs.getInt("lives"),
+                                                                    rs.getFloat("current_volume_of_ins"),
+                                                                    rs.getFloat("grossrate"),
+                                                                    rs.getFloat("gross_prem"),
+                                                                    rs.getString("spousebenefitamount"),
+                                                                    rs.getInt("spouselives"),
+                                                                    rs.getFloat("spouse_volume"),
+                                                                    rs.getFloat("spousetotalpremium"),
+                                                                    rs.getString("spouserate"),
+                                                                    rs.getString("dependentbenefitamount"),
+                                                                    rs.getInt("dependent_unit"),
+                                                                    rs.getFloat("dependentrate"),
+                                                                    rs.getFloat("dependenttotalpremium"),
+                                                                    rs.getFloat("gross_prem"),
+                                                                    rs.getFloat("adjust"),
+                                                                    rs.getFloat("admin_fee"),
+                                                                    rs.getFloat("commission"),
+                                                                    rs.getFloat("totalcommission"),
+                                                                    rs.getFloat("on_tax"),
+                                                                    rs.getFloat("qc_tax"),
+                                                                    rs.getFloat("mb_tax"),
+                                                                    rs.getFloat("net_prem_paid"),
+                                                                    rs.getString("adjustcomments")));
+                           });
+        return iapGroupList;
     }
 }
