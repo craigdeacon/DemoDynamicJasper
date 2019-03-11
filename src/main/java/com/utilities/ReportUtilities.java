@@ -1,9 +1,11 @@
 package com.utilities;
 
+import ar.com.fdvs.dj.domain.DJCalculation;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
+import ar.com.fdvs.dj.domain.entities.DJGroupVariable;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.lowagie.text.pdf.PdfContentByte;
 import java.awt.Desktop;
@@ -344,8 +346,10 @@ public class ReportUtilities
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
         ArrayList<AbstractColumn> columnList = columns;
+
         columnList.forEach( (column) ->
                             {
+                                DJGroupVariable test = new DJGroupVariable(column, DJCalculation.SUM);
                                 dynamicReportBuilder.addColumn( column );
                             } );
 

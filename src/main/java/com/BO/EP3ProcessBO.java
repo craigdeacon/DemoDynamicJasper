@@ -11,20 +11,28 @@ import com.DemoDynamicJasper.spring.config.AppConfig;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author craig.deacon
  */
+@Service
 public class EP3ProcessBO
 {
-
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext( AppConfig.class );
     private static final Logger LOGGER = Logger.getLogger( ProvincialSalesTaxBO.class.getName() );
-    EP3ProcessDAO ep3ProcessDAO = context.getBean( EP3ProcessDAO.class );
+    EP3ProcessDAO ep3ProcessDAO;
 
-    private ArrayList<EP3ProcessEntry> getEP3ProcessList( Date invoiceDate )
+    @Autowired
+    public EP3ProcessBO(EP3ProcessDAO ep3ProcessDAO)
+    {
+        this.ep3ProcessDAO = ep3ProcessDAO;
+    }
+
+    private ArrayList<EP3ProcessEntry> getEP3ProcessList(Date invoiceDate )
     {
         return ep3ProcessDAO.getGroupList( invoiceDate );
     }

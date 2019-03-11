@@ -12,6 +12,8 @@ import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.BO.EP3ProcessBO;
 import com.DAO.EP3.EP3ProcessDAOImpl;
 import static com.utilities.ReportStyles.*;
+
+import com.DemoDynamicJasper.spring.config.AppConfig;
 import com.utilities.ReportUtilities;
 import static com.utilities.ReportUtilities.*;
 import java.sql.Date;
@@ -24,6 +26,8 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  *
@@ -31,9 +35,13 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
  */
 public class EP3
 {
+    EP3ProcessBO ep3ProcessBO;
 
+    @Autowired
     public EP3()
     {
+        this.ep3ProcessBO = new AnnotationConfigApplicationContext(AppConfig.class ).getBean(EP3ProcessBO.class);
+//        this.ep3ProcessBO = SpringConfigurationBootstrap.getApplicationContext().getBean(Tpa2MembersBO.class);
     }
 
     public void displayEP3Report()
@@ -42,7 +50,7 @@ public class EP3
         {
             initStyles();
             
-            EP3ProcessBO ep3ProcessBO = new EP3ProcessBO();
+
 
             DynamicReport dynamicReport = ReportUtilities.createBasicReportSkeleton(getEP3Columns(), "EP3 Process Report");
 

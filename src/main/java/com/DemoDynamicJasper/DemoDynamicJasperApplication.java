@@ -3,6 +3,7 @@ package com.DemoDynamicJasper;
 import com.Component.CS.EP3.entity.EP3;
 import com.Component.ME.CignaUpload.entity.CignaUploadReport;
 import com.Component.ME.EAPReport.entity.EapReport;
+import com.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
 import com.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
 import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
 
@@ -40,8 +41,8 @@ public class DemoDynamicJasperApplication
 //        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
 //        provincialSalesTaxReport.displayProvincialSalesTaxReport();
 
-//        EP3 ep3 = new EP3();
-//        ep3.displayEP3Report();
+        EP3 ep3 = new EP3();
+        ep3.displayEP3Report();
 
 //        EapReport eapReport = new EapReport();
 //        /*Arete*/
@@ -52,8 +53,11 @@ public class DemoDynamicJasperApplication
 //        CignaUploadReport cignaUploadReport = new CignaUploadReport();
 //        cignaUploadReport.displayCignaUploadReport();
 
-        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
-        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
+//        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
+//        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
+
+//        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
+//        iapPremiumADDReport.displayIAPPremiumADDReport();
 
     }
 }

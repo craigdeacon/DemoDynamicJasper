@@ -1,5 +1,6 @@
 package com.BO;
 
+import com.Component.ME.IAPPremiumReport.container.IAPPremiumADDGroup;
 import com.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
 import com.Component.ME.IAPPremiumReport.repository.IAPPremiumReportTestRepo;
 import com.DAO.IAPPremiumReport.IAPPremiumReportDAO;
@@ -19,5 +20,10 @@ public class IAPPremiumReportBO
     public ArrayList<IAPPremiumDSAIGroup> getIapPremiumDSAIGroups()
     {
            return iapPremiumReportDAO.getIAPPremiumReportDSAIGroupList();
+    }
+
+    public ArrayList<IAPPremiumADDGroup> getIapPremiumADDGroups()
+    {
+        return iapPremiumReportDAO.getIAPPremiumReportADDGroupList();
     }
 }
