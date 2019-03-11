@@ -5,7 +5,6 @@
  */
 package com.Report.Component.TestReportComponent.secondReport.repository;
 
-import com.Component.TestReportComponent.secondReport.container.*;
 import com.Report.Component.TestReportComponent.secondReport.container.Employee;
 import com.Report.Component.TestReportComponent.secondReport.container.Group;
 

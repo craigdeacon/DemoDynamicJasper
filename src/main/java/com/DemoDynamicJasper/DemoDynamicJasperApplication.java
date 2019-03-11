@@ -7,6 +7,7 @@ import com.Report.Component.ME.CignaUpload.entity.CignaUploadReport;
 import com.Report.Component.ME.EAPReport.entity.EapReport;
 import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
 import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
+import com.Report.Component.ME.IAPPremiumReport.entity.IAPPremiumOptionalADDReport;
 import com.Report.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
 import com.Report.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
 import com.Report.Component.TestReportComponent.firstReport.entity.BookReport;
@@ -42,6 +43,18 @@ class DemoDynamicJasperApplication
         eapReport.displayEAPReport(93064);
         /*HumanaCare*/
         eapReport.displayEAPReport(601076);
+
+        CignaUploadReport cignaUploadReport = new CignaUploadReport();
+        cignaUploadReport.displayCignaUploadReport();
+
+        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
+        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
+
+        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
+        iapPremiumADDReport.displayIAPPremiumADDReport();
+
+        IAPPremiumOptionalADDReport iapPremiumOptionalADDReport = new IAPPremiumOptionalADDReport();
+        iapPremiumOptionalADDReport.displayIAPPremiumOptionalADDReport();
 
     }
 
@@ -84,6 +97,9 @@ class DemoDynamicJasperApplication
 
         IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
         iapPremiumADDReport.displayIAPPremiumADDReport();
+
+        IAPPremiumOptionalADDReport iapPremiumOptionalADDReport = new IAPPremiumOptionalADDReport();
+        iapPremiumOptionalADDReport.displayIAPPremiumOptionalADDReport();
     }
 
     private static void CSReports()

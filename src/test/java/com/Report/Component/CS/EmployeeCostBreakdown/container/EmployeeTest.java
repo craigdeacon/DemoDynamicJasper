@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Component.TestReportComponent.secondReport.container;
+package com.Report.Component.CS.EmployeeCostBreakdown.container;
 
-import com.Report.Component.TestReportComponent.secondReport.container.Employee;
+import com.Report.Component.CS.EmployeeCostBreakdown.container.Employee;
 import org.junit.*;
 
 /**

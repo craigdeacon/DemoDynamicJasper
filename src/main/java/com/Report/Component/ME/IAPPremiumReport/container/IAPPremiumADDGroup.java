@@ -120,19 +120,9 @@ public class IAPPremiumADDGroup
         this.totalCommissionRate = adminRate + commRate;
     }
 
-    public IAPPremiumADDGroup()
-    {
-
-    }
-
     public String getPolicyNumber()
     {
         return policyNumber;
-    }
-
-    public void setPolicyNumber(String policyNumber)
-    {
-        this.policyNumber = policyNumber;
     }
 
     public String getDivisionNumber()
@@ -140,19 +130,9 @@ public class IAPPremiumADDGroup
         return divisionNumber;
     }
 
-    public void setDivisionNumber(String divisionNumber)
-    {
-        this.divisionNumber = divisionNumber;
-    }
-
     public String getDivisionName()
     {
         return divisionName;
-    }
-
-    public void setDivisionName(String divisionName)
-    {
-        this.divisionName = divisionName;
     }
 
     public Float getTotalCommissionRate()
@@ -160,19 +140,9 @@ public class IAPPremiumADDGroup
         return totalCommissionRate;
     }
 
-    public void setTotalCommissionRate(Float totalCommissionRate)
-    {
-        this.totalCommissionRate = totalCommissionRate;
-    }
-
     public Date getCoverageEffectiveDate()
     {
         return coverageEffectiveDate;
-    }
-
-    public void setCoverageEffectiveDate(Date coverageEffectiveDate)
-    {
-        this.coverageEffectiveDate = coverageEffectiveDate;
     }
 
     public Date getRenewalMonth()
@@ -180,19 +150,9 @@ public class IAPPremiumADDGroup
         return renewalMonth;
     }
 
-    public void setRenewalMonth(Date renewalMonth)
-    {
-        this.renewalMonth = renewalMonth;
-    }
-
     public String getDivisionStatus()
     {
         return divisionStatus;
-    }
-
-    public void setDivisionStatus(String divisionStatus)
-    {
-        this.divisionStatus = divisionStatus;
     }
 
     public String getPctProvinceEmployeeSplit()
@@ -200,19 +160,9 @@ public class IAPPremiumADDGroup
         return pctProvinceEmployeeSplit;
     }
 
-    public void setPctProvinceEmployeeSplit(String pctProvinceEmployeeSplit)
-    {
-        this.pctProvinceEmployeeSplit = pctProvinceEmployeeSplit;
-    }
-
     public Float getBenefitAmountPerEmployee()
     {
         return benefitAmountPerEmployee;
-    }
-
-    public void setBenefitAmountPerEmployee(Float benefitAmountPerEmployee)
-    {
-        this.benefitAmountPerEmployee = benefitAmountPerEmployee;
     }
 
     public Integer getCurrentNumberLives()
@@ -220,19 +170,9 @@ public class IAPPremiumADDGroup
         return currentNumberLives;
     }
 
-    public void setCurrentNumberLives(Integer currentNumberLives)
-    {
-        this.currentNumberLives = currentNumberLives;
-    }
-
     public Float getCurrentVolumeOfInsurer()
     {
         return currentVolumeOfInsurer;
-    }
-
-    public void setCurrentVolumeOfInsurer(Float currentVolumeOfInsurer)
-    {
-        this.currentVolumeOfInsurer = currentVolumeOfInsurer;
     }
 
     public Float getGrossMonthlyPremiumRate()
@@ -240,19 +180,9 @@ public class IAPPremiumADDGroup
         return grossMonthlyPremiumRate;
     }
 
-    public void setGrossMonthlyPremiumRate(Float grossMonthlyPremiumRate)
-    {
-        this.grossMonthlyPremiumRate = grossMonthlyPremiumRate;
-    }
-
     public Float getGrossPremium()
     {
         return grossPremium;
-    }
-
-    public void setGrossPremium(Float grossPremium)
-    {
-        this.grossPremium = grossPremium;
     }
 
     public Float getBenefitAmountSpouse()
@@ -260,19 +190,9 @@ public class IAPPremiumADDGroup
         return benefitAmountSpouse;
     }
 
-    public void setBenefitAmountSpouse(Float benefitAmountSpouse)
-    {
-        this.benefitAmountSpouse = benefitAmountSpouse;
-    }
-
     public Float getCurrentNumberLivesSpouse()
     {
         return currentNumberLivesSpouse;
-    }
-
-    public void setCurrentNumberLivesSpouse(Float currentNumberLivesSpouse)
-    {
-        this.currentNumberLivesSpouse = currentNumberLivesSpouse;
     }
 
     public Float getCurrentVolumeOfInsurerSpouse()
@@ -280,19 +200,9 @@ public class IAPPremiumADDGroup
         return currentVolumeOfInsurerSpouse;
     }
 
-    public void setCurrentVolumeOfInsurerSpouse(Float currentVolumeOfInsurerSpouse)
-    {
-        this.currentVolumeOfInsurerSpouse = currentVolumeOfInsurerSpouse;
-    }
-
     public Float getGrossMonthlyPremiumRateSpouse()
     {
         return grossMonthlyPremiumRateSpouse;
-    }
-
-    public void setGrossMonthlyPremiumRateSpouse(Float grossMonthlyPremiumRateSpouse)
-    {
-        this.grossMonthlyPremiumRateSpouse = grossMonthlyPremiumRateSpouse;
     }
 
     public Float getGrossPremiumSpouse()
@@ -300,19 +210,9 @@ public class IAPPremiumADDGroup
         return grossPremiumSpouse;
     }
 
-    public void setGrossPremiumSpouse(Float grossPremiumSpouse)
-    {
-        this.grossPremiumSpouse = grossPremiumSpouse;
-    }
-
     public Float getBenefitAmountDependent()
     {
         return benefitAmountDependent;
-    }
-
-    public void setBenefitAmountDependent(Float benefitAmountDependent)
-    {
-        this.benefitAmountDependent = benefitAmountDependent;
     }
 
     public Float getCurrentNumberOfUnitsDependent()
@@ -320,19 +220,9 @@ public class IAPPremiumADDGroup
         return currentNumberOfUnitsDependent;
     }
 
-    public void setCurrentNumberOfUnitsDependent(Float currentNumberOfUnitsDependent)
-    {
-        this.currentNumberOfUnitsDependent = currentNumberOfUnitsDependent;
-    }
-
     public Float getGrossMonthlyPremiumRateDependent()
     {
         return grossMonthlyPremiumRateDependent;
-    }
-
-    public void setGrossMonthlyPremiumRateDependent(Float grossMonthlyPremiumRateDependent)
-    {
-        this.grossMonthlyPremiumRateDependent = grossMonthlyPremiumRateDependent;
     }
 
     public Float getGrossPremiumDependent()
@@ -340,19 +230,9 @@ public class IAPPremiumADDGroup
         return grossPremiumDependent;
     }
 
-    public void setGrossPremiumDependent(Float grossPremiumDependent)
-    {
-        this.grossPremiumDependent = grossPremiumDependent;
-    }
-
     public Float getTotalGrossPremium()
     {
         return totalGrossPremium;
-    }
-
-    public void setTotalGrossPremium(Float totalGrossPremium)
-    {
-        this.totalGrossPremium = totalGrossPremium;
     }
 
     public Float getAdjust()
@@ -360,19 +240,9 @@ public class IAPPremiumADDGroup
         return adjust;
     }
 
-    public void setAdjust(Float adjust)
-    {
-        this.adjust = adjust;
-    }
-
     public Float getAdminFee()
     {
         return adminFee;
-    }
-
-    public void setAdminFee(Float adminFee)
-    {
-        this.adminFee = adminFee;
     }
 
     public Float getCommission()
@@ -380,19 +250,9 @@ public class IAPPremiumADDGroup
         return commission;
     }
 
-    public void setCommission(Float commission)
-    {
-        this.commission = commission;
-    }
-
     public Float getTotalCommission()
     {
         return totalCommission;
-    }
-
-    public void setTotalCommission(Float totalCommission)
-    {
-        this.totalCommission = totalCommission;
     }
 
     public Float getOntarioTax()
@@ -400,19 +260,9 @@ public class IAPPremiumADDGroup
         return ontarioTax;
     }
 
-    public void setOntarioTax(Float ontarioTax)
-    {
-        this.ontarioTax = ontarioTax;
-    }
-
     public Float getQuebecTax()
     {
         return quebecTax;
-    }
-
-    public void setQuebecTax(Float quebecTax)
-    {
-        this.quebecTax = quebecTax;
     }
 
     public Float getManitobaTax()
@@ -420,19 +270,9 @@ public class IAPPremiumADDGroup
         return manitobaTax;
     }
 
-    public void setManitobaTax(Float manitobaTax)
-    {
-        this.manitobaTax = manitobaTax;
-    }
-
     public Float getNetPremiumPaid()
     {
         return netPremiumPaid;
-    }
-
-    public void setNetPremiumPaid(Float netPremiumPaid)
-    {
-        this.netPremiumPaid = netPremiumPaid;
     }
 
     public String getComments()
@@ -440,19 +280,9 @@ public class IAPPremiumADDGroup
         return comments;
     }
 
-    public void setComments(String comments)
-    {
-        this.comments = comments;
-    }
-
     public Float getGrossPremiumAndAdjust()
     {
         return grossPremiumAndAdjust;
-    }
-
-    public void setGrossPremiumAndAdjust(Float grossPremiumAndAdjust)
-    {
-        this.grossPremiumAndAdjust = grossPremiumAndAdjust;
     }
 
     @Override
@@ -491,6 +321,7 @@ public class IAPPremiumADDGroup
                 ", manitobaTax=" + manitobaTax +
                 ", netPremiumPaid=" + netPremiumPaid +
                 ", comments='" + comments + '\'' +
+                ", grossPremiumAndAdjust=" + grossPremiumAndAdjust +
                 '}';
     }
 }

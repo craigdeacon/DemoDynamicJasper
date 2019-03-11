@@ -1,4 +1,4 @@
-package com.BO;
+package com.Database.BO;
 
 import com.Report.Component.ME.EAPReport.container.EapGroup;
 import com.Database.DAO.EAPReport.EAPReportDAO;

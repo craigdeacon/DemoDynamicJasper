@@ -23,18 +23,9 @@ public class IAPPremiumDSAIGroup
         this.pst = pst;
     }
 
-    public IAPPremiumDSAIGroup()
-    {
-    }
-
     public String getDivisionName()
     {
         return divisionName;
-    }
-
-    public void setDivisionName(String divisionName)
-    {
-        this.divisionName = divisionName;
     }
 
     public String getPolicyNumber()
@@ -42,19 +33,9 @@ public class IAPPremiumDSAIGroup
         return policyNumber;
     }
 
-    public void setPolicyNumber(String policyNumber)
-    {
-        this.policyNumber = policyNumber;
-    }
-
     public Integer getDivisionNumber()
     {
         return divisionNumber;
-    }
-
-    public void setDivisionNumber(Integer divisionNumber)
-    {
-        this.divisionNumber = divisionNumber;
     }
 
     public Integer getSingleLives()
@@ -62,19 +43,9 @@ public class IAPPremiumDSAIGroup
         return singleLives;
     }
 
-    public void setSingleLives(Integer singleLives)
-    {
-        this.singleLives = singleLives;
-    }
-
     public Integer getCoupleLives()
     {
         return coupleLives;
-    }
-
-    public void setCoupleLives(Integer coupleLives)
-    {
-        this.coupleLives = coupleLives;
     }
 
     public Float getCurrentPremium()
@@ -82,29 +53,14 @@ public class IAPPremiumDSAIGroup
         return currentPremium;
     }
 
-    public void setCurrentPremium(Float currentPremium)
-    {
-        this.currentPremium = currentPremium;
-    }
-
     public Float getRetroPremium()
     {
         return retroPremium;
     }
 
-    public void setRetroPremium(Float retroPremium)
-    {
-        this.retroPremium = retroPremium;
-    }
-
     public Float getPst()
     {
         return pst;
-    }
-
-    public void setPst(Float pst)
-    {
-        this.pst = pst;
     }
 
     @Override

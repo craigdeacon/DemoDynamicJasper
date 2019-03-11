@@ -31,19 +31,9 @@ public class EapGroup
         this.lives = lives;
     }
 
-    public EapGroup()
-    {
-
-    }
-
     public Integer getSequenceNumber()
     {
         return sequenceNumber;
-    }
-
-    public void setSequenceNumber(Integer sequenceNumber)
-    {
-        this.sequenceNumber = sequenceNumber;
     }
 
     public Date getLoadDate()
@@ -51,19 +41,9 @@ public class EapGroup
         return loadDate;
     }
 
-    public void setLoadDate(Date loadDate)
-    {
-        this.loadDate = loadDate;
-    }
-
     public Integer getGroupId()
     {
         return groupId;
-    }
-
-    public void setGroupId(Integer groupId)
-    {
-        this.groupId = groupId;
     }
 
     public String getAccountNumber()
@@ -71,19 +51,9 @@ public class EapGroup
         return accountNumber;
     }
 
-    public void setAccountNumber(String accountNumber)
-    {
-        this.accountNumber = accountNumber;
-    }
-
     public String getEmployerName()
     {
         return employerName;
-    }
-
-    public void setEmployerName(String employerName)
-    {
-        this.employerName = employerName;
     }
 
     public Date getPremiumMonth()
@@ -91,19 +61,9 @@ public class EapGroup
         return premiumMonth;
     }
 
-    public void setPremiumMonth(Date premiumMonth)
-    {
-        this.premiumMonth = premiumMonth;
-    }
-
     public Date getEffectiveDate()
     {
         return effectiveDate;
-    }
-
-    public void setEffectiveDate(Date effectiveDate)
-    {
-        this.effectiveDate = effectiveDate;
     }
 
     public String getInsurer()
@@ -111,19 +71,9 @@ public class EapGroup
         return insurer;
     }
 
-    public void setInsurer(String insurer)
-    {
-        this.insurer = insurer;
-    }
-
     public String getProduct()
     {
         return product;
-    }
-
-    public void setProduct(String product)
-    {
-        this.product = product;
     }
 
     public String getProvince()
@@ -131,19 +81,9 @@ public class EapGroup
         return province;
     }
 
-    public void setProvince(String province)
-    {
-        this.province = province;
-    }
-
     public Integer getLives()
     {
         return lives;
-    }
-
-    public void setLives(Integer lives)
-    {
-        this.lives = lives;
     }
 
     @Override
