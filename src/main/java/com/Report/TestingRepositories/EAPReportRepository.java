@@ -1,4 +1,4 @@
-package com.Report.Component.ME.EAPReport.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.ME.EAPReport.container.EapGroup;
 import com.Database.DAO.EAPReport.EAPReportDAO;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Component
-public class EAPReportTestRepo implements EAPReportDAO
+public class EAPReportRepository implements EAPReportDAO
 {
     private java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
 

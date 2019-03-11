@@ -1,4 +1,4 @@
-package com.Report.Component.ME.CignaUpload.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.ME.CignaUpload.container.CignaUploadGroup;
 import com.Database.DAO.CignaUpload.CignaUploadDAO;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class CignaUploadTestRepo implements CignaUploadDAO
+public class CignaUploadRepository implements CignaUploadDAO
 {
     @Override
     public ArrayList<CignaUploadGroup> getCignaUploadGroups()

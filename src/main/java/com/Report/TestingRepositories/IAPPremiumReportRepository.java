@@ -1,4 +1,4 @@
-package com.Report.Component.ME.IAPPremiumReport.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumADDGroup;
 import com.Report.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 
 @Component
-public class IAPPremiumReportTestRepo implements IAPPremiumReportDAO
+public class IAPPremiumReportRepository implements IAPPremiumReportDAO
 {
     private java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
 

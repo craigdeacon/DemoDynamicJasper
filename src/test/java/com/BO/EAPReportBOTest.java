@@ -2,7 +2,7 @@ package com.BO;
 
 import com.Report.Component.ME.EAPReport.container.EapGroup;
 import com.Database.DAO.EAPReport.EAPReportDAO;
-import com.Report.Component.ME.EAPReport.repository.EAPReportTestRepo;
+import com.Report.TestingRepositories.EAPReportRepository;
 import com.DemoDynamicJasper.spring.config.AppConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -18,7 +18,7 @@ public class EAPReportBOTest
     {
         LOGGER.info("getGroupListTest");
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class );
-        EAPReportDAO eapReportDAO = context.getBean(EAPReportTestRepo.class );
+        EAPReportDAO eapReportDAO = context.getBean(EAPReportRepository.class );
 
         //Arete List
         ArrayList<EapGroup> list = eapReportDAO.getGroupList(93064, "Arete");

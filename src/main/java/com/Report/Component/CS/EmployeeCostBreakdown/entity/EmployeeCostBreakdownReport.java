@@ -23,7 +23,7 @@ import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.Database.BO.EmployeeBO;
-import com.Report.Component.CS.EmployeeCostBreakdown.repository.EmployeeReportRepository;
+import com.Report.TestingRepositories.EmployeeCostBreakdownReportRepository;
 import static com.Utilities.ReportStyles.*;
 
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
@@ -116,9 +116,9 @@ public class EmployeeCostBreakdownReport
 //            DJCrosstab djcross = createCrossTab();
 //
 //            dynamicReportBuilder.addHeaderCrosstab( djcross );
-//            parameters.put("source", SortUtils.sortCollection(EmployeeReportRepository.getEmployeeList(),djcross));
+//            parameters.put("source", SortUtils.sortCollection(EmployeeCostBreakdownReportRepository.getEmployeeList(),djcross));
 //
-            String groupName = EmployeeReportRepository.getGroupName();
+            String groupName = EmployeeCostBreakdownReportRepository.getGroupName();
             String pattern = "MMMMM dd, yyyy HH:mm:ss ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());

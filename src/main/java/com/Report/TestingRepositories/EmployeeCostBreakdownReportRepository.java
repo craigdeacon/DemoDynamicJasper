@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Report.Component.CS.EmployeeCostBreakdown.repository;
+package com.Report.TestingRepositories;
 
 import com.Database.BO.EmployeeBO;
 import com.Component.CS.EmployeeCostBreakdown.container.*;
@@ -18,11 +18,11 @@ import java.util.List;
  *
  * @author craig.deacon
  */
-public class EmployeeReportRepository
+public class EmployeeCostBreakdownReportRepository
 {
 
     private EmployeeBO employeeBO;
-    public EmployeeReportRepository()
+    public EmployeeCostBreakdownReportRepository()
     {
         this.employeeBO = SpringConfigurationBootstrap.getApplicationContext().getBean(EmployeeBO.class);
     }

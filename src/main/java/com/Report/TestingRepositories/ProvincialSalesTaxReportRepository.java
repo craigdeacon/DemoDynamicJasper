@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Report.Component.ME.ProvincialSalesTaxReport.repository;
+package com.Report.TestingRepositories;
 
 import com.Database.BO.ProvincialSalesTaxBO;
 import com.Report.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;

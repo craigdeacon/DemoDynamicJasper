@@ -1,7 +1,7 @@
 package com.Database.BO;
 
 import com.Report.Component.ME.EAPReport.container.EapGroup;
-import com.Report.Component.ME.EAPReport.repository.EAPReportTestRepo;
+import com.Report.TestingRepositories.EAPReportRepository;
 import com.Database.DAO.EAPReport.EAPReportDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class EAPReportBO
     private EAPReportDAO eapReportDAO;
 
     @Autowired
-    public EAPReportBO(EAPReportTestRepo eapReportDAO)
+    public EAPReportBO(EAPReportRepository eapReportDAO)
     {
         this.eapReportDAO = eapReportDAO;
     }

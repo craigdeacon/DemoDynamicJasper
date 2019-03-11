@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Report.Component.CS.EP3.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.CS.EP3.container.EP3ProcessEntry;
 
@@ -17,7 +17,7 @@ import java.util.List;
  *
  * @author craig.deacon
  */
-class ep3Repository
+class EP3Repository
 {
 
     public static List<EP3ProcessEntry> getEP3List() throws ParseException

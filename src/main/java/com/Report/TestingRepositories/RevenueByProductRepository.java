@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Report.Component.ME.RevenueReportByProduct.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.ME.RevenueReportByProduct.container.Group;
 import com.Report.Component.ME.RevenueReportByProduct.container.ProductTypes;

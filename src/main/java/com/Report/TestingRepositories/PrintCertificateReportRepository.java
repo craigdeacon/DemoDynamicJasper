@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Report.Component.CS.PrintCertificate.repository;
+package com.Report.TestingRepositories;
 
 import com.Report.Component.CS.PrintCertificate.container.Benefit;
 import com.Report.Component.CS.PrintCertificate.container.ConcatEmployee;
