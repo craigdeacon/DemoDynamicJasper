@@ -36,7 +36,6 @@ public class EP3
 {
     private EP3ProcessBO ep3ProcessBO;
 
-    @Autowired
     public EP3()
     {
         this.ep3ProcessBO = SpringConfigurationBootstrap.getApplicationContext().getBean(EP3ProcessBO.class);

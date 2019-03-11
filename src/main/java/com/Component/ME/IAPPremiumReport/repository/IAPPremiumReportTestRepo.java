@@ -11,12 +11,11 @@ import java.util.ArrayList;
 public class IAPPremiumReportTestRepo implements IAPPremiumReportDAO
 {
     private java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-    private ArrayList<IAPPremiumDSAIGroup> iapPremiumGroupsDSAIList = new ArrayList<>();
-    private ArrayList<IAPPremiumADDGroup> iapPremiumGroupsADDList = new ArrayList<>();
 
     @Override
     public ArrayList<IAPPremiumDSAIGroup> getIAPPremiumReportDSAIGroupList()
     {
+        ArrayList<IAPPremiumDSAIGroup> iapPremiumGroupsDSAIList = new ArrayList<>();
         iapPremiumGroupsDSAIList.add(new IAPPremiumDSAIGroup("Test 1 Division Name", "100001111", 1234, 2, 4, 22.22f, 0.00f, 0.00f));
         iapPremiumGroupsDSAIList.add(new IAPPremiumDSAIGroup("Test 2 Division Name", "100001112", 1235, 2, 4, 22.22f, 0.00f, 0.00f));
         iapPremiumGroupsDSAIList.add(new IAPPremiumDSAIGroup("Test 3 Division Name", "100001113", 1236, 2, 4, 22.22f, 0.00f, 0.00f));
@@ -27,6 +26,7 @@ public class IAPPremiumReportTestRepo implements IAPPremiumReportDAO
     @Override
     public ArrayList<IAPPremiumADDGroup> getIAPPremiumReportADDGroupList()
     {
+        ArrayList<IAPPremiumADDGroup> iapPremiumGroupsADDList = new ArrayList<>();
         iapPremiumGroupsADDList.add(new IAPPremiumADDGroup("10001111",
                                                            "1111A",
                                                            "Test 1 Division Name",

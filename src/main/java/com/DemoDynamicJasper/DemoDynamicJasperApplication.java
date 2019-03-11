@@ -37,8 +37,11 @@ class DemoDynamicJasperApplication
 
         /*Current Report Working On*/
         //TODO Work on new Report
-        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
-        iapPremiumADDReport.displayIAPPremiumADDReport();
+        EapReport eapReport = new EapReport();
+        /*Arete*/
+        eapReport.displayEAPReport(93064);
+        /*HumanaCare*/
+        eapReport.displayEAPReport(601076);
 
     }
 

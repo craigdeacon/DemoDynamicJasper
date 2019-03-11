@@ -1,6 +1,7 @@
 package com.BO;
 
 import com.Component.ME.EAPReport.container.EapGroup;
+import com.Component.ME.EAPReport.repository.EAPReportTestRepo;
 import com.DAO.EAPReport.EAPReportDAO;
 import com.DAO.EAPReport.EAPReportDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class EAPReportBO
     private EAPReportDAO eapReportDAO;
 
     @Autowired
-    public EAPReportBO(EAPReportDAOImpl eapReportDAO)
+    public EAPReportBO(EAPReportTestRepo eapReportDAO)
     {
         this.eapReportDAO = eapReportDAO;
     }
