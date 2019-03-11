@@ -6,7 +6,6 @@
 package com.Component.CS.EP3.repository;
 
 import com.Component.CS.EP3.container.EP3ProcessEntry;
-import static com.Component.CS.EP3.repository.ep3Repository.parseDate;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.List;
  *
  * @author craig.deacon
  */
-public class ep3Repository
+class ep3Repository
 {
 
     public static List<EP3ProcessEntry> getEP3List() throws ParseException
@@ -34,13 +33,12 @@ public class ep3Repository
         return ep3List;
     }
     
-    public static Date parseDate( String date )
+    private static Date parseDate(String date)
     {
         try
         {
             java.util.Date utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
-            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-            return sqlDate;
+            return new Date(utilDate.getTime());
         }
         catch (ParseException e)
         {

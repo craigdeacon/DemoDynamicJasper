@@ -15,28 +15,19 @@ import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.BO.ProvincialSalesTaxBO;
-import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
-import com.Component.ME.ProvincialSalesTaxReport.repository.ProvincialSalesTaxReportRepository;
+
 import static com.utilities.ReportStyles.*;
 import static com.utilities.ReportUtilities.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.utilities.ReportUtilities;
-import net.sf.jasperreports.engine.JRDataSource;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JRDesignBand;
-import net.sf.jasperreports.engine.design.JRDesignStaticText;
-import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -45,12 +36,13 @@ import net.sf.jasperreports.view.JasperViewer;
 public class ProvincialSalesTaxReport
 {
 
+    private ProvincialSalesTaxBO provincialSalesTaxBO;
     /**
      *
      */
     public ProvincialSalesTaxReport()
     {
-
+        this.provincialSalesTaxBO = SpringConfigurationBootstrap.getApplicationContext().getBean(ProvincialSalesTaxBO.class);
     }
 
     /**
@@ -62,13 +54,12 @@ public class ProvincialSalesTaxReport
         {
             initStyles();
             Map parameters = new HashMap();
-            ProvincialSalesTaxBO pstBO = new ProvincialSalesTaxBO();
-            HashMap<String, List<ProvincialGroup>> groupMap = ProvincialSalesTaxReportRepository.getProvincialGroupList();
+//            HashMap<String, List<ProvincialGroup>> groupMap = provincialSalesTaxBO.getProvincialGroupList();
             String pattern = "MMMMM dd, yyyy HH:mm:ss ";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
             String date = simpleDateFormat.format(new Date());
             
-            HashMap<String, Integer> groupKey = pstBO.getUnderWriters();
+            HashMap<String, Integer> groupKey = provincialSalesTaxBO.getUnderWriters();
            
 
             DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
@@ -89,7 +80,7 @@ public class ProvincialSalesTaxReport
             for ( Map.Entry<String, Integer> entry : groupKey.entrySet() )
             {
                 dynamicReportBuilder.addConcatenatedReport( createProvincialSubreport( entry.getKey() ), entry.getKey(), DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION, notFirstPass );
-                parameters.put( entry.getKey(), ( groupMap.get( entry.getKey() ) ) );
+//                parameters.put( entry.getKey(), ( groupMap.get( entry.getKey() ) ) );
                 if ( !notFirstPass )
                     notFirstPass = true;
                 
@@ -103,13 +94,13 @@ public class ProvincialSalesTaxReport
             
             JasperReport jasperReport = DynamicJasperHelper.generateJasperReport( dynamicReport, new ClassicLayoutManager(), parameters );
 
-            JRDataSource dataSource = new JRBeanCollectionDataSource( groupMap.get( "CHUBB" ) );
+//            JRDataSource dataSource = new JRBeanCollectionDataSource( groupMap.get( "CHUBB" ) );
 
-            JasperPrint jasperPrint = JasperFillManager.fillReport( jasperReport, parameters, dataSource );
+//            JasperPrint jasperPrint = JasperFillManager.fillReport( jasperReport, parameters, dataSource );
 
 //            JasperViewer.viewReport( jasperPrint );
 
-            ReportUtilities.exportPdf(jasperPrint, "ProvincialSalesTaxReport" );
+//            ReportUtilities.exportPdf(jasperPrint, "ProvincialSalesTaxReport" );
             
 //            ReportUtilities.exportExcel(jasperPrint, "PST");
         }

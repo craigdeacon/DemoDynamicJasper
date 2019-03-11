@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Component
 public class EAPReportDAOImpl implements EAPReportDAO
 {
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private static final Logger LOGGER = Logger.getLogger(EAPReportDAOImpl.class.getName());
     
     private static final String EAP_GROUP_LIST_QRY_STR = "SELECT " +

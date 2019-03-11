@@ -1,7 +1,6 @@
 package com.DAO.CignaUpload;
 
 import com.Component.ME.CignaUpload.container.CignaUploadGroup;
-import com.DAO.EAPReport.EAPReportDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ import java.util.logging.Logger;
 @Component
 public class CignaUploadDAOImpl implements CignaUploadDAO
 {
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private static final Logger LOGGER = Logger.getLogger(CignaUploadDAOImpl.class.getName());
     
     private static final String CIGNA_UPLOAD_LIST_QRY_STR = "SELECT " +

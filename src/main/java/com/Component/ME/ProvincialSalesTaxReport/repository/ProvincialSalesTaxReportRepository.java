@@ -7,7 +7,8 @@ package com.Component.ME.ProvincialSalesTaxReport.repository;
 
 import com.BO.ProvincialSalesTaxBO;
 import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
-import java.util.ArrayList;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,23 +16,24 @@ import java.util.List;
  *
  * @author craig.deacon
  */
-public class ProvincialSalesTaxReportRepository
+class ProvincialSalesTaxReportRepository
 {
 
+    private final ProvincialSalesTaxBO provincialSalesTaxBO;
     /**
      *
      */
     public ProvincialSalesTaxReportRepository()
     {
+        provincialSalesTaxBO = SpringConfigurationBootstrap.getApplicationContext().getBean(ProvincialSalesTaxBO.class);
     }
     
     /**
      *
      * @return
      */
-    public static HashMap<String, List<ProvincialGroup>> getProvincialGroupList()
+    public HashMap<String, List<ProvincialGroup>> getProvincialGroupList()
     {
-        ProvincialSalesTaxBO provincialSalesTaxBO = new ProvincialSalesTaxBO();
         return provincialSalesTaxBO.getAllUnderwritingLists();
 //        
 //        List<ProvincialGroup> provincialGroupList = new ArrayList<>();

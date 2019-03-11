@@ -1,20 +1,25 @@
 package com.BO;
 
 import com.Component.ME.EAPReport.container.EapGroup;
-import com.Component.ME.EAPReport.repository.EAPReportTestRepo;
 import com.DAO.EAPReport.EAPReportDAO;
 import com.DAO.EAPReport.EAPReportDAOImpl;
-import com.DemoDynamicJasper.spring.config.AppConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+@Service
 public class EAPReportBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class );
     private static final Logger LOGGER = Logger.getLogger(EAPReportBO.class.getName() );
-    EAPReportDAO eapReportDAO = context.getBean(EAPReportTestRepo.class );
+    private EAPReportDAO eapReportDAO;
+
+    @Autowired
+    public EAPReportBO(EAPReportDAOImpl eapReportDAO)
+    {
+        this.eapReportDAO = eapReportDAO;
+    }
 
     public ArrayList<EapGroup> getEAPGroups(int underwriterId)
     {

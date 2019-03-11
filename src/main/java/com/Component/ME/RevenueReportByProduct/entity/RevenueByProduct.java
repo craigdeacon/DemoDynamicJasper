@@ -19,7 +19,6 @@ import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.Component.ME.RevenueReportByProduct.repository.RevenueByProductRepository;
-import com.utilities.ReportUtilities;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -171,7 +170,7 @@ public class RevenueByProduct
 
     private DJCrosstab createCrossTab()
     {
-        DJCrosstab djct = new CrosstabBuilder()
+        return new CrosstabBuilder()
                 .setHeight( 200 )
                 .setWidth( 500 )
                 .setDatasource( "source", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
@@ -188,10 +187,9 @@ public class RevenueByProduct
                 .setColumnHeaderHeight( 30 )
                 .setRowHeaderWidth( 80 )
                 .build();
-        return djct;
     }
     
-    protected String getFirstDayOfCurrentMonth()
+    private String getFirstDayOfCurrentMonth()
     {
         String currentDate;
         Date date = new Date();

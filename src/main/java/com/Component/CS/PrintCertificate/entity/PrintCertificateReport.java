@@ -13,13 +13,8 @@ import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
-import ar.com.fdvs.dj.domain.builders.GroupBuilder;
-import ar.com.fdvs.dj.domain.constants.GroupLayout;
-import ar.com.fdvs.dj.domain.entities.DJGroup;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
-import ar.com.fdvs.dj.domain.entities.columns.PropertyColumn;
 import com.Component.CS.PrintCertificate.repository.PrintCertificateReportRepository;
-import com.utilities.ReportUtilities;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JasperViewer;
@@ -30,7 +25,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.utilities.ReportStyles.*;
-import static com.utilities.ReportUtilities.createColumnString;
 import static com.utilities.ReportUtilities.createColumnString;
 
 /**

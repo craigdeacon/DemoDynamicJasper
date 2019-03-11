@@ -25,7 +25,7 @@ import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import ar.com.fdvs.dj.util.SortUtils;
 import com.Component.TestReportComponent.secondReport.repository.EmployeeReportRepository;
 import static com.utilities.ReportStyles.*;
-import static com.utilities.ReportStyles.initStyles;
+
 import com.utilities.ReportUtilities;
 import static com.utilities.ReportUtilities.*;
 import java.text.SimpleDateFormat;
@@ -185,7 +185,7 @@ public class EmployeeReport
      */
     private DJCrosstab createCrossTab()
     {
-        DJCrosstab djct = new CrosstabBuilder()
+        return new CrosstabBuilder()
                     .setHeight(200)
                     .setWidth(500)
                          .setDatasource("source",DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION)
@@ -193,18 +193,17 @@ public class EmployeeReport
                     .setColorScheme(DJConstants.COLOR_SCHEMA_LIGHT_GREEN)
                     .setAutomaticTitle(true)
                     .setCellBorder(Border.THIN())
-                    
+
                     .addColumn("Life","life",Float.class.getName(),false)
 //                    .addColumn("EAP","eap",Float.class.getName(),false)
                     .addRow("Name", "name", String.class.getName(),true, "Total")
-                    
-                    .addMeasure("total", Float.class.getName(), DJCalculation.NOTHING , "Total", LEFT)          
-                    
+
+                    .addMeasure("total", Float.class.getName(), DJCalculation.NOTHING , "Total", LEFT)
+
                     .setCellDimension(17, 60)
                     .setColumnHeaderHeight(30)
                     .setRowHeaderWidth(80)
                     .build();
-        return djct;
     }
 
     

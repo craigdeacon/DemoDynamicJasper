@@ -5,6 +5,7 @@ import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.BO.CignaUploadBO;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import com.utilities.ReportUtilities;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -20,13 +21,19 @@ import static com.utilities.ReportUtilities.*;
 
 public class CignaUploadReport
 {
+
+    private CignaUploadBO cignaUploadReportBO;
+
+    public CignaUploadReport()
+    {
+        this.cignaUploadReportBO = SpringConfigurationBootstrap.getApplicationContext().getBean(CignaUploadBO.class);
+    }
+
     public void displayCignaUploadReport()
     {
         try
         {
             initStyles();
-
-            CignaUploadBO cignaUploadReportBO = new CignaUploadBO();
 
             DynamicReport dynamicReport = ReportUtilities.createBasicReportSkeletonNoTitle(getCignaUploadColumns());
 

@@ -2,20 +2,25 @@ package com.BO;
 
 import com.Component.ME.IAPPremiumReport.container.IAPPremiumADDGroup;
 import com.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
-import com.Component.ME.IAPPremiumReport.repository.IAPPremiumReportTestRepo;
 import com.DAO.IAPPremiumReport.IAPPremiumReportDAO;
 import com.DAO.IAPPremiumReport.IAPPremiumReportDAOImpl;
-import com.DemoDynamicJasper.spring.config.AppConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+@Service
 public class IAPPremiumReportBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class );
     private static final Logger LOGGER = Logger.getLogger(EAPReportBO.class.getName() );
-    IAPPremiumReportDAO iapPremiumReportDAO = context.getBean(IAPPremiumReportDAOImpl.class );
+    private IAPPremiumReportDAO iapPremiumReportDAO;
+
+    @Autowired
+    public IAPPremiumReportBO(IAPPremiumReportDAOImpl iapPremiumReportDAO)
+    {
+        this.iapPremiumReportDAO = iapPremiumReportDAO;
+    }
 
     public ArrayList<IAPPremiumDSAIGroup> getIapPremiumDSAIGroups()
     {

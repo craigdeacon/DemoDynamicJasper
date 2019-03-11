@@ -12,18 +12,18 @@ package com.Component.ME.ProvincialSalesTaxReport.container;
 public class ProvincialGroup
 {
 
-    String groupName;
-    String policyNum;
-    Float taxPremiumOn;
-    Float salesTaxOn;
-    Float taxPremiumMa;
-    Float salesTaxMa;
-    Float taxPremiumQc;
-    Float salesTaxQc;
-    Float taxPremiumSa;
-    Float salesTaxSa;
-    Integer underwriterId;
-    String underwriterName;
+    private String groupName;
+    private String policyNum;
+    private Float taxPremiumOn;
+    private Float salesTaxOn;
+    private Float taxPremiumMa;
+    private Float salesTaxMa;
+    private Float taxPremiumQc;
+    private Float salesTaxQc;
+    private Float taxPremiumSa;
+    private Float salesTaxSa;
+    private Integer underwriterId;
+    private String underwriterName;
 
     /**
      *

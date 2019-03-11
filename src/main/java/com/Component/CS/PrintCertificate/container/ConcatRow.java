@@ -12,9 +12,9 @@ package com.Component.CS.PrintCertificate.container;
  */
 public class ConcatRow
 {
-    String column1;
-    String column2;
-    String name;
+    private String column1;
+    private String column2;
+    private String name;
 
     /**
      *
@@ -33,10 +33,10 @@ public class ConcatRow
     {
         this.name = name;
     }
-    String benefit;
-    String supplier;
-    String policyNo;
-    String date;
+    private String benefit;
+    private String supplier;
+    private String policyNo;
+    private String date;
 
     /**
      *

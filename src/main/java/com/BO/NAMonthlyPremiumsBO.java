@@ -7,22 +7,30 @@ package com.BO;
 
 import com.Component.CS.NAMonthlyPremiums.container.NAMonthlyPremiumsGroup;
 import com.DAO.NAMonthlyPremiums.NAMonthlyPremiumsDAO;
-import com.DemoDynamicJasper.spring.config.AppConfig;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.DAO.NAMonthlyPremiums.NAMonthlyPremiumsDAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author craig.deacon
  */
+@Service
 public class NAMonthlyPremiumsBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     private static final Logger LOGGER = Logger.getLogger( NAMonthlyPremiumsBO.class.getName());
     
-    NAMonthlyPremiumsDAO naMonthlyPremiumsDAO = context.getBean( NAMonthlyPremiumsDAO.class);
-    
+    private NAMonthlyPremiumsDAO naMonthlyPremiumsDAO;
+
+    @Autowired
+    public NAMonthlyPremiumsBO(NAMonthlyPremiumsDAOImpl naMonthlyPremiumsDAO)
+    {
+        this.naMonthlyPremiumsDAO = naMonthlyPremiumsDAO;
+    }
+
     public ArrayList<NAMonthlyPremiumsGroup> getNAMonthlyPremiumsGroup()
     {
         ArrayList<NAMonthlyPremiumsGroup> naMonthlyPremiumsGroups = naMonthlyPremiumsDAO.getNAMonthlyPremiumsGroup();

@@ -10,8 +10,8 @@ import java.util.Date;
 @Component
 public class EAPReportTestRepo implements EAPReportDAO
 {
-    public ArrayList<EapGroup> eapReportList = new ArrayList<>();
-    java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
+    private ArrayList<EapGroup> eapReportList = new ArrayList<>();
+    private java.sql.Date sqlDate = new java.sql.Date(new Date().getTime());
 
     @Override
     public ArrayList<EapGroup> getGroupList(int underwriterId, String insurer)
@@ -29,7 +29,7 @@ public class EAPReportTestRepo implements EAPReportDAO
         return eapGroupList;
     }
 
-    public ArrayList<EapGroup> getAreteEapReportList(String insurer)
+    private ArrayList<EapGroup> getAreteEapReportList(String insurer)
     {
         eapReportList.add(new EapGroup(1, sqlDate, 1, "AR-00001", "Test AR 1", sqlDate, sqlDate, insurer, "EAP", "AB", 2));
         eapReportList.add(new EapGroup(2, sqlDate, 2, "AR-00002", "Test AR 2", sqlDate, sqlDate, insurer, "EAP", "ON", 6));
@@ -38,7 +38,7 @@ public class EAPReportTestRepo implements EAPReportDAO
         return eapReportList;
     }
 
-    public ArrayList<EapGroup> getHumanaCareReportList(String insurer)
+    private ArrayList<EapGroup> getHumanaCareReportList(String insurer)
     {
         eapReportList.add(new EapGroup(1, sqlDate, 1, "HC-00001", "Test HC 1", sqlDate, sqlDate, insurer, "EAP", "AB", 2));
         eapReportList.add(new EapGroup(2, sqlDate, 2, "HC-00002", "Test HC 2", sqlDate, sqlDate, insurer, "EAP", "ON", 6));

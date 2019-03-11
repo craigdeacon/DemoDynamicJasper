@@ -2,14 +2,14 @@ package com.Component.ME.IAPPremiumReport.container;
 
 public class IAPPremiumDSAIGroup
 {
-    String divisionName;
-    String policyNumber;
-    Integer divisionNumber;
-    Integer singleLives;
-    Integer coupleLives;
-    Float currentPremium;
-    Float retroPremium;
-    Float pst;
+    private String divisionName;
+    private String policyNumber;
+    private Integer divisionNumber;
+    private Integer singleLives;
+    private Integer coupleLives;
+    private Float currentPremium;
+    private Float retroPremium;
+    private Float pst;
 
     public IAPPremiumDSAIGroup(String divisionName, String policyNumber, Integer divisionNumber, Integer singleLives, Integer coupleLives, Float currentPremium, Float retroPremium, Float pst)
     {

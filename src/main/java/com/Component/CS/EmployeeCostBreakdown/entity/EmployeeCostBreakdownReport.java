@@ -22,10 +22,12 @@ import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
+import com.BO.EmployeeBO;
 import com.Component.CS.EmployeeCostBreakdown.repository.EmployeeReportRepository;
 import static com.utilities.ReportStyles.*;
-import static com.utilities.ReportStyles.initStyles;
-import com.utilities.ReportUtilities;
+
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
+
 import static com.utilities.ReportUtilities.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,8 +39,8 @@ import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.util.JRColorUtil;
 import net.sf.jasperreports.view.JasperViewer;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * First basic report
@@ -48,11 +50,14 @@ import net.sf.jasperreports.view.JasperViewer;
 public class EmployeeCostBreakdownReport
 {
 
+    private EmployeeBO employeeBO;
     /**
      *
      */
+    @Autowired
     public EmployeeCostBreakdownReport()
     {
+        this.employeeBO = SpringConfigurationBootstrap.getApplicationContext().getBean(EmployeeBO.class);
     }
 
     
@@ -105,7 +110,7 @@ public class EmployeeCostBreakdownReport
           
             Page page = Page.Page_Letter_Landscape();
             
-            JRDataSource dataSource = new JRBeanCollectionDataSource( EmployeeReportRepository.getEmployeeList() );
+            JRDataSource dataSource = new JRBeanCollectionDataSource( employeeBO.getAllEmployees(3423081) );
          
 //            DJCrosstab djcross = createCrossTab();
 //
@@ -187,7 +192,7 @@ public class EmployeeCostBreakdownReport
      */
     private DJCrosstab createCrossTab()
     {
-        DJCrosstab djct = new CrosstabBuilder()
+        return new CrosstabBuilder()
                     .setHeight(200)
                     .setWidth(500)
                          .setDatasource("source",DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION)
@@ -195,18 +200,17 @@ public class EmployeeCostBreakdownReport
                     .setColorScheme(DJConstants.COLOR_SCHEMA_LIGHT_GREEN)
                     .setAutomaticTitle(true)
                     .setCellBorder(Border.THIN())
-                    
+
                     .addColumn("Life","life",Float.class.getName(),false)
 //                    .addColumn("EAP","eap",Float.class.getName(),false)
                     .addRow("Name", "name", String.class.getName(),true, "Total")
-                    
-                    .addMeasure("total", Float.class.getName(), DJCalculation.NOTHING , "Total", LEFT)          
-                    
+
+                    .addMeasure("total", Float.class.getName(), DJCalculation.NOTHING , "Total", LEFT)
+
                     .setCellDimension(17, 60)
                     .setColumnHeaderHeight(30)
                     .setRowHeaderWidth(80)
                     .build();
-        return djct;
     }
 
     

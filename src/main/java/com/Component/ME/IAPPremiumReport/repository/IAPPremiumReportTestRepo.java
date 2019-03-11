@@ -5,15 +5,14 @@ import com.Component.ME.IAPPremiumReport.container.IAPPremiumDSAIGroup;
 import com.DAO.IAPPremiumReport.IAPPremiumReportDAO;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
 import java.util.ArrayList;
 
 @Component
 public class IAPPremiumReportTestRepo implements IAPPremiumReportDAO
 {
-    java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
-    ArrayList<IAPPremiumDSAIGroup> iapPremiumGroupsDSAIList = new ArrayList<>();
-    ArrayList<IAPPremiumADDGroup> iapPremiumGroupsADDList = new ArrayList<>();
+    private java.sql.Date sqlDate = new java.sql.Date(new java.util.Date().getTime());
+    private ArrayList<IAPPremiumDSAIGroup> iapPremiumGroupsDSAIList = new ArrayList<>();
+    private ArrayList<IAPPremiumADDGroup> iapPremiumGroupsADDList = new ArrayList<>();
 
     @Override
     public ArrayList<IAPPremiumDSAIGroup> getIAPPremiumReportDSAIGroupList()

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class EmployeeBOTest
 {
-    Logger LOGGER = Logger.getLogger(EmployeeBOTest.class.getName());
+    private Logger LOGGER = Logger.getLogger(EmployeeBOTest.class.getName());
 
     /**
      *

@@ -15,7 +15,6 @@ public class Benefit
     private String supplier;
     private String policyNo;
     private String date;
-    String name;
 
     /**
      *
@@ -30,7 +29,7 @@ public class Benefit
         this.supplier = supplier;
         this.policyNo = policyNo;
         this.date = date;
-        this.name = "Christine";
+        String name = "Christine";
     }
 
     /**

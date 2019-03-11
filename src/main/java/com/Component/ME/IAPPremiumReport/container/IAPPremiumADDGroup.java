@@ -4,55 +4,52 @@ import java.sql.Date;
 
 public class IAPPremiumADDGroup
 {
-    String policyNumber;
-    String divisionNumber;
-    String divisionName;
-    Float totalCommissionRate;
-    Date coverageEffectiveDate;
-    Date renewalMonth;
-    String divisionStatus;
-    String pctProvinceEmployeeSplit;
+    private String policyNumber;
+    private String divisionNumber;
+    private String divisionName;
+    private Float totalCommissionRate;
+    private Date coverageEffectiveDate;
+    private Date renewalMonth;
+    private String divisionStatus;
+    private String pctProvinceEmployeeSplit;
 
     /*Employee*/
-    Float benefitAmountPerEmployee;
-    Integer currentNumberLives;
-    Float currentVolumeOfInsurer;
-    Float grossMonthlyPremiumRate;
-    Float grossPremium;
+    private Float benefitAmountPerEmployee;
+    private Integer currentNumberLives;
+    private Float currentVolumeOfInsurer;
+    private Float grossMonthlyPremiumRate;
+    private Float grossPremium;
 
     /*Spouse*/
-    Float benefitAmountSpouse;
-    Float currentNumberLivesSpouse;
-    Float currentVolumeOfInsurerSpouse;
-    Float grossMonthlyPremiumRateSpouse;
-    Float grossPremiumSpouse;
+    private Float benefitAmountSpouse;
+    private Float currentNumberLivesSpouse;
+    private Float currentVolumeOfInsurerSpouse;
+    private Float grossMonthlyPremiumRateSpouse;
+    private Float grossPremiumSpouse;
 
     /*Dependent*/
-    Float benefitAmountDependent;
-    Float currentNumberOfUnitsDependent;
-    Float grossMonthlyPremiumRateDependent;
-    Float grossPremiumDependent;
+    private Float benefitAmountDependent;
+    private Float currentNumberOfUnitsDependent;
+    private Float grossMonthlyPremiumRateDependent;
+    private Float grossPremiumDependent;
 
     /*Total*/
-    Float totalGrossPremium;
-    Float adjust;
-    Float adminFee;
-    Float commission;
-    Float totalCommission;
+    private Float totalGrossPremium;
+    private Float adjust;
+    private Float adminFee;
+    private Float commission;
+    private Float totalCommission;
 
     /*Tax*/
-    Float ontarioTax;
-    Float quebecTax;
-    Float manitobaTax;
+    private Float ontarioTax;
+    private Float quebecTax;
+    private Float manitobaTax;
 
-    Float netPremiumPaid;
-    String comments;
-
-    Float adminRate;
-    Float commRate;
+    private Float netPremiumPaid;
+    private String comments;
 
     /*Functions*/
-    Float grossPremiumAndAdjust;
+    private Float grossPremiumAndAdjust;
 
     public IAPPremiumADDGroup(String policyNumber,
                               String divisionNumber,
@@ -120,8 +117,6 @@ public class IAPPremiumADDGroup
         this.netPremiumPaid = netPremiumPaid;
         this.comments = comments;
         this.grossPremiumAndAdjust = totalGrossPremium + adjust;
-        this.adminRate = adminRate;
-        this.commRate = commRate;
         this.totalCommissionRate = adminRate + commRate;
     }
 

@@ -9,7 +9,7 @@ package com.Component.TestReportComponent.firstReport.container;
  *
  * @author craig.deacon
  */
-public class Dummy
+class Dummy
 {
     private String name;
     private Long number;

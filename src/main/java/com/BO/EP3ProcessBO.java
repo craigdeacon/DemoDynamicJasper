@@ -7,13 +7,12 @@ package com.BO;
 
 import com.Component.CS.EP3.container.EP3ProcessEntry;
 import com.DAO.EP3.EP3ProcessDAO;
-import com.DemoDynamicJasper.spring.config.AppConfig;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import com.DAO.EP3.EP3ProcessDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,11 +22,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class EP3ProcessBO
 {
-    private static final Logger LOGGER = Logger.getLogger( ProvincialSalesTaxBO.class.getName() );
-    EP3ProcessDAO ep3ProcessDAO;
+    private static final Logger LOGGER = Logger.getLogger( EP3ProcessBO.class.getName() );
+    private EP3ProcessDAO ep3ProcessDAO;
 
     @Autowired
-    public EP3ProcessBO(EP3ProcessDAO ep3ProcessDAO)
+    public EP3ProcessBO(EP3ProcessDAOImpl ep3ProcessDAO)
     {
         this.ep3ProcessDAO = ep3ProcessDAO;
     }

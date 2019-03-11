@@ -116,7 +116,6 @@ public class RevenueByProductRepository
                     break;
             }
         }
-        ArrayList<ProductTypes> productTypesList = new ArrayList<>(Arrays.asList(productTypesArray ) );
-        return productTypesList;
+        return new ArrayList<>(Arrays.asList(productTypesArray ) );
     }
 }

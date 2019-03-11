@@ -13,13 +13,13 @@ package com.Component.CS.EmployeeCostBreakdown.container;
 public class Group
 {
     private String groupName;
-    String accountNo;
-    String division;
-    String productType;
-    Float grossPremiums;
-    Float bbdAdminFee;
-    Float advisorCommission;
-    Float netPremiums;
+    private String accountNo;
+    private String division;
+    private String productType;
+    private Float grossPremiums;
+    private Float bbdAdminFee;
+    private Float advisorCommission;
+    private Float netPremiums;
 
     /**
      *

@@ -19,10 +19,6 @@ import javax.sql.DataSource;
 @PropertySource("classpath:application.properties")
 public class AppConfig
 {
-    private final String URL = "spring.datasource.url";
-    private final String USER = "spring.datasource.username";
-    private final String DRIVER = "spring.datasource.driver-class-lookupType";
-    private final String PASSWORD = "spring.datasource.password";
 
     @Autowired
     Environment environment;
@@ -30,9 +26,13 @@ public class AppConfig
     @Bean
     DataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        String URL = "spring.datasource.url";
         driverManagerDataSource.setUrl(environment.getProperty(URL));
+        String USER = "spring.datasource.username";
         driverManagerDataSource.setUsername(environment.getProperty(USER));
+        String PASSWORD = "spring.datasource.password";
         driverManagerDataSource.setPassword(environment.getProperty(PASSWORD));
+        String DRIVER = "spring.datasource.driver-class-lookupType";
         driverManagerDataSource.setDriverClassName(environment.getProperty(DRIVER));
         return driverManagerDataSource;
     }

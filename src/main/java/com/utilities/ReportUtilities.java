@@ -7,7 +7,6 @@ import ar.com.fdvs.dj.domain.builders.ColumnBuilder;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.entities.DJGroupVariable;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
-import com.lowagie.text.pdf.PdfContentByte;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,13 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.export.ExporterFilter;
-import net.sf.jasperreports.engine.export.JRExportProgressMonitor;
-import net.sf.jasperreports.engine.export.JRHyperlinkProducerFactory;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
-import net.sf.jasperreports.export.PdfExporterConfiguration;
-import net.sf.jasperreports.export.PdfReportConfiguration;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimplePdfExporterConfiguration;
@@ -45,10 +39,8 @@ import static com.utilities.ReportStyles.LEFT;
 public class ReportUtilities
 {
 
-    static String filePath;
-    static File excelOutputFile;
-    static File pdfOutputFile;
-    static FileOutputStream fileOutputStream;
+    private static String filePath;
+    private static FileOutputStream fileOutputStream;
 
     /**
      * Creates a column when property is a String
@@ -60,12 +52,11 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnString( String property, String title, int width )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, String.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, String.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
     }
 
     /**
@@ -79,13 +70,12 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnString( String property, String title, int width, Style style )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, String.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .setStyle( style )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, String.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .setStyle( style )
+                            .build();
     }
 
     /**
@@ -98,12 +88,11 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnFloat( String property, String title, int width )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Float.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Float.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
     }
 
     /**
@@ -117,13 +106,12 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnFloat( String property, String title, int width, Style style )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Float.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .setStyle( style )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Float.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .setStyle( style )
+                            .build();
     }
 
     /**
@@ -136,13 +124,12 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnInt( String property, String title, int width, Style style )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Integer.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .setStyle( style )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Integer.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .setStyle( style )
+                            .build();
     }
 
 
@@ -151,38 +138,34 @@ public class ReportUtilities
      * @param property
      * @param title
      * @param width
-     * @param style
      * @return
      */
     public static AbstractColumn createColumnInt( String property, String title, int width )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Integer.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Integer.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
     }
 
     public static AbstractColumn createColumnDate( String property, String title, int width )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Date.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Date.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
     }
 
     public static AbstractColumn createColumnDate( String property, String title, int width, Style style )
     {
-        AbstractColumn column = ColumnBuilder.getNew()
-                                             .setColumnProperty( property, Date.class.getName() )
-                                             .setTitle( title )
-                                             .setWidth( width )
-                                             .setStyle( style )
-                                             .build();
-        return column;
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Date.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .setStyle( style )
+                            .build();
     }
 
 
@@ -191,7 +174,7 @@ public class ReportUtilities
      *
      * @param outputFile
      */
-    public static void OpenFile( File outputFile )
+    private static void OpenFile(File outputFile)
     {
         if ( Desktop.isDesktopSupported() )
         {
@@ -235,8 +218,8 @@ public class ReportUtilities
         try
         {
             filePath = "Reports/";
-            pdfOutputFile = new File( filePath + reportName + ".pdf" );
-            fileOutputStream = new FileOutputStream( pdfOutputFile );
+            File pdfOutputFile = new File(filePath + reportName + ".pdf");
+            fileOutputStream = new FileOutputStream(pdfOutputFile);
             JRPdfExporter pdfExporter = new JRPdfExporter();
             pdfExporter.setExporterInput( new SimpleExporterInput( jasperPrint ) );
             pdfExporter.setExporterOutput( new SimpleOutputStreamExporterOutput( fileOutputStream ) );
@@ -248,7 +231,7 @@ public class ReportUtilities
 
             pdfExporter.exportReport();
             fileOutputStream.close();
-            OpenFile( pdfOutputFile );
+            OpenFile(pdfOutputFile);
         }
         catch (JRException | IOException ex)
         {
@@ -292,8 +275,8 @@ public class ReportUtilities
         try
         {
             filePath = "Reports/";
-            excelOutputFile = new File( filePath + reportName + ".xls" );
-            fileOutputStream = new FileOutputStream( excelOutputFile );
+            File excelOutputFile = new File(filePath + reportName + ".xls");
+            fileOutputStream = new FileOutputStream(excelOutputFile);
             JRXlsExporter excelExporter = new JRXlsExporter();
             excelExporter.setExporterInput( new SimpleExporterInput( jasperPrint ) );
             excelExporter.setExporterOutput( new SimpleOutputStreamExporterOutput( fileOutputStream ) );
@@ -312,7 +295,7 @@ public class ReportUtilities
             excelExporter.setConfiguration( configuration );
             excelExporter.exportReport();
             fileOutputStream.close();
-            OpenFile( excelOutputFile );
+            OpenFile(excelOutputFile);
         }
         catch (JRException | IOException ex)
         {
@@ -323,8 +306,7 @@ public class ReportUtilities
     public static DynamicReport createBasicReportSkeleton(ArrayList<AbstractColumn> columns, String title)
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
-        ArrayList<AbstractColumn> columnList = columns;
-        columnList.forEach( (column) ->
+        columns.forEach((column) ->
                             {
                                 dynamicReportBuilder.addColumn( column );
                             } );
@@ -337,17 +319,14 @@ public class ReportUtilities
                 .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
                 .setIgnorePagination( true );
 
-        DynamicReport dynamicReport = dynamicReportBuilder.build();
-
-        return dynamicReport;
+        return dynamicReportBuilder.build();
     }
 
     public static DynamicReport createBasicReportSkeletonNoTitle(ArrayList<AbstractColumn> columns)
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
-        ArrayList<AbstractColumn> columnList = columns;
 
-        columnList.forEach( (column) ->
+        columns.forEach((column) ->
                             {
                                 DJGroupVariable test = new DJGroupVariable(column, DJCalculation.SUM);
                                 dynamicReportBuilder.addColumn( column );
@@ -358,8 +337,6 @@ public class ReportUtilities
                 .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT)
                 .setIgnorePagination( true );
 
-        DynamicReport dynamicReport = dynamicReportBuilder.build();
-
-        return dynamicReport;
+        return dynamicReportBuilder.build();
     }
 }

@@ -2,19 +2,19 @@ package com.Component.ME.CignaUpload.container;
 
 public class CignaUploadGroup
 {
-    Integer month;
-    Integer year;
-    String type;
-    String policyNumber;
-    Integer numEmployee;
-    Float sumInsured;
-    Float grossPremiums;
-    Float pst;
-    Float grossRate;
-    String companyName;
-    Float commissionsRetained;
-    Float tpaFee;
-    Float netRemittance;
+    private Integer month;
+    private Integer year;
+    private String type;
+    private String policyNumber;
+    private Integer numEmployee;
+    private Float sumInsured;
+    private Float grossPremiums;
+    private Float pst;
+    private Float grossRate;
+    private String companyName;
+    private Float commissionsRetained;
+    private Float tpaFee;
+    private Float netRemittance;
 
     public CignaUploadGroup(Integer month, Integer year, String type, String policyNumber, Integer numEmployee, Float sumInsured, Float grossPremiums, Float pst, Float grossRate, String companyName, Float commissionsRetained, Float tpaFee, Float netRemittance)
     {

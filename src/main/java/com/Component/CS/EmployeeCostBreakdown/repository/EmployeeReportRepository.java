@@ -7,7 +7,8 @@ package com.Component.CS.EmployeeCostBreakdown.repository;
 
 import com.BO.EmployeeBO;
 import com.Component.CS.EmployeeCostBreakdown.container.*;
-import java.util.ArrayList;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
+
 import java.util.List;
 
 /**
@@ -18,13 +19,19 @@ import java.util.List;
 public class EmployeeReportRepository
 {
 
+    private EmployeeBO employeeBO;
+    public EmployeeReportRepository()
+    {
+        this.employeeBO = SpringConfigurationBootstrap.getApplicationContext().getBean(EmployeeBO.class);
+    }
+
     /**
      *
      * @return
      */
-    public static List<Employee> getEmployeeList()
+    public List<Employee> getEmployeeList()
     {
-        EmployeeBO employeeBO = new EmployeeBO();
+
         return employeeBO.getAllEmployees(3423081);
     }
     

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Component
 public class IAPPremiumReportDAOImpl implements IAPPremiumReportDAO
 {
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private static final Logger LOGGER = Logger.getLogger(EAPReportDAOImpl.class.getName());
 
     private static final String IAP_ADD_PREMIUM_QRY = "SELECT " +

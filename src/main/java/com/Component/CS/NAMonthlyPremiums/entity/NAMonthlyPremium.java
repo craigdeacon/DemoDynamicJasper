@@ -6,24 +6,29 @@
 package com.Component.CS.NAMonthlyPremiums.entity;
 
 import com.BO.NAMonthlyPremiumsBO;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static com.utilities.ReportStyles.initStyles;
 
 /**
  *
  * @author craig.deacon
  */
-public class NAMonthlyPremium
+class NAMonthlyPremium
 {
 
+    @Autowired
     public NAMonthlyPremium()
     {
+        NAMonthlyPremiumsBO naMonthlyPremiumsBO = SpringConfigurationBootstrap.getApplicationContext().getBean(NAMonthlyPremiumsBO.class);
     }
     
     public void displayNAMonthlyPremiumReport()
     {
         initStyles();
         
-        NAMonthlyPremiumsBO naMonthlyPremiumsBO = new NAMonthlyPremiumsBO();
+
         
         
     }

@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author craig.deacon
  */
-public class Statistic
+class Statistic
 {
     private Date date;
     private String name;
@@ -24,7 +24,7 @@ public class Statistic
     /**
      *
      */
-    public static List<Dummy> dummyList = new ArrayList<>();
+    private static List<Dummy> dummyList = new ArrayList<>();
     
     static {
         dummyList.add(new Dummy ("Jasper", 1L));

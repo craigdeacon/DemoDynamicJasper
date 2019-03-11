@@ -7,25 +7,33 @@ package com.BO;
 
 import com.Component.ME.ProvincialSalesTaxReport.container.ProvincialGroup;
 import com.DAO.ProvincialSalesTax.ProvincialSalesTaxDAO;
-import com.DemoDynamicJasper.spring.config.AppConfig;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.DAO.ProvincialSalesTax.ProvincialSalesTaxDAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author craig.deacon
  */
+@Service
 public class ProvincialSalesTaxBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
     private static final Logger LOGGER = Logger.getLogger( ProvincialSalesTaxBO.class.getName());
     
-    ProvincialSalesTaxDAO provincialSalesTaxDAO = context.getBean(ProvincialSalesTaxDAO.class);
-   
+    private ProvincialSalesTaxDAO provincialSalesTaxDAO;
+
+    @Autowired
+    public ProvincialSalesTaxBO(ProvincialSalesTaxDAOImpl provincialSalesTaxDAO)
+    {
+        this.provincialSalesTaxDAO = provincialSalesTaxDAO;
+    }
+
     private List<ProvincialGroup> getPSTGroups()
     {
         return provincialSalesTaxDAO.getGroupsProvincialSalesTax();
@@ -69,7 +77,7 @@ public class ProvincialSalesTaxBO
         return groupMap;
     }
 
-    private List<ProvincialGroup> getProvincialGroupList( List<ProvincialGroup> groupList, Integer underwriterId )
+    private List<ProvincialGroup> getProvincialGroupList(List<ProvincialGroup> groupList, Integer underwriterId)
     {
         List<ProvincialGroup> provincialGroupList = new ArrayList<>();
         for (ProvincialGroup group : groupList)

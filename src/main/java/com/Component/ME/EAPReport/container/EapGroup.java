@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class EapGroup
 {
-    Integer sequenceNumber;
-    Date loadDate;
-    Integer groupId;
-    String accountNumber;
-    String employerName;
-    Date premiumMonth;
-    Date effectiveDate;
-    String insurer;
-    String product;
-    String province;
-    Integer lives;
+    private Integer sequenceNumber;
+    private Date loadDate;
+    private Integer groupId;
+    private String accountNumber;
+    private String employerName;
+    private Date premiumMonth;
+    private Date effectiveDate;
+    private String insurer;
+    private String product;
+    private String province;
+    private Integer lives;
 
     public EapGroup(Integer sequenceNumber, Date loadDate, Integer groupId, String accountNumber, String employerName, Date premiumMonth, Date effectiveDate, String insurer, String product, String province, Integer lives)
     {

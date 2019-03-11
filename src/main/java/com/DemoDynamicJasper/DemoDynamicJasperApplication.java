@@ -1,17 +1,24 @@
 package com.DemoDynamicJasper;
 
 import com.Component.CS.EP3.entity.EP3;
+import com.Component.CS.EmployeeCostBreakdown.entity.EmployeeCostBreakdownReport;
+import com.Component.CS.PrintCertificate.entity.PrintCertificateReport;
 import com.Component.ME.CignaUpload.entity.CignaUploadReport;
 import com.Component.ME.EAPReport.entity.EapReport;
 import com.Component.ME.IAPPremiumReport.entity.IAPPremiumADDReport;
 import com.Component.ME.IAPPremiumReport.entity.IAPPremiumDSAIReport;
 import com.Component.ME.ProvincialSalesTaxReport.entity.ProvincialSalesTaxReport;
+import com.Component.ME.RevenueReportByProduct.entity.RevenueByProduct;
+import com.Component.TestReportComponent.firstReport.entity.BookReport;
+import com.Component.TestReportComponent.secondReport.entity.EmployeeReport;
+import com.DemoDynamicJasper.spring.config.AppConfig;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 
 /**
  *
  * @author craig.deacon
  */
-public class DemoDynamicJasperApplication
+class DemoDynamicJasperApplication
 {
 
     /**
@@ -20,44 +27,71 @@ public class DemoDynamicJasperApplication
      */
     public static void main(String[] args)
     {
-//        EmployeeReport empReport = new EmployeeReport();
-//        empReport.displayEmployeeReport();
-//
-//        EmployeeCostBreakdownReport empReport = new EmployeeCostBreakdownReport();
-//        empReport.displayEmployeeReport();
+        /*Initializing all BO and DAO Spring Dependencies*/
+        initialize();
 
-//        PrintCertificateReport concateReport = new PrintCertificateReport();
-//        concateReport.displayConcatReport();
-//
-//        RevenueByProduct revenueReport = new RevenueByProduct();
-//        revenueReport.displayRevenueByProductReport();
-//
-//        BookReport bookReport = new BookReport();
-//        bookReport.displayBookReport();
+        /*Run full component of reports*/
+//        testReports();
+//        MEReports();
+//        CSReports();
+
+        /*Current Report Working On*/
+        //TODO Work on new Report
+        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
+        iapPremiumADDReport.displayIAPPremiumADDReport();
+
+    }
+
+    private static void initialize()
+    {
+        SpringConfigurationBootstrap.initialize(AppConfig.class);
+    }
+
+    private static void testReports()
+    {
+        BookReport bookReport = new BookReport();
+        bookReport.displayBookReport();
+
+        EmployeeReport empReport = new EmployeeReport();
+        empReport.displayEmployeeReport();
 
 //        TemplateReport templateReport = new TemplateReport();
 //        templateReport.displayTemplateReport();
+    }
 
-//        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
-//        provincialSalesTaxReport.displayProvincialSalesTaxReport();
+    private static void MEReports()
+    {
+        ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
+        provincialSalesTaxReport.displayProvincialSalesTaxReport();
 
         EP3 ep3 = new EP3();
         ep3.displayEP3Report();
 
-//        EapReport eapReport = new EapReport();
-//        /*Arete*/
-//        eapReport.displayEAPReport(93064);
-//        /*HumanaCare*/
-//        eapReport.displayEAPReport(601076);
+        EapReport eapReport = new EapReport();
+        /*Arete*/
+        eapReport.displayEAPReport(93064);
+        /*HumanaCare*/
+        eapReport.displayEAPReport(601076);
 
-//        CignaUploadReport cignaUploadReport = new CignaUploadReport();
-//        cignaUploadReport.displayCignaUploadReport();
+        CignaUploadReport cignaUploadReport = new CignaUploadReport();
+        cignaUploadReport.displayCignaUploadReport();
 
-//        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
-//        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
+        IAPPremiumDSAIReport iapPremiumDSAIReport = new IAPPremiumDSAIReport();
+        iapPremiumDSAIReport.displayIAPPremiumDSAIReport();
 
-//        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
-//        iapPremiumADDReport.displayIAPPremiumADDReport();
+        IAPPremiumADDReport iapPremiumADDReport = new IAPPremiumADDReport();
+        iapPremiumADDReport.displayIAPPremiumADDReport();
+    }
 
+    private static void CSReports()
+    {
+        EmployeeCostBreakdownReport employeeCostBreakdownReport = new EmployeeCostBreakdownReport();
+        employeeCostBreakdownReport.displayEmployeeReport();
+
+        PrintCertificateReport printCertificateReport = new PrintCertificateReport();
+        printCertificateReport.displayConcatReport();
+
+        RevenueByProduct revenueReport = new RevenueByProduct();
+        revenueReport.displayRevenueByProductReport();
     }
 }

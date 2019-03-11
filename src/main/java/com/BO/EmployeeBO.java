@@ -2,8 +2,9 @@ package com.BO;
 
 import com.Component.CS.EmployeeCostBreakdown.container.Employee;
 import com.DAO.Employee.EmployeeDAO;
-import com.DemoDynamicJasper.spring.config.AppConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.DAO.Employee.EmployeeDAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
@@ -11,11 +12,16 @@ import java.util.ArrayList;
  *
  * @author craig.deacon
  */
+@Service
 public class EmployeeBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    private EmployeeDAO employeeDAO;
 
-    EmployeeDAO employeeDAO = context.getBean(EmployeeDAO.class);
+    @Autowired
+    public EmployeeBO(EmployeeDAOImpl employeeDAO)
+    {
+        this.employeeDAO = employeeDAO;
+    }
 
     /**
      *

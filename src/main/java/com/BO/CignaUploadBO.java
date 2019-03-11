@@ -1,21 +1,26 @@
 package com.BO;
 
 import com.Component.ME.CignaUpload.container.CignaUploadGroup;
-import com.Component.ME.CignaUpload.repository.CignaUploadTestRepo;
 import com.DAO.CignaUpload.CignaUploadDAO;
 import com.DAO.CignaUpload.CignaUploadDAOImpl;
-import com.DemoDynamicJasper.spring.config.AppConfig;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+@Service
 public class CignaUploadBO
 {
-    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class );
-    private static final Logger LOGGER = Logger.getLogger(EAPReportBO.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger(CignaUploadBO.class.getName() );
     /*Currently Using Test Repo Since no Data in DB to return*/
-    CignaUploadDAO cignaUploadDAO = context.getBean(CignaUploadTestRepo.class );
+    private final CignaUploadDAO cignaUploadDAO;
+
+    @Autowired
+    public CignaUploadBO(CignaUploadDAOImpl cignaUploadDAO)
+    {
+        this.cignaUploadDAO = cignaUploadDAO;
+    }
 
     public ArrayList<CignaUploadGroup> getCignaUploadGroups()
     {

@@ -5,7 +5,7 @@ import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DynamicReport;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import com.BO.IAPPremiumReportBO;
-import com.Component.ME.EAPReport.entity.EapReport;
+import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import com.utilities.ReportUtilities;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
@@ -21,17 +21,22 @@ import static com.utilities.ReportUtilities.*;
 
 public class IAPPremiumDSAIReport
 {
+    private IAPPremiumReportBO iapPremiumReportBO;
+
+    public IAPPremiumDSAIReport()
+    {
+        this.iapPremiumReportBO = SpringConfigurationBootstrap.getApplicationContext().getBean(IAPPremiumReportBO.class);
+    }
+
     public void displayIAPPremiumDSAIReport()
     {
         try
         {
             initStyles();
 
-            IAPPremiumReportBO IAPPremiumReportBO = new IAPPremiumReportBO();
-
             DynamicReport dynamicReport = ReportUtilities.createBasicReportSkeletonNoTitle(getIAPPremiumDSAIColumns());
 
-            JRDataSource dataSource = new JRBeanCollectionDataSource(IAPPremiumReportBO.getIapPremiumDSAIGroups() );
+            JRDataSource dataSource = new JRBeanCollectionDataSource(iapPremiumReportBO.getIapPremiumDSAIGroups() );
 
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport, new ClassicLayoutManager(), dataSource );
 

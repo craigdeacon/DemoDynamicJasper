@@ -31,15 +31,15 @@ public class Book
     /**
      *
      */
-    public static List<Statistic> statistics_ = new ArrayList<Statistic>();
+    private static List<Statistic> statistics_ = new ArrayList<Statistic>();
     private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     private Code code = new Code();
     
     /**
      *
      */
-    public static String[] images = {"confused.gif", "cool.gif", "happy.gif", "puaj.gif", "ungry.gif", "what.gif"};
-    static int counter = 0;
+    private static String[] images = {"confused.gif", "cool.gif", "happy.gif", "puaj.gif", "ungry.gif", "what.gif"};
+    private static int counter = 0;
     static 
     {
         try {
@@ -315,8 +315,7 @@ public class Book
      */
     public InputStream getImage()
     {
-        InputStream image = this.getClass().getClassLoader().getResourceAsStream( "");
-        return image;
+        return this.getClass().getClassLoader().getResourceAsStream("");
     }
     
     /**
