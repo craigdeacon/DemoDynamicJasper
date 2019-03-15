@@ -6,10 +6,12 @@
 package com.Utilities;
 
 import ar.com.fdvs.dj.domain.Style;
+import ar.com.fdvs.dj.domain.builders.StyleBuilder;
 import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Font;
 import ar.com.fdvs.dj.domain.constants.HorizontalAlign;
 import ar.com.fdvs.dj.domain.constants.Transparency;
+import ar.com.fdvs.dj.domain.constants.VerticalAlign;
 
 import java.awt.Color;
 
@@ -99,6 +101,12 @@ public class ReportStyles
      *
      */
     public static Style SMALL_RIGHT;
+    
+    public static Style FOOTER_TOTAL;
+            
+    public static Style FOOTER_TOTAL_CYAN;
+    
+    public static Style BOLD_LEFT_TOP_PADDING;
 
     /**
      *
@@ -150,6 +158,13 @@ public class ReportStyles
         BOLD_LEFT_BLUE.setHorizontalAlign( HorizontalAlign.LEFT );
         BOLD_LEFT_BLUE.setPattern( "$0.00" );
         BOLD_LEFT_BLUE.setTextColor( Color.BLUE );
+        
+        BOLD_LEFT_TOP_PADDING = new Style();
+        BOLD_LEFT_TOP_PADDING.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_LEFT_TOP_PADDING.setHorizontalAlign( HorizontalAlign.LEFT );
+        BOLD_LEFT_TOP_PADDING.setPaddingTop( 30 );
+        BOLD_LEFT_TOP_PADDING.setVerticalAlign( VerticalAlign.BOTTOM );
+        BOLD_LEFT_TOP_PADDING.setPaddingBottom( 5 );
         
         BLUE_LEFT_GREY_BG = new Style();
         BLUE_LEFT_GREY_BG.setHorizontalAlign( HorizontalAlign.LEFT );
@@ -207,5 +222,26 @@ public class ReportStyles
         SMALL_RIGHT.setPattern( "$0.00" );
         SMALL_RIGHT.setStretchWithOverflow( false);
         SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.LEFT );
+        
+        FOOTER_TOTAL_CYAN= new StyleBuilder(false)
+//                .setTextColor( Color.blue )
+                .setBackgroundColor( Color.CYAN )
+                .setTransparency( Transparency.OPAQUE )
+                .setHorizontalAlign(HorizontalAlign.RIGHT)
+                .setBorderTop(Border.THIN())
+                .setPattern( "$0.00" )
+                .setVerticalAlign(VerticalAlign.TOP)
+//                .setPaddingBottom(20)
+                .setStretchWithOverflow(false)
+                .build();
+        
+        FOOTER_TOTAL = new StyleBuilder(false)
+                .setHorizontalAlign(HorizontalAlign.RIGHT)
+                .setBorderTop(Border.THIN())
+                .setPattern( "$0.00" )
+                .setVerticalAlign(VerticalAlign.TOP)
+//                .setPaddingBottom(20)
+                .setStretchWithOverflow(false)
+                .build();
     }
 }

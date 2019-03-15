@@ -269,6 +269,7 @@ public class ReportUtilities
      *
      * @param jasperPrint the report to be exported
      * @param reportName file name of exported report
+     * @param freezeRow
      */
     public static void exportExcel( JasperPrint jasperPrint, String reportName, boolean freezeRow )
     {
@@ -285,11 +286,12 @@ public class ReportUtilities
             configuration.setOnePagePerSheet( Boolean.FALSE );
             configuration.setRemoveEmptySpaceBetweenRows( Boolean.TRUE );
             configuration.setRemoveEmptySpaceBetweenColumns(Boolean.FALSE );
-            configuration.setWhitePageBackground( Boolean.FALSE );
+            configuration.setWhitePageBackground( Boolean.TRUE );
+            configuration.setDetectCellType(true);
 
             if (freezeRow)
             {
-                configuration.setFreezeRow( 3 );
+                configuration.setFreezeRow( 2 );
             }
 
             excelExporter.setConfiguration( configuration );
@@ -338,5 +340,25 @@ public class ReportUtilities
                 .setIgnorePagination( true );
 
         return dynamicReportBuilder.build();
+    }
+    
+    public static DynamicReportBuilder createBasicReportBuilderSkeleton( ArrayList<AbstractColumn> columns, String title )
+    {
+        DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
+        ArrayList<AbstractColumn> columnList = columns;
+        columnList.forEach( (column) ->
+        {
+            dynamicReportBuilder.addColumn( column );
+        } );
+
+        dynamicReportBuilder
+                .setLeftMargin( 0 )
+                .setTitle( title )
+                .setTitleHeight( 20 )
+                .setTitleStyle( BOLD_LEFT )
+                .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT )
+                .setIgnorePagination( true );
+
+        return dynamicReportBuilder;
     }
 }

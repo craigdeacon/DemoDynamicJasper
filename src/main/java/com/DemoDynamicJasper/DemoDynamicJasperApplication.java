@@ -15,6 +15,7 @@ import com.Report.Component.TestReportComponent.firstReport.entity.BookReport;
 import com.Report.Component.TestReportComponent.secondReport.entity.EmployeeReport;
 import com.DemoDynamicJasper.spring.config.AppConfig;
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
+import com.Report.Component.CS.NAMonthlyPremiums.entity.NAMonthlyPremiums;
 
 /**
  *
@@ -39,8 +40,11 @@ class DemoDynamicJasperApplication
 
         /*Current Report Working On*/
         //TODO Work on new Report
-        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
-        iapPremiumReport.displayIAPPremiumReport();
+//        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
+//        iapPremiumReport.displayIAPPremiumReport();
+
+        NAMonthlyPremiums naMonthlyPremiums = new NAMonthlyPremiums();
+        naMonthlyPremiums.displayNAMonthlyPremiumReport();
 
     }
 
@@ -65,7 +69,7 @@ class DemoDynamicJasperApplication
     {
         ProvincialSalesTaxReport provincialSalesTaxReport = new ProvincialSalesTaxReport();
         provincialSalesTaxReport.displayProvincialSalesTaxReport();
-
+        
         EP3 ep3 = new EP3();
         ep3.displayEP3Report();
 

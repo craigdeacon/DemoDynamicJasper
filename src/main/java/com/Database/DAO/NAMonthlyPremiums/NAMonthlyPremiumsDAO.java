@@ -15,6 +15,4 @@ import java.util.ArrayList;
 public interface NAMonthlyPremiumsDAO
 {
     ArrayList<NAMonthlyPremiumsGroup> getNAMonthlyPremiumsGroup();
-
-    String getBenefitName( int benefitId );
 }

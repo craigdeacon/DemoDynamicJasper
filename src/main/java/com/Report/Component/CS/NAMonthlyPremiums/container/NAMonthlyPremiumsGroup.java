@@ -31,6 +31,7 @@ public class NAMonthlyPremiumsGroup
     private Float administrationAmount; //admin fee
     private Float commissionAmount; // commission
     private Float netPremium; // total net premium
+    private Float gst; //
     private Float administrationRate; //admin rate
     private Float commissionRate; //commission rate
 
@@ -236,6 +237,16 @@ public class NAMonthlyPremiumsGroup
     public void setBenefitId( int benefitId )
     {
         this.benefitId = benefitId;
+    }
+
+    public Float getGst()
+    {
+        return gst;
+    }
+
+    public void setGst( Float gst )
+    {
+        this.gst = gst;
     }
     
     
