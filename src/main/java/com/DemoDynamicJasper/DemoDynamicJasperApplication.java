@@ -39,8 +39,8 @@ class DemoDynamicJasperApplication
 
         /*Current Report Working On*/
         //TODO Work on new Report
-        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
-        iapPremiumReport.displayIAPPremiumReport();
+        IAPPremiumOptionalADDReport iapPremiumReport = new IAPPremiumOptionalADDReport();
+        iapPremiumReport.displayIAPPremiumOptionalADDReport();
 
     }
 

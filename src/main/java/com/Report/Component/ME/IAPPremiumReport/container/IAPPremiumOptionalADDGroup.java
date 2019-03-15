@@ -7,7 +7,7 @@ public class IAPPremiumOptionalADDGroup
     private String policyNumber;
     private String divisionNumber;
     private String divisionName;
-    private Float commissionRate;
+    private Float fullCommissionRate;
     private Date coverageEffective;
     private String divisionStatus;
     private String pctProvinceEmployeeSplit;
@@ -30,7 +30,9 @@ public class IAPPremiumOptionalADDGroup
     public IAPPremiumOptionalADDGroup(String policyNumber,
                                       String divisionNumber,
                                       String divisionName,
+                                      Float adminRate,
                                       Float commissionRate,
+                                      Float totalCommission,
                                       Date coverageEffective,
                                       String divisionStatus,
                                       String pctProvinceEmployeeSplit,
@@ -43,7 +45,6 @@ public class IAPPremiumOptionalADDGroup
                                       Float adjust,
                                       Float adminFee,
                                       Float commission,
-                                      Float totalCommission,
                                       Float ontarioTax,
                                       Float quebecTax,
                                       Float netPremiumPaid,
@@ -52,7 +53,6 @@ public class IAPPremiumOptionalADDGroup
         this.policyNumber = policyNumber;
         this.divisionNumber = divisionNumber;
         this.divisionName = divisionName;
-        this.commissionRate = commissionRate;
         this.coverageEffective = coverageEffective;
         this.divisionStatus = divisionStatus;
         this.pctProvinceEmployeeSplit = pctProvinceEmployeeSplit;
@@ -71,6 +71,7 @@ public class IAPPremiumOptionalADDGroup
         this.quebecTax = quebecTax;
         this.netPremiumPaid = netPremiumPaid;
         this.comments = comments;
+        this.fullCommissionRate = commissionRate + adminRate;
     }
 
     public String getPolicyNumber()
@@ -86,11 +87,6 @@ public class IAPPremiumOptionalADDGroup
     public String getDivisionName()
     {
         return divisionName;
-    }
-
-    public Float getCommissionRate()
-    {
-        return commissionRate;
     }
 
     public Date getCoverageEffective()
@@ -183,6 +179,11 @@ public class IAPPremiumOptionalADDGroup
         return comments;
     }
 
+    public Float getFullCommissionRate()
+    {
+        return fullCommissionRate;
+    }
+
     @Override
     public String toString()
     {
@@ -190,7 +191,7 @@ public class IAPPremiumOptionalADDGroup
                 "policyNumber='" + policyNumber + '\'' +
                 ", divisionNumber='" + divisionNumber + '\'' +
                 ", divisionName='" + divisionName + '\'' +
-                ", commissionRate=" + commissionRate +
+                ", fullCommissionRate=" + fullCommissionRate +
                 ", coverageEffective=" + coverageEffective +
                 ", divisionStatus='" + divisionStatus + '\'' +
                 ", pctProvinceEmployeeSplit='" + pctProvinceEmployeeSplit + '\'' +
