@@ -12,14 +12,17 @@ import ar.com.fdvs.dj.core.DynamicJasperHelper;
 import ar.com.fdvs.dj.core.layout.ClassicLayoutManager;
 import ar.com.fdvs.dj.domain.DJCalculation;
 import ar.com.fdvs.dj.domain.DynamicReport;
+import ar.com.fdvs.dj.domain.Style;
 import ar.com.fdvs.dj.domain.builders.DynamicReportBuilder;
 import ar.com.fdvs.dj.domain.builders.FastReportBuilder;
 import ar.com.fdvs.dj.domain.builders.GroupBuilder;
 import ar.com.fdvs.dj.domain.constants.GroupLayout;
+import ar.com.fdvs.dj.domain.constants.HorizontalAlign;
 import ar.com.fdvs.dj.domain.constants.Page;
 import ar.com.fdvs.dj.domain.entities.DJGroup;
 import ar.com.fdvs.dj.domain.entities.columns.AbstractColumn;
 import ar.com.fdvs.dj.domain.entities.columns.PropertyColumn;
+import ar.com.fdvs.dj.domain.entities.conditionalStyle.ConditionalStyle;
 import com.Database.BO.NAMonthlyPremiumsBO;
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import com.Report.Component.CS.NAMonthlyPremiums.container.ProductTotal;
@@ -34,6 +37,8 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import static com.Utilities.ReportStyles.*;
 import static com.Utilities.ReportUtilities.*;
+import com.Utilities.StatusCondition;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 import net.sf.jasperreports.engine.JasperReport;
@@ -59,10 +64,24 @@ public class NAMonthlyPremiums
     
     private NAMonthlyPremiumsBO naMonthlyPremiumsBO;
     
-    int xSmallColumn = 55;
-    int smallColumn = 70;
-    int medColumn = 90;
-    int largeColumn = 150;
+    //column widths
+    int groupWidth = 40;
+    int acctWidth = 35;
+    int employerWidth = 200;
+    int monthWidth = 70;
+    int productWidth = 70;
+    int rateWidth= 35;
+    int livesWidth = 55;
+    int volumeWidth = 50;
+    int currentPremiumWidth = 65;
+    int currentTaxWidth = 55;
+    int adjustmentPremiumWidth = 60;
+    int adjustmentTaxWidth = 60;
+    int grossPremiumWidth = 65;
+    int adminFeeWidth = 65;
+    int commissionWidth = 70;
+    int totalNetPremiumWidth = 65;
+    int subreportMargin = groupWidth + acctWidth + employerWidth + monthWidth + productWidth;
 
     @Autowired
     public NAMonthlyPremiums()
@@ -71,55 +90,37 @@ public class NAMonthlyPremiums
     }
     
    
-    
-    public void displayNAMonthlyPremiumReport()
+    /**
+     *  Creates and exports to excel file the Non-Affiliations Monthly Premiums Report
+     */
+    public void displayNAMonthlyPremiumReport() 
     {
         try
         {
+            //initializes styles to be used in report
             initStyles();
             
-            ArrayList<AbstractColumn> columnsList = getNAMonthlyPremiumsColumns();
-            
+            //parameters used in Jasperprint creation
             Map parameters = new HashMap();
             
+            //list of columns for main report
+            ArrayList<AbstractColumn> columnsList = getNAMonthlyPremiumsColumns();
+            
+            //hashmap containing the data sources for the Product Total and Provincial total subreports
             HashMap<String, HashMap> productProvinceMap = naMonthlyPremiumsBO.getProductProvinceMap();
+       
+            //separating Product and Province data sources
+            ArrayList<ProductTotal> productTotalList = new ArrayList<>(productProvinceMap.get("products").values());
+            ArrayList<ProvinceTotal> provinceTotalList = new ArrayList<>(productProvinceMap.get("provinces").values());
             
-            HashMap<String, ProductTotal> productMap = productProvinceMap.get( "products");
-            HashMap<String, ProvinceTotal> provinceTotalMap = productProvinceMap.get("provinces");
-            
-            ArrayList<ProductTotal> productTotalList = new ArrayList<ProductTotal>(productMap.values());
-            ArrayList<ProvinceTotal> provinceTotalList = new ArrayList<ProvinceTotal>(provinceTotalMap.values());
-            
+            //adds columns and title into a basic report builder
             DynamicReportBuilder dynamicReportBuilder = createBasicReportBuilderSkeleton(columnsList, "Non-Affiliations Monthly Premiums Report");
-            
-            GroupBuilder groupBuilder = new GroupBuilder();
                      
-            DJGroup group = groupBuilder.setCriteriaColumn( (PropertyColumn) employer )
-//                    .setFooterLabel( new DJGroupLabel("Totals: ", HEADER_STYLE))
-//                    .addFooterVariable( volume, expression )
-//                    .setFooterVariablesHeight( 50)
+            //creating group which main report body is sorted by
+            DJGroup group = createNAPremiumsGroup();
+ 
+            DynamicReport dynamicReport = createNAMonthlyPremiumsDynamicReport( group, dynamicReportBuilder) ;
                     
-                    .addFooterVariable( premium, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( pst, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( retroactivePremium, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( retroactivePst, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( grossPremium, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( administrationAmount, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( commissionAmount, DJCalculation.SUM, FOOTER_TOTAL )
-                    .addFooterVariable( netPremium, DJCalculation.SUM, FOOTER_TOTAL )
-                   
-                    .setGroupLayout( GroupLayout.VALUE_FOR_EACH_WITH_HEADERS )
-                    
-                    .build();
-            
-            DynamicReport dynamicReport = dynamicReportBuilder
-                    .setPrintColumnNames( false )
-                    .addGroup( group )
-                    
-                    .setDefaultStyles( null, null, null, RIGHT )
-                    .addConcatenatedReport( createProductTotalsReport(), "productTypes", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
-                    .addConcatenatedReport( createProvinceTotalsReport(), "provinces", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
-                    .build();
             
             parameters.put("productTypes", productTotalList );
             parameters.put("provinces", provinceTotalList );
@@ -127,118 +128,127 @@ public class NAMonthlyPremiums
             
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport, new ClassicLayoutManager(), dataSource, parameters );
             
-            exportExcel( jasperPrint, "Non-Affiliations Monthly Premiums Report Repeating Headers With Subreport", true);
+            exportExcel( jasperPrint, "Non-Affiliations Monthly Premiums Report", true);
         }
-        catch (JRException ex)
+        catch (JRException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex)
         {
             Logger.getLogger(NAMonthlyPremiums.class.getName() ).log( Level.SEVERE, null, ex );
         }
         
     }
 
-    private ArrayList<AbstractColumn> getNAMonthlyPremiumsColumns()
+    /**
+     * Creates and returns an ArrayList of all columns in the main body of the NA
+     * Monthly Premiums report
+     * 
+     * @return ArrayList of columns to be added to main body report
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException 
+     */
+    private ArrayList<AbstractColumn> getNAMonthlyPremiumsColumns() throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException
     {
         ArrayList<AbstractColumn> columnList = new ArrayList<>();
+        ArrayList conditionalStyles = createConditionalStyles();
         
-        
-
-        AbstractColumn group = createColumnString( "policySeries", "Group", xSmallColumn );
+        AbstractColumn group = createColumnString( "policySeries", "Group", groupWidth, LEFT );
+        group.setHeaderStyle( HEADER_STYLE_JUSTIFIED );
         columnList.add( group );
         
-        AbstractColumn acct = createColumnString( "policyAccount", "Acct", xSmallColumn );
+        AbstractColumn acct = createColumnString( "policyAccount", "Acct", acctWidth, LEFT );
+        acct.setHeaderStyle( HEADER_STYLE_JUSTIFIED );
         columnList.add( acct );
         
-        employer = createColumnString( "employer", "ER Name", 200 );
+        employer = createColumnString( "employer", "ER Name", employerWidth, LEFT );
+        employer.setHeaderStyle( HEADER_STYLE_JUSTIFIED );
         columnList.add( employer );
         
-        AbstractColumn month = createColumnDate( "month", "Month", medColumn );
-        month.setPattern( "d MMM, YYY");
+        AbstractColumn month = createColumnDate( "month", "Month", monthWidth, LEFT );
+        month.setPattern( "mmm YYY");
         columnList.add( month );
         
-        AbstractColumn product = createColumnString( "product", "Product", xSmallColumn );
+        AbstractColumn product = createColumnString( "product", "Product", productWidth, LEFT );
         columnList.add( product );
         
-        AbstractColumn rate = createColumnFloat("premiumRate", "Rate", xSmallColumn );
+        AbstractColumn rate = createColumnFloat("premiumRate", "Rate", rateWidth, LEFT );
+        rate.setPattern( "0.000");
         columnList.add( rate );
-        
-        AbstractColumn province = createColumnString( "province", "Prov", xSmallColumn );
-        columnList.add( province );
-        
-        AbstractColumn lives = createColumnInt( "employeeCount", "Lives", xSmallColumn );
+       
+        AbstractColumn lives = createColumnInt( "employeeCount", "Lives", livesWidth, LEFT );
         columnList.add( lives );
         
-        volume = createColumnInt( "volume", "Volume", smallColumn );
+        volume = createColumnInt( "volume", "Volume", volumeWidth, LEFT );
         columnList.add( volume );
         
-        premium = createColumnFloat( "premium", "Current Premium", smallColumn, AMOUNT_STYLE );
-        premium.setPattern( "$0.00");
+        premium = createColumnFloatConditionalStyle("premium", "Current Premium", currentPremiumWidth, conditionalStyles );  
         columnList.add( premium );
         
-        pst = createColumnFloat( "pst", "Current Tax", xSmallColumn, AMOUNT_STYLE );
-        pst.setPattern( "$0.00");
+        pst = createColumnFloatConditionalStyle("pst", "Current Tax", currentTaxWidth, conditionalStyles );
         columnList.add( pst );
         
-        retroactivePremium = createColumnFloat( "retroactivePremium", "Adjustment Premium", smallColumn, AMOUNT_STYLE );
-        retroactivePremium.setPattern( "$0.00");
+        retroactivePremium = createColumnFloatConditionalStyle( "retroactivePremium", "Adjustment Premium", adjustmentPremiumWidth, conditionalStyles );
         columnList.add( retroactivePremium );
         
-        retroactivePst = createColumnFloat( "retroactivePst", "Adjustment Tax", smallColumn, AMOUNT_STYLE );
-        retroactivePst.setPattern( "$0.00");
+        retroactivePst = createColumnFloatConditionalStyle( "retroactivePst", "Adjustment Tax", adjustmentTaxWidth, conditionalStyles );
         columnList.add( retroactivePst );
         
-        grossPremium = createColumnFloat( "grossPremium", "Gross Premium", smallColumn, AMOUNT_STYLE );
-        grossPremium.setPattern( "$0.00");
+        grossPremium = createColumnFloatConditionalStyle( "grossPremium", "Gross Premium", grossPremiumWidth, conditionalStyles );
         columnList.add( grossPremium );
         
-        administrationAmount = createColumnFloat( "administrationAmount", "Admin Fee", smallColumn, AMOUNT_STYLE  );
-        administrationAmount.setPattern( "$0.00");
+        administrationAmount = createColumnFloatConditionalStyle( "administrationAmount", "Admin Fee", adminFeeWidth, conditionalStyles  );
         columnList.add( administrationAmount );
         
-        commissionAmount = createColumnFloat( "commissionAmount", "Commission", smallColumn, AMOUNT_STYLE  );
-        commissionAmount.setPattern( "$0.00");
+        commissionAmount = createColumnFloatConditionalStyle( "commissionAmount", "Commission", commissionWidth, conditionalStyles );
         columnList.add( commissionAmount );
         
-        netPremium = createColumnFloat( "netPremium", "Total Net Premium", smallColumn, AMOUNT_STYLE  );
-        netPremium.setPattern( "$0.00");
+        netPremium = createColumnFloatConditionalStyle( "netPremium", "Total Net Premium", totalNetPremiumWidth, conditionalStyles  );
         columnList.add( netPremium );
         
-        AbstractColumn gst = createColumnFloat( "gst", "GST", xSmallColumn, RIGHT );
+        AbstractColumn gst = createColumnFloat( "gst", "GST", 40, RIGHT );
         gst.setBlankWhenNull( true );
+        gst.setPattern( "#");
         columnList.add( gst );
         
-        AbstractColumn administrationRate = createColumnFloat( "administrationRate", "Admin Rate", smallColumn, RIGHT );
+        AbstractColumn administrationRate = createColumnFloat( "administrationRate", "Admin Rate", 40, RIGHT );
         administrationRate.setPattern( "0.00");
         columnList.add( administrationRate );
         
-        AbstractColumn commissionRate = createColumnFloat( "commissionRate", "Commission Rate", medColumn, RIGHT );
+        AbstractColumn commissionRate = createColumnFloat( "commissionRate", "Commission Rate", 70, RIGHT );
         commissionRate.setPattern( "0.00");
         columnList.add( commissionRate );
         
         return columnList;
     }
     
+    /**
+     * Creates a subreport that totals the values for multiple columns in the 
+     * main report body and is appended to the main report
+     * 
+     * @return the subreport to be concatenated to main report
+     * @throws JRException 
+     */
     private JasperReport createProductTotalsReport() throws JRException
     {
+        
         FastReportBuilder fastReport = new FastReportBuilder();
         
-        
-        
-        AbstractColumn productName = createColumnString ("productName", "", smallColumn );
-        
-        AbstractColumn premiumTotal = createColumnFloat( "premiumTotal", "", smallColumn );
-          
-        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", xSmallColumn );
-        AbstractColumn retroactivePremiumTotal= createColumnFloat( "retroactivePremiumTotal", "", smallColumn );
-        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", smallColumn );
-        AbstractColumn grossPremiumTotal = createColumnFloat( "grossPremiumTotal", "", smallColumn ); 
-        AbstractColumn administrationAmountTotal = createColumnFloat( "administrationAmountTotal", "", smallColumn );
-        AbstractColumn commissionAmountTotal = createColumnFloat( "commissionAmountTotal", "", smallColumn );
-        AbstractColumn netPremiumTotal = createColumnFloat( "netPremiumTotal", "", smallColumn ); 
-        AbstractColumn gstTotal = createColumnFloat( "gstTotal", "", xSmallColumn );
+        AbstractColumn header = createColumnString("header", "", rateWidth + livesWidth, BOLD_LEFT);
+        AbstractColumn productName = createColumnString ("productName", "", volumeWidth, LEFT );
+        AbstractColumn premiumTotal = createColumnFloat( "premiumTotal", "", currentPremiumWidth );          
+        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", currentTaxWidth );
+        AbstractColumn retroactivePremiumTotal= createColumnFloat( "retroactivePremiumTotal", "", adjustmentPremiumWidth );
+        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", adjustmentTaxWidth );
+        AbstractColumn grossPremiumTotal = createColumnFloat( "grossPremiumTotal", "", grossPremiumWidth ); 
+        AbstractColumn administrationAmountTotal = createColumnFloat( "administrationAmountTotal", "", adminFeeWidth );
+        AbstractColumn commissionAmountTotal = createColumnFloat( "commissionAmountTotal", "", commissionWidth );
+        AbstractColumn netPremiumTotal = createColumnFloat( "netPremiumTotal", "", totalNetPremiumWidth ); 
+        AbstractColumn gstTotal = createColumnFloat( "gstTotal", "", 40 );
         
         DynamicReport dynamicReport = fastReport
                 .setDefaultStyles( null, null, BOLD_LEFT, AMOUNT_STYLE )
                 .setPageSizeAndOrientation( Page.Page_A4_Landscape())
+                .addColumn( header )
                 .addColumn( productName )
                 .addColumn( premiumTotal )
                 .addColumn( pstTotal )
@@ -249,40 +259,137 @@ public class NAMonthlyPremiums
                 .addColumn( commissionAmountTotal )
                 .addColumn( netPremiumTotal )
                 .addColumn( gstTotal )
-                .setLeftMargin( 590 )
+                .addGlobalFooterVariable( premiumTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( pstTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( retroactivePremiumTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( retroactivePstTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( grossPremiumTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( administrationAmountTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( commissionAmountTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( netPremiumTotal, DJCalculation.SUM )
+                .setGrandTotalLegend( "Totals: ")
+                .setGrandTotalLegendStyle( BOLD_LEFT )
+                .setLeftMargin(subreportMargin )
                 .build();
-       
-//       JasperViewer.viewReport( jasperPrint );
        
        return DynamicJasperHelper.generateJasperReport( dynamicReport, new ClassicLayoutManager(), null ); 
     }
     
+    
+    /**
+     * Creates a subreport that totals the tax from the main report grouped
+     * by province
+     * 
+     * @return Completed subreport to be concatenated to main report
+     * @throws JRException 
+     */
      private JasperReport createProvinceTotalsReport() throws JRException
     {
         FastReportBuilder fastReport = new FastReportBuilder();
         
-        
-        
-        AbstractColumn province = createColumnString ("province", "", smallColumn );
-        
-                 
-        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", xSmallColumn );
-       
-        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", smallColumn );
+        AbstractColumn header = createColumnString("header", "", rateWidth + livesWidth, BOLD_LEFT);
+        AbstractColumn province = createColumnString ("province", "", volumeWidth, LEFT );
+        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", currentPremiumWidth + currentTaxWidth );
+        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", adjustmentPremiumWidth + adjustmentTaxWidth );
                
         DynamicReport dynamicReport = fastReport
                 .setDefaultStyles( null, null, BOLD_LEFT, AMOUNT_STYLE )
-                .setPageSizeAndOrientation( Page.Page_A4_Landscape())
+                .setPageSizeAndOrientation( Page.Page_A4_Landscape() )
+                .addColumn( header )
                 .addColumn( province )
                 .addColumn( pstTotal )
-               
                 .addColumn( retroactivePstTotal )
-               
-                .setLeftMargin( 590 )
+                .addGlobalFooterVariable( pstTotal, DJCalculation.SUM )
+                .addGlobalFooterVariable( retroactivePstTotal, DJCalculation.SUM )
+                .setGrandTotalLegend( "Totals: ")
+                .setGrandTotalLegendStyle( BOLD_LEFT )
+                .setLeftMargin( subreportMargin )
                 .build();
        
-//       JasperViewer.viewReport( jasperPrint );
-       
        return DynamicJasperHelper.generateJasperReport( dynamicReport, new ClassicLayoutManager(), null ); 
+    }
+     
+     
+    /**
+     * This function is not currently necessary but being preserved as an example
+     * of how to do conditional styles
+     * 
+     * Creates an arrayList of conditional styles to be applied to a column
+     * Conditional styles evaluate the value of each cell in column at runtime, and applies
+     * a different style based on result
+     * 
+     * @return The arrayList of conditionalStyles to be applied
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws InvocationTargetException
+     * @throws NoSuchMethodException 
+     */
+    private ArrayList<ConditionalStyle> createConditionalStyles( ) throws
+            IllegalAccessException,
+            InstantiationException,
+            InvocationTargetException,
+            NoSuchMethodException
+    { 
+        //creating the conditional styles
+        Style positive = new Style();
+        positive.setHorizontalAlign( HorizontalAlign.RIGHT );
+        positive.setPattern( "$0.00; ($0.00)" );
+        
+        Style negative = new Style();
+        negative.setHorizontalAlign( HorizontalAlign.RIGHT );
+        negative.setPattern( "(($0.00); ($0.00)" );
+        
+        //creating the conditions by which the column values are evaluated
+        StatusCondition statusPositive = new StatusCondition( new Float(0), new Float (100000000));
+        StatusCondition statusNegative = new StatusCondition( new Float (-100000000), new Float(0) );
+        
+        //combines the styles and the conditions
+        ConditionalStyle positiveCondition = new ConditionalStyle( statusPositive, positive );
+        ConditionalStyle negativeCondition = new ConditionalStyle( statusNegative, negative );
+
+        ArrayList<ConditionalStyle> conditionalStyles = new ArrayList();
+        conditionalStyles.add( positiveCondition );
+        conditionalStyles.add( negativeCondition );
+        return conditionalStyles;
+    }
+
+    private DJGroup createNAPremiumsGroup()
+    {
+          GroupBuilder groupBuilder = new GroupBuilder();
+          
+          return groupBuilder
+                .setCriteriaColumn( (PropertyColumn) employer )
+                .addFooterVariable( premium, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( pst, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( retroactivePremium, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( retroactivePst, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( grossPremium, DJCalculation.SUM, FOOTER_TOTAL_CYAN )
+                .addFooterVariable( administrationAmount, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( commissionAmount, DJCalculation.SUM, FOOTER_TOTAL )
+                .addFooterVariable( netPremium, DJCalculation.SUM, FOOTER_TOTAL )
+                .setGroupLayout( GroupLayout.VALUE_FOR_EACH )
+                .build();
+
+    }
+
+    private DynamicReport createNAMonthlyPremiumsDynamicReport( DJGroup group, DynamicReportBuilder dynamicReportBuilder )
+    {
+        DynamicReport dynamicReport = new DynamicReport();
+        try
+        {
+            dynamicReport = dynamicReportBuilder
+                    .addGroup( group )
+                    .setDefaultStyles( null, null, HEADER_STYLE_JUSTIFIED, RIGHT )
+                    .setGrandTotalLegend( "Totals: " )
+                    .setGrandTotalLegendStyle( BOLD_LEFT )
+                    .addConcatenatedReport( createProductTotalsReport(), "productTypes", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
+                    .addConcatenatedReport( createProvinceTotalsReport(), "provinces", DJConstants.DATA_SOURCE_ORIGIN_PARAMETER, DJConstants.DATA_SOURCE_TYPE_COLLECTION )
+                    .build();
+        }
+        catch (JRException ex)
+        {
+            Logger.getLogger( NAMonthlyPremiums.class.getName() ).log( Level.SEVERE, null, ex );
+        }
+        return dynamicReport;
     }
 }

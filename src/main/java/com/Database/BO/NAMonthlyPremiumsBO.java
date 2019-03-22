@@ -58,7 +58,7 @@ public class NAMonthlyPremiumsBO
     {
         
         HashMap<String, HashMap> productProvinceMap = new HashMap<>();
-        HashMap<String, ProductTotal> productMap = new HashMap<>();
+        HashMap<String, ProductTotal> productMap = setUpProductMap();
         HashMap<String, ProvinceTotal> provinceTotalMap = setUpProvinceMap();
         ArrayList<NAMonthlyPremiumsGroup> naMonthlyPremiumsGroups = getNAMonthlyPremiumsGroup();
         for ( NAMonthlyPremiumsGroup group : naMonthlyPremiumsGroups )
@@ -79,29 +79,17 @@ public class NAMonthlyPremiumsBO
                         group.getNetPremium() + total.getNetPremiumTotal(),
                         group.getGst() + total.getGstTotal() ) );
             }
-            else
-            {
-                productMap.put( group.getProduct(), new ProductTotal( 
-                        group.getProduct(), 
-                        group.getPremium(), 
-                        group.getPst(), 
-                        group.getRetroactivePremium(),
-                        group.getRetroactivePst(),
-                        group.getGrossPremium(),
-                        group.getAdministrationAmount(), 
-                        group.getCommissionAmount(), 
-                        group.getNetPremium(),
-                        group.getGst() ) );
-            }
+            
             ProvinceTotal pTotal = provinceTotalMap.get( group.getProvince());
-            String problem = group.getEmployer();
-            System.out.println( problem );
             provinceTotalMap.put (group.getProvince(), new ProvinceTotal(
                     group.getProvince(), 
-                    group.getPst() + pTotal.getPstTotal(), 
+                    group.getPst() + pTotal.getPstTotal() + 0, 
                     group.getRetroactivePst() + pTotal.getRetroactivePstTotal() ));
             
         }
+        
+        productMap = fixProductNames(productMap);
+        provinceTotalMap = fixProvinceMap(provinceTotalMap);
         productProvinceMap.put("products", productMap);
         productProvinceMap.put("provinces", provinceTotalMap);
         return productProvinceMap;
@@ -109,19 +97,129 @@ public class NAMonthlyPremiumsBO
 
     private HashMap<String, ProvinceTotal> setUpProvinceMap()
     {
-         HashMap<String, ProvinceTotal> provinceTotalMap = new HashMap<>();
-         provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Float( "0.0" ), new Float( "0.0" ) ) );
-         provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Float( "0.0" ), new Float( "0.0" ) ) );
-         
-         return provinceTotalMap;
+        HashMap<String, ProvinceTotal> provinceTotalMap = new HashMap<>();
+        provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NL", new ProvinceTotal( "NL", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "PE", new ProvinceTotal( "PE", new Float( "0.0" ), new Float( "0.0" ) ) );
+
+        return provinceTotalMap;
+    }
+    
+    private HashMap<String, ProvinceTotal> dummyProvinceMap()
+    {
+        HashMap<String, ProvinceTotal> provinceTotalMap = new HashMap<>();
+        provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Float( "0.0" ), new Float( "0.0" ) ) );
+
+        return provinceTotalMap;
+    }
+
+    private HashMap<String, ProductTotal> setUpProductMap()
+    {
+        HashMap<String, ProductTotal> productMap = new HashMap<>();
+        productMap.put( "Life", new ProductTotal("", "LIFE" ));
+        productMap.put( "AD&D", new ProductTotal("", "ADD" ));
+        productMap.put( "Dep Life", new ProductTotal("", "DLIFE" ));
+        productMap.put( "STD", new ProductTotal("", "STD" ));
+        productMap.put( "LTD", new ProductTotal("", "LTD" ));
+        productMap.put( "Opt Life", new ProductTotal("", "OLIFE-E" ));
+        productMap.put( "OLIFE-S", new ProductTotal("", "OLIFE-S" ));
+        productMap.put( "OADD", new ProductTotal("", "OADD" ));
+        productMap.put( "EAP", new ProductTotal("", "EAP" ));
+        return productMap;
+    }
+
+    private HashMap<String, ProductTotal> fixProductNames( HashMap<String, ProductTotal> productMap )
+    {
+        ProductTotal tempProductTotal = productMap.get( "Life");
+        productMap.put( "Life", new ProductTotal ("LIFE", 
+                tempProductTotal.getPremiumTotal(), 
+                tempProductTotal.getPstTotal(),
+                tempProductTotal.getRetroactivePremiumTotal(),
+                tempProductTotal.getRetroactivePstTotal(),
+                tempProductTotal.getGrossPremiumTotal(),
+                tempProductTotal.getAdministrationAmountTotal(),
+                tempProductTotal.getCommissionAmountTotal(),
+                tempProductTotal.getNetPremiumTotal(),
+                tempProductTotal.getGstTotal()));
+        
+        tempProductTotal = productMap.get( "AD&D");
+        productMap.put( "AD&D", new ProductTotal ("ADD", 
+                tempProductTotal.getPremiumTotal(), 
+                tempProductTotal.getPstTotal(),
+                tempProductTotal.getRetroactivePremiumTotal(),
+                tempProductTotal.getRetroactivePstTotal(),
+                tempProductTotal.getGrossPremiumTotal(),
+                tempProductTotal.getAdministrationAmountTotal(),
+                tempProductTotal.getCommissionAmountTotal(),
+                tempProductTotal.getNetPremiumTotal(),
+                tempProductTotal.getGstTotal()));
+        
+        tempProductTotal = productMap.get( "Dep Life");
+        productMap.put( "Dep Life", new ProductTotal ("DLIFE", 
+                tempProductTotal.getPremiumTotal(), 
+                tempProductTotal.getPstTotal(),
+                tempProductTotal.getRetroactivePremiumTotal(),
+                tempProductTotal.getRetroactivePstTotal(),
+                tempProductTotal.getGrossPremiumTotal(),
+                tempProductTotal.getAdministrationAmountTotal(),
+                tempProductTotal.getCommissionAmountTotal(),
+                tempProductTotal.getNetPremiumTotal(),
+                tempProductTotal.getGstTotal()));
+        
+        tempProductTotal = productMap.get( "STD");
+        productMap.put( "STD", new ProductTotal (
+                "Product Totals:", "STD", 
+                tempProductTotal.getPremiumTotal(), 
+                tempProductTotal.getPstTotal(),
+                tempProductTotal.getRetroactivePremiumTotal(),
+                tempProductTotal.getRetroactivePstTotal(),
+                tempProductTotal.getGrossPremiumTotal(),
+                tempProductTotal.getAdministrationAmountTotal(),
+                tempProductTotal.getCommissionAmountTotal(),
+                tempProductTotal.getNetPremiumTotal(),
+                tempProductTotal.getGstTotal()));
+        
+        tempProductTotal = productMap.get( "Opt Life");
+        productMap.put( "Opt Life", new ProductTotal (
+                "OLIFE-E", 
+                tempProductTotal.getPremiumTotal(), 
+                tempProductTotal.getPstTotal(),
+                tempProductTotal.getRetroactivePremiumTotal(),
+                tempProductTotal.getRetroactivePstTotal(),
+                tempProductTotal.getGrossPremiumTotal(),
+                tempProductTotal.getAdministrationAmountTotal(),
+                tempProductTotal.getCommissionAmountTotal(),
+                tempProductTotal.getNetPremiumTotal(),
+                tempProductTotal.getGstTotal()));
+        
+             
+        return productMap;
+    }
+
+    private HashMap<String, ProvinceTotal> fixProvinceMap( HashMap<String, ProvinceTotal> provinceTotalMap )
+    {
+        ProvinceTotal tempProvinceTotal = provinceTotalMap.get ("BC");
+        provinceTotalMap.put( "BC", new ProvinceTotal("Prov Tax Totals", tempProvinceTotal.getProvince(), tempProvinceTotal.getPstTotal(), tempProvinceTotal.getRetroactivePstTotal()));
+        return provinceTotalMap;
     }
 }

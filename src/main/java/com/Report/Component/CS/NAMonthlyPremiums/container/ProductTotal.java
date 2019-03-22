@@ -11,6 +11,7 @@ package com.Report.Component.CS.NAMonthlyPremiums.container;
  */
 public class ProductTotal
 {
+    private String header;
     private String productName;
     private Float premiumTotal; //current premium
     private Float pstTotal; //current_tax
@@ -26,8 +27,20 @@ public class ProductTotal
     {
     }
 
+    public String getHeader()
+    {
+        return header;
+    }
+
+    public void setHeader( String header )
+    {
+        this.header = header;
+    }
+        
+
     public ProductTotal( String productName, Float premiumTotal, Float pstTotal, Float retroactivePremiumTotal, Float retroactivePstTotal, Float grossPremiumTotal, Float administrationAmountTotal, Float commissionAmountTotal, Float netPremiumTotal, Float gstTotal )
     {
+        this.header = "";
         this.productName = productName;
         this.premiumTotal = premiumTotal;
         this.pstTotal = pstTotal;
@@ -39,6 +52,39 @@ public class ProductTotal
         this.netPremiumTotal = netPremiumTotal;
         this.gstTotal = gstTotal;
     }
+
+    public ProductTotal( String header, String productName )
+    {
+        this.header = header;
+        this.productName = productName;
+        this.premiumTotal = (float) 0;
+        this.pstTotal = (float) 0;
+        this.retroactivePremiumTotal = (float) 0;
+        this.retroactivePstTotal = (float) 0;
+        this.grossPremiumTotal = (float) 0;
+        this.administrationAmountTotal = (float) 0;
+        this.commissionAmountTotal = (float) 0;
+        this.netPremiumTotal = (float) 0;
+        this.gstTotal = (float) 0;
+    }
+
+    public ProductTotal( String header, String productName, Float premiumTotal, Float pstTotal, Float retroactivePremiumTotal, Float retroactivePstTotal, Float grossPremiumTotal, Float administrationAmountTotal, Float commissionAmountTotal, Float netPremiumTotal, Float gstTotal )
+    {
+        this.header = header;
+        this.productName = productName;
+        this.premiumTotal = premiumTotal;
+        this.pstTotal = pstTotal;
+        this.retroactivePremiumTotal = retroactivePremiumTotal;
+        this.retroactivePstTotal = retroactivePstTotal;
+        this.grossPremiumTotal = grossPremiumTotal;
+        this.administrationAmountTotal = administrationAmountTotal;
+        this.commissionAmountTotal = commissionAmountTotal;
+        this.netPremiumTotal = netPremiumTotal;
+        this.gstTotal = gstTotal;
+    }
+    
+    
+    
 
     public String getProductName()
     {

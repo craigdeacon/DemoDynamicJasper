@@ -11,6 +11,7 @@ package com.Report.Component.CS.NAMonthlyPremiums.container;
  */
 public class ProvinceTotal
 {
+    private String header;
     private String province;
     private Float pstTotal;
     private Float retroactivePstTotal;
@@ -19,8 +20,20 @@ public class ProvinceTotal
     {
     }
 
+    public ProvinceTotal( String header, String province, Float pstTotal, Float retroactivePstTotal )
+    {
+        this.header = header;
+        this.province = province;
+        this.pstTotal = pstTotal;
+        this.retroactivePstTotal = retroactivePstTotal;
+    }
+    
+    
+    
+
     public ProvinceTotal( String Province, Float pstTotal, Float retroactivePstTotal )
     {
+        this.header = "";
         this.province = Province;
         this.pstTotal = pstTotal;
         this.retroactivePstTotal = retroactivePstTotal;
@@ -56,6 +69,17 @@ public class ProvinceTotal
     {
         this.retroactivePstTotal = retroactivePstTotal;
     }
+
+    public String getHeader()
+    {
+        return header;
+    }
+
+    public void setHeader( String header )
+    {
+        this.header = header;
+    }
+     
     
     
 }
