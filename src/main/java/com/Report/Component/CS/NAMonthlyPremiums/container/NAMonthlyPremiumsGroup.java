@@ -31,6 +31,7 @@ public class NAMonthlyPremiumsGroup
     private Float administrationAmount; //admin fee
     private Float commissionAmount; // commission
     private Float netPremium; // total net premium
+    private Float gst; //
     private Float administrationRate; //admin rate
     private Float commissionRate; //commission rate
 
@@ -236,6 +237,41 @@ public class NAMonthlyPremiumsGroup
     public void setBenefitId( int benefitId )
     {
         this.benefitId = benefitId;
+    }
+
+    public Float getGst()
+    {
+        return gst;
+    }
+
+    public void setGst( Float gst )
+    {
+        this.gst = gst;
+    }
+
+    public NAMonthlyPremiumsGroup( String policySeries, String policyAccount, String employer, Date month, String product, int benefitId, Float premium, Float premiumRate, String province, int employeeCount, int volume, Float pst, Float retroactivePremium, Float retroactivePst, Float grossPremium, Float administrationAmount, Float commissionAmount, Float netPremium, Float gst, Float administrationRate, Float commissionRate )
+    {
+        this.policySeries = policySeries;
+        this.policyAccount = policyAccount;
+        this.employer = employer;
+        this.month = month;
+        this.product = product;
+        this.benefitId = benefitId;
+        this.premium = premium;
+        this.premiumRate = premiumRate;
+        this.province = province;
+        this.employeeCount = employeeCount;
+        this.volume = volume;
+        this.pst = pst;
+        this.retroactivePremium = retroactivePremium;
+        this.retroactivePst = retroactivePst;
+        this.grossPremium = grossPremium;
+        this.administrationAmount = administrationAmount;
+        this.commissionAmount = commissionAmount;
+        this.netPremium = netPremium;
+        this.gst = gst;
+        this.administrationRate = administrationRate;
+        this.commissionRate = commissionRate;
     }
     
     

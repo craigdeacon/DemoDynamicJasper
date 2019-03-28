@@ -41,9 +41,52 @@ public class ReportUtilities
 
     private static String filePath;
     private static FileOutputStream fileOutputStream;
+    
+    
+    
+     /**
+     * Creates abstract column
+     *
+     * @param property The name of the property to be used from the data source
+     * @param title Column title on the report
+     * @param width width of column
+     * @param type data type of property (String, Float, Integer, Date)
+     * @return column object
+     */
+    public static AbstractColumn createColumnNoStyle( String property, String title, int width, String type )
+    {
+        
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, "java.lang." + type )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
+    }
+    
+    /**
+     * Creates abstract column
+     *
+     * @param property The name of the property to be used from the data source
+     * @param title Column title on the report
+     * @param width width of column
+     * @param type data type of property (String, Float, Integer, Date)
+     * @param style The style to be applied to column
+     * @return column object
+     */
+    public static AbstractColumn createColumn( String property, String title, int width, String type, Style style )
+    {        
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, "java.lang." + type )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .setStyle( style )
+                            .build();
+    }
+
+    
 
     /**
-     * Creates a column when property is a String
+     * Creates a column where property is a String
      *
      * @param property The name of the property to be used from the data source
      * @param title Column title on the report
@@ -52,6 +95,7 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnString( String property, String title, int width )
     {
+        
         return ColumnBuilder.getNew()
                             .setColumnProperty( property, String.class.getName() )
                             .setTitle( title )
@@ -60,7 +104,7 @@ public class ReportUtilities
     }
 
     /**
-     * Creates a string based column with a Style
+     * Creates a string based column with a Style applied
      *
      * @param property The property name of value from data source
      * @param title Column header in report
@@ -70,6 +114,7 @@ public class ReportUtilities
      */
     public static AbstractColumn createColumnString( String property, String title, int width, Style style )
     {
+   
         return ColumnBuilder.getNew()
                             .setColumnProperty( property, String.class.getName() )
                             .setTitle( title )
@@ -113,14 +158,35 @@ public class ReportUtilities
                             .setStyle( style )
                             .build();
     }
-
+    
     /**
+     * Creates a float based column with a conditional Styles applied
+     * 
+     * @param property The property name of value from data source
+     * @param title Column header in report
+     * @param width Width of the column
+     * @param conditionalStyles An arrayList of conditional styles that will be
+     * applied based on property value
+     * @return The completed column.
+     */       
+    public static AbstractColumn createColumnFloatConditionalStyle( String property, String title, int width, ArrayList conditionalStyles )
+    {
+        return ColumnBuilder.getNew()
+                .setColumnProperty( property, Float.class.getName() )
+                .setTitle( title )
+                .setWidth( width )
+                .addConditionalStyles( conditionalStyles )
+                .build();
+    }
+    
+    /**
+     * Creates a int based column with a Style applied
      *
-     * @param property
-     * @param title
-     * @param width
-     * @param style
-     * @return
+     * @param property The property name of value from data source
+     * @param title Column header in report
+     * @param width Desired width of column
+     * @param style Style to be applied to column
+     * @return Column object
      */
     public static AbstractColumn createColumnInt( String property, String title, int width, Style style )
     {
@@ -132,13 +198,14 @@ public class ReportUtilities
                             .build();
     }
 
-
+    
     /**
-     *
-     * @param property
-     * @param title
-     * @param width
-     * @return
+     * Creates a int based column
+     * 
+     * @param property The property name of value from data source
+     * @param title Column header in report
+     * @param width Desired width of column
+     * @return Column object
      */
     public static AbstractColumn createColumnInt( String property, String title, int width )
     {
@@ -148,16 +215,16 @@ public class ReportUtilities
                             .setWidth( width )
                             .build();
     }
-
-    public static AbstractColumn createColumnDate( String property, String title, int width )
-    {
-        return ColumnBuilder.getNew()
-                            .setColumnProperty( property, Date.class.getName() )
-                            .setTitle( title )
-                            .setWidth( width )
-                            .build();
-    }
-
+   
+    /**
+     * Creates a date based column with a style applied
+     * 
+     * @param property The property name of value from data source
+     * @param title Column header in report
+     * @param width Desired width of column
+     * @param style Style to be applied to column
+     * @return Column object
+     */
     public static AbstractColumn createColumnDate( String property, String title, int width, Style style )
     {
         return ColumnBuilder.getNew()
@@ -167,12 +234,28 @@ public class ReportUtilities
                             .setStyle( style )
                             .build();
     }
-
-
+   
+    /**
+     * Creates a date based column
+     * 
+     * @param property The property name of value from data source
+     * @param title Column header in report
+     * @param width Desired width of column
+     * @return Column object
+     */
+    public static AbstractColumn createColumnDate( String property, String title, int width )
+    {
+        return ColumnBuilder.getNew()
+                            .setColumnProperty( property, Date.class.getName() )
+                            .setTitle( title )
+                            .setWidth( width )
+                            .build();
+    }
+    
     /**
      * Opens a generated report file
      *
-     * @param outputFile
+     * @param outputFile The file to be opened
      */
     private static void OpenFile(File outputFile)
     {
@@ -269,6 +352,7 @@ public class ReportUtilities
      *
      * @param jasperPrint the report to be exported
      * @param reportName file name of exported report
+     * @param freezeRow
      */
     public static void exportExcel( JasperPrint jasperPrint, String reportName, boolean freezeRow )
     {
@@ -285,7 +369,8 @@ public class ReportUtilities
             configuration.setOnePagePerSheet( Boolean.FALSE );
             configuration.setRemoveEmptySpaceBetweenRows( Boolean.TRUE );
             configuration.setRemoveEmptySpaceBetweenColumns(Boolean.FALSE );
-            configuration.setWhitePageBackground( Boolean.FALSE );
+            configuration.setWhitePageBackground( Boolean.TRUE );
+            configuration.setDetectCellType(true);
 
             if (freezeRow)
             {
@@ -302,7 +387,14 @@ public class ReportUtilities
             Logger.getLogger( ReportUtilities.class.getName() ).log( Level.SEVERE, null, ex );
         }
     }
-
+    
+    /**
+     * Returns a dynamic jasper report, and adds the columns and titles
+     *
+     * @param columns An array list of columns to be added to the report
+     * @param title Title of report
+     * @return The built report
+     */
     public static DynamicReport createBasicReportSkeleton(ArrayList<AbstractColumn> columns, String title)
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
@@ -322,6 +414,12 @@ public class ReportUtilities
         return dynamicReportBuilder.build();
     }
 
+    /**
+     * Returns a dynamic jasper report, and adds the columns 
+     *
+     * @param columns An array list of columns to be added to the report
+     * @return The built report
+     */
     public static DynamicReport createBasicReportSkeletonNoTitle(ArrayList<AbstractColumn> columns)
     {
         DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
@@ -338,5 +436,33 @@ public class ReportUtilities
                 .setIgnorePagination( true );
 
         return dynamicReportBuilder.build();
+    }
+    
+    /**
+     * Returns a dynamic report builder with title. Dynamic report builder can have additional
+     * options configured before building the final report
+     * 
+     * @param columns Arraylist of columns to be used in the report
+     * @param title Title of the report
+     * @return The dynamic report builder, which still must be built before export.
+     */
+    public static DynamicReportBuilder createBasicReportBuilderSkeleton( ArrayList<AbstractColumn> columns, String title )
+    {
+        DynamicReportBuilder dynamicReportBuilder = new DynamicReportBuilder();
+        ArrayList<AbstractColumn> columnList = columns;
+        columnList.forEach( (column) ->
+        {
+            dynamicReportBuilder.addColumn( column );
+        } );
+
+        dynamicReportBuilder
+                .setLeftMargin( 0 )
+                .setTitle( title )
+                .setTitleHeight( 20 )
+                .setTitleStyle( BOLD_LEFT )
+                .setDefaultStyles( BOLD_LEFT, null, BOLD_LEFT, LEFT )
+                .setIgnorePagination( true );
+
+        return dynamicReportBuilder;
     }
 }

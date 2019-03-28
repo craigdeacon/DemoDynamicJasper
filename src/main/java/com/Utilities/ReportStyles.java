@@ -6,165 +6,102 @@
 package com.Utilities;
 
 import ar.com.fdvs.dj.domain.Style;
+import ar.com.fdvs.dj.domain.builders.StyleBuilder;
 import ar.com.fdvs.dj.domain.constants.Border;
 import ar.com.fdvs.dj.domain.constants.Font;
 import ar.com.fdvs.dj.domain.constants.HorizontalAlign;
 import ar.com.fdvs.dj.domain.constants.Transparency;
+import ar.com.fdvs.dj.domain.constants.VerticalAlign;
 
 import java.awt.Color;
 
 /**
- *
+ * A collection of styles for reports
+ * 
  * @author craig.deacon
  */
 public class ReportStyles
 {
 
-    /**
-     *
-     */
     public static Style LEFT;
-
-    /**
-     *
-     */
     public static Style RIGHT;
-
-    /**
-     *
-     */
     public static Style HEADER_STYLE;
-
-    /**
-     *
-     */
+    public static Style HEADER_STYLE_JUSTIFIED;
     public static Style AMOUNT_STYLE;
-
-    /**
-     *
-     */
     public static Style SUBTITLE_STYLE_PARENT;
-
-    /**
-     *
-     */
     public static Style SUBTITLE_STYLE;
-
-    /**
-     *
-     */
     public static Style BOLD_RIGHT;
-
-    /**
-     *
-     */
     public static Style BOLD_RIGHT_BLUE;
-
-    /**
-     *
-     */
     public static Style BOLD_LEFT;
-
-    /**
-     *
-     */
     public static Style BOLD_LEFT_BLUE;
-
-    /**
-     *
-     */
     public static Style BLUE_LEFT_GREY_BG;
-
-    /**
-     *
-     */
     public static Style BLUE_LEFT_GREY_BG_BT_BORDER;
-
-    /**
-     *
-     */
     public static Style BLUE_LEFT_GREY_BG_T_BORDER;
-
-    /**
-     *
-     */
     public static Style LARGE;
-
-    /**
-     *
-     */
     public static Style SMALL;
-
-    /**
-     *
-     */
     public static Style SMALL_RIGHT;
+    public static Style FOOTER_TOTAL;
+    public static Style FOOTER_TOTAL_CYAN;    
+    public static Style BOLD_LEFT_TOP_PADDING;
 
-    /**
-     *
-     */
+
     public ReportStyles()
     {
     }
 
     /**
-     *
+     * Initializes the styles used in reports
      */
     public static void initStyles()
     {
-
-        LEFT = new Style();
-        LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
-      
         RIGHT = new Style();
         RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
 
-
-        /**
-         *
-         */
-        Style BLANK = new Style();
-        BLANK.setBorder(Border.THIN());
-        BLANK.setBlankWhenNull(true);
-        
+        LEFT = new Style();
+        LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
         
         BOLD_RIGHT = new Style();
         BOLD_RIGHT.setFont( Font.ARIAL_MEDIUM_BOLD );
         
         BOLD_RIGHT.setHorizontalAlign( HorizontalAlign.RIGHT );
-        BOLD_RIGHT.setPattern( "$0.00" );
+        BOLD_RIGHT.setPattern( "$0.00; ($0.00)" );
         
         BOLD_RIGHT_BLUE = new Style();
         BOLD_RIGHT_BLUE.setFont( Font.ARIAL_MEDIUM_BOLD );
         BOLD_RIGHT_BLUE.setHorizontalAlign( HorizontalAlign.RIGHT );
-        BOLD_RIGHT_BLUE.setPattern( "$0.00" );
+        BOLD_RIGHT_BLUE.setPattern( "$0.00; ($0.00)" );
         BOLD_RIGHT_BLUE.setTextColor( Color.BLUE );
         
         BOLD_LEFT = new Style();
         BOLD_LEFT.setFont( Font.ARIAL_MEDIUM_BOLD );
         BOLD_LEFT.setHorizontalAlign( HorizontalAlign.LEFT );
-        BOLD_LEFT.setPattern( "$0.00" );
+        BOLD_LEFT.setPattern( "$0.00; ($0.00)" );
         
         BOLD_LEFT_BLUE = new Style();
         BOLD_LEFT_BLUE.setFont( Font.ARIAL_MEDIUM_BOLD );
         BOLD_LEFT_BLUE.setHorizontalAlign( HorizontalAlign.LEFT );
-        BOLD_LEFT_BLUE.setPattern( "$0.00" );
+        BOLD_LEFT_BLUE.setPattern( "$0.00; ($0.00)" );
         BOLD_LEFT_BLUE.setTextColor( Color.BLUE );
+        
+        BOLD_LEFT_TOP_PADDING = new Style();
+        BOLD_LEFT_TOP_PADDING.setFont( Font.ARIAL_MEDIUM_BOLD );
+        BOLD_LEFT_TOP_PADDING.setHorizontalAlign( HorizontalAlign.LEFT );
+        BOLD_LEFT_TOP_PADDING.setPaddingTop( 30 );
+        BOLD_LEFT_TOP_PADDING.setVerticalAlign( VerticalAlign.BOTTOM );
+        BOLD_LEFT_TOP_PADDING.setPaddingBottom( 5 );
         
         BLUE_LEFT_GREY_BG = new Style();
         BLUE_LEFT_GREY_BG.setHorizontalAlign( HorizontalAlign.LEFT );
         BLUE_LEFT_GREY_BG.setTextColor( Color.BLUE );
         BLUE_LEFT_GREY_BG.setBackgroundColor( new Color( 230, 230, 230 ) );
         BLUE_LEFT_GREY_BG.setTransparency( Transparency.OPAQUE );
-        
-        
+              
         BLUE_LEFT_GREY_BG_T_BORDER = new Style();
         BLUE_LEFT_GREY_BG_T_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
         BLUE_LEFT_GREY_BG_T_BORDER.setTextColor( Color.BLUE );
         BLUE_LEFT_GREY_BG_T_BORDER.setBackgroundColor( new Color( 230, 230, 230 ) );
         BLUE_LEFT_GREY_BG_T_BORDER.setTransparency( Transparency.OPAQUE );
         BLUE_LEFT_GREY_BG_T_BORDER.setBorderTop( Border.THIN() );
-        
         
         BLUE_LEFT_GREY_BG_BT_BORDER = new Style();
         BLUE_LEFT_GREY_BG_BT_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
@@ -174,18 +111,21 @@ public class ReportStyles
         BLUE_LEFT_GREY_BG_BT_BORDER.setBorderBottom( Border.THIN() );
         BLUE_LEFT_GREY_BG_BT_BORDER.setBorderTop(Border.THIN() );
         
-        
         HEADER_STYLE = new Style();
         HEADER_STYLE.setBackgroundColor( new Color( 230, 230, 230 ) );
         HEADER_STYLE.setBorderBottom( Border.THIN() );
         HEADER_STYLE.setHorizontalAlign( HorizontalAlign.CENTER );
         HEADER_STYLE.setTransparency( Transparency.OPAQUE );
+        
+        HEADER_STYLE_JUSTIFIED = new Style();
+        HEADER_STYLE_JUSTIFIED.setBorderBottom( Border.THIN() );
+        HEADER_STYLE_JUSTIFIED.setHorizontalAlign( HorizontalAlign.CENTER );
+        HEADER_STYLE_JUSTIFIED.setTransparency( Transparency.OPAQUE );
 
         AMOUNT_STYLE = new Style();
         AMOUNT_STYLE.setHorizontalAlign( HorizontalAlign.RIGHT );
-        AMOUNT_STYLE.setPattern( "$0.00" );
+        AMOUNT_STYLE.setPattern( "$0.00; ($0.00)" );
         
-
         SUBTITLE_STYLE_PARENT = new Style( "subtitleParent" );
         SUBTITLE_STYLE_PARENT.setBackgroundColor( Color.GRAY );
         SUBTITLE_STYLE_PARENT.setTransparency( Transparency.OPAQUE );
@@ -199,13 +139,34 @@ public class ReportStyles
         
         SMALL = new Style();
         SMALL.setFont( Font.ARIAL_SMALL );
-        SMALL.setPattern( "$0.00" );
+        SMALL.setPattern( "$0.00; ($0.00)" );
         SMALL.setStretchWithOverflow( false);
          
         SMALL_RIGHT = new Style();
         SMALL_RIGHT.setFont( Font.ARIAL_SMALL );
-        SMALL_RIGHT.setPattern( "$0.00" );
+        SMALL_RIGHT.setPattern( "$0.00; ($0.00)" );
         SMALL_RIGHT.setStretchWithOverflow( false);
         SMALL_RIGHT.setHorizontalAlign( HorizontalAlign.LEFT );
+        
+        FOOTER_TOTAL_CYAN= new StyleBuilder(false)
+                .setFont( Font.ARIAL_MEDIUM_BOLD )
+                .setBackgroundColor( Color.CYAN )
+                .setTransparency( Transparency.OPAQUE )
+                .setHorizontalAlign(HorizontalAlign.RIGHT)
+                .setBorderTop(Border.THIN())
+                .setPattern( "$0.00; ($0.00)" )
+                .setVerticalAlign(VerticalAlign.TOP)
+                .setStretchWithOverflow(false)
+                .build();
+        
+        FOOTER_TOTAL = new StyleBuilder(false)
+                .setHorizontalAlign(HorizontalAlign.RIGHT)
+                .setFont( Font.ARIAL_MEDIUM_BOLD )
+                .setBorderTop(Border.THIN())
+                .setPattern( "$0.00; ($0.00)" )
+                .setVerticalAlign(VerticalAlign.TOP)
+                .setPaddingBottom(20)
+                .setStretchWithOverflow(false)
+                .build();
     }
 }
