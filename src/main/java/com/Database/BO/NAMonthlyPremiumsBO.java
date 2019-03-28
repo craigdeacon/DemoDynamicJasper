@@ -56,43 +56,7 @@ public class NAMonthlyPremiumsBO
     
     public HashMap getProductProvinceMap()
     {
-        
-        HashMap<String, HashMap> productProvinceMap = new HashMap<>();
-        HashMap<String, ProductTotal> productMap = setUpProductMap();
-        HashMap<String, ProvinceTotal> provinceTotalMap = setUpProvinceMap();
-        ArrayList<NAMonthlyPremiumsGroup> naMonthlyPremiumsGroups = getNAMonthlyPremiumsGroup();
-        for ( NAMonthlyPremiumsGroup group : naMonthlyPremiumsGroups )
-        {
-            if (productMap.containsKey( group.getProduct()))
-            {
-                ProductTotal total = productMap.get( group.getProduct());
-                
-                productMap.put( group.getProduct(), new ProductTotal( 
-                        group.getProduct(), 
-                        group.getPremium() + total.getPremiumTotal(), 
-                        group.getPst() + total.getPstTotal(), 
-                        group.getRetroactivePremium() + total.getRetroactivePremiumTotal(),
-                        group.getRetroactivePst() + total.getRetroactivePstTotal(),
-                        group.getGrossPremium() + total.getGrossPremiumTotal(),
-                        group.getAdministrationAmount() + total.getAdministrationAmountTotal(), 
-                        group.getCommissionAmount() + total.getCommissionAmountTotal(), 
-                        group.getNetPremium() + total.getNetPremiumTotal(),
-                        group.getGst() + total.getGstTotal() ) );
-            }
-            
-            ProvinceTotal pTotal = provinceTotalMap.get( group.getProvince());
-            provinceTotalMap.put (group.getProvince(), new ProvinceTotal(
-                    group.getProvince(), 
-                    group.getPst() + pTotal.getPstTotal() + 0, 
-                    group.getRetroactivePst() + pTotal.getRetroactivePstTotal() ));
-            
-        }
-        
-        productMap = fixProductNames(productMap);
-        provinceTotalMap = fixProvinceMap(provinceTotalMap);
-        productProvinceMap.put("products", productMap);
-        productProvinceMap.put("provinces", provinceTotalMap);
-        return productProvinceMap;
+        return sortProvinceProductMaps( getNAMonthlyPremiumsGroup() );
     }
 
     private HashMap<String, ProvinceTotal> setUpProvinceMap()
@@ -115,24 +79,11 @@ public class NAMonthlyPremiumsBO
         return provinceTotalMap;
     }
     
-    private HashMap<String, ProvinceTotal> dummyProvinceMap()
-    {
-        HashMap<String, ProvinceTotal> provinceTotalMap = new HashMap<>();
-        provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Float( "0.0" ), new Float( "0.0" ) ) );
-
-        return provinceTotalMap;
-    }
-
+    /**
+     * Sets up the Product map so that even if a product has no entries it
+     * appears on report
+     * @return 
+     */
     private HashMap<String, ProductTotal> setUpProductMap()
     {
         HashMap<String, ProductTotal> productMap = new HashMap<>();
@@ -148,6 +99,14 @@ public class NAMonthlyPremiumsBO
         return productMap;
     }
 
+    /**
+     * Changes the names of products listed in database to match desired
+     * output for report
+     * Also adds 'Product Totals' above a blank column to the first product listed
+     * 
+     * @param productMap
+     * @return 
+     */
     private HashMap<String, ProductTotal> fixProductNames( HashMap<String, ProductTotal> productMap )
     {
         ProductTotal tempProductTotal = productMap.get( "Life");
@@ -216,10 +175,58 @@ public class NAMonthlyPremiumsBO
         return productMap;
     }
 
+    /**
+     * Adds a 'header' to the first province in the list to make a label for the subreport
+     * Every other province has an empty string for the header property, so the 'Prov Tax Totals'
+     * looks like a label, but is actually property of the first row, while every other
+     * province is blank
+     * 
+     * @param provinceTotalMap
+     * @return 
+     */
     private HashMap<String, ProvinceTotal> fixProvinceMap( HashMap<String, ProvinceTotal> provinceTotalMap )
     {
         ProvinceTotal tempProvinceTotal = provinceTotalMap.get ("BC");
         provinceTotalMap.put( "BC", new ProvinceTotal("Prov Tax Totals", tempProvinceTotal.getProvince(), tempProvinceTotal.getPstTotal(), tempProvinceTotal.getRetroactivePstTotal()));
         return provinceTotalMap;
+    }
+
+    public HashMap<String, HashMap> sortProvinceProductMaps( ArrayList<NAMonthlyPremiumsGroup> naMonthlyPremiumsGroup )
+    {
+        HashMap<String, HashMap> productProvinceMap = new HashMap<>();
+        HashMap<String, ProductTotal> productMap = setUpProductMap();
+        HashMap<String, ProvinceTotal> provinceTotalMap = setUpProvinceMap();
+        for ( NAMonthlyPremiumsGroup group : naMonthlyPremiumsGroup )
+        {
+            if ( productMap.containsKey( group.getProduct() ) )
+            {
+                ProductTotal total = productMap.get( group.getProduct() );
+
+                productMap.put( group.getProduct(), new ProductTotal(
+                        group.getProduct(),
+                        group.getPremium() + total.getPremiumTotal(),
+                        group.getPst() + total.getPstTotal(),
+                        group.getRetroactivePremium() + total.getRetroactivePremiumTotal(),
+                        group.getRetroactivePst() + total.getRetroactivePstTotal(),
+                        group.getGrossPremium() + total.getGrossPremiumTotal(),
+                        group.getAdministrationAmount() + total.getAdministrationAmountTotal(),
+                        group.getCommissionAmount() + total.getCommissionAmountTotal(),
+                        group.getNetPremium() + total.getNetPremiumTotal(),
+                        group.getGst() + total.getGstTotal() ) );
+            }
+
+            ProvinceTotal pTotal = provinceTotalMap.get( group.getProvince() );
+            provinceTotalMap.put( group.getProvince(), new ProvinceTotal(
+                    group.getProvince(),
+                    group.getPst() + pTotal.getPstTotal() + 0,
+                    group.getRetroactivePst() + pTotal.getRetroactivePstTotal() ) );
+
+        }
+
+        productMap = fixProductNames( productMap );
+        provinceTotalMap = fixProvinceMap( provinceTotalMap );
+        productProvinceMap.put( "products", productMap );
+        productProvinceMap.put( "provinces", provinceTotalMap );
+        return productProvinceMap;
     }
 }

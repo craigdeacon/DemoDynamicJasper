@@ -131,7 +131,7 @@ public class NAMonthlyPremiums
             //merges report with data sources
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport, new ClassicLayoutManager(), dataSource, parameters );
             
-            //export report to Excelt
+            //export report to Excel
             exportExcel( jasperPrint, "Non-Affiliations Monthly Premiums Report", true);
         }
         catch (JRException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex)
