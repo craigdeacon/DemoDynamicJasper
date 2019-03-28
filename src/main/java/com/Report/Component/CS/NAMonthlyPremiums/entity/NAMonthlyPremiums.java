@@ -121,13 +121,17 @@ public class NAMonthlyPremiums
  
             DynamicReport dynamicReport = createNAMonthlyPremiumsDynamicReport( group, dynamicReportBuilder) ;
                     
-            
+            //add data sources for subreports as map parameters
             parameters.put("productTypes", productTotalList );
             parameters.put("provinces", provinceTotalList );
+            
+            //fetch data source for main body report
             JRDataSource dataSource = new JRBeanCollectionDataSource(naMonthlyPremiumsBO.getNAMonthlyPremiumsGroup());
             
+            //merges report with data sources
             JasperPrint jasperPrint = DynamicJasperHelper.generateJasperPrint(dynamicReport, new ClassicLayoutManager(), dataSource, parameters );
             
+            //export report to Excelt
             exportExcel( jasperPrint, "Non-Affiliations Monthly Premiums Report", true);
         }
         catch (JRException | IllegalAccessException | InstantiationException | NoSuchMethodException | InvocationTargetException ex)
@@ -353,6 +357,11 @@ public class NAMonthlyPremiums
         return conditionalStyles;
     }
 
+    /**
+     * Creates the sorting group used in main body report
+     * 
+     * @return Dynamic Jasper group
+     */
     private DJGroup createNAPremiumsGroup()
     {
           GroupBuilder groupBuilder = new GroupBuilder();
@@ -372,6 +381,13 @@ public class NAMonthlyPremiums
 
     }
 
+    /**
+     * Creates the dynamic report for the main body of the NA Monthly Premium report
+     * 
+     * @param group The group used to sort report by Employer
+     * @param dynamicReportBuilder the report builder with column information to create report
+     * @return The built and completed report
+     */
     private DynamicReport createNAMonthlyPremiumsDynamicReport( DJGroup group, DynamicReportBuilder dynamicReportBuilder )
     {
         DynamicReport dynamicReport = new DynamicReport();
