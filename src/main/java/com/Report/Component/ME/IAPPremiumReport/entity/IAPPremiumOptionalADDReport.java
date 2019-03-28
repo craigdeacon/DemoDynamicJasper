@@ -27,8 +27,6 @@ public class IAPPremiumOptionalADDReport
     private AbstractColumn currentNumberLives;
     private AbstractColumn currentSinglePlanVolume;
     private AbstractColumn currentFamilyPlanVolume;
-    private AbstractColumn grossSinglePlanPremiumRate;
-    private AbstractColumn grossFamilyPlanPremiumRate;
     private AbstractColumn totalGrossPremium;
     private AbstractColumn adjust;
     private AbstractColumn totalGrossPremiumAndAdjust;
@@ -70,8 +68,6 @@ public class IAPPremiumOptionalADDReport
                                                               .addGlobalFooterVariable(currentNumberLives, DJCalculation.SUM)
                                                               .addGlobalFooterVariable(currentSinglePlanVolume, DJCalculation.SUM)
                                                               .addGlobalFooterVariable(currentFamilyPlanVolume, DJCalculation.SUM)
-                                                              .addGlobalFooterVariable(grossSinglePlanPremiumRate, DJCalculation.SUM)
-                                                              .addGlobalFooterVariable(grossFamilyPlanPremiumRate, DJCalculation.SUM)
                                                               .addGlobalFooterVariable(totalGrossPremium, DJCalculation.SUM)
                                                               .addGlobalFooterVariable(adjust, DJCalculation.SUM)
                                                               .addGlobalFooterVariable(totalGrossPremiumAndAdjust, DJCalculation.SUM)
@@ -109,7 +105,7 @@ public class IAPPremiumOptionalADDReport
         AbstractColumn divisionName = createColumnString("divisionName", "Division Name", 200);
         columnList.add(divisionName);
 
-        AbstractColumn commissionRate = createColumnFloat("commissionRate", "Commission Rate %", 80);
+        AbstractColumn commissionRate = createColumnFloat("fullCommissionRate", "Commission Rate %", 80);
         columnList.add(commissionRate);
 
         AbstractColumn coverageEffective = createColumnDate("coverageEffective", "Coverage Effective Date", 150);
@@ -133,12 +129,12 @@ public class IAPPremiumOptionalADDReport
         currentFamilyPlanVolume.setPattern("#,##0.00");
         columnList.add( currentFamilyPlanVolume );
 
-        grossSinglePlanPremiumRate = createColumnFloat( "grossSinglePlanPremiumRate", "Gross Single Plan Premium Rate", 100 );
-        grossSinglePlanPremiumRate.setPattern("#,##0.00");
+        AbstractColumn grossSinglePlanPremiumRate = createColumnFloat("grossSinglePlanPremiumRate", "Gross Single Plan Premium Rate", 100);
+        grossSinglePlanPremiumRate.setPattern("#,##0.000");
         columnList.add( grossSinglePlanPremiumRate );
 
-        grossFamilyPlanPremiumRate = createColumnFloat( "grossFamilyPlanPremiumRate", "Gross Family Plan Premium Rate", 100 );
-        grossFamilyPlanPremiumRate.setPattern("#,##0.00");
+        AbstractColumn grossFamilyPlanPremiumRate = createColumnFloat("grossFamilyPlanPremiumRate", "Gross Family Plan Premium Rate", 100);
+        grossFamilyPlanPremiumRate.setPattern("#,##0.000");
         columnList.add( grossFamilyPlanPremiumRate );
 
 
