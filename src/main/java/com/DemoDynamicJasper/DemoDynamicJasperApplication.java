@@ -16,6 +16,7 @@ import com.Report.Component.TestReportComponent.secondReport.entity.EmployeeRepo
 import com.DemoDynamicJasper.spring.config.AppConfig;
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import com.Report.Component.CS.NAMonthlyPremiums.entity.NAMonthlyPremiums;
+import com.Report.Component.ME.FABPPremiumReport.entity.FABPPremiumReport;
 
 /**
  *
@@ -43,8 +44,11 @@ class DemoDynamicJasperApplication
 //        IAPPremiumReport iapPremiumReport = new IAPPremiumReport();
 //        iapPremiumReport.displayIAPPremiumReport();
 
-        NAMonthlyPremiums naMonthlyPremiums = new NAMonthlyPremiums();
-        naMonthlyPremiums.displayNAMonthlyPremiumReport();
+//        NAMonthlyPremiums naMonthlyPremiums = new NAMonthlyPremiums();
+//        naMonthlyPremiums.displayNAMonthlyPremiumReport();
+
+        FABPPremiumReport fABPPremiumReport = new FABPPremiumReport();
+        fABPPremiumReport.displayFABPremiumReport();
 
     }
 
