@@ -13,7 +13,7 @@ public class CignaUploadRepository implements CignaUploadDAO
     public ArrayList<CignaUploadGroup> getCignaUploadGroups()
     {
         ArrayList<CignaUploadGroup> listGroup = new ArrayList<>();
-        listGroup.add(new CignaUploadGroup(1, 2019, "LTD", "SGD602730", 0, -87899.00f, -1221.79f, 0.00f, 1.39f, "Test", -61.07f, -73.30f, -1087.42f));
+        listGroup.add(new CignaUploadGroup(1, 2019, "LTD", "SGD602730", 0, -87899.00, -1221.79, 0.00, 1.39, "Test", -61.07, -73.30, -1087.42));
 
         return listGroup;
     }

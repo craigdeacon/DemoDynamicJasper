@@ -13,15 +13,15 @@ public class ProductTotal
 {
     private String header;
     private String productName;
-    private Float premiumTotal; //current premium
-    private Float pstTotal; //current_tax
-    private Float retroactivePremiumTotal; // adjustment premium
-    private Float retroactivePstTotal; //adjustment tax
-    private Float grossPremiumTotal; //gross premium
-    private Float administrationAmountTotal; //admin fee
-    private Float commissionAmountTotal; // commission
-    private Float netPremiumTotal; // total net premium
-    private Float gstTotal; //
+    private Double premiumTotal; //current premium
+    private Double pstTotal; //current_tax
+    private Double retroactivePremiumTotal; // adjustment premium
+    private Double retroactivePstTotal; //adjustment tax
+    private Double grossPremiumTotal; //gross premium
+    private Double administrationAmountTotal; //admin fee
+    private Double commissionAmountTotal; // commission
+    private Double netPremiumTotal; // total net premium
+    private Double gstTotal; //
 
     public ProductTotal()
     {
@@ -38,7 +38,7 @@ public class ProductTotal
     }
         
 
-    public ProductTotal( String productName, Float premiumTotal, Float pstTotal, Float retroactivePremiumTotal, Float retroactivePstTotal, Float grossPremiumTotal, Float administrationAmountTotal, Float commissionAmountTotal, Float netPremiumTotal, Float gstTotal )
+    public ProductTotal( String productName, Double premiumTotal, Double pstTotal, Double retroactivePremiumTotal, Double retroactivePstTotal, Double grossPremiumTotal, Double administrationAmountTotal, Double commissionAmountTotal, Double netPremiumTotal, Double gstTotal )
     {
         this.header = "";
         this.productName = productName;
@@ -57,18 +57,18 @@ public class ProductTotal
     {
         this.header = header;
         this.productName = productName;
-        this.premiumTotal = (float) 0;
-        this.pstTotal = (float) 0;
-        this.retroactivePremiumTotal = (float) 0;
-        this.retroactivePstTotal = (float) 0;
-        this.grossPremiumTotal = (float) 0;
-        this.administrationAmountTotal = (float) 0;
-        this.commissionAmountTotal = (float) 0;
-        this.netPremiumTotal = (float) 0;
-        this.gstTotal = (float) 0;
+        this.premiumTotal = 0.;
+        this.pstTotal = 0.;
+        this.retroactivePremiumTotal = 0.;
+        this.retroactivePstTotal = 0.;
+        this.grossPremiumTotal = 0.;
+        this.administrationAmountTotal = 0.;
+        this.commissionAmountTotal = 0.;
+        this.netPremiumTotal = 0.;
+        this.gstTotal = 0.;
     }
 
-    public ProductTotal( String header, String productName, Float premiumTotal, Float pstTotal, Float retroactivePremiumTotal, Float retroactivePstTotal, Float grossPremiumTotal, Float administrationAmountTotal, Float commissionAmountTotal, Float netPremiumTotal, Float gstTotal )
+    public ProductTotal( String header, String productName, Double premiumTotal, Double pstTotal, Double retroactivePremiumTotal, Double retroactivePstTotal, Double grossPremiumTotal, Double administrationAmountTotal, Double commissionAmountTotal, Double netPremiumTotal, Double gstTotal )
     {
         this.header = header;
         this.productName = productName;
@@ -96,92 +96,92 @@ public class ProductTotal
         this.productName = productName;
     }
 
-    public Float getPremiumTotal()
+    public Double getPremiumTotal()
     {
         return premiumTotal;
     }
 
-    public void setPremiumTotal( Float premiumTotal )
+    public void setPremiumTotal( Double premiumTotal )
     {
         this.premiumTotal = premiumTotal;
     }
 
-    public Float getPstTotal()
+    public Double getPstTotal()
     {
         return pstTotal;
     }
 
-    public void setPstTotal( Float pstTotal )
+    public void setPstTotal( Double pstTotal )
     {
         this.pstTotal = pstTotal;
     }
 
-    public Float getRetroactivePremiumTotal()
+    public Double getRetroactivePremiumTotal()
     {
         return retroactivePremiumTotal;
     }
 
-    public void setRetroactivePremiumTotal( Float retroactivePremiumTotal )
+    public void setRetroactivePremiumTotal( Double retroactivePremiumTotal )
     {
         this.retroactivePremiumTotal = retroactivePremiumTotal;
     }
 
-    public Float getRetroactivePstTotal()
+    public Double getRetroactivePstTotal()
     {
         return retroactivePstTotal;
     }
 
-    public void setRetroactivePstTotal( Float retroactivePstTotal )
+    public void setRetroactivePstTotal( Double retroactivePstTotal )
     {
         this.retroactivePstTotal = retroactivePstTotal;
     }
 
-    public Float getGrossPremiumTotal()
+    public Double getGrossPremiumTotal()
     {
         return grossPremiumTotal;
     }
 
-    public void setGrossPremiumTotal( Float grossPremiumTotal )
+    public void setGrossPremiumTotal( Double grossPremiumTotal )
     {
         this.grossPremiumTotal = grossPremiumTotal;
     }
 
-    public Float getAdministrationAmountTotal()
+    public Double getAdministrationAmountTotal()
     {
         return administrationAmountTotal;
     }
 
-    public void setAdministrationAmountTotal( Float administrationAmountTotal )
+    public void setAdministrationAmountTotal( Double administrationAmountTotal )
     {
         this.administrationAmountTotal = administrationAmountTotal;
     }
 
-    public Float getCommissionAmountTotal()
+    public Double getCommissionAmountTotal()
     {
         return commissionAmountTotal;
     }
 
-    public void setCommissionAmountTotal( Float commissionAmountTotal )
+    public void setCommissionAmountTotal( Double commissionAmountTotal )
     {
         this.commissionAmountTotal = commissionAmountTotal;
     }
 
-    public Float getNetPremiumTotal()
+    public Double getNetPremiumTotal()
     {
         return netPremiumTotal;
     }
 
-    public void setNetPremiumTotal( Float netPremiumTotal )
+    public void setNetPremiumTotal( Double netPremiumTotal )
     {
         this.netPremiumTotal = netPremiumTotal;
     }
 
-    public Float getGstTotal()
+    public Double getGstTotal()
     {
         return gstTotal;
     }
 
-    public void setGstTotal( Float gstTotal )
+    public void setGstTotal( Double gstTotal )
     {
         this.gstTotal = gstTotal;
     }

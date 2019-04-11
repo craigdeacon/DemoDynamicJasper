@@ -7,16 +7,16 @@ public class CignaUploadGroup
     private String type;
     private String policyNumber;
     private Integer numEmployee;
-    private Float sumInsured;
-    private Float grossPremiums;
-    private Float pst;
-    private Float grossRate;
+    private Double sumInsured;
+    private Double grossPremiums;
+    private Double pst;
+    private Double grossRate;
     private String companyName;
-    private Float commissionsRetained;
-    private Float tpaFee;
-    private Float netRemittance;
+    private Double commissionsRetained;
+    private Double tpaFee;
+    private Double netRemittance;
 
-    public CignaUploadGroup(Integer month, Integer year, String type, String policyNumber, Integer numEmployee, Float sumInsured, Float grossPremiums, Float pst, Float grossRate, String companyName, Float commissionsRetained, Float tpaFee, Float netRemittance)
+    public CignaUploadGroup(Integer month, Integer year, String type, String policyNumber, Integer numEmployee, Double sumInsured, Double grossPremiums, Double pst, Double grossRate, String companyName, Double commissionsRetained, Double tpaFee, Double netRemittance)
     {
         this.month = month;
         this.year = year;
@@ -87,42 +87,42 @@ public class CignaUploadGroup
         this.numEmployee = numEmployee;
     }
 
-    public Float getSumInsured()
+    public Double getSumInsured()
     {
         return sumInsured;
     }
 
-    public void setSumInsured(Float sumInsured)
+    public void setSumInsured(Double sumInsured)
     {
         this.sumInsured = sumInsured;
     }
 
-    public Float getGrossPremiums()
+    public Double getGrossPremiums()
     {
         return grossPremiums;
     }
 
-    public void setGrossPremiums(Float grossPremiums)
+    public void setGrossPremiums(Double grossPremiums)
     {
         this.grossPremiums = grossPremiums;
     }
 
-    public Float getPst()
+    public Double getPst()
     {
         return pst;
     }
 
-    public void setPst(Float pst)
+    public void setPst(Double pst)
     {
         this.pst = pst;
     }
 
-    public Float getGrossRate()
+    public Double getGrossRate()
     {
         return grossRate;
     }
 
-    public void setGrossRate(Float grossRate)
+    public void setGrossRate(Double grossRate)
     {
         this.grossRate = grossRate;
     }
@@ -137,32 +137,32 @@ public class CignaUploadGroup
         this.companyName = companyName;
     }
 
-    public Float getCommissionsRetained()
+    public Double getCommissionsRetained()
     {
         return commissionsRetained;
     }
 
-    public void setCommissionsRetained(Float commissionsRetained)
+    public void setCommissionsRetained(Double commissionsRetained)
     {
         this.commissionsRetained = commissionsRetained;
     }
 
-    public Float getTpaFee()
+    public Double getTpaFee()
     {
         return tpaFee;
     }
 
-    public void setTpaFee(Float tpaFee)
+    public void setTpaFee(Double tpaFee)
     {
         this.tpaFee = tpaFee;
     }
 
-    public Float getNetRemittance()
+    public Double getNetRemittance()
     {
         return netRemittance;
     }
 
-    public void setNetRemittance(Float netRemittance)
+    public void setNetRemittance(Double netRemittance)
     {
         this.netRemittance = netRemittance;
     }

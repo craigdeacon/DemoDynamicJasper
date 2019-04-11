@@ -175,7 +175,7 @@ public class NAMonthlyPremiums
         AbstractColumn product = createColumnString( "product", "Product", productWidth, LEFT );
         columnList.add( product );
         
-        AbstractColumn rate = createColumnFloat("premiumRate", "Rate", rateWidth, LEFT );
+        AbstractColumn rate = createColumn("premiumRate", "Rate", rateWidth, "Double", LEFT );
         rate.setPattern( "0.000");
         columnList.add( rate );
        
@@ -185,40 +185,40 @@ public class NAMonthlyPremiums
         volume = createColumnInt( "volume", "Volume", volumeWidth, LEFT );
         columnList.add( volume );
         
-        premium = createColumnFloatConditionalStyle("premium", "Current Premium", currentPremiumWidth, conditionalStyles );  
+        premium = createColumn("premium", "Current Premium", currentPremiumWidth, "Double", AMOUNT_STYLE );  
         columnList.add( premium );
         
-        pst = createColumnFloatConditionalStyle("pst", "Current Tax", currentTaxWidth, conditionalStyles );
+        pst = createColumn("pst", "Current Tax", currentTaxWidth, "Double", AMOUNT_STYLE );
         columnList.add( pst );
         
-        retroactivePremium = createColumnFloatConditionalStyle( "retroactivePremium", "Adjustment Premium", adjustmentPremiumWidth, conditionalStyles );
+        retroactivePremium = createColumn( "retroactivePremium", "Adjustment Premium", adjustmentPremiumWidth, "Double", AMOUNT_STYLE );
         columnList.add( retroactivePremium );
         
-        retroactivePst = createColumnFloatConditionalStyle( "retroactivePst", "Adjustment Tax", adjustmentTaxWidth, conditionalStyles );
+        retroactivePst = createColumn( "retroactivePst", "Adjustment Tax", adjustmentTaxWidth, "Double", AMOUNT_STYLE );
         columnList.add( retroactivePst );
         
-        grossPremium = createColumnFloatConditionalStyle( "grossPremium", "Gross Premium", grossPremiumWidth, conditionalStyles );
+        grossPremium = createColumn( "grossPremium", "Gross Premium", grossPremiumWidth, "Double", AMOUNT_STYLE );
         columnList.add( grossPremium );
         
-        administrationAmount = createColumnFloatConditionalStyle( "administrationAmount", "Admin Fee", adminFeeWidth, conditionalStyles  );
+        administrationAmount = createColumn( "administrationAmount", "Admin Fee", adminFeeWidth, "Double", AMOUNT_STYLE  );
         columnList.add( administrationAmount );
         
-        commissionAmount = createColumnFloatConditionalStyle( "commissionAmount", "Commission", commissionWidth, conditionalStyles );
+        commissionAmount = createColumn( "commissionAmount", "Commission", commissionWidth, "Double", AMOUNT_STYLE );
         columnList.add( commissionAmount );
         
-        netPremium = createColumnFloatConditionalStyle( "netPremium", "Total Net Premium", totalNetPremiumWidth, conditionalStyles  );
+        netPremium = createColumn( "netPremium", "Total Net Premium", totalNetPremiumWidth, "Double", AMOUNT_STYLE );
         columnList.add( netPremium );
         
-        AbstractColumn gst = createColumnFloat( "gst", "GST", 40, RIGHT );
+        AbstractColumn gst = createColumn( "gst", "GST", 40, "Double", RIGHT );
         gst.setBlankWhenNull( true );
         gst.setPattern( "#");
         columnList.add( gst );
         
-        AbstractColumn administrationRate = createColumnFloat( "administrationRate", "Admin Rate", 40, RIGHT );
+        AbstractColumn administrationRate = createColumn( "administrationRate", "Admin Rate", 40, "Double", RIGHT );
         administrationRate.setPattern( "0.00");
         columnList.add( administrationRate );
         
-        AbstractColumn commissionRate = createColumnFloat( "commissionRate", "Commission Rate", 70, RIGHT );
+        AbstractColumn commissionRate = createColumn( "commissionRate", "Commission Rate", 70, "Double", RIGHT );
         commissionRate.setPattern( "0.00");
         columnList.add( commissionRate );
         
@@ -239,15 +239,15 @@ public class NAMonthlyPremiums
         
         AbstractColumn header = createColumnString("header", "", rateWidth + livesWidth, BOLD_LEFT);
         AbstractColumn productName = createColumnString ("productName", "", volumeWidth, LEFT );
-        AbstractColumn premiumTotal = createColumnFloat( "premiumTotal", "", currentPremiumWidth );          
-        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", currentTaxWidth );
-        AbstractColumn retroactivePremiumTotal= createColumnFloat( "retroactivePremiumTotal", "", adjustmentPremiumWidth );
-        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", adjustmentTaxWidth );
-        AbstractColumn grossPremiumTotal = createColumnFloat( "grossPremiumTotal", "", grossPremiumWidth ); 
-        AbstractColumn administrationAmountTotal = createColumnFloat( "administrationAmountTotal", "", adminFeeWidth );
-        AbstractColumn commissionAmountTotal = createColumnFloat( "commissionAmountTotal", "", commissionWidth );
-        AbstractColumn netPremiumTotal = createColumnFloat( "netPremiumTotal", "", totalNetPremiumWidth ); 
-        AbstractColumn gstTotal = createColumnFloat( "gstTotal", "", 40 );
+        AbstractColumn premiumTotal = createColumn( "premiumTotal", "", currentPremiumWidth, "Double" );          
+        AbstractColumn pstTotal = createColumn( "pstTotal", "", currentTaxWidth, "Double" );
+        AbstractColumn retroactivePremiumTotal= createColumn( "retroactivePremiumTotal", "", adjustmentPremiumWidth, "Double" );
+        AbstractColumn retroactivePstTotal = createColumn( "retroactivePstTotal", "", adjustmentTaxWidth, "Double" );
+        AbstractColumn grossPremiumTotal = createColumn( "grossPremiumTotal", "", grossPremiumWidth, "Double" ); 
+        AbstractColumn administrationAmountTotal = createColumn( "administrationAmountTotal", "", adminFeeWidth, "Double" );
+        AbstractColumn commissionAmountTotal = createColumn( "commissionAmountTotal", "", commissionWidth, "Double" );
+        AbstractColumn netPremiumTotal = createColumn( "netPremiumTotal", "", totalNetPremiumWidth, "Double" ); 
+        AbstractColumn gstTotal = createColumn( "gstTotal", "", 40, "Double" );
         
         DynamicReport dynamicReport = fastReport
                 .setDefaultStyles( null, null, BOLD_LEFT, AMOUNT_STYLE )
@@ -293,8 +293,8 @@ public class NAMonthlyPremiums
         
         AbstractColumn header = createColumnString("header", "", rateWidth + livesWidth, BOLD_LEFT);
         AbstractColumn province = createColumnString ("province", "", volumeWidth, LEFT );
-        AbstractColumn pstTotal = createColumnFloat( "pstTotal", "", currentPremiumWidth + currentTaxWidth );
-        AbstractColumn retroactivePstTotal = createColumnFloat( "retroactivePstTotal", "", adjustmentPremiumWidth + adjustmentTaxWidth );
+        AbstractColumn pstTotal = createColumn( "pstTotal", "", currentPremiumWidth + currentTaxWidth, "Double" );
+        AbstractColumn retroactivePstTotal = createColumn( "retroactivePstTotal", "", adjustmentPremiumWidth + adjustmentTaxWidth, "Double" );
                
         DynamicReport dynamicReport = fastReport
                 .setDefaultStyles( null, null, BOLD_LEFT, AMOUNT_STYLE )

@@ -62,19 +62,19 @@ public class NAMonthlyPremiumsBO
     private HashMap<String, ProvinceTotal> setUpProvinceMap()
     {
         HashMap<String, ProvinceTotal> provinceTotalMap = new HashMap<>();
-        provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "NL", new ProvinceTotal( "NL", new Float( "0.0" ), new Float( "0.0" ) ) );
-        provinceTotalMap.put( "PE", new ProvinceTotal( "PE", new Float( "0.0" ), new Float( "0.0" ) ) );
+        provinceTotalMap.put( "BC", new ProvinceTotal( "BC", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "AB", new ProvinceTotal( "AB", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "SK", new ProvinceTotal( "SK", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "MB", new ProvinceTotal( "MB", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "QC", new ProvinceTotal( "QC", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "ON", new ProvinceTotal( "ON", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "NS", new ProvinceTotal( "NS", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "NB", new ProvinceTotal( "NB", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "YT", new ProvinceTotal( "YT", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "NT", new ProvinceTotal( "NT", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "NU", new ProvinceTotal( "NU", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "NL", new ProvinceTotal( "NL", new Double( "0.0" ), new Double( "0.0" ) ) );
+        provinceTotalMap.put( "PE", new ProvinceTotal( "PE", new Double( "0.0" ), new Double( "0.0" ) ) );
 
         return provinceTotalMap;
     }

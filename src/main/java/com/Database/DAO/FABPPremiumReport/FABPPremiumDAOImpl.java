@@ -69,7 +69,7 @@ public class FABPPremiumDAOImpl implements FABPPremiumDAO
             + "	AND p.month_id = pfps.month_id "
             + "WHERE "
                         + "	p.month_id = 'January, 1, 2019' AND "
-//            ( SELECT dateval FROM settings WHERE var_id = 'CURRENT_MONTH' )
+            + "( SELECT dateval FROM settings WHERE var_id = 'CURRENT_MONTH' )"
             + "	 p.group_id IN ( SELECT group_id FROM group_summary WHERE assoc_id = 92031 ) "
             + "GROUP BY "
             + "	p.group_id, "
@@ -100,13 +100,13 @@ public class FABPPremiumDAOImpl implements FABPPremiumDAO
 
             group.setGroupName( resultSet.getString( "employer" ) );
             group.setUnderwriter( resultSet.getString( "under_name" ) );
-            group.setGrossPremiums( resultSet.getFloat( "gross_prem" ) );
-            group.setCommission( resultSet.getFloat( "commission" ) );
-            group.setAdmin( resultSet.getFloat( "admin_allow" ) );
-            group.setNetPremiums( resultSet.getFloat( "net_prem" ) );
-            group.setOnPst( resultSet.getFloat( "on_pst" ) );
-            group.setQcPst( resultSet.getFloat( "qc_pst" ) );
-            group.setSkPst( resultSet.getFloat( "sk_pst" ) );
+            group.setGrossPremiums( resultSet.getDouble( "gross_prem" ) );
+            group.setCommission( resultSet.getDouble( "commission" ) );
+            group.setAdmin( resultSet.getDouble( "admin_allow" ) );
+            group.setNetPremiums( resultSet.getDouble( "net_prem" ) );
+            group.setOnPst( resultSet.getDouble( "on_pst" ) );
+            group.setQcPst( resultSet.getDouble( "qc_pst" ) );
+            group.setSkPst( resultSet.getDouble( "sk_pst" ) );
 
             fabpPremiumGroupList.add( group );
         }

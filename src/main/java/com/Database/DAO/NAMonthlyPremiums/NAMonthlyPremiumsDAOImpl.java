@@ -116,21 +116,21 @@ public class NAMonthlyPremiumsDAOImpl implements NAMonthlyPremiumsDAO
                     naGroup.setEmployer( resultSet.getString( "employer" ) );
                     naGroup.setMonth( resultSet.getDate( "month_id" ) );
                     naGroup.setBenefitId( resultSet.getInt( "benefit_id" ) );
-                    naGroup.setPremium( resultSet.getFloat( "premium") );
-                    naGroup.setPremiumRate( resultSet.getFloat( "premium_rate"));
+                    naGroup.setPremium( resultSet.getDouble( "premium") );
+                    naGroup.setPremiumRate( resultSet.getDouble( "premium_rate"));
                     naGroup.setProvince( resultSet.getString( "province"));
                     naGroup.setEmployeeCount( resultSet.getInt( "employee_count"));
                     naGroup.setVolume( resultSet.getInt( "volume"));
-                    naGroup.setPst( resultSet.getFloat( "pst"));
-                    naGroup.setRetroactivePremium( resultSet.getFloat( "retroactive_premium"));
-                    naGroup.setRetroactivePst( resultSet.getFloat( "retroactive_pst"));
-                    naGroup.setGrossPremium( resultSet.getFloat( "gross_premium"));
-                    naGroup.setAdministrationAmount( resultSet.getFloat( "administration_amount"));
-                    naGroup.setCommissionAmount( resultSet.getFloat( "commission_amount"));
-                    naGroup.setNetPremium( resultSet.getFloat( "net_premium"));
-                    naGroup.setAdministrationRate( resultSet.getFloat( "administration_rate"));
-                    naGroup.setCommissionRate( resultSet.getFloat( "commission_rate"));
-                    naGroup.setGst( resultSet.getFloat( "gst"));
+                    naGroup.setPst( resultSet.getDouble( "pst"));
+                    naGroup.setRetroactivePremium( resultSet.getDouble( "retroactive_premium"));
+                    naGroup.setRetroactivePst( resultSet.getDouble( "retroactive_pst"));
+                    naGroup.setGrossPremium( resultSet.getDouble( "gross_premium"));
+                    naGroup.setAdministrationAmount( resultSet.getDouble( "administration_amount"));
+                    naGroup.setCommissionAmount( resultSet.getDouble( "commission_amount"));
+                    naGroup.setNetPremium( resultSet.getDouble( "net_premium"));
+                    naGroup.setAdministrationRate( resultSet.getDouble( "administration_rate"));
+                    naGroup.setCommissionRate( resultSet.getDouble( "commission_rate"));
+                    naGroup.setGst( resultSet.getDouble( "gst"));
                     
                     naMonthlyGroup.add( naGroup );
                 }

@@ -105,7 +105,7 @@ public class IAPPremiumOptionalADDReport
         AbstractColumn divisionName = createColumnString("divisionName", "Division Name", 200);
         columnList.add(divisionName);
 
-        AbstractColumn commissionRate = createColumnFloat("fullCommissionRate", "Commission Rate %", 80);
+        AbstractColumn commissionRate = createColumn("fullCommissionRate", "Commission Rate %", 80, "Double" );
         columnList.add(commissionRate);
 
         AbstractColumn coverageEffective = createColumnDate("coverageEffective", "Coverage Effective Date", 150);
@@ -121,56 +121,56 @@ public class IAPPremiumOptionalADDReport
         currentNumberLives = createColumnInt( "currentNumberLives", "Current Number Of Lives", 100 );
         columnList.add( currentNumberLives );
 
-        currentSinglePlanVolume = createColumnFloat( "currentSinglePlanVolume", "Current Single Plan Volume", 100 );
+        currentSinglePlanVolume = createColumn( "currentSinglePlanVolume", "Current Single Plan Volume", 100, "Double" );
         currentSinglePlanVolume.setPattern("#,##0.00");
         columnList.add( currentSinglePlanVolume );
 
-        currentFamilyPlanVolume = createColumnFloat( "currentFamilyPlanVolume", "Current Family Plan Volume", 100 );
+        currentFamilyPlanVolume = createColumn( "currentFamilyPlanVolume", "Current Family Plan Volume", 100, "Double" );
         currentFamilyPlanVolume.setPattern("#,##0.00");
         columnList.add( currentFamilyPlanVolume );
 
-        AbstractColumn grossSinglePlanPremiumRate = createColumnFloat("grossSinglePlanPremiumRate", "Gross Single Plan Premium Rate", 100);
+        AbstractColumn grossSinglePlanPremiumRate = createColumn("grossSinglePlanPremiumRate", "Gross Single Plan Premium Rate", 100, "Double" );
         grossSinglePlanPremiumRate.setPattern("#,##0.000");
         columnList.add( grossSinglePlanPremiumRate );
 
-        AbstractColumn grossFamilyPlanPremiumRate = createColumnFloat("grossFamilyPlanPremiumRate", "Gross Family Plan Premium Rate", 100);
+        AbstractColumn grossFamilyPlanPremiumRate = createColumn("grossFamilyPlanPremiumRate", "Gross Family Plan Premium Rate", 100, "Double" );
         grossFamilyPlanPremiumRate.setPattern("#,##0.000");
         columnList.add( grossFamilyPlanPremiumRate );
 
 
-        totalGrossPremium = createColumnFloat( "totalGrossPremium", "Total Gross Premium", 100 );
+        totalGrossPremium = createColumn( "totalGrossPremium", "Total Gross Premium", 100, "Double" );
         totalGrossPremium.setPattern("#,##0.00");
         columnList.add( totalGrossPremium );
 
-        adjust = createColumnFloat( "adjust", "Adjust", 100 );
+        adjust = createColumn( "adjust", "Adjust", 100, "Double" );
         adjust.setPattern("#,##0.00");
         columnList.add( adjust );
 
-        totalGrossPremiumAndAdjust = createColumnFloat( "totalGrossPremiumAndAdjust", "Total Gross and Adjust", 100 );
+        totalGrossPremiumAndAdjust = createColumn( "totalGrossPremiumAndAdjust", "Total Gross and Adjust", 100, "Double" );
         totalGrossPremiumAndAdjust.setPattern("#,##0.00");
         columnList.add( totalGrossPremiumAndAdjust );
 
-        adminFee = createColumnFloat( "adminFee", "Admin Fee", 100 );
+        adminFee = createColumn( "adminFee", "Admin Fee", 100, "Double" );
         adminFee.setPattern("#,##0.00");
         columnList.add( adminFee );
 
-        commission = createColumnFloat( "commission", "Commission", 100 );
+        commission = createColumn( "commission", "Commission", 100, "Double" );
         commission.setPattern("#,##0.00");
         columnList.add( commission );
 
-        totalCommission = createColumnFloat( "totalCommission", "Total Commission", 100 );
+        totalCommission = createColumn( "totalCommission", "Total Commission", 100, "Double" );
         totalCommission.setPattern("#,##0.00");
         columnList.add( totalCommission );
 
-        ontarioTax = createColumnFloat( "ontarioTax", "ON Tax", 100 );
+        ontarioTax = createColumn( "ontarioTax", "ON Tax", 100, "Double" );
         ontarioTax.setPattern("#,##0.00");
         columnList.add( ontarioTax );
 
-        quebecTax = createColumnFloat( "quebecTax", "QC Tax", 100 );
+        quebecTax = createColumn( "quebecTax", "QC Tax", 100, "Double" );
         quebecTax.setPattern("#,##0.00");
         columnList.add( quebecTax );
 
-        netPremiumPaid = createColumnFloat( "netPremiumPaid", "Net Premium", 100 );
+        netPremiumPaid = createColumn( "netPremiumPaid", "Net Premium", 100, "Double" );
         netPremiumPaid.setPattern("#,##0.00");
         columnList.add( netPremiumPaid );
 

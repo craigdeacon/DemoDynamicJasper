@@ -13,19 +13,19 @@ public class FABPPremiumGroup
 {
     private String groupName;
     private String underwriter;
-    private double grossPremiums;
-    private double commission;
-    private double admin;
-    private double netPremiums;
-    private double onPst;
-    private double qcPst;
-    private double skPst;
+    private Double grossPremiums;
+    private Double commission;
+    private Double admin;
+    private Double netPremiums;
+    private Double onPst;
+    private Double qcPst;
+    private Double skPst;
 
     public FABPPremiumGroup()
     {
     }
 
-    public FABPPremiumGroup( String groupName, String underwriter, double grossPremiums, double commission, double admin, double netPremiums, double onPst, double qcPst, double skPst )
+    public FABPPremiumGroup( String groupName, String underwriter, Double grossPremiums, Double commission, Double admin, Double netPremiums, Double onPst, Double qcPst, Double skPst )
     {
         this.groupName = groupName;
         this.underwriter = underwriter;
@@ -58,72 +58,72 @@ public class FABPPremiumGroup
         this.underwriter = underwriter;
     }
 
-    public double getGrossPremiums()
+    public Double getGrossPremiums()
     {
         return grossPremiums;
     }
 
-    public void setGrossPremiums( double grossPremiums )
+    public void setGrossPremiums( Double grossPremiums )
     {
         this.grossPremiums = grossPremiums;
     }
 
-    public double getCommission()
+    public Double getCommission()
     {
         return commission;
     }
 
-    public void setCommission( double commission )
+    public void setCommission( Double commission )
     {
         this.commission = commission;
     }
 
-    public double getAdmin()
+    public Double getAdmin()
     {
         return admin;
     }
 
-    public void setAdmin( double admin )
+    public void setAdmin( Double admin )
     {
         this.admin = admin;
     }
 
-    public double getNetPremiums()
+    public Double getNetPremiums()
     {
         return netPremiums;
     }
 
-    public void setNetPremiums( double netPremiums )
+    public void setNetPremiums( Double netPremiums )
     {
         this.netPremiums = netPremiums;
     }
 
-    public double getOnPst()
+    public Double getOnPst()
     {
         return onPst;
     }
 
-    public void setOnPst( double onPst )
+    public void setOnPst( Double onPst )
     {
         this.onPst = onPst;
     }
 
-    public double getQcPst()
+    public Double getQcPst()
     {
         return qcPst;
     }
 
-    public void setQcPst( double qcPst )
+    public void setQcPst( Double qcPst )
     {
         this.qcPst = qcPst;
     }
 
-    public double getSkPst()
+    public Double getSkPst()
     {
         return skPst;
     }
 
-    public void setSkPst( double skPst )
+    public void setSkPst( Double skPst )
     {
         this.skPst = skPst;
     }

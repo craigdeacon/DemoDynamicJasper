@@ -19,21 +19,21 @@ public class NAMonthlyPremiumsGroup
     private Date month; //month_id
     private String product; 
     private int benefitId; //does not appear in report
-    private Float premium; //current premium
-    private Float premiumRate; //Rate
+    private Double premium; //current premium
+    private Double premiumRate; //Rate
     private String province;
     private int employeeCount; //:lives
     private int volume;    
-    private Float pst; //current_tax    
-    private Float retroactivePremium; // adjustment premium
-    private Float retroactivePst; //adjustment tax
-    private Float grossPremium; //gross premium
-    private Float administrationAmount; //admin fee
-    private Float commissionAmount; // commission
-    private Float netPremium; // total net premium
-    private Float gst; //
-    private Float administrationRate; //admin rate
-    private Float commissionRate; //commission rate
+    private Double pst; //current_tax    
+    private Double retroactivePremium; // adjustment premium
+    private Double retroactivePst; //adjustment tax
+    private Double grossPremium; //gross premium
+    private Double administrationAmount; //admin fee
+    private Double commissionAmount; // commission
+    private Double netPremium; // total net premium
+    private Double gst; //
+    private Double administrationRate; //admin rate
+    private Double commissionRate; //commission rate
 
     public NAMonthlyPremiumsGroup()
     {
@@ -89,12 +89,12 @@ public class NAMonthlyPremiumsGroup
         this.product = product;
     }
 
-    public Float getPremiumRate()
+    public Double getPremiumRate()
     {
         return premiumRate;
     }
 
-    public void setPremiumRate( Float premiumRate )
+    public void setPremiumRate( Double premiumRate )
     {
         this.premiumRate = premiumRate;
     }
@@ -129,102 +129,102 @@ public class NAMonthlyPremiumsGroup
         this.volume = volume;
     }
 
-    public Float getPremium()
+    public Double getPremium()
     {
         return premium;
     }
 
-    public void setPremium( Float premium )
+    public void setPremium( Double premium )
     {
         this.premium = premium;
     }
 
-    public Float getPst()
+    public Double getPst()
     {
         return pst;
     }
 
-    public void setPst( Float pst )
+    public void setPst( Double pst )
     {
         this.pst = pst;
     }
 
-    public Float getRetroactivePremium()
+    public Double getRetroactivePremium()
     {
         return retroactivePremium;
     }
 
-    public void setRetroactivePremium( Float retroactivePremium )
+    public void setRetroactivePremium( Double retroactivePremium )
     {
         this.retroactivePremium = retroactivePremium;
     }
 
-    public Float getRetroactivePst()
+    public Double getRetroactivePst()
     {
         return retroactivePst;
     }
 
-    public void setRetroactivePst( Float retroactivePst )
+    public void setRetroactivePst( Double retroactivePst )
     {
         this.retroactivePst = retroactivePst;
     }
 
-    public Float getGrossPremium()
+    public Double getGrossPremium()
     {
         return grossPremium;
     }
 
-    public void setGrossPremium( Float grossPremium )
+    public void setGrossPremium( Double grossPremium )
     {
         this.grossPremium = grossPremium;
     }
 
-    public Float getAdministrationAmount()
+    public Double getAdministrationAmount()
     {
         return administrationAmount;
     }
 
-    public void setAdministrationAmount( Float administrationAmount )
+    public void setAdministrationAmount( Double administrationAmount )
     {
         this.administrationAmount = administrationAmount;
     }
 
-    public Float getCommissionAmount()
+    public Double getCommissionAmount()
     {
         return commissionAmount;
     }
 
-    public void setCommissionAmount( Float commissionAmount )
+    public void setCommissionAmount( Double commissionAmount )
     {
         this.commissionAmount = commissionAmount;
     }
 
-    public Float getNetPremium()
+    public Double getNetPremium()
     {
         return netPremium;
     }
 
-    public void setNetPremium( Float netPremium )
+    public void setNetPremium( Double netPremium )
     {
         this.netPremium = netPremium;
     }
 
-    public Float getAdministrationRate()
+    public Double getAdministrationRate()
     {
         return administrationRate;
     }
 
-    public void setAdministrationRate( Float administrationRate )
+    public void setAdministrationRate( Double administrationRate )
     {
         this.administrationRate = administrationRate;
     }
 
-    public Float getCommissionRate()
+    public Double getCommissionRate()
     {
         return commissionRate;
     }
 
-    public void setCommissionRate( Float commissionRate )
+    public void setCommissionRate( Double commissionRate )
     {
         this.commissionRate = commissionRate;
     }
@@ -239,17 +239,17 @@ public class NAMonthlyPremiumsGroup
         this.benefitId = benefitId;
     }
 
-    public Float getGst()
+    public Double getGst()
     {
         return gst;
     }
 
-    public void setGst( Float gst )
+    public void setGst( Double gst )
     {
         this.gst = gst;
     }
 
-    public NAMonthlyPremiumsGroup( String policySeries, String policyAccount, String employer, Date month, String product, int benefitId, Float premium, Float premiumRate, String province, int employeeCount, int volume, Float pst, Float retroactivePremium, Float retroactivePst, Float grossPremium, Float administrationAmount, Float commissionAmount, Float netPremium, Float gst, Float administrationRate, Float commissionRate )
+    public NAMonthlyPremiumsGroup( String policySeries, String policyAccount, String employer, Date month, String product, int benefitId, Double premium, Double premiumRate, String province, int employeeCount, int volume, Double pst, Double retroactivePremium, Double retroactivePst, Double grossPremium, Double administrationAmount, Double commissionAmount, Double netPremium, Double gst, Double administrationRate, Double commissionRate )
     {
         this.policySeries = policySeries;
         this.policyAccount = policyAccount;

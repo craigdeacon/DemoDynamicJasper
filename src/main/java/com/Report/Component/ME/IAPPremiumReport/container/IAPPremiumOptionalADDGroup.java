@@ -7,47 +7,47 @@ public class IAPPremiumOptionalADDGroup
     private String policyNumber;
     private String divisionNumber;
     private String divisionName;
-    private Float fullCommissionRate;
+    private Double fullCommissionRate;
     private Date coverageEffective;
     private String divisionStatus;
     private String pctProvinceEmployeeSplit;
     private Integer currentNumberLives;
-    private Float currentSinglePlanVolume;
-    private Float currentFamilyPlanVolume;
-    private Float grossSinglePlanPremiumRate;
-    private Float grossFamilyPlanPremiumRate;
-    private Float totalGrossPremium;
-    private Float adjust;
-    private Float totalGrossPremiumAndAdjust;
-    private Float adminFee;
-    private Float commission;
-    private Float totalCommission;
-    private Float ontarioTax;
-    private Float quebecTax;
-    private Float netPremiumPaid;
+    private Double currentSinglePlanVolume;
+    private Double currentFamilyPlanVolume;
+    private Double grossSinglePlanPremiumRate;
+    private Double grossFamilyPlanPremiumRate;
+    private Double totalGrossPremium;
+    private Double adjust;
+    private Double totalGrossPremiumAndAdjust;
+    private Double adminFee;
+    private Double commission;
+    private Double totalCommission;
+    private Double ontarioTax;
+    private Double quebecTax;
+    private Double netPremiumPaid;
     private String comments;
 
     public IAPPremiumOptionalADDGroup(String policyNumber,
                                       String divisionNumber,
                                       String divisionName,
-                                      Float adminRate,
-                                      Float commissionRate,
-                                      Float totalCommission,
+                                      Double adminRate,
+                                      Double commissionRate,
+                                      Double totalCommission,
                                       Date coverageEffective,
                                       String divisionStatus,
                                       String pctProvinceEmployeeSplit,
                                       Integer currentNumberLives,
-                                      Float currentSinglePlanVolume,
-                                      Float currentFamilyPlanVolume,
-                                      Float grossSinglePlanPremiumRate,
-                                      Float grossFamilyPlanPremiumRate,
-                                      Float totalGrossPremium,
-                                      Float adjust,
-                                      Float adminFee,
-                                      Float commission,
-                                      Float ontarioTax,
-                                      Float quebecTax,
-                                      Float netPremiumPaid,
+                                      Double currentSinglePlanVolume,
+                                      Double currentFamilyPlanVolume,
+                                      Double grossSinglePlanPremiumRate,
+                                      Double grossFamilyPlanPremiumRate,
+                                      Double totalGrossPremium,
+                                      Double adjust,
+                                      Double adminFee,
+                                      Double commission,
+                                      Double ontarioTax,
+                                      Double quebecTax,
+                                      Double netPremiumPaid,
                                       String comments)
     {
         this.policyNumber = policyNumber;
@@ -109,67 +109,67 @@ public class IAPPremiumOptionalADDGroup
         return currentNumberLives;
     }
 
-    public Float getCurrentSinglePlanVolume()
+    public Double getCurrentSinglePlanVolume()
     {
         return currentSinglePlanVolume;
     }
 
-    public Float getCurrentFamilyPlanVolume()
+    public Double getCurrentFamilyPlanVolume()
     {
         return currentFamilyPlanVolume;
     }
 
-    public Float getGrossSinglePlanPremiumRate()
+    public Double getGrossSinglePlanPremiumRate()
     {
         return grossSinglePlanPremiumRate;
     }
 
-    public Float getGrossFamilyPlanPremiumRate()
+    public Double getGrossFamilyPlanPremiumRate()
     {
         return grossFamilyPlanPremiumRate;
     }
 
-    public Float getTotalGrossPremium()
+    public Double getTotalGrossPremium()
     {
         return totalGrossPremium;
     }
 
-    public Float getAdjust()
+    public Double getAdjust()
     {
         return adjust;
     }
 
-    public Float getTotalGrossPremiumAndAdjust()
+    public Double getTotalGrossPremiumAndAdjust()
     {
         return totalGrossPremiumAndAdjust;
     }
 
-    public Float getAdminFee()
+    public Double getAdminFee()
     {
         return adminFee;
     }
 
-    public Float getCommission()
+    public Double getCommission()
     {
         return commission;
     }
 
-    public Float getTotalCommission()
+    public Double getTotalCommission()
     {
         return totalCommission;
     }
 
-    public Float getOntarioTax()
+    public Double getOntarioTax()
     {
         return ontarioTax;
     }
 
-    public Float getQuebecTax()
+    public Double getQuebecTax()
     {
         return quebecTax;
     }
 
-    public Float getNetPremiumPaid()
+    public Double getNetPremiumPaid()
     {
         return netPremiumPaid;
     }
@@ -179,7 +179,7 @@ public class IAPPremiumOptionalADDGroup
         return comments;
     }
 
-    public Float getFullCommissionRate()
+    public Double getFullCommissionRate()
     {
         return fullCommissionRate;
     }

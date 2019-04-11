@@ -87,20 +87,20 @@ public class EmployeeCostBreakdownReport
            
             AbstractColumn columnName = createColumnString("name", "Employee Name", 40, LEFT);
             columnName.setHeaderStyle( LEFT );
-            AbstractColumn columnLife = createColumnFloat( "life", "Life", floatWidth, AMOUNT_STYLE);
-            AbstractColumn columnADD = createColumnFloat( "add", "AD&D", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDLife = createColumnFloat( "dLife", "DLife", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnSTD = createColumnFloat( "std", "STD", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnLTD = createColumnFloat( "ltd", "LTD", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnCI = createColumnFloat( "ci", "CI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDepCI = createColumnFloat( "depCi", "Dep CI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnEHB = createColumnFloat( "ehb", "EHB", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDental = createColumnFloat( "dental", "Dental", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnHCSA = createColumnFloat( "hcsa", "HCSA", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnPSA = createColumnFloat( "psa", "PSA", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnEAP = createColumnFloat( "eap", "EAP", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnDSAI = createColumnFloat( "dsai", "DSAI", floatWidth, AMOUNT_STYLE );
-            AbstractColumn columnTotal = createColumnFloat( "total", "Total", floatWidth, AMOUNT_STYLE );
+            AbstractColumn columnLife = createColumn( "life", "Life", floatWidth, "Double", AMOUNT_STYLE);
+            AbstractColumn columnADD = createColumn( "add", "AD&D", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnDLife = createColumn( "dLife", "DLife", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnSTD = createColumn( "std", "STD", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnLTD = createColumn( "ltd", "LTD", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnCI = createColumn( "ci", "CI", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnDepCI = createColumn( "depCi", "Dep CI", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnEHB = createColumn( "ehb", "EHB", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnDental = createColumn( "dental", "Dental", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnHCSA = createColumn( "hcsa", "HCSA", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnPSA = createColumn( "psa", "PSA", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnEAP = createColumn( "eap", "EAP", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnDSAI = createColumn( "dsai", "DSAI", floatWidth,  "Double", AMOUNT_STYLE );
+            AbstractColumn columnTotal = createColumn( "total", "Total", floatWidth,  "Double", AMOUNT_STYLE );
             
             
             
@@ -202,9 +202,9 @@ public class EmployeeCostBreakdownReport
                     .setAutomaticTitle(true)
                     .setCellBorder(Border.THIN())
 
-                    .addColumn("Life","life",Float.class.getName(),false)
+//                    .addColumn("Life","life",Float.class.getName(),false)
 //                    .addColumn("EAP","eap",Float.class.getName(),false)
-                    .addRow("Name", "name", String.class.getName(),true, "Total")
+//                    .addRow("Name", "name", String.class.getName(),true, "Total")
 
                     .addMeasure("total", Float.class.getName(), DJCalculation.NOTHING , "Total", LEFT)
 

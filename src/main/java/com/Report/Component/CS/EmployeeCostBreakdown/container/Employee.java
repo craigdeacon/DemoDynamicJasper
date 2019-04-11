@@ -12,26 +12,26 @@ package com.Report.Component.CS.EmployeeCostBreakdown.container;
 public class Employee
 {
     private String name;
-    private Float life;
-    private Float add;
-    private Float dLife;
-    private Float std;
-    private Float ltd;
-    private Float ci;
-    private Float depCi;
-    private Float ehb;
-    private Float dental;
-    private Float hcsa;
-    private Float psa;
-    private Float eap;
-    private Float dsai;
-    private Float total; 
+    private Double life;
+    private Double add;
+    private Double dLife;
+    private Double std;
+    private Double ltd;
+    private Double ci;
+    private Double depCi;
+    private Double ehb;
+    private Double dental;
+    private Double hcsa;
+    private Double psa;
+    private Double eap;
+    private Double dsai;
+    private Double total; 
 
     /**
      *
      * @return
      */
-    public Float getLtd()
+    public Double getLtd()
     {
         return ltd;
     }
@@ -40,7 +40,7 @@ public class Employee
      *
      * @param ltd
      */
-    public void setLtd( Float ltd )
+    public void setLtd( Double ltd )
     {
         this.ltd = ltd;
     }
@@ -62,7 +62,7 @@ public class Employee
      * @param eap
      * @param dsai
      */
-    public Employee( String name, Float life, Float add, Float dLife, Float std, Float ltd, Float ci, Float depCi, Float ehb, Float dental, Float hcsa, Float psa, Float eap, Float dsai )
+    public Employee( String name, Double life, Double add, Double dLife, Double std, Double ltd, Double ci, Double depCi, Double ehb, Double dental, Double hcsa, Double psa, Double eap, Double dsai )
     {
         this.name = name;
         this.life = life;
@@ -78,7 +78,7 @@ public class Employee
         this.psa = psa;
         this.eap = eap;
         this.dsai = dsai;
-        this.total = (float)0;
+        this.total = (Double)0.;
 
         if (life!=null)
             total+=life;
@@ -114,7 +114,7 @@ public class Employee
      */
     public Employee()
     {
-        this.total = Float.MIN_VALUE;
+        this.total = Double.MIN_VALUE;
     }
 
     /**
@@ -139,7 +139,7 @@ public class Employee
      *
      * @return
      */
-    public Float getLife()
+    public Double getLife()
     {
         return life;
     }
@@ -148,7 +148,7 @@ public class Employee
      *
      * @param life
      */
-    public void setLife( Float life )
+    public void setLife( Double life )
     {
         this.life = life;
     }
@@ -157,7 +157,7 @@ public class Employee
      *
      * @return
      */
-    public Float getAdd()
+    public Double getAdd()
     {
         return add;
     }
@@ -166,7 +166,7 @@ public class Employee
      *
      * @param add
      */
-    public void setAdd( Float add )
+    public void setAdd( Double add )
     {
         this.add = add;
     }
@@ -175,7 +175,7 @@ public class Employee
      *
      * @return
      */
-    public Float getdLife()
+    public Double getdLife()
     {
         return dLife;
     }
@@ -184,7 +184,7 @@ public class Employee
      *
      * @param dLife
      */
-    public void setdLife( Float dLife )
+    public void setdLife( Double dLife )
     {
         this.dLife = dLife;
     }
@@ -193,7 +193,7 @@ public class Employee
      *
      * @return
      */
-    public Float getStd()
+    public Double getStd()
     {
         return std;
     }
@@ -202,7 +202,7 @@ public class Employee
      *
      * @param std
      */
-    public void setStd( Float std )
+    public void setStd( Double std )
     {
         this.std = std;
     }
@@ -211,7 +211,7 @@ public class Employee
      *
      * @return
      */
-    public Float getCi()
+    public Double getCi()
     {
         return ci;
     }
@@ -220,7 +220,7 @@ public class Employee
      *
      * @param ci
      */
-    public void setCi( Float ci )
+    public void setCi( Double ci )
     {
         this.ci = ci;
     }
@@ -229,7 +229,7 @@ public class Employee
      *
      * @return
      */
-    public Float getDepCi()
+    public Double getDepCi()
     {
         return depCi;
     }
@@ -238,7 +238,7 @@ public class Employee
      *
      * @param depCi
      */
-    public void setDepCi( Float depCi )
+    public void setDepCi( Double depCi )
     {
         this.depCi = depCi;
     }
@@ -247,7 +247,7 @@ public class Employee
      *
      * @return
      */
-    public Float getEhb()
+    public Double getEhb()
     {
         return ehb;
     }
@@ -256,7 +256,7 @@ public class Employee
      *
      * @param ehb
      */
-    public void setEhb( Float ehb )
+    public void setEhb( Double ehb )
     {
         this.ehb = ehb;
     }
@@ -265,7 +265,7 @@ public class Employee
      *
      * @return
      */
-    public Float getDental()
+    public Double getDental()
     {
         return dental;
     }
@@ -274,7 +274,7 @@ public class Employee
      *
      * @param dental
      */
-    public void setDental( Float dental )
+    public void setDental( Double dental )
     {
         this.dental = dental;
     }
@@ -283,7 +283,7 @@ public class Employee
      *
      * @return
      */
-    public Float getHcsa()
+    public Double getHcsa()
     {
         return hcsa;
     }
@@ -292,7 +292,7 @@ public class Employee
      *
      * @param hcsa
      */
-    public void setHcsa( Float hcsa )
+    public void setHcsa( Double hcsa )
     {
         this.hcsa = hcsa;
     }
@@ -301,7 +301,7 @@ public class Employee
      *
      * @return
      */
-    public Float getPsa()
+    public Double getPsa()
     {
         return psa;
     }
@@ -310,7 +310,7 @@ public class Employee
      *
      * @param psa
      */
-    public void setPsa( Float psa )
+    public void setPsa( Double psa )
     {
         this.psa = psa;
     }
@@ -319,7 +319,7 @@ public class Employee
      *
      * @return
      */
-    public Float getEap()
+    public Double getEap()
     {
         return eap;
     }
@@ -328,7 +328,7 @@ public class Employee
      *
      * @param eap
      */
-    public void setEap( Float eap )
+    public void setEap( Double eap )
     {
         this.eap = eap;
     }
@@ -337,7 +337,7 @@ public class Employee
      *
      * @return
      */
-    public Float getDsai()
+    public Double getDsai()
     {
         return dsai;
     }
@@ -346,7 +346,7 @@ public class Employee
      *
      * @param dsai
      */
-    public void setDsai( Float dsai )
+    public void setDsai( Double dsai )
     {
         this.dsai = dsai;
     }
@@ -355,9 +355,9 @@ public class Employee
      *
      * @return
      */
-    public Float getTotal()
+    public Double getTotal()
     {
-        total = (float)0;
+        total = (Double)0.;
         if (life!=null)      
             total+=life;
         if (add!=null)
@@ -391,7 +391,7 @@ public class Employee
      *
      * @param total
      */
-    public void setTotal( Float total )
+    public void setTotal( Double total )
     {
         this.total = total;
     }

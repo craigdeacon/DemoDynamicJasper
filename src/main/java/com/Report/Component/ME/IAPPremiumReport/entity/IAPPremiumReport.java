@@ -103,7 +103,7 @@ public class IAPPremiumReport
         AbstractColumn divisionName = createColumnString("divisionName", "Division Name", 200);
         columnList.add(divisionName);
 
-        AbstractColumn totalCommissionRate = createColumnFloat("totalCommissionRate", "Commission Rate %", 80);
+        AbstractColumn totalCommissionRate = createColumn("totalCommissionRate", "Commission Rate %", 80, "Double" );
         columnList.add(totalCommissionRate);
 
         AbstractColumn coverageEffectiveDate = createColumnDate("coverageEffectiveDate", "Coverage Effective Date", 150);
@@ -126,14 +126,14 @@ public class IAPPremiumReport
         currentNumberLives = createColumnInt( "currentNumberLives", "Current Number Of Lives", 100 );
         columnList.add( currentNumberLives );
 
-        currentVolumeOfInsurer = createColumnFloat( "currentVolumeOfInsurer", "Current Volume of Insurer", 100 );
+        currentVolumeOfInsurer = createColumn( "currentVolumeOfInsurer", "Current Volume of Insurer", 100, "Double" );
         currentVolumeOfInsurer.setPattern("#,##0.00");
         columnList.add( currentVolumeOfInsurer );
 
-        AbstractColumn grossMonthlyPremiumRate = createColumnFloat("grossMonthlyPremiumRate", "Gross Monthly Premium Rate", 100);
+        AbstractColumn grossMonthlyPremiumRate = createColumn("grossMonthlyPremiumRate", "Gross Monthly Premium Rate", 100, "Double" );
         columnList.add(grossMonthlyPremiumRate);
 
-        AbstractColumn grossPremium = createColumnFloat("grossPremium", "Gross Premium", 100);
+        AbstractColumn grossPremium = createColumn("grossPremium", "Gross Premium", 100, "Double" );
         columnList.add(grossPremium);
 
         AbstractColumn benefitAmountSpouse = createColumnString("benefitAmountSpouse", "Benefit Amount (Spouse)", 100);
@@ -142,10 +142,10 @@ public class IAPPremiumReport
         AbstractColumn currentNumberLivesSpouse = createColumnInt("currentNumberLivesSpouse", "Current Number of Lives (Spouse)", 100);
         columnList.add(currentNumberLivesSpouse);
 
-        AbstractColumn currentVolumeOfInsurerSpouse = createColumnFloat("currentVolumeOfInsurerSpouse", "Current Volume of Insurer (Spouse)", 100);
+        AbstractColumn currentVolumeOfInsurerSpouse = createColumn("currentVolumeOfInsurerSpouse", "Current Volume of Insurer (Spouse)", 100, "Double" );
         columnList.add(currentVolumeOfInsurerSpouse);
 
-        AbstractColumn grossMonthlyPremiumRateSpouse = createColumnFloat("grossMonthlyPremiumRateSpouse", "Gross Monthly Premium Rate (Spouse)", 100);
+        AbstractColumn grossMonthlyPremiumRateSpouse = createColumn("grossMonthlyPremiumRateSpouse", "Gross Monthly Premium Rate (Spouse)", 100, "Double" );
         columnList.add(grossMonthlyPremiumRateSpouse);
 
         AbstractColumn grossPremiumSpouse = createColumnString("grossPremiumSpouse", "Gross Premium (Spouse)", 100);
@@ -157,50 +157,50 @@ public class IAPPremiumReport
         AbstractColumn currentNumberOfUnitsDependent = createColumnInt("currentNumberOfUnitsDependent", "Current Number of Units (Dependent)", 100);
         columnList.add(currentNumberOfUnitsDependent);
 
-        AbstractColumn grossMonthlyPremiumRateDependent = createColumnFloat("grossMonthlyPremiumRateDependent", "Gross Monthly Premium Rate (Dependent)", 100);
+        AbstractColumn grossMonthlyPremiumRateDependent = createColumn("grossMonthlyPremiumRateDependent", "Gross Monthly Premium Rate (Dependent)", 100, "Double" );
         grossMonthlyPremiumRateDependent.setPattern("#,##0.000");
         columnList.add(grossMonthlyPremiumRateDependent);
 
-        AbstractColumn grossPremiumDependent = createColumnFloat("grossPremiumDependent", "Gross Premium (Dependent)", 100);
+        AbstractColumn grossPremiumDependent = createColumn("grossPremiumDependent", "Gross Premium (Dependent)", 100, "Double" );
         columnList.add(grossPremiumDependent);
 
-        totalGrossPremium = createColumnFloat( "totalGrossPremium", "Total Gross Premium", 100 );
+        totalGrossPremium = createColumn( "totalGrossPremium", "Total Gross Premium", 100, "Double" );
         totalGrossPremium.setPattern("#,##0.00");
         columnList.add( totalGrossPremium );
 
-        adjust = createColumnFloat( "adjust", "Adjust", 100 );
+        adjust = createColumn( "adjust", "Adjust", 100, "Double" );
         adjust.setPattern("#,##0.00");
         columnList.add( adjust );
 
-        grossPremiumAndAdjust = createColumnFloat( "grossPremiumAndAdjust", "Total Gross and Adjust", 100 );
+        grossPremiumAndAdjust = createColumn( "grossPremiumAndAdjust", "Total Gross and Adjust", 100, "Double" );
         grossPremiumAndAdjust.setPattern("#,##0.00");
         columnList.add( grossPremiumAndAdjust );
 
-        adminFee = createColumnFloat( "adminFee", "Admin Fee", 100 );
+        adminFee = createColumn( "adminFee", "Admin Fee", 100, "Double" );
         adminFee.setPattern("#,##0.00");
         columnList.add( adminFee );
 
-        commission = createColumnFloat( "commission", "Commission", 100 );
+        commission = createColumn( "commission", "Commission", 100, "Double" );
         commission.setPattern("#,##0.00");
         columnList.add( commission );
 
-        totalCommission = createColumnFloat( "totalCommission", "Total Commission", 100 );
+        totalCommission = createColumn( "totalCommission", "Total Commission", 100, "Double" );
         totalCommission.setPattern("#,##0.00");
         columnList.add( totalCommission );
 
-        ontarioTax = createColumnFloat( "ontarioTax", "ON Tax", 100 );
+        ontarioTax = createColumn( "ontarioTax", "ON Tax", 100, "Double" );
         ontarioTax.setPattern("#,##0.00");
         columnList.add( ontarioTax );
 
-        quebecTax = createColumnFloat( "quebecTax", "QC Tax", 100 );
+        quebecTax = createColumn( "quebecTax", "QC Tax", 100, "Double" );
         quebecTax.setPattern("#,##0.00");
         columnList.add( quebecTax );
 
-        manitobaTax = createColumnFloat( "manitobaTax", "MB Tax", 100 );
+        manitobaTax = createColumn( "manitobaTax", "MB Tax", 100, "Double" );
         manitobaTax.setPattern("#,##0.00");
         columnList.add( manitobaTax );
 
-        netPremiumPaid = createColumnFloat( "netPremiumPaid", "Net Premium", 100 );
+        netPremiumPaid = createColumn( "netPremiumPaid", "Net Premium", 100, "Double" );
         netPremiumPaid.setPattern("#,##0.00");
         columnList.add( netPremiumPaid );
 

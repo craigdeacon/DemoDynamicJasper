@@ -84,6 +84,21 @@ public class ReportUtilities
     }
 
     
+    /**
+     * Creates abstract column
+     *
+     * @param property The name of the property to be used from the data source
+     * @param title Column title on the report
+     * @param width width of column
+     * @param type data type of property (String, Float, Integer, Date)
+     * @return column object
+     */
+    public static AbstractColumn createColumn( String property, String title, int width, String type )
+    {        
+        return createColumn( property, title, width, type, null );
+    }
+    
+    
 
     /**
      * Creates a column where property is a String

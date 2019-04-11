@@ -1024,14 +1024,14 @@ public class CignaUploadDAOImpl implements CignaUploadDAO
                                                                         rs.getString("type"),
                                                                         rs.getString("policy_number"),
                                                                         rs.getInt("lives"),
-                                                                        rs.getFloat("volume"),
-                                                                        rs.getFloat("gross_prem"),
-                                                                        rs.getFloat("pst"),
-                                                                        rs.getFloat("rate"),
+                                                                        rs.getDouble("volume"),
+                                                                        rs.getDouble("gross_prem"),
+                                                                        rs.getDouble("pst"),
+                                                                        rs.getDouble("rate"),
                                                                         rs.getString("employer"),
-                                                                        rs.getFloat("comm_rate"),
-                                                                        rs.getFloat("admin_allow"),
-                                                                        rs.getFloat("net_prem")));
+                                                                        rs.getDouble("comm_rate"),
+                                                                        rs.getDouble("admin_allow"),
+                                                                        rs.getDouble("net_prem")));
                            });
         return cignaUploadList;
     }

@@ -68,28 +68,28 @@ public class CignaUploadReport
         AbstractColumn employees = createColumnInt( "numEmployee", "Employees", 90 );
         columnList.add( employees );
 
-        AbstractColumn sumInsured = createColumnFloat( "sumInsured", "Sum Insured", 100);
+        AbstractColumn sumInsured = createColumn( "sumInsured", "Sum Insured", 100, "Double" );
         columnList.add( sumInsured );
 
-        AbstractColumn grossPremiums = createColumnFloat( "grossPremiums", "Gross Premiums", 100 );
+        AbstractColumn grossPremiums = createColumn( "grossPremiums", "Gross Premiums", 100, "Double" );
         columnList.add( grossPremiums );
 
-        AbstractColumn pst = createColumnFloat( "pst", "PST", 60 );
+        AbstractColumn pst = createColumn( "pst", "PST", 60, "Double" );
         columnList.add( pst );
 
-        AbstractColumn grossRate = createColumnFloat( "grossRate", "Gross Rate", 80 );
+        AbstractColumn grossRate = createColumn( "grossRate", "Gross Rate", 80, "Double" );
         columnList.add( grossRate );
 
         AbstractColumn companyName = createColumnString( "companyName", "Company Name", 80 );
         columnList.add( companyName );
 
-        AbstractColumn commissionsRetained = createColumnFloat( "commissionsRetained", "Commissions Retained", 100 );
+        AbstractColumn commissionsRetained = createColumn( "commissionsRetained", "Commissions Retained", 100, "Double" );
         columnList.add( commissionsRetained );
 
-        AbstractColumn tpaFee = createColumnFloat( "tpaFee", "TPA Fee", 60 );
+        AbstractColumn tpaFee = createColumn( "tpaFee", "TPA Fee", 60, "Double" );
         columnList.add( tpaFee );
 
-        AbstractColumn netRemittance = createColumnFloat( "netRemittance", "Net Remittance", 100 );
+        AbstractColumn netRemittance = createColumn( "netRemittance", "Net Remittance", 100, "Double" );
         columnList.add( netRemittance );
 
         return columnList;

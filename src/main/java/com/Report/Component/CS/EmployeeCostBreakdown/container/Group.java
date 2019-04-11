@@ -16,10 +16,10 @@ public class Group
     private String accountNo;
     private String division;
     private String productType;
-    private Float grossPremiums;
-    private Float bbdAdminFee;
-    private Float advisorCommission;
-    private Float netPremiums;
+    private Double grossPremiums;
+    private Double bbdAdminFee;
+    private Double advisorCommission;
+    private Double netPremiums;
 
     /**
      *
@@ -32,7 +32,7 @@ public class Group
      * @param advisorCommission
      * @param netPremiums
      */
-    public Group( String groupName, String accountNo, String division, String productType, float grossPremiums, float bbdAdminFee, float advisorCommission, float netPremiums )
+    public Group( String groupName, String accountNo, String division, String productType, Double grossPremiums, Double bbdAdminFee, Double advisorCommission, Double netPremiums )
     {
         this.groupName = groupName;
         this.accountNo = accountNo;
@@ -102,7 +102,7 @@ public class Group
      *
      * @return
      */
-    public float getGrossPremiums()
+    public Double getGrossPremiums()
     {
         return grossPremiums;
     }
@@ -111,7 +111,7 @@ public class Group
      *
      * @param grossPremiums
      */
-    public void setGrossPremiums( float grossPremiums )
+    public void setGrossPremiums( Double grossPremiums )
     {
         this.grossPremiums = grossPremiums;
     }
@@ -120,7 +120,7 @@ public class Group
      *
      * @return
      */
-    public float getBbdAdminFee()
+    public Double getBbdAdminFee()
     {
         return bbdAdminFee;
     }
@@ -129,7 +129,7 @@ public class Group
      *
      * @param bbdAdminFee
      */
-    public void setBbdAdminFee( float bbdAdminFee )
+    public void setBbdAdminFee( Double bbdAdminFee )
     {
         this.bbdAdminFee = bbdAdminFee;
     }
@@ -138,7 +138,7 @@ public class Group
      *
      * @return
      */
-    public float getAdvisorCommission()
+    public Double getAdvisorCommission()
     {
         return advisorCommission;
     }
@@ -147,7 +147,7 @@ public class Group
      *
      * @param advisorCommission
      */
-    public void setAdvisorCommission( float advisorCommission )
+    public void setAdvisorCommission( Double advisorCommission )
     {
         this.advisorCommission = advisorCommission;
     }
@@ -156,7 +156,7 @@ public class Group
      *
      * @return
      */
-    public float getNetPremiums()
+    public Double getNetPremiums()
     {
         return netPremiums;
     }
@@ -165,7 +165,7 @@ public class Group
      *
      * @param netPremiums
      */
-    public void setNetPremiums( float netPremiums )
+    public void setNetPremiums( Double netPremiums )
     {
         this.netPremiums = netPremiums;
     }

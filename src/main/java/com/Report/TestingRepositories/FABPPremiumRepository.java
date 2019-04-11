@@ -22,18 +22,18 @@ public class FABPPremiumRepository implements FABPPremiumDAO
     public ArrayList<FABPPremiumGroup> getFABPPremiumGroupList()
     {
         ArrayList<FABPPremiumGroup> fabpPremiumGroupList = new ArrayList<>();
-        fabpPremiumGroupList.add( new FABPPremiumGroup( "Avengers", "Acclaim Ability", new Float( "125.5" ), new Float( "1.5" ), new Float( "24.0" ),
-                new Float( "100.0" ), new Float( "0.15" ), new Float( "0" ), new Float( "0" ) ) );
-        fabpPremiumGroupList.add( new FABPPremiumGroup( "Transformers", "Acclaim Ability", new Float( "125.5" ), new Float( "1.5" ), new Float( "24.0" ),
-                new Float( "100.0" ), new Float( "0.15" ), new Float( "0" ), new Float( "0" ) ) );
-         fabpPremiumGroupList.add( new FABPPremiumGroup( "Inhumans", "Benefits By Design", new Float( "327.5" ), new Float( "2.5" ), new Float( "25.0" ),
-                new Float( "300.0" ), new Float( "0.15" ), new Float( "0" ), new Float( "0" ) ) );
-         fabpPremiumGroupList.add( new FABPPremiumGroup( "Transformers", "Benefits By Design", new Float( "327.5" ), new Float( "2.5" ), new Float( "25.0" ),
-                new Float( "300.0" ), new Float( "0.0" ), new Float( "0.20" ), new Float( "0" ) ) );
-         fabpPremiumGroupList.add( new FABPPremiumGroup( "Fantastic Four", "CHUBB", new Float( "234.5" ), new Float( "4.5" ), new Float( "30.2" ),
-                new Float( "198.8" ), new Float( "0.0" ), new Float( "0.0" ), new Float( "0.3" ) ) );
-         fabpPremiumGroupList.add( new FABPPremiumGroup( "Defenders", "CHUBB", new Float( "234.5" ), new Float( "4.5" ), new Float( "30.2" ),
-                new Float( "198.8" ), new Float( "0.0" ), new Float( "0.0" ), new Float( "0.3" ) ) );
+        fabpPremiumGroupList.add( new FABPPremiumGroup( "Avengers", "Acclaim Ability", new Double( "125.5" ), new Double( "1.5" ), new Double( "24.0" ),
+                new Double( "100.0" ), new Double( "0.15" ), new Double( "0" ), new Double( "0" ) ) );
+        fabpPremiumGroupList.add( new FABPPremiumGroup( "Transformers", "Acclaim Ability", new Double( "125.5" ), new Double( "1.5" ), new Double( "24.0" ),
+                new Double( "100.0" ), new Double( "0.15" ), new Double( "0" ), new Double( "0" ) ) );
+         fabpPremiumGroupList.add( new FABPPremiumGroup( "Inhumans", "Benefits By Design", new Double( "327.5" ), new Double( "2.5" ), new Double( "25.0" ),
+                new Double( "300.0" ), new Double( "0.15" ), new Double( "0" ), new Double( "0" ) ) );
+         fabpPremiumGroupList.add( new FABPPremiumGroup( "Transformers", "Benefits By Design", new Double( "327.5" ), new Double( "2.5" ), new Double( "25.0" ),
+                new Double( "300.0" ), new Double( "0.0" ), new Double( "0.20" ), new Double( "0" ) ) );
+         fabpPremiumGroupList.add( new FABPPremiumGroup( "Fantastic Four", "CHUBB", new Double( "234.5" ), new Double( "4.5" ), new Double( "30.2" ),
+                new Double( "198.8" ), new Double( "0.0" ), new Double( "0.0" ), new Double( "0.3" ) ) );
+         fabpPremiumGroupList.add( new FABPPremiumGroup( "Defenders", "CHUBB", new Double( "234.5" ), new Double( "4.5" ), new Double( "30.2" ),
+                new Double( "198.8" ), new Double( "0.0" ), new Double( "0.0" ), new Double( "0.3" ) ) );
 
         return fabpPremiumGroupList;
     }

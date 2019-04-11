@@ -22,10 +22,10 @@ public class EmployeeTest
     @Test
     public void employeeTotalTest()
     {
-        Employee testEmployee = new Employee("Craig Deacon", new Float ("12.90"), new Float ("4.12"), new Float ("8.19"), new Float ("20.80"), null,
-                                             new Float ("6.25"), new Float ("4.91"), new Float ("225.91"), null, new Float ("7.66"), null, new Float ("4.15"),
-                                             new Float ("38.90"));
-        float total = (float) 333.79;
+        Employee testEmployee = new Employee("Craig Deacon", new Double ("12.90"), new Double ("4.12"), new Double ("8.19"), new Double ("20.80"), null,
+                                             new Double ("6.25"), new Double ("4.91"), new Double ("225.91"), null, new Double ("7.66"), null, new Double ("4.15"),
+                                             new Double ("38.90"));
+        Double total = (Double) 333.79;
         Assert.assertEquals( total, testEmployee.getTotal(), .1f );
     }
 }

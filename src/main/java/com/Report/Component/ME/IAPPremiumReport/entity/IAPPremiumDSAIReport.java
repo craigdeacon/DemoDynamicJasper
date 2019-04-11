@@ -67,13 +67,13 @@ public class IAPPremiumDSAIReport
         AbstractColumn coupleLives = createColumnInt( "coupleLives", "Couples", 50 );
         columnList.add( coupleLives );
 
-        AbstractColumn currentPremium = createColumnFloat( "currentPremium", "Current Premium", 100);
+        AbstractColumn currentPremium = createColumn( "currentPremium", "Current Premium", 100, "Double" );
         columnList.add( currentPremium );
 
-        AbstractColumn retroPremium = createColumnFloat( "retroPremium", "Retro Premium", 100 );
+        AbstractColumn retroPremium = createColumn( "retroPremium", "Retro Premium", 100, "Double" );
         columnList.add( retroPremium );
 
-        AbstractColumn pst = createColumnFloat( "pst", "PST", 50 );
+        AbstractColumn pst = createColumn( "pst", "PST", 50, "Double" );
         columnList.add( pst );
 
 

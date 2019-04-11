@@ -7,11 +7,11 @@ public class IAPPremiumDSAIGroup
     private Integer divisionNumber;
     private Integer singleLives;
     private Integer coupleLives;
-    private Float currentPremium;
-    private Float retroPremium;
-    private Float pst;
+    private Double currentPremium;
+    private Double retroPremium;
+    private Double pst;
 
-    public IAPPremiumDSAIGroup(String divisionName, String policyNumber, Integer divisionNumber, Integer singleLives, Integer coupleLives, Float currentPremium, Float retroPremium, Float pst)
+    public IAPPremiumDSAIGroup(String divisionName, String policyNumber, Integer divisionNumber, Integer singleLives, Integer coupleLives, Double currentPremium, Double retroPremium, Double pst)
     {
         this.divisionName = divisionName;
         this.policyNumber = policyNumber;
@@ -48,17 +48,17 @@ public class IAPPremiumDSAIGroup
         return coupleLives;
     }
 
-    public Float getCurrentPremium()
+    public Double getCurrentPremium()
     {
         return currentPremium;
     }
 
-    public Float getRetroPremium()
+    public Double getRetroPremium()
     {
         return retroPremium;
     }
 
-    public Float getPst()
+    public Double getPst()
     {
         return pst;
     }

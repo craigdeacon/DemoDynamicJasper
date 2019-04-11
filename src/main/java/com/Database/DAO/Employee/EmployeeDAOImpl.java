@@ -522,19 +522,19 @@ public class EmployeeDAOImpl implements EmployeeDAO
                                Employee employee = new Employee();
 
                                employee.setName(resultSet.getString("emp_name"));
-                               employee.setLife(resultSet.getFloat("life_prem"));
-                               employee.setAdd(resultSet.getFloat("add_prem"));
-                               employee.setdLife(resultSet.getFloat("dlife_prem"));
-                               employee.setStd(resultSet.getFloat("std_prem"));
-                               employee.setLtd(resultSet.getFloat("ltd_prem"));
-                               employee.setEhb(resultSet.getFloat("ehb_prem"));
-                               employee.setDental(resultSet.getFloat("dental_prem"));
-                               employee.setCi(resultSet.getFloat("ci_prem"));
-                               employee.setDepCi(resultSet.getFloat("ci_dep_prem"));
-                               employee.setHcsa(resultSet.getFloat("hsa_prem"));
-                               employee.setPsa(resultSet.getFloat("psa_prem"));
-                               employee.setDsai(resultSet.getFloat("dsai_prem"));
-                               employee.setEap(resultSet.getFloat("eap_prem"));
+                               employee.setLife(resultSet.getDouble("life_prem"));
+                               employee.setAdd(resultSet.getDouble("add_prem"));
+                               employee.setdLife(resultSet.getDouble("dlife_prem"));
+                               employee.setStd(resultSet.getDouble("std_prem"));
+                               employee.setLtd(resultSet.getDouble("ltd_prem"));
+                               employee.setEhb(resultSet.getDouble("ehb_prem"));
+                               employee.setDental(resultSet.getDouble("dental_prem"));
+                               employee.setCi(resultSet.getDouble("ci_prem"));
+                               employee.setDepCi(resultSet.getDouble("ci_dep_prem"));
+                               employee.setHcsa(resultSet.getDouble("hsa_prem"));
+                               employee.setPsa(resultSet.getDouble("psa_prem"));
+                               employee.setDsai(resultSet.getDouble("dsai_prem"));
+                               employee.setEap(resultSet.getDouble("eap_prem"));
 
                                listEmployee.add(employee);
                            });

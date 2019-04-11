@@ -7,7 +7,7 @@ public class IAPPremiumGroup
     private String policyNumber;
     private String divisionNumber;
     private String divisionName;
-    private Float totalCommissionRate;
+    private Double totalCommissionRate;
     private Date coverageEffectiveDate;
     private Date renewalMonth;
     private String divisionStatus;
@@ -16,42 +16,42 @@ public class IAPPremiumGroup
     /*Employee*/
     private String benefitAmountPerEmployee;
     private Integer currentNumberLives;
-    private Float currentVolumeOfInsurer;
-    private Float grossMonthlyPremiumRate;
-    private Float grossPremium;
+    private Double currentVolumeOfInsurer;
+    private Double grossMonthlyPremiumRate;
+    private Double grossPremium;
 
     /*Spouse*/
     private String benefitAmountSpouse;
     private Integer currentNumberLivesSpouse;
-    private Float currentVolumeOfInsurerSpouse;
-    private Float grossMonthlyPremiumRateSpouse;
+    private Double currentVolumeOfInsurerSpouse;
+    private Double grossMonthlyPremiumRateSpouse;
     private String grossPremiumSpouse;
 
     /*Dependent*/
     private String benefitAmountDependent;
     private Integer currentNumberOfUnitsDependent;
-    private Float grossMonthlyPremiumRateDependent;
-    private Float grossPremiumDependent;
+    private Double grossMonthlyPremiumRateDependent;
+    private Double grossPremiumDependent;
 
     /*Total*/
-    private Float totalGrossPremium;
-    private Float adjust;
-    private Float adminFee;
-    private Float commission;
-    private Float totalCommission;
+    private Double totalGrossPremium;
+    private Double adjust;
+    private Double adminFee;
+    private Double commission;
+    private Double totalCommission;
 
     /*Tax*/
-    private Float ontarioTax;
-    private Float quebecTax;
-    private Float manitobaTax;
+    private Double ontarioTax;
+    private Double quebecTax;
+    private Double manitobaTax;
 
-    private Float netPremiumPaid;
+    private Double netPremiumPaid;
     private String comments;
 
     /*Functions*/
-    private Float grossPremiumAndAdjust;
+    private Double grossPremiumAndAdjust;
 
-    public IAPPremiumGroup(String policyNumber, String divisionNumber, String divisionName, Float totalCommissionRate, Date coverageEffectiveDate, Date renewalMonth, String divisionStatus, String pctProvinceEmployeeSplit, String benefitAmountPerEmployee, Integer currentNumberLives, Float currentVolumeOfInsurer, Float grossMonthlyPremiumRate, Float grossPremium, String benefitAmountSpouse, Integer currentNumberLivesSpouse, Float currentVolumeOfInsurerSpouse, Float grossMonthlyPremiumRateSpouse, String grossPremiumSpouse, String benefitAmountDependent, Integer currentNumberOfUnitsDependent, Float grossMonthlyPremiumRateDependent, Float grossPremiumDependent, Float totalGrossPremium, Float adjust, Float adminFee, Float commission, Float totalCommission, Float ontarioTax, Float quebecTax, Float manitobaTax, Float netPremiumPaid, String comments)
+    public IAPPremiumGroup(String policyNumber, String divisionNumber, String divisionName, Double totalCommissionRate, Date coverageEffectiveDate, Date renewalMonth, String divisionStatus, String pctProvinceEmployeeSplit, String benefitAmountPerEmployee, Integer currentNumberLives, Double currentVolumeOfInsurer, Double grossMonthlyPremiumRate, Double grossPremium, String benefitAmountSpouse, Integer currentNumberLivesSpouse, Double currentVolumeOfInsurerSpouse, Double grossMonthlyPremiumRateSpouse, String grossPremiumSpouse, String benefitAmountDependent, Integer currentNumberOfUnitsDependent, Double grossMonthlyPremiumRateDependent, Double grossPremiumDependent, Double totalGrossPremium, Double adjust, Double adminFee, Double commission, Double totalCommission, Double ontarioTax, Double quebecTax, Double manitobaTax, Double netPremiumPaid, String comments)
     {
         this.policyNumber = policyNumber;
         this.divisionNumber = divisionNumber;
@@ -103,7 +103,7 @@ public class IAPPremiumGroup
         return divisionName;
     }
 
-    public Float getTotalCommissionRate()
+    public Double getTotalCommissionRate()
     {
         return totalCommissionRate;
     }
@@ -138,17 +138,17 @@ public class IAPPremiumGroup
         return currentNumberLives;
     }
 
-    public Float getCurrentVolumeOfInsurer()
+    public Double getCurrentVolumeOfInsurer()
     {
         return currentVolumeOfInsurer;
     }
 
-    public Float getGrossMonthlyPremiumRate()
+    public Double getGrossMonthlyPremiumRate()
     {
         return grossMonthlyPremiumRate;
     }
 
-    public Float getGrossPremium()
+    public Double getGrossPremium()
     {
         return grossPremium;
     }
@@ -163,12 +163,12 @@ public class IAPPremiumGroup
         return currentNumberLivesSpouse;
     }
 
-    public Float getCurrentVolumeOfInsurerSpouse()
+    public Double getCurrentVolumeOfInsurerSpouse()
     {
         return currentVolumeOfInsurerSpouse;
     }
 
-    public Float getGrossMonthlyPremiumRateSpouse()
+    public Double getGrossMonthlyPremiumRateSpouse()
     {
         return grossMonthlyPremiumRateSpouse;
     }
@@ -188,57 +188,57 @@ public class IAPPremiumGroup
         return currentNumberOfUnitsDependent;
     }
 
-    public Float getGrossMonthlyPremiumRateDependent()
+    public Double getGrossMonthlyPremiumRateDependent()
     {
         return grossMonthlyPremiumRateDependent;
     }
 
-    public Float getGrossPremiumDependent()
+    public Double getGrossPremiumDependent()
     {
         return grossPremiumDependent;
     }
 
-    public Float getTotalGrossPremium()
+    public Double getTotalGrossPremium()
     {
         return totalGrossPremium;
     }
 
-    public Float getAdjust()
+    public Double getAdjust()
     {
         return adjust;
     }
 
-    public Float getAdminFee()
+    public Double getAdminFee()
     {
         return adminFee;
     }
 
-    public Float getCommission()
+    public Double getCommission()
     {
         return commission;
     }
 
-    public Float getTotalCommission()
+    public Double getTotalCommission()
     {
         return totalCommission;
     }
 
-    public Float getOntarioTax()
+    public Double getOntarioTax()
     {
         return ontarioTax;
     }
 
-    public Float getQuebecTax()
+    public Double getQuebecTax()
     {
         return quebecTax;
     }
 
-    public Float getManitobaTax()
+    public Double getManitobaTax()
     {
         return manitobaTax;
     }
 
-    public Float getNetPremiumPaid()
+    public Double getNetPremiumPaid()
     {
         return netPremiumPaid;
     }
@@ -248,7 +248,7 @@ public class IAPPremiumGroup
         return comments;
     }
 
-    public Float getGrossPremiumAndAdjust()
+    public Double getGrossPremiumAndAdjust()
     {
         return grossPremiumAndAdjust;
     }

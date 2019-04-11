@@ -26,22 +26,22 @@ public class NAMonthlyPremiumsRepository implements NAMonthlyPremiumsDAO
     {
         ArrayList<NAMonthlyPremiumsGroup> monthlyGroupList = new ArrayList<>();
       
-        monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Avengers", new Date(0), "STD", 1, new Float ("10.0"), new Float ("1.0"), "ON", 1, 
-                20, new Float ("2.0"), new Float ("5.0") , new Float ("0.5"), new Float ("6.0"), new Float ("0.3"), new Float ("0.80"), new Float ("15.25"), 
-                new Float ("0"), new Float ("0"), new Float ("0")));
-        monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Fantastic Four", new Date(0), "STD", 1, new Float ("10.0"), new Float ("1.0"), "ON", 1, 
-                20, new Float ("2.0"), new Float ("5.0") , new Float ("0.5"), new Float ("6.0"), new Float ("0.3"), new Float ("0.80"), new Float ("15.25"), 
-                new Float ("0"), new Float ("0"), new Float ("0")));
-         monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Bionic 6", new Date(0), "Life", 1, new Float ("10.0"), new Float ("1.0"), "BC", 1, 
-                20, new Float ("2.0"), new Float ("5.0") , new Float ("0.5"), new Float ("6.0"), new Float ("0.3"), new Float ("0.80"), new Float ("15.25"), 
-                new Float ("0"), new Float ("0"), new Float ("0")));
-         monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Justice League", new Date(0), "Life", 1, new Float ("10.0"), new Float ("1.0"), "BC", 1, 
-                20, new Float ("2.0"), new Float ("5.0") , new Float ("0.5"), new Float ("6.0"), new Float ("0.3"), new Float ("0.80"), new Float ("15.25"), 
-                new Float ("0"), new Float ("0"), new Float ("0")));
+        monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Avengers", new Date(0), "STD", 1, new Double ("10.0"), new Double ("1.0"), "ON", 1, 
+                20, new Double ("2.0"), new Double ("5.0") , new Double ("0.5"), new Double ("6.0"), new Double ("0.3"), new Double ("0.80"), new Double ("15.25"), 
+                new Double ("0"), new Double ("0"), new Double ("0")));
+        monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Fantastic Four", new Date(0), "STD", 1, new Double ("10.0"), new Double ("1.0"), "ON", 1, 
+                20, new Double ("2.0"), new Double ("5.0") , new Double ("0.5"), new Double ("6.0"), new Double ("0.3"), new Double ("0.80"), new Double ("15.25"), 
+                new Double ("0"), new Double ("0"), new Double ("0")));
+         monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Bionic 6", new Date(0), "Life", 1, new Double ("10.0"), new Double ("1.0"), "BC", 1, 
+                20, new Double ("2.0"), new Double ("5.0") , new Double ("0.5"), new Double ("6.0"), new Double ("0.3"), new Double ("0.80"), new Double ("15.25"), 
+                new Double ("0"), new Double ("0"), new Double ("0")));
+         monthlyGroupList.add( new NAMonthlyPremiumsGroup("Policy", "Account", "Justice League", new Date(0), "Life", 1, new Double ("10.0"), new Double ("1.0"), "BC", 1, 
+                20, new Double ("2.0"), new Double ("5.0") , new Double ("0.5"), new Double ("6.0"), new Double ("0.3"), new Double ("0.80"), new Double ("15.25"), 
+                new Double ("0"), new Double ("0"), new Double ("0")));
         return monthlyGroupList;
     }
     
-// ( String policySeries, String policyAccount, String employer, Date month, String product, int benefitId, Float premium, Float premiumRate, String province, int employeeCount, 
-//    int volume, Float pst, Float retroactivePremium, Float retroactivePst, Float grossPremium, Float administrationAmount, Float commissionAmount, Float netPremium, 
-//    Float gst, Float administrationRate, Float commissionRate )
+// ( String policySeries, String policyAccount, String employer, Date month, String product, int benefitId, Double premium, Double premiumRate, String province, int employeeCount, 
+//    int volume, Double pst, Double retroactivePremium, Double retroactivePst, Double grossPremium, Double administrationAmount, Double commissionAmount, Double netPremium, 
+//    Double gst, Double administrationRate, Double commissionRate )
 }

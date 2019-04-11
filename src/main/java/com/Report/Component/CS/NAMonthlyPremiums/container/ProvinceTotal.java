@@ -13,14 +13,14 @@ public class ProvinceTotal
 {
     private String header;
     private String province;
-    private Float pstTotal;
-    private Float retroactivePstTotal;
+    private Double pstTotal;
+    private Double retroactivePstTotal;
 
     public ProvinceTotal()
     {
     }
 
-    public ProvinceTotal( String header, String province, Float pstTotal, Float retroactivePstTotal )
+    public ProvinceTotal( String header, String province, Double pstTotal, Double retroactivePstTotal )
     {
         this.header = header;
         this.province = province;
@@ -31,7 +31,7 @@ public class ProvinceTotal
     
     
 
-    public ProvinceTotal( String Province, Float pstTotal, Float retroactivePstTotal )
+    public ProvinceTotal( String Province, Double pstTotal, Double retroactivePstTotal )
     {
         this.header = "";
         this.province = Province;
@@ -50,22 +50,22 @@ public class ProvinceTotal
     }
 
 
-    public Float getPstTotal()
+    public Double getPstTotal()
     {
         return pstTotal;
     }
 
-    public void setPstTotal( Float pstTotal )
+    public void setPstTotal( Double pstTotal )
     {
         this.pstTotal = pstTotal;
     }
 
-    public Float getRetroactivePstTotal()
+    public Double getRetroactivePstTotal()
     {
         return retroactivePstTotal;
     }
 
-    public void setRetroactivePstTotal( Float retroactivePstTotal )
+    public void setRetroactivePstTotal( Double retroactivePstTotal )
     {
         this.retroactivePstTotal = retroactivePstTotal;
     }

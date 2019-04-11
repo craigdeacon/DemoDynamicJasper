@@ -29,8 +29,8 @@ public class IAPPremiumADDGroupTest
         System.out.println("grossPremiumAndAdjustTest");
         for (IAPPremiumADDGroup group : iapPremiumADDGroupArrayList )
         {
-            Float bothGrossAndAdjust = group.getGrossPremiumAndAdjust();
-            Float addedGrossAndAdjust = group.getTotalGrossPremium() + group.getAdjust();
+            Double bothGrossAndAdjust = group.getGrossPremiumAndAdjust();
+            Double addedGrossAndAdjust = group.getTotalGrossPremium() + group.getAdjust();
             Assert.assertEquals(addedGrossAndAdjust, bothGrossAndAdjust);
         }
     }
