@@ -43,6 +43,7 @@ public class ReportStyles
     public static Style FOOTER_TOTAL;
     public static Style FOOTER_TOTAL_CYAN;    
     public static Style BOLD_LEFT_TOP_PADDING;
+    public static Style BLUE_RIGHT_GREY_BG;
 
 
     public ReportStyles()
@@ -93,8 +94,14 @@ public class ReportStyles
         BLUE_LEFT_GREY_BG = new Style();
         BLUE_LEFT_GREY_BG.setHorizontalAlign( HorizontalAlign.LEFT );
         BLUE_LEFT_GREY_BG.setTextColor( Color.BLUE );
-        BLUE_LEFT_GREY_BG.setBackgroundColor( new Color( 230, 230, 230 ) );
+        BLUE_LEFT_GREY_BG.setBackgroundColor( new Color( 211, 211, 211 ) );
         BLUE_LEFT_GREY_BG.setTransparency( Transparency.OPAQUE );
+        
+        BLUE_RIGHT_GREY_BG = new Style();
+        BLUE_RIGHT_GREY_BG.setHorizontalAlign( HorizontalAlign.RIGHT );
+        BLUE_RIGHT_GREY_BG.setTextColor( Color.BLUE );
+        BLUE_RIGHT_GREY_BG.setBackgroundColor( new Color( 211, 211, 211 ) );
+        BLUE_RIGHT_GREY_BG.setTransparency( Transparency.OPAQUE );
               
         BLUE_LEFT_GREY_BG_T_BORDER = new Style();
         BLUE_LEFT_GREY_BG_T_BORDER.setHorizontalAlign( HorizontalAlign.LEFT );
