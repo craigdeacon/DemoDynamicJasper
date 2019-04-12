@@ -17,6 +17,7 @@ import com.DemoDynamicJasper.spring.config.AppConfig;
 import com.DemoDynamicJasper.spring.config.SpringConfigurationBootstrap;
 import com.Report.Component.CS.NAMonthlyPremiums.entity.NAMonthlyPremiums;
 import com.Report.Component.ME.FABPPremiumReport.entity.FABPPremiumReport;
+import com.Report.Component.ME.GstHstByRevenueTypeReport.entity.GstHstByRevenueTypeReport;
 
 /**
  *
@@ -47,8 +48,12 @@ class DemoDynamicJasperApplication
 //        NAMonthlyPremiums naMonthlyPremiums = new NAMonthlyPremiums();
 //        naMonthlyPremiums.displayNAMonthlyPremiumReport();
 
-        FABPPremiumReport fABPPremiumReport = new FABPPremiumReport();
-        fABPPremiumReport.displayFABPremiumReport();
+//        FABPPremiumReport fABPPremiumReport = new FABPPremiumReport();
+//        fABPPremiumReport.displayFABPremiumReport();
+
+        GstHstByRevenueTypeReport gstHstByRevenueTypeReport = new GstHstByRevenueTypeReport();
+        gstHstByRevenueTypeReport.displayGstHstRevenueByTypeReport();
+           
 
     }
 
